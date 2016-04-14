@@ -117,17 +117,19 @@
 \subsection{Sogo}
 \subsubsection*{Beschreibung}
 
-In diesem Projekt geht es um das Spiel \textit{Sogo}. Dieses soll mit Hilfe von Qt implementiert werden. Die grundlegende Spielumgebung sieht wie folgt aus:
+In diesem Projekt geht es um das Spiel \textit{Sogo} oder auch bekannt unter dem Namen Raummühle, 3D-Mühle, 3D-Tic-Tac-Toe, Vier gewinnt Professional. Dieses soll mit Hilfe von Qt implementiert werden. Die grundlegende Spielumgebung sieht wie folgt aus:
 \begin{itemize}
 	\item Es treten zwei Spieler gegeneinander an.
 	\item Das Spielfeld wird in ein dreidimensionales Raster von 4 X 4 X 4 Feldern aufgeteilt.
-	\item Um die Koordination innerhalb des Rasters zu ermöglichen wird die Grundfläche mittels Hexadezimal-Notation(0-9, A-F) aufgeteilt und die vier Ebenen von eins bis vier durchnummeriert. Daraus ergeben sich folgende Notationen {(0,1),(f,4),...}, wobei die erste Zahl die Position auf der Grundfläche und die zweite Zahl die Position der Ebene darstellt.
-	\item  
+	\item Um die Koordination innerhalb des Rasters zu ermöglichen wird die Grundfläche mittels Hexadezimal-Notation(0-9, A-F) aufgeteilt und die vier Ebenen von eins bis vier durchnummeriert. Daraus ergeben sich folgende Notationen {(0,1),(f,4),(5,3),...}, wobei die erste Zahl die Position auf der Grundfläche und die zweite Zahl die Position der Ebene darstellt.
+	\item Jeder Spieler verfügt über 32 Steine.
 \end{itemize}
 Darüber hinaus gelten folgende \textit{grundlegenden} Regeln:
 \begin{itemize}
-	\item Jeder Spieler verfügt über 32 Steine
+	\item Der Spieler mit den weißen Steinen beginnt
+	\item Die Spielsteine werden abwechselnd gesetzt
 \end{itemize}
+Ziel des Spiels ist es, vier eigenen Steine in einer Linie zu setzen. D.h. sie können waagerecht, senkrecht oder auch diagonal zueinander gesetzt werden um die Partie für sich zu entscheiden.
 
 \subsubsection*{Implementierungskriterien}
 	\begin{enumerate}
