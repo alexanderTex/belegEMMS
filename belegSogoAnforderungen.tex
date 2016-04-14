@@ -117,7 +117,7 @@
 \subsection{Sogo}
 \subsubsection*{Beschreibung}
 
-In diesem Projekt geht es um das Spiel \textit{Sogo} oder auch bekannt unter dem Namen Raummühle, 3D-Mühle, 3D-Tic-Tac-Toe, Vier gewinnt Professional. Dieses soll mit Hilfe von Qt implementiert werden. Die grundlegende Spielumgebung sieht wie folgt aus:
+In diesem Projekt geht es um das Spiel \textit{Sogo} oder auch bekannt unter dem Namen Raummühle, 3D-Mühle, 3D-Tic-Tac-Toe oder Vier gewinnt Professional. Dieses soll mit Hilfe von Qt implementiert werden. Die grundlegende Spielumgebung sieht wie folgt aus:
 \begin{itemize}
 	\item Es treten zwei Spieler gegeneinander an.
 	\item Das Spielfeld wird in ein dreidimensionales Raster von 4 X 4 X 4 Feldern aufgeteilt.
@@ -126,21 +126,41 @@ In diesem Projekt geht es um das Spiel \textit{Sogo} oder auch bekannt unter dem
 \end{itemize}
 Darüber hinaus gelten folgende \textit{grundlegenden} Regeln:
 \begin{itemize}
-	\item Der Spieler mit den weißen Steinen beginnt
+	\item Grundsätzlich beginnt der Spieler mit den weißen Steinen beginnt, was jedoch durch eine Vorabsprache individuell festgelegt werden kann. 
 	\item Die Spielsteine werden abwechselnd gesetzt
 \end{itemize}
 Ziel des Spiels ist es, vier eigenen Steine in einer Linie zu setzen. D.h. sie können waagerecht, senkrecht oder auch diagonal zueinander gesetzt werden um die Partie für sich zu entscheiden.
 
 \subsubsection*{Implementierungskriterien}
 	\begin{enumerate}
-		\item (1 point)
+		\item (1 point) Es könne zwei Menschen gegeneinander oder ein Mensch gegen den Computer spielen.
+		\item (1 point) Generell soll vor Beginn des Spiels festgelegt werden, wer beginnt.
+		\item (1 point) Menschliche Spieler sollen vor Spielbeginn in der GUI Ihre Spielnamen eingeben.
+		
+%? Soll das Raster sich verändern lassen?
+		%\Item (1 point) Die Größe des Spielfelds soll bevor die Partie beginnt, in der GUI konfigurierbar sein. Die Standardgröße ist 4x4, wobei die Möglichkeit zum 3x3 oder 5x5 ausgewählt werden kann.
+		
+		\item (1 point) Bei der Auswahl einer Position soll ein Sound abgespielt werden, wobei jede Partei einen eigenen hat.
+		\item (1 point) Die Anwendung lässt ungültige Züge nicht zu und signalisiert diese mit einem Sound.
+		\item (1 point) Die Anwendung erkennt eine Gewinnposition, sowie eine Unentschieden und spielt dazu einen geeigneten Sound inklusive Animation am.
+		\item (1 point) Alle Spielergebnisse sollen in einer lokalen Datenbank(SQLite) abgespeichert werden und alle wichtigen Informationen über die gespielten Spiele beinhalten.
+		\item (1 point) Die Spielergebnisse sollen in der GUI abrufbar sein.
+		\item (1 point) Die Spielergebnisse sollen veröffentlicht werden können.
+		\item (1 point) Es soll die Möglichkeit bereitstehen die laufende Partie zu unterbrechen (Speichern) und zu beliebiger Zeit, auch nach einem Neustart der Anwendung, wieder zu starten (Laden).
+		\item (1 point) Es soll die Möglichkeit bereitstehen das Spiel zu pausieren.
+		\item (5 points) Beim Spiel Mensch gegen Computer soll eine einfache Spielstrategie(Heuristik) zum Beispiel auf Basis des Minimax-Algorithmus (\textit{http://mnemstudio.org/game-reversi-example-2.htm}) implementiert werden.	
+		\item (5 points) Beim Spiel Mensch gegen Computer soll es möglich sein, die Spielstärke des Computer aus drei Schwierigkeitsgraden auszuwählen.
+		
+%? Implementierung der Netzwerkkomponenten nötig?		
+		\item (1 point) Die Anwendung soll es den Spielern erlauben ihre Partie über das Netzwerk zu spielen, wobei ausgegangen werden kann, dass sich die beiden Anwendungen im selben Subnetz sind und die Ports erreichbar sind.
+		\item (1 point) Die Anwendung soll eine Remote-Verbindung annehmen können (als Server agieren), als auch sich mit einer anderen Anwendung aktiv verbinden können (als Client agieren).
+		\item (1 point) Eintreffende Verbindungswünsche sollen angezeigt werden.
+		\item (1 point) Der Anwender des Servers soll die Möglichkeit haben einen Verbindungswunsch anzunehmen oder ihn abzulehnen.
+		\item (1 point) Der Anwender des Clients wird über die Entscheidung nach dem gestellten Verbindungswunsch informiert.
+		\item (1 point) Die Verbindung soll solange gehalten werden bis die Partie beendet ist.
+		
+		\item (1 point) Ist ein Spiel zu Ende, wird eine Spielauswertung angezeigt.
+		
 	\end{enumerate}
-
-\subsection{N-Körper-Simulation}
-	\begin{enumerate}
-		\item (1 point)
-	\end{enumerate}
-
-
 		
 \end{document}
