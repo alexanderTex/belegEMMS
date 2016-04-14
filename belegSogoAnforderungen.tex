@@ -1,0 +1,144 @@
+\documentclass[a4paper]{scrartcl}
+
+\usepackage[ngerman]{babel}
+\usepackage{amsmath,amssymb,amsthm,amsfonts,amsbsy,latexsym}
+
+\usepackage[utf8]{inputenc}
+
+
+\usepackage[T1]{fontenc}
+\usepackage{enumerate,url}
+\usepackage{graphicx}
+\usepackage{bibgerm}
+\usepackage[babel,german=guillemets]{csquotes}
+\usepackage{listings}
+\usepackage{color}
+\usepackage[svgnames]{xcolor}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amstext}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{listings}		% Quelltext verwenden
+\usepackage{color}
+
+\usepackage{fancybox}  	% Box um Formel
+ \usepackage{varwidth}
+ 
+ \usepackage{lscape}
+
+
+% /===============================================================================================
+%
+%		Dokumentanfang
+%
+% \===============================================================================================
+
+\begin{document}
+\thispagestyle{empty}
+
+% /===============================================================================================
+%
+%		Deckblatt
+%
+% \===============================================================================================
+
+\thispagestyle{empty}
+\begin{center}
+\Large{Hochschule für Technik und Wirtschaft Berlin (HTW)}\\
+\end{center}
+ 
+ 
+\begin{center}
+\Large{Fachbereich 4 - Informatik, Kommunikation und Wirtschaft}
+\end{center}
+\begin{verbatim}
+
+
+\end{verbatim}
+\begin{center}
+\textbf{\LARGE{Belegarbeit - Anforderungserstellung}}
+\end{center}
+\begin{verbatim}
+ 
+ 
+\end{verbatim}
+\begin{center}
+\textbf{im Studiengang Angewandte Informatik}
+\end{center}
+\begin{verbatim}
+\end{verbatim}
+ 
+\begin{flushleft}
+\begin{tabular}{lll}
+\textbf{Fach:} & & Entwicklung von Multimediasystemen\\
+& & \\
+& & \\
+\textbf{Thema:} & & 1. Sogo (Freestyle)\\
+& & 2. N-Körper-Simulation (Vorgabe)\\
+& & \\
+& & \\
+\textbf{eingereicht von:} & & Alexander Lüdke (548965)\\
+& & Nils Brandt (549906)\\
+& & \\
+\textbf{eingereicht am:} & & Sommersemester 2016 \\
+& & \\
+& & \\
+\textbf{Dozenten:} & & Sebastian Bauer\\
+& & Sebastian Keppler \\
+\end{tabular}
+\end{flushleft}
+
+\newpage
+
+% /===============================================================================================
+%
+%		Inhaltsverzeichnis
+%
+% \===============================================================================================
+
+\thispagestyle{empty}
+
+%\tableofcontents
+%\maketitle
+
+\newpage
+
+% /===============================================================================================
+%
+%		Hauptteil
+%
+% \===============================================================================================
+
+\setcounter{page}{3}
+\section{Projektideen}
+
+\subsection{Sogo}
+\subsubsection*{Beschreibung}
+
+In diesem Projekt geht es um das Spiel \textit{Sogo}. Dieses soll mit Hilfe von Qt implementiert werden. Die grundlegende Spielumgebung sieht wie folgt aus:
+\begin{itemize}
+	\item Es treten zwei Spieler gegeneinander an.
+	\item Das Spielfeld wird in ein dreidimensionales Raster von 4 X 4 X 4 Feldern aufgeteilt.
+	\item Um die Koordination innerhalb des Rasters zu ermöglichen wird die Grundfläche mittels Hexadezimal-Notation(0-9, A-F) aufgeteilt und die vier Ebenen von eins bis vier durchnummeriert. Daraus ergeben sich folgende Notationen {(0,1),(f,4),...}, wobei die erste Zahl die Position auf der Grundfläche und die zweite Zahl die Position der Ebene darstellt.
+	\item  
+\end{itemize}
+Darüber hinaus gelten folgende \textit{grundlegenden} Regeln:
+\begin{itemize}
+	\item Jeder Spieler verfügt über 32 Steine
+\end{itemize}
+
+\subsubsection*{Implementierungskriterien}
+	\begin{enumerate}
+		\item (1 point)
+	\end{enumerate}
+
+\subsection{N-Körper-Simulation}
+	\begin{enumerate}
+		\item (1 point)
+	\end{enumerate}
+
+
+		
+\end{document}
