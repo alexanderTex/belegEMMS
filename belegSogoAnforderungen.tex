@@ -75,8 +75,7 @@
 \textbf{Fach:} & & Entwicklung von Multimediasystemen\\
 & & \\
 & & \\
-\textbf{Thema:} & & 1. Sogo (Freestyle)\\
-& & 2. N-Körper-Simulation (Vorgabe)\\
+\textbf{Thema:} & & Sogo (Freestyle)\\
 & & \\
 & & \\
 \textbf{eingereicht von:} & & Alexander Lüdke (548965)\\
@@ -112,17 +111,24 @@
 % \===============================================================================================
 
 \setcounter{page}{3}
-\section{Projektideen}
+\section*{Projektidee}
 
-\subsection{Sogo}
-\subsubsection*{Beschreibung}
+\section{Sogo}
+\subsection{Beschreibung}
 
 In diesem Projekt geht es um das Spiel \textit{Sogo} oder auch bekannt unter dem Namen Raummühle, 3D-Mühle, 3D-Tic-Tac-Toe oder Vier gewinnt Professional. Dieses soll mit Hilfe von Qt implementiert werden. Die grundlegende Spielumgebung sieht wie folgt aus:
 \begin{itemize}
 	\item Es treten zwei Spieler gegeneinander an.
-	\item Das Spielfeld wird in ein dreidimensionales Raster von 4 X 4 X 4 Feldern aufgeteilt.
-	\item Um die Koordination innerhalb des Rasters zu ermöglichen wird die Grundfläche mittels Hexadezimal-Notation(0-9, A-F) aufgeteilt und die vier Ebenen von eins bis vier durchnummeriert. Daraus ergeben sich folgende Notationen {(0,1),(f,4),(5,3),...}, wobei die erste Zahl die Position auf der Grundfläche und die zweite Zahl die Position der Ebene darstellt.
-	\item Jeder Spieler verfügt über 32 Steine.
+	\item Das Spielfeld wird in ein dreidimensionales Raster von 4x4x4 Feldern aufgeteilt.
+	\item \textit{optional} Das Raster hat eine Ausdehnung von 3x3x3, wobei die Grundfläche von eins bis neun. Das Resultat sind folgende Notationen\\ $\mathcal{M}=\{(1,1),(1,2),(1,3),...(9,3)\}$.
+	\item \textit{optional} Das Raster hat eine Ausdehnung von 5x5x5, wobei die Grundfläche nach der Schachnotation aufgeteilt wird (A-E, 1-5). Das Resultat sind folgende Notationen $\mathcal{M}=\{(A,1,1),(A,2,1),(A,3,1),...(E,5,5)\}$.
+	\item Um die Koordination innerhalb des 4x4x4 Rasters zu ermöglichen wird die Grundfläche mittels Hexadezimal-Notation(0-9, A-F) aufgeteilt und die vier Ebenen von eins bis vier durchnummeriert. Das Resultat sind folgende Notationen\\ $\mathcal{M}=\{(1,1),(2,1),(3,1),...(F,4)\}$, wobei die erste Zahl die Position auf der Grundfläche und die zweite Zahl die Position der Ebene darstellt.
+	\item Jeder Spieler verfügt im Raster
+	\begin{itemize}
+		\item 4x4x4 über 32 Spielsteine
+		\item \textit{optional} 3x3x3 über 13 Spielsteine
+		\item \textit{optional} 5x5x5 über 62 Spielsteine
+	\end{itemize}	
 \end{itemize}
 Darüber hinaus gelten folgende \textit{grundlegenden} Regeln:
 \begin{itemize}
@@ -131,18 +137,18 @@ Darüber hinaus gelten folgende \textit{grundlegenden} Regeln:
 \end{itemize}
 Ziel des Spiels ist es, vier eigenen Steine in einer Linie zu setzen. D.h. sie können waagerecht, senkrecht oder auch diagonal zueinander gesetzt werden um die Partie für sich zu entscheiden.
 
-\subsubsection*{Implementierungskriterien}
+\subsection{Implementierungskriterien}
 	\begin{enumerate}
 		\item (1 point) Es könne zwei Menschen gegeneinander oder ein Mensch gegen den Computer spielen.
 		\item (1 point) Generell soll vor Beginn des Spiels festgelegt werden, wer beginnt.
-		\item (1 point) Menschliche Spieler sollen vor Spielbeginn in der GUI Ihre Spielnamen eingeben.
+		\item (1 point) Menschliche Spieler sollen vor Spielbeginn in der GUI Ihre Spielnamen eingeben können.
 		
 %? Soll das Raster sich verändern lassen?
-		%\Item (1 point) Die Größe des Spielfelds soll bevor die Partie beginnt, in der GUI konfigurierbar sein. Die Standardgröße ist 4x4, wobei die Möglichkeit zum 3x3 oder 5x5 ausgewählt werden kann.
+		%\Item (1 point) Die Größe des Spielfelds soll vor der Partie in der GUI konfigurierbar sein. Die Standardgröße ist 4x4x4, wobei die Möglichkeit zum 3x3x3 oder 5x5x5 ausgewählt werden kann.
 		
 		\item (1 point) Bei der Auswahl einer Position soll ein Sound abgespielt werden, wobei jede Partei einen eigenen hat.
 		\item (1 point) Die Anwendung lässt ungültige Züge nicht zu und signalisiert diese mit einem Sound.
-		\item (1 point) Die Anwendung erkennt eine Gewinnposition, sowie eine Unentschieden und spielt dazu einen geeigneten Sound inklusive Animation am.
+		\item (1 point) Die Anwendung erkennt eine Gewinnposition, sowie ein Unentschieden und spielt dazu einen geeigneten Sound inklusive Animation am.
 		\item (1 point) Alle Spielergebnisse sollen in einer lokalen Datenbank(SQLite) abgespeichert werden und alle wichtigen Informationen über die gespielten Spiele beinhalten.
 		\item (1 point) Die Spielergebnisse sollen in der GUI abrufbar sein.
 		\item (1 point) Die Spielergebnisse sollen veröffentlicht werden können.
@@ -158,9 +164,17 @@ Ziel des Spiels ist es, vier eigenen Steine in einer Linie zu setzen. D.h. sie k
 		\item (1 point) Der Anwender des Servers soll die Möglichkeit haben einen Verbindungswunsch anzunehmen oder ihn abzulehnen.
 		\item (1 point) Der Anwender des Clients wird über die Entscheidung nach dem gestellten Verbindungswunsch informiert.
 		\item (1 point) Die Verbindung soll solange gehalten werden bis die Partie beendet ist.
-		
 		\item (1 point) Ist ein Spiel zu Ende, wird eine Spielauswertung angezeigt.
-		
+		\item (1 point) 
+		\item (1 point)
 	\end{enumerate}
 		
+\subsection{Eigene Implementierungskriterien}
+	\begin{enumerate}
+		\item (1 point) Wenn ein Mensch gegen einen Computer spielt, hat er die Möglichkeit im ersten Schwierigkeitsgrad(leicht) die letzten fünf Platzierungsrunden zurückzugehen.
+		\item (1 point) Jeder Spieler soll die Möglichkeit besitzen sich eine 3D-Ansicht der momentanen Spielsituation zu generieren.
+		\item (1 point) 
+		\item (1 point) 
+		\item (1 point) 
+	\end{enumerate}
 \end{document}
