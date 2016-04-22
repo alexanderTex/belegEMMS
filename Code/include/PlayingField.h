@@ -18,6 +18,11 @@ using namespace std;
 class PlayingField
 {
     public:
+        enum FieldExeptions
+        {
+            Occupied,
+        };
+
         enum OccupationState
         {
             None,
@@ -56,7 +61,7 @@ class PlayingField
         *   Sets the occupationState of the Slot at pos to id
         *   @throw out_of_range if value is higher than fieldsize
         */
-        void OccupySlot(int x, int y, int z, OccupationState id) throw (out_of_range);
+        void OccupySlot(int x, int y, int z, OccupationState id) throw (out_of_range, FieldExeptions);
     protected:
     private:
 
@@ -65,7 +70,10 @@ class PlayingField
 
 };
 
-
+/**
+* Dient dazu ein PlayingField darzustellen*
+*
+*/
 std::string DrawPlayingField(const PlayingField *field);
 
 
