@@ -1,0 +1,33 @@
+Legende:
+L : Line
+
+ff: fortfolgend
+
+to nils:
+========
+dokumentation - Spielfelderstellung
+    PlayingField.cpp -> L17ff
+
+
+
+to alex:
+========
+
+
+
+allg:
+=====
+koordinatensystem -> modularer
+Verzeichnisstruktur
+
+projectSogo
+    - include
+        -core
+        -network
+        -chat
+        -history
+    - src
+        -core
+        -network
+        -chat
+        -history
