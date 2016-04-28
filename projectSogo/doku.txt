@@ -1,6 +1,5 @@
 Legende:
 L : Line
-
 ff: fortfolgend
 
 to nils:
@@ -15,19 +14,35 @@ to alex:
 
 
 
-allg:
+doku:
 =====
 koordinatensystem -> modularer
 Verzeichnisstruktur
 
+27/28.04.16
 projectSogo
     - include
         -core
         -network
         -chat
         -history
+	-gui
     - src
         -core
         -network
         -chat
+	-gui
         -history
+
+28.04.16
+- Module definieren/beschreiben
+- Verantwotlichkeiten der Module festlegen
+
+Module:
+	- Menü
+	- Chat
+	- Netzwerk
+	- Gameengine
+ 	- Hightscore
+	- Save / Load
+	- GUI
