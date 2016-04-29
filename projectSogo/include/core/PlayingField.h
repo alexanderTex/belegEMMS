@@ -23,6 +23,9 @@ class PlayingField
             Occupied,
         };
 
+        /**
+        *   Defines the States a slot can be in
+        */
         enum OccupationState
         {
             None,
@@ -66,15 +69,25 @@ class PlayingField
     private:
 
         int m_FieldSize;
+
+        // x ( horizontal ; layer 0 )
+        // y ( depth ; layer 1 )
+        // z ( vertical ; layer 2 )
         vector<vector<vector<Slot*> > > m_slots;
 
 };
 
 /**
-* Dient dazu ein PlayingField darzustellen*
+* Draws the PlayingField in a console friendly fashion
 *
 */
 std::string DrawPlayingField(const PlayingField *field);
+
+
+/**
+*   Searches for a win condition in the Field
+*/
+bool CheckForWin(const PlayingField *field, PlayingField::OccupationState player, int x, int y, int z) throw(out_of_range);
 
 
 #endif // PLAYINGFIELD_H

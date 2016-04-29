@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include <./include/PlayingField.h>
+#include "./include/core/PlayingField.h"
 
 using namespace std;
 
@@ -44,8 +44,8 @@ void PlayingFieldTestFour()
 *          | - | - | - |  ,  | - | - | - |  ,  | - | - | - |
 *          | - | - | - |  ,  | - | - | - |  ,  | - | - | - |
 *
+*          | x | - | - |  ,  | - | - | - |  ,  | - | - | - |
 *          | - | - | - |  ,  | - | - | - |  ,  | - | - | - |
-*          | - | x | - |  ,  | - | - | - |  ,  | - | - | - |
 *          | - | - | - |  ,  | - | - | - |  ,  | - | - | - |
 */
 void PlayingFieldSlotOccupation()
@@ -55,7 +55,7 @@ void PlayingFieldSlotOccupation()
     cout << DrawPlayingField(&pF) << endl;
 
 
-    pF.OccupySlot(1,2,0, PlayingField::Blue);
+    pF.OccupySlot(0,2,0, PlayingField::Blue);
 
 
     cout << endl << endl;
@@ -85,74 +85,126 @@ void PlayingFieldInteractionTest()
         {
            case PlayingField::Blue:
 
-            cout << "Player Blue : " << endl << endl;
+                cout << "Player Blue : " << endl << endl;
 
-            cout << "Please enter x :" << endl;
-            cin >> x;
-            cout << "Please enter y :" << endl;
-            cin >> y;
-            cout << "Please enter z :" << endl;
-            cin >> z;
+                cout << "Please enter x :" << endl;
+                cin >> x;
+                cout << "Please enter y :" << endl;
+                cin >> y;
+                cout << "Please enter z :" << endl;
+                cin >> z;
 
-            try
-            {
-                pF.OccupySlot(x,y,z, PlayingField::Blue);
-            }
-            catch(PlayingField::FieldExeptions)
-            {
-                cout << " ERROR : Field already assigned" << endl << endl;
-            }
-            catch(out_of_range)
-            {
-                cout << " ERROR : Out of Range Error Player Blue" << endl << endl;
-            }
+                try
+                {
+                    pF.OccupySlot(x,y,z, PlayingField::Blue);
+                }
+                catch(PlayingField::FieldExeptions)
+                {
+                    cout << " ERROR : Field already assigned" << endl << endl;
+                }
+                catch(out_of_range)
+                {
+                    cout << " ERROR : Out of Range Error Player Blue" << endl << endl;
+                }
 
-            playerState = PlayingField::Red;
+                playerState = PlayingField::Red;
 
-            cout << endl;
+                cout << endl;
 
             break;
 
            case PlayingField::Red:
 
-            cout << "Player Red : " << endl << endl;
+                cout << "Player Red : " << endl << endl;
 
-            cout << "Please enter x :" << endl;
-            cin >> x;
-            cout << "Please enter y :" << endl;
-            cin >> y;
-            cout << "Please enter z :" << endl;
-            cin >> z;
+                cout << "Please enter x :" << endl;
+                cin >> x;
+                cout << "Please enter y :" << endl;
+                cin >> y;
+                cout << "Please enter z :" << endl;
+                cin >> z;
 
 
-            try
-            {
-                pF.OccupySlot(x,y,z, PlayingField::Red);
-            }
-            catch(PlayingField::FieldExeptions)
-            {
-                cout << " ERROR : Field already assigned" << endl << endl;
-            }
-            catch(out_of_range)
-            {
-                cout << " ERROR : Out of Range Error Player Red" << endl << endl;
-            }
+                try
+                {
+                    pF.OccupySlot(x,y,z, PlayingField::Red);
+                }
+                catch(PlayingField::FieldExeptions)
+                {
+                    cout << " ERROR : Field already assigned" << endl << endl;
+                }
+                catch(out_of_range)
+                {
+                    cout << " ERROR : Out of Range Error Player Red" << endl << endl;
+                }
 
-            playerState = PlayingField::Blue;
+                playerState = PlayingField::Blue;
 
-            cout << endl;
+                cout << endl;
 
+            break;
+           default:
             break;
         }
 
         cout << DrawPlayingField(&pF) << endl;
+
     }
 }
+
+
+/**
+*  with check for win and lose
+* result : | - | - | - |  ,  | - | - | - |  ,  | - | - | - |
+*          | - | - | - |  ,  | - | - | - |  ,  | - | - | - |
+*          | - | - | - |  ,  | - | - | - |  ,  | - | - | - |
+*
+*          | x | - | - |  ,  | - | - | - |  ,  | - | - | - |
+*          | - | - | - |  ,  | - | x | - |  ,  | - | - | - |
+*          | - | - | - |  ,  | - | - | - |  ,  | - | - | x |
+*
+*           Blue Player Won
+*
+*/
+void PlayingFieldWinLose()
+{
+    PlayingField pF(4);
+    cout << DrawPlayingField(&pF) << endl;
+
+    PlayingField::OccupationState playerState = PlayingField::Blue;
+
+        for(int i = 0; i < pF.GetFieldSize(); i++)
+        {
+            pF.OccupySlot(pF.GetFieldSize() - (i + 1), pF.GetFieldSize() - (i + 1), pF.GetFieldSize() - (i + 1), PlayingField::Blue);
+        }
+
+        cout << DrawPlayingField(&pF) << endl;
+
+        if(CheckForWin(&pF, playerState, pF.GetFieldSize() - 1, pF.GetFieldSize() - 1, pF.GetFieldSize() - 1))
+        {
+            stringstream s;
+            switch(playerState)
+            {
+            case PlayingField::Blue:
+                    s << "Blue";
+                break;
+            case PlayingField::Red:
+                    s << "Red";
+                break;
+            }
+
+            s << "-Player won!";
+
+            cout << s.str();
+        }
+
+}
+
 
 int main()
 {
 
-    PlayingFieldInteractionTest();
+    PlayingFieldWinLose();
 
     return 0;
 }
