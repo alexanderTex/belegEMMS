@@ -5,9 +5,12 @@ ff: fortfolgend
 to nils:
 ========
 dokumentation - Spielfelderstellung
-    PlayingField.cpp -> L17ff
+    PlayingField.cpp -> L17ff : Done
 
 
+	AI - Plays currently with MiniMax
+	Check for Win is implemented !
+	
 
 to alex:
 ========

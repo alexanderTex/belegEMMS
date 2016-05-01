@@ -1,9 +1,17 @@
 #include "../../include/core/PlayingField.h"
 
+#include <iostream>
+
 PlayingField::Slot::Slot()
 {
     //ctor
     this->Occupation = None;
+}
+
+PlayingField::Slot::Slot(PlayingField::OccupationState occupation)
+{
+    //ctor
+    this->Occupation = occupation;
 }
 
 
@@ -35,7 +43,29 @@ PlayingField:: PlayingField(int fieldSize)
 
 }
 
-PlayingField::Slot* PlayingField::GetSlot(int x, int y, int z) const throw(out_of_range)
+/**
+*
+*/
+PlayingField::PlayingField(const PlayingField *field):
+    PlayingField(field->GetFieldSize())
+{
+    // copies the states of the field
+    //copies the field's horizontal lines
+    for(int i = 0; i < this->m_FieldSize; i++)
+    {
+        //copies the field's depth lines
+        for(int j = 0; j < this->m_FieldSize; j++)
+        {
+            //copies the field's Vertical lines
+            for(int k = 0; k < this->m_FieldSize; k++)
+            {
+                this->m_slots.at(i).at(j).at(k) = new Slot(field->GetSlot(i,j,k)->Occupation);
+            }
+        }
+    }
+}
+
+PlayingField::Slot* PlayingField::GetSlot( int x, int y, int z) const throw(out_of_range)
 {
     return this->m_slots.at(x).at(y).at(z);
 }
@@ -106,6 +136,7 @@ bool CheckForWin(const PlayingField *field, PlayingField::OccupationState player
 
     for(direction = 0; direction < 6; direction++)
     {
+
         bool iterResult = false;
 
         switch(direction)
@@ -249,4 +280,235 @@ bool CheckForWin(const PlayingField *field, PlayingField::OccupationState player
 
 return false;
 
+}
+
+
+
+bool CheckForWin(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range)
+{
+    return CheckPlainLineWins(field, player) || CheckCrossedLineWins(field, player);
+}
+
+bool CheckPlainLineWins(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range)
+{
+    return CheckHorizLineWin(field, player) || CheckVertLineWin(field, player) || CheckDepthLineWin(field, player) || CheckPlainDiagLineWin(field, player);
+}
+
+bool CheckCrossedLineWins(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range)
+{
+    return CheckCrossHoriDiagLineWin(field, player) || CheckCrossDepthDiagLineWin(field, player) || CheckCrossDiagLineWin(field, player);
+}
+
+
+bool CheckHorizLineWin(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range)
+{
+    bool iterResult = false;
+
+    // horizontal (x) direction
+
+    // iterates through levels
+    for(int i = 0; i < field->GetFieldSize() ;i++)
+    {
+        // iterates through depth
+        for(int j = 0; j < field->GetFieldSize() ;j++)
+        {
+            // iterates through horizontal
+            for(int k = 0; k < field->GetFieldSize() ;k++)
+            {
+                iterResult = field->GetSlot(k,j,i)->Occupation == player;
+
+                // when a slot is not occupied by player
+                if(!iterResult)
+                {
+                    // fallback
+                    break;
+                }
+            }
+            // returns true when all slots in a line return true
+            if(iterResult)
+            {
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
+
+bool CheckVertLineWin(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range)
+{
+    bool iterResult = false;
+
+    // iterates through horizontal
+    for(int i = 0; i < field->GetFieldSize() ;i++)
+    {
+        // iterates through depth
+        for(int j = 0; j < field->GetFieldSize() ;j++)
+        {
+            // iterates through levels
+            for(int k = 0; k < field->GetFieldSize() ;k++)
+            {
+                iterResult = field->GetSlot(i,j, k)->Occupation == player;
+
+                // when a slot is not occupied by player
+                if(!iterResult)
+                {
+                    break;
+                }
+            }
+            // returns true when all slots in a line return true
+            if(iterResult)
+            {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+bool CheckDepthLineWin(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range)
+{
+    bool iterResult = false;
+
+    // depth (y) direction
+
+    // iterates through levels
+    for(int i = 0; i < field->GetFieldSize() ;i++)
+    {
+        // iterates through horizontal
+        for(int j = 0; j < field->GetFieldSize() ;j++)
+        {
+            // iterates through depth
+            for(int k = 0; k < field->GetFieldSize() ;k++)
+            {
+                iterResult = field->GetSlot(j,k,i)->Occupation == player;
+
+                // when a slot is not occupied by player
+                if(!iterResult)
+                {
+                    break;
+                }
+            }
+            // returns true when all slots in a line return true
+            if(iterResult)
+            {
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
+
+bool CheckPlainDiagLineWin(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range)
+{
+    bool iterResult = false;
+
+    // vertical (z) direction
+    // iterates through levels
+    for(int i = 0; i < field->GetFieldSize() ;i++)
+    {
+        // iterates through horizontal and depth
+        for(int j = 0; j < field->GetFieldSize() ;j++)
+        {
+            iterResult = field->GetSlot(j,j, i)->Occupation == player || field->GetSlot(j, field->GetFieldSize() - (j + 1), i)->Occupation == player;
+
+            // when a slot is not occupied by player
+            if(!iterResult)
+            {
+                break;
+            }
+        }
+        // returns true when all slots in a line return true
+        if(iterResult)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool CheckCrossHoriDiagLineWin(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range)
+{
+    // (x, z) diagonal direction
+
+    bool iterResult = false;
+
+
+    for(int i = 0; i < field->GetFieldSize() ;i++)
+    {
+        for(int j = 0; j < field->GetFieldSize(); j++)
+        {
+            iterResult = field->GetSlot(j, i, j)->Occupation == player || field->GetSlot(field->GetFieldSize() - (j + 1), i, j)->Occupation == player;
+
+            // when a slot is not occupied by player
+            if(!iterResult)
+            {
+                break;
+            }
+        }
+        // returns true when all slots in a line return true
+        if(iterResult)
+        {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+bool CheckCrossDepthDiagLineWin(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range)
+{
+    // (y, z) diagonal direction
+
+    bool iterResult = false;
+
+    for(int i = 0; i < field->GetFieldSize() ;i++)
+    {
+        for(int j = 0; j < field->GetFieldSize(); j++)
+        {
+            iterResult = field->GetSlot(i, j, j)->Occupation == player || field->GetSlot(i, field->GetFieldSize() - (j + 1), j)->Occupation == player;
+
+            // when a slot is not occupied by player
+            if(!iterResult)
+            {
+                break;
+            }
+        }
+        // returns true when all slots in a line return true
+        if(iterResult)
+        {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+bool CheckCrossDiagLineWin(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range)
+{
+    //  (x, y, z) diagonal direction
+
+    bool iterResult = false;
+
+    for(int i = 0; i < field->GetFieldSize() ;i++)
+    {
+        iterResult = field->GetSlot(i,i, i)->Occupation == player ||
+         field->GetSlot(field->GetFieldSize() - (i + 1),field->GetFieldSize() - (i + 1), i)->Occupation == player ||
+         field->GetSlot(i, field->GetFieldSize() - (i + 1), i)->Occupation == player ||
+         field->GetSlot(field->GetFieldSize() - (i + 1), i, i)->Occupation == player;
+
+        // when a slot is not occupied by player
+        if(!iterResult)
+        {
+            break;
+        }
+    }
+    // returns true when all slots in a line return true
+    if(iterResult)
+    {
+        return true;
+    }
+
+    return false;
 }

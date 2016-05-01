@@ -8,6 +8,7 @@
 #include <vector>
 #include <cmath>
 
+
 using namespace std;
 
 
@@ -38,6 +39,7 @@ class PlayingField
             PlayingField::OccupationState Occupation;
 
             Slot();
+            Slot(PlayingField::OccupationState occupation);
         };
 
 
@@ -46,6 +48,11 @@ class PlayingField
         */
         PlayingField(int fieldSize = 4);
 
+        /**
+        *
+        */
+        PlayingField(const PlayingField *field);
+
 
         /**
         *   Returns the slot at pos.x (horizontally)
@@ -53,7 +60,7 @@ class PlayingField
         *                       pos.z ("forwardly")
         *   @throw out_of_range if value is higher than fieldsize
         */
-        Slot* GetSlot(int x, int y, int z)  const throw (out_of_range);
+        Slot* GetSlot(int x, int y, int z) const throw (out_of_range);
 
         inline int GetFieldSize() const
         {
@@ -86,8 +93,61 @@ std::string DrawPlayingField(const PlayingField *field);
 
 /**
 *   Searches for a win condition in the Field
+*   with a given last move to to optimize
+*   Currently not in use!!!
 */
 bool CheckForWin(const PlayingField *field, PlayingField::OccupationState player, int x, int y, int z) throw(out_of_range);
+
+/**
+*   Searches for a win condition in the Field
+*   no optimization
+*/
+bool CheckForWin(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range);
+
+/**
+* Checks all Plain line win conditions
+*/
+bool CheckPlainLineWins(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range);
+
+/**
+* Checks all Cross line win conditions
+*/
+bool CheckCrossedLineWins(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range);
+
+/**
+*   Searches for a win condition in Horizontal lines
+*/
+bool CheckHorizLineWin(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range);
+
+/**
+*   Searches for a win condition in Vertical lines
+*/
+bool CheckVertLineWin(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range);
+
+/**
+*   Searches for a win condition in Depth lines
+*/
+bool CheckDepthLineWin(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range);
+
+/**
+*   Searches for a win condition in Plain Diag lines
+*/
+bool CheckPlainDiagLineWin(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range);
+
+/**
+*   Searches for a win condition in HorizontalDiagonal lines
+*/
+bool CheckCrossHoriDiagLineWin(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range);
+
+/**
+*   Searches for a win condition in DepthDiagonal lines
+*/
+bool CheckCrossDepthDiagLineWin(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range);
+
+/**
+*   Searches for a win condition in CrossedDiagonal lines
+*/
+bool CheckCrossDiagLineWin(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range);
 
 
 #endif // PLAYINGFIELD_H
