@@ -104,6 +104,7 @@ bool CheckForWin(const PlayingField *field, PlayingField::OccupationState player
 */
 bool CheckForWin(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range);
 
+
 /**
 * Checks all Plain line win conditions
 */
@@ -134,8 +135,9 @@ bool CheckDepthLineWin(const PlayingField *field, PlayingField::OccupationState 
 */
 bool CheckPlainDiagLineWin(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range);
 
+
 /**
-*   Searches for a win condition in HorizontalDiagonal lines
+*   Searches for a win condition in HorizontalDiagonal lines from Bottom left to top right
 */
 bool CheckCrossHoriDiagLineWin(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range);
 

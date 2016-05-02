@@ -411,8 +411,28 @@ bool CheckPlainDiagLineWin(const PlayingField *field, PlayingField::OccupationSt
         // iterates through horizontal and depth
         for(int j = 0; j < field->GetFieldSize() ;j++)
         {
-            iterResult = field->GetSlot(j,j, i)->Occupation == player || field->GetSlot(j, field->GetFieldSize() - (j + 1), i)->Occupation == player;
+            iterResult = field->GetSlot(j,j, i)->Occupation == player;
+            // when a slot is not occupied by player
+            if(!iterResult)
+            {
+                break;
+            }
+        }
+        // returns true when all slots in a line return true
+        if(iterResult)
+        {
+            return true;
+        }
+    }
 
+    // vertical (z) direction
+    // iterates through levels
+    for(int i = 0; i < field->GetFieldSize() ;i++)
+    {
+        // iterates through horizontal and depth
+        for(int j = 0; j < field->GetFieldSize() ;j++)
+        {
+            iterResult = field->GetSlot(field->GetFieldSize() - (j + 1), j, i)->Occupation == player;
             // when a slot is not occupied by player
             if(!iterResult)
             {
@@ -439,7 +459,26 @@ bool CheckCrossHoriDiagLineWin(const PlayingField *field, PlayingField::Occupati
     {
         for(int j = 0; j < field->GetFieldSize(); j++)
         {
-            iterResult = field->GetSlot(j, i, j)->Occupation == player || field->GetSlot(field->GetFieldSize() - (j + 1), i, j)->Occupation == player;
+            iterResult = field->GetSlot(j, i, j)->Occupation == player;
+
+            // when a slot is not occupied by player
+            if(!iterResult)
+            {
+                break;
+            }
+        }
+        // returns true when all slots in a line return true
+        if(iterResult)
+        {
+            return true;
+        }
+    }
+
+    for(int i = 0; i < field->GetFieldSize() ;i++)
+    {
+        for(int j = 0; j < field->GetFieldSize(); j++)
+        {
+            iterResult = field->GetSlot(field->GetFieldSize() - (j + 1), i, j)->Occupation == player;
 
             // when a slot is not occupied by player
             if(!iterResult)
@@ -467,7 +506,26 @@ bool CheckCrossDepthDiagLineWin(const PlayingField *field, PlayingField::Occupat
     {
         for(int j = 0; j < field->GetFieldSize(); j++)
         {
-            iterResult = field->GetSlot(i, j, j)->Occupation == player || field->GetSlot(i, field->GetFieldSize() - (j + 1), j)->Occupation == player;
+            iterResult = field->GetSlot(i, j, j)->Occupation == player;
+
+            // when a slot is not occupied by player
+            if(!iterResult)
+            {
+                break;
+            }
+        }
+        // returns true when all slots in a line return true
+        if(iterResult)
+        {
+            return true;
+        }
+    }
+
+    for(int i = 0; i < field->GetFieldSize() ;i++)
+    {
+        for(int j = 0; j < field->GetFieldSize(); j++)
+        {
+            iterResult = field->GetSlot(i, field->GetFieldSize() - (j + 1), j)->Occupation == player;
 
             // when a slot is not occupied by player
             if(!iterResult)
@@ -493,10 +551,55 @@ bool CheckCrossDiagLineWin(const PlayingField *field, PlayingField::OccupationSt
 
     for(int i = 0; i < field->GetFieldSize() ;i++)
     {
-        iterResult = field->GetSlot(i,i, i)->Occupation == player ||
-         field->GetSlot(field->GetFieldSize() - (i + 1),field->GetFieldSize() - (i + 1), i)->Occupation == player ||
-         field->GetSlot(i, field->GetFieldSize() - (i + 1), i)->Occupation == player ||
-         field->GetSlot(field->GetFieldSize() - (i + 1), i, i)->Occupation == player;
+        iterResult = field->GetSlot(field->GetFieldSize() - (i + 1), i, field->GetFieldSize() - (i + 1))->Occupation == player;
+
+        // when a slot is not occupied by player
+        if(!iterResult)
+        {
+            break;
+        }
+    }
+    // returns true when all slots in a line return true
+    if(iterResult)
+    {
+        return true;
+    }
+
+    for(int i = 0; i < field->GetFieldSize() ;i++)
+    {
+        iterResult = field->GetSlot(i, i, field->GetFieldSize() - (i + 1))->Occupation == player;
+
+        // when a slot is not occupied by player
+        if(!iterResult)
+        {
+            break;
+        }
+    }
+    // returns true when all slots in a line return true
+    if(iterResult)
+    {
+        return true;
+    }
+
+    for(int i = 0; i < field->GetFieldSize() ;i++)
+    {
+        iterResult = field->GetSlot(field->GetFieldSize() - (i + 1), i, i)->Occupation == player;
+
+        // when a slot is not occupied by player
+        if(!iterResult)
+        {
+            break;
+        }
+    }
+    // returns true when all slots in a line return true
+    if(iterResult)
+    {
+        return true;
+    }
+
+    for(int i = 0; i < field->GetFieldSize() ;i++)
+    {
+        iterResult = field->GetSlot(i,i, i)->Occupation == player;
 
         // when a slot is not occupied by player
         if(!iterResult)
