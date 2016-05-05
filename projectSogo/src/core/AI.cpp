@@ -15,7 +15,7 @@ AI::~AI()
 }
 
 
-int MiniMax(const PlayingField *field, PlayingField::OccupationState max_Player, PlayingField::OccupationState current_player, SlotVector *choice) throw(out_of_range)
+int MiniMax(const PlayingField *field, PlayingField::OccupationState max_Player, PlayingField::OccupationState current_player, Vector3 *choice) throw(out_of_range)
 {
 
 
@@ -30,7 +30,7 @@ int MiniMax(const PlayingField *field, PlayingField::OccupationState max_Player,
             return -1;
         }
     }
-    std::vector<SlotVector> posPosistions = GetAllPossiblePosi(field);
+    std::vector<Vector3> posPosistions = GetAllPossiblePosi(field);
 
     if(posPosistions.size() == 0)
     {
@@ -103,7 +103,7 @@ int MiniMax(const PlayingField *field, PlayingField::OccupationState max_Player,
 
 }
 
-int MiniMax(const PlayingField *field, PlayingField::OccupationState max_Player, PlayingField::OccupationState current_player, int depth, SlotVector *choice) throw(out_of_range)
+int MiniMax(const PlayingField *field, PlayingField::OccupationState max_Player, PlayingField::OccupationState current_player, int depth, Vector3 *choice) throw(out_of_range)
 {
 
 
@@ -118,7 +118,7 @@ int MiniMax(const PlayingField *field, PlayingField::OccupationState max_Player,
             return -1;
         }
     }
-    std::vector<SlotVector> posPosistions = GetAllPossiblePosi(field);
+    std::vector<Vector3> posPosistions = GetAllPossiblePosi(field);
 
     if(posPosistions.size() == 0)
     {

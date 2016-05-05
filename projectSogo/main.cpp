@@ -1,7 +1,7 @@
 #include <iostream>
 
 #include "./include/core/PlayingField.h"
-#include "./include/core/SlotVector.h"
+#include "./include/core/Vector3.h"
 #include "./include/core/AI.h"
 
 using namespace std;
@@ -270,7 +270,7 @@ void PlayingFieldAITest2x2()
 
            case PlayingField::Red:
 
-                SlotVector choice;
+                Vector3 choice;
 
                 MiniMax(&pF, PlayingField::Red, PlayingField::Red, &choice);
 
@@ -380,7 +380,7 @@ void PlayingFieldAITest3x3()
 
            case PlayingField::Red:
 
-                SlotVector choice;
+                Vector3 choice;
 
                 MiniMax(&pF, PlayingField::Red, PlayingField::Red, 4, &choice);
 
