@@ -7,6 +7,7 @@
 #include <string>
 #include <vector>
 #include <cmath>
+#include "../include/core/Vector3.h"
 
 
 using namespace std;
@@ -114,6 +115,24 @@ class PlayingField
         vector<vector<vector<Slot*> > > m_slots;
 
 };
+
+/**
+* Returns all positions that are available by
+* the game rules
+* @param[in] field current state of the field
+* @throw out_of_range
+* @return return a vector of positions(Vector3)
+*/
+std::vector<Vector3> GetAvaillablePositions(const PlayingField *field) throw(out_of_range);
+
+/**
+* Returns all none occupied slots
+* @param[in] field current state of the field
+* @throw out_of_range
+* @return return a vector of positions(Vector3)
+*/
+std::vector<Vector3> GetAllFreePositions(const PlayingField *field) throw(out_of_range);
+
 
 /**
 * Converts the PlayingField into a console friendly fashion

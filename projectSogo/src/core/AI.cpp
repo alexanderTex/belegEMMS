@@ -30,7 +30,7 @@ int MiniMax(const PlayingField *field, PlayingField::OccupationState max_Player,
             return -1;
         }
     }
-    std::vector<Vector3> posPosistions = GetAllPossiblePosi(field);
+    std::vector<Vector3> posPosistions = GetAvaillablePositions(field);
 
     if(posPosistions.size() == 0)
     {
@@ -118,7 +118,7 @@ int MiniMax(const PlayingField *field, PlayingField::OccupationState max_Player,
             return -1;
         }
     }
-    std::vector<Vector3> posPosistions = GetAllPossiblePosi(field);
+    std::vector<Vector3> posPosistions = GetAvaillablePositions(field);
 
     if(posPosistions.size() == 0)
     {

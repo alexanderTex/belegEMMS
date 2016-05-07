@@ -1,6 +1,8 @@
 #ifndef SLOTVECTOR_H
 #define SLOTVECTOR_H
 
+#include <ostream>
+
 /**
 * Defines a structures that encapsulates a position in 3D space
 * X is the horizontal value
@@ -25,6 +27,13 @@ struct Vector3
     int X;
     int Y;
     int Z;
+
 };
+
+inline std::ostream &operator<< (std::ostream &out, const Vector3 &vec)
+{
+    out << "x = " << vec.X << ", y = " << vec.Y << ", z = " << vec.Z;
+    return out;
+}
 
 #endif // SLOTVECTOR_H
