@@ -84,6 +84,63 @@ PlayingField::Slot* PlayingField::GetSlot( int x, int y, int z) const throw(out_
      }
  }
 
+ std::vector<Vector3> GetAvaillablePositions(const PlayingField *field) throw(out_of_range)
+ {
+    std::vector<Vector3> ret;
+
+    Vector3 *vec = new Vector3();
+
+    for(int i = 0; i < field->GetFieldSize(); i++)
+    {
+        for(int j = 0; j < field->GetFieldSize(); j++)
+        {
+            for(int k = 0; k < field->GetFieldSize(); k++)
+            {
+                if(field->GetSlot(i,j,k)->Occupation == PlayingField::None)
+                {
+                    vec->X = i;
+                    vec->Y = j;
+                    vec->Z = k;
+                    ret.push_back(*vec);
+                    break;
+                }
+            }
+        }
+    }
+
+    delete(vec);
+
+    return ret;
+ }
+
+
+std::vector<Vector3> GetAllFreePositions(const PlayingField *field) throw(out_of_range)
+{
+    std::vector<Vector3> ret;
+
+    Vector3 *vec = new Vector3();
+
+    for(int i = 0; i < field->GetFieldSize(); i++)
+    {
+        for(int j = 0; j < field->GetFieldSize(); j++)
+        {
+            for(int k = 0; k < field->GetFieldSize(); k++)
+            {
+                if(field->GetSlot(i,j,k)->Occupation == PlayingField::None)
+                {
+                    vec->X = i;
+                    vec->Y = j;
+                    vec->Z = k;
+                    ret.push_back(*vec);
+                }
+            }
+        }
+    }
+
+    delete(vec);
+
+    return ret;
+}
 
 std::string DrawPlayingField(const PlayingField *field)
 {

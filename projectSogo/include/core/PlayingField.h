@@ -7,25 +7,30 @@
 #include <string>
 #include <vector>
 #include <cmath>
+#include "../include/core/Vector3.h"
 
 
 using namespace std;
 
 
 /**
-*    Defines the Properties of a Playingfield
+* Defines the Properties of a Playingfield
+*
 *
 */
 class PlayingField
 {
     public:
+        /**
+        * Is thrown when in an Error in Playingfield
+        */
         enum FieldExeptions
         {
             Occupied,
         };
 
         /**
-        *   Defines the States a slot can be in
+        * Defines the States a slot can be in
         */
         enum OccupationState
         {
@@ -34,42 +39,69 @@ class PlayingField
             Blue,
         };
 
+        /**
+        * Defines a Gridspace in a Sogo Playingfield
+        * It contains the occupationstate of this position in the grid
+        *
+        */
         struct Slot
         {
+            /**
+            * The current occupation state
+            */
             PlayingField::OccupationState Occupation;
 
+            /**
+            * Default constructor for a Slot
+            * Occupation will be set to None
+            */
             Slot();
+            /**
+            * constructor
+            *
+            */
             Slot(PlayingField::OccupationState occupation);
         };
 
 
         /**
-        *
+        * constructor
+        * generates a Playingfield with (fieldsize x fieldsize x fieldsize)
+        * @param fieldSize (default value = 4)
         */
         PlayingField(int fieldSize = 4);
 
         /**
-        *
+        * Copy constructor
         */
         PlayingField(const PlayingField *field);
 
 
         /**
-        *   Returns the slot at pos.x (horizontally)
+        * Returns the slot at pos.x (horizontally)
         *                       pos.y (Vertically)
         *                       pos.z ("forwardly")
-        *   @throw out_of_range if value is higher than fieldsize
+        * @throw out_of_range if value is higher than fieldsize
         */
         Slot* GetSlot(int x, int y, int z) const throw (out_of_range);
 
+        /**
+        * Getter for fieldSize
+        * @return returns the fieldsize
+        */
         inline int GetFieldSize() const
         {
             return m_FieldSize;
         }
 
         /**
-        *   Sets the occupationState of the Slot at pos to id
-        *   @throw out_of_range if value is higher than fieldsize
+        * Sets the occupationState of the Slot at pos(x,y,z) to id
+        * @param x horizontal value
+        * @param y depth value
+        * @param z vertical value
+        * @param id occupationstate for assignment
+        * @throw out_of_range if value is higher than fieldsize
+        * @throw FieldException if Slot is already occupied by other player
         */
         void OccupySlot(int x, int y, int z, OccupationState id) throw (out_of_range, FieldExeptions);
     protected:
@@ -85,28 +117,66 @@ class PlayingField
 };
 
 /**
-* Draws the PlayingField in a console friendly fashion
-*
+* Returns all positions that are available by
+* the game rules
+* @param[in] field current state of the field
+* @throw out_of_range
+* @return return a vector of positions(Vector3)
+*/
+std::vector<Vector3> GetAvaillablePositions(const PlayingField *field) throw(out_of_range);
+
+/**
+* Returns all none occupied slots
+* @param[in] field current state of the field
+* @throw out_of_range
+* @return return a vector of positions(Vector3)
+*/
+std::vector<Vector3> GetAllFreePositions(const PlayingField *field) throw(out_of_range);
+
+
+/**
+* Converts the PlayingField into a console friendly fashion
+* @param[in] field  PlayingField to display
+* @return drawn PlayingField
 */
 std::string DrawPlayingField(const PlayingField *field);
 
 
 /**
-*   Searches for a win condition in the Field
-*   with a given last move to to optimize
-*   Currently not in use!!!
+* NOT YET FINISHED!!!
+* Searches for a win condition in the Field
+* with a given last move
+* to optimize
+* @param[in] field to check
+* @param player player to check winCondition
+* @param x last changed position in grid
+* @param y last changed position in grid
+* @param z last changed position in grid
+* @throw out_of_range
+* @return true if player won
 */
 bool CheckForWin(const PlayingField *field, PlayingField::OccupationState player, int x, int y, int z) throw(out_of_range);
 
+
+
+
 /**
-*   Searches for a win condition in the Field
-*   no optimization
+* Searches for a win condition in the Field
+* with a given last move to to optimize
+* @param[in] field to check
+* @param player player to check winCondition
+* @throw out_of_range
+* @return true if player won
 */
 bool CheckForWin(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range);
 
 
 /**
-* Checks all Plain line win conditions
+* Checks all Plain lines for win conditions
+* @param[in] field to check
+* @param player player to check winCondition
+* @throw out_of_range
+* @return true if player won
 */
 bool CheckPlainLineWins(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range);
 
@@ -116,38 +186,38 @@ bool CheckPlainLineWins(const PlayingField *field, PlayingField::OccupationState
 bool CheckCrossedLineWins(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range);
 
 /**
-*   Searches for a win condition in Horizontal lines
+* Searches for a win condition in Horizontal lines
 */
 bool CheckHorizLineWin(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range);
 
 /**
-*   Searches for a win condition in Vertical lines
+* Searches for a win condition in Vertical lines
 */
 bool CheckVertLineWin(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range);
 
 /**
-*   Searches for a win condition in Depth lines
+* Searches for a win condition in Depth lines
 */
 bool CheckDepthLineWin(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range);
 
 /**
-*   Searches for a win condition in Plain Diag lines
+* Searches for a win condition in Plain Diag lines
 */
 bool CheckPlainDiagLineWin(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range);
 
 
 /**
-*   Searches for a win condition in HorizontalDiagonal lines from Bottom left to top right
+* Searches for a win condition in HorizontalDiagonal lines from Bottom left to top right
 */
 bool CheckCrossHoriDiagLineWin(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range);
 
 /**
-*   Searches for a win condition in DepthDiagonal lines
+* Searches for a win condition in DepthDiagonal lines
 */
 bool CheckCrossDepthDiagLineWin(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range);
 
 /**
-*   Searches for a win condition in CrossedDiagonal lines
+* Searches for a win condition in CrossedDiagonal lines
 */
 bool CheckCrossDiagLineWin(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range);
 
