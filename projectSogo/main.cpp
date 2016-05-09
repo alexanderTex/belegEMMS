@@ -272,7 +272,7 @@ void PlayingFieldAITest2x2()
 
                 SlotVector choice;
 
-                MiniMax(&pF, PlayingField::Red, PlayingField::Red, &choice);
+                MiniMax(&pF, PlayingField::Red, PlayingField::Red, 4, &choice);
 
 
                 try
@@ -382,7 +382,7 @@ void PlayingFieldAITest3x3()
 
                 SlotVector choice;
 
-                MiniMax(&pF, PlayingField::Red, PlayingField::Red, 4, &choice);
+                MiniMax(&pF, PlayingField::Red, PlayingField::Red, &choice);
 
 
                 try

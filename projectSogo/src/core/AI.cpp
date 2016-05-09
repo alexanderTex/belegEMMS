@@ -1,4 +1,4 @@
-#include "AI.h"
+#include "../include/core/AI.h"
 
 #include <iostream>
 
