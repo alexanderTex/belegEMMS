@@ -21,31 +21,29 @@ PlayingField:: PlayingField(int fieldSize)
 
     this->m_FieldSize = fieldSize;
 
+    this->m_slots = new vector<vector< vector<Slot*> *> *>();
 
     // fills the Field
     //fills the field's horizontal lines
     for(int i = 0; i < this->m_FieldSize; i++)
     {
-        this->m_slots.push_back(*(new vector< vector<Slot*> >()));
+        this->m_slots->push_back(new vector< vector<Slot*> *>());
 
         //fills the field's depth lines
         for(int j = 0; j < this->m_FieldSize; j++)
         {
-            this->m_slots.at(i).push_back(*(new vector<Slot*>()));
+            this->m_slots->at(i)->push_back(new vector<Slot*>());
 
             //fills the field's Vertical lines
             for(int k = 0; k < this->m_FieldSize; k++)
             {
-                this->m_slots.at(i).at(j).push_back(new Slot());
+                this->m_slots->at(i)->at(j)->push_back(new Slot());
             }
         }
     }
 
 }
 
-/**
-*
-*/
 PlayingField::PlayingField(const PlayingField *field):
     PlayingField(field->GetFieldSize())
 {
@@ -59,15 +57,38 @@ PlayingField::PlayingField(const PlayingField *field):
             //copies the field's Vertical lines
             for(int k = 0; k < this->m_FieldSize; k++)
             {
-                this->m_slots.at(i).at(j).at(k) = new Slot(field->GetSlot(i,j,k)->Occupation);
+                this->m_slots->at(i)->at(j)->at(k) = new Slot(field->GetSlot(i,j,k)->Occupation);
             }
         }
     }
 }
 
+PlayingField::~PlayingField()
+{
+    // copies the states of the field
+    //copies the field's horizontal lines
+    for(int i = 0; i < this->m_FieldSize; i++)
+    {
+        //copies the field's depth lines
+        for(int j = 0; j < this->m_FieldSize; j++)
+        {
+            //copies the field's Vertical lines
+            for(int k = 0; k < this->m_FieldSize; k++)
+            {
+                delete(this->m_slots->at(i)->at(j)->at(k));
+            }
+            delete(this->m_slots->at(i)->at(j));
+        }
+        delete(this->m_slots->at(i));
+    }
+
+    delete(this->m_slots);
+}
+
+
 PlayingField::Slot* PlayingField::GetSlot( int x, int y, int z) const throw(out_of_range)
 {
-    return this->m_slots.at(x).at(y).at(z);
+    return this->m_slots->at(x)->at(y)->at(z);
 }
 
  void PlayingField::OccupySlot(int x, int y, int z, PlayingField::OccupationState id) throw(out_of_range, FieldExeptions)
@@ -348,14 +369,8 @@ bool CheckForWin(const PlayingField *field, PlayingField::OccupationState player
 
 bool CheckPlainLineWins(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range)
 {
-    return CheckHorizLineWin(field, player) || CheckVertLineWin(field, player) || CheckDepthLineWin(field, player) || CheckPlainDiagLineWin(field, player);
+    return CheckHorizLineWin(field, player) || CheckVertLineWin(field, player) || CheckDepthLineWin(field, player);
 }
-
-bool CheckCrossedLineWins(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range)
-{
-    return CheckCrossHoriDiagLineWin(field, player) || CheckCrossDepthDiagLineWin(field, player) || CheckCrossDiagLineWin(field, player);
-}
-
 
 bool CheckHorizLineWin(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range)
 {
@@ -457,7 +472,14 @@ bool CheckDepthLineWin(const PlayingField *field, PlayingField::OccupationState 
     return false;
 }
 
-bool CheckPlainDiagLineWin(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range)
+
+bool CheckCrossedLineWins(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range)
+{
+    return CheckCrossPlainLineWin(field, player) || CheckCrossHoriDiagLineWin(field, player) || CheckCrossDepthDiagLineWin(field, player) || CheckCrossDiagLineWin(field, player);
+}
+
+
+bool CheckCrossPlainLineWin(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range)
 {
     bool iterResult = false;
 

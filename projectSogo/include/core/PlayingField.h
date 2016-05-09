@@ -76,6 +76,11 @@ class PlayingField
         */
         PlayingField(const PlayingField *field);
 
+        /**
+        * Destructor clears the field
+        */
+        ~PlayingField();
+
 
         /**
         * Returns the slot at pos.x (horizontally)
@@ -112,7 +117,7 @@ class PlayingField
         // x ( horizontal ; layer 0 )
         // y ( depth ; layer 1 )
         // z ( vertical ; layer 2 )
-        vector<vector<vector<Slot*> > > m_slots;
+        vector<vector<vector<Slot*> *> *> *m_slots;
 
 };
 
@@ -181,43 +186,80 @@ bool CheckForWin(const PlayingField *field, PlayingField::OccupationState player
 bool CheckPlainLineWins(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range);
 
 /**
-* Checks all Cross line win conditions
-*/
-bool CheckCrossedLineWins(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range);
-
-/**
 * Searches for a win condition in Horizontal lines
+* @param[in] field to check
+* @param player player to check winCondition
+* @throw out_of_range
+* @return true if player won
 */
 bool CheckHorizLineWin(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range);
 
 /**
 * Searches for a win condition in Vertical lines
+* @param[in] field to check
+* @param player player to check winCondition
+* @throw out_of_range
+* @return true if player won
 */
 bool CheckVertLineWin(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range);
 
 /**
 * Searches for a win condition in Depth lines
+* @param[in] field to check
+* @param player player to check winCondition
+* @throw out_of_range
+* @return true if player won
 */
 bool CheckDepthLineWin(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range);
 
+
+
+
+/**
+* Checks all Cross line win conditions
+* @param[in] field to check
+* @param player player to check winCondition
+* @throw out_of_range
+* @return true if player won
+*/
+bool CheckCrossedLineWins(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range);
+
 /**
 * Searches for a win condition in Plain Diag lines
+* @param[in] field to check
+* @param player player to check winCondition
+* @throw out_of_range
+* @return true if player won
 */
-bool CheckPlainDiagLineWin(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range);
-
+bool CheckCrossPlainLineWin(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range);
 
 /**
 * Searches for a win condition in HorizontalDiagonal lines from Bottom left to top right
+* (x, y)
+* @param[in] field to check
+* @param player player to check winCondition
+* @throw out_of_range
+* @return true if player won
 */
 bool CheckCrossHoriDiagLineWin(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range);
 
 /**
 * Searches for a win condition in DepthDiagonal lines
+* (y, z)
+* @param[in] field to check
+* @param player player to check winCondition
+* @throw out_of_range
+* @return true if player won
 */
 bool CheckCrossDepthDiagLineWin(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range);
 
 /**
 * Searches for a win condition in CrossedDiagonal lines
+* (x, y, z)
+* @param[in] field to check
+* @param player player to check winCondition
+* @throw out_of_range
+* @return true if player won
 */
 bool CheckCrossDiagLineWin(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range);
 
