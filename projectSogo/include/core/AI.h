@@ -38,6 +38,7 @@ int MiniMax(const PlayingField *field, PlayingField::OccupationState max_Player,
 * @param[in] field current state of the field
 * @param max_Player the player for who the algorithm searches a good move
 * @param current_Player the player who is currently making a move
+* @param depth how many moves in advance will be checked
 * @param[out] choice the best move for max player
 * @throw out_of_range
 * @return returns the score of the move selected ( 1 : best case, 0 : draw, -1 : worst case )

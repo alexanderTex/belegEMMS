@@ -146,10 +146,10 @@ std::string DrawPlayingField(const PlayingField *field)
 {
     std::stringstream sStream;
 
-    // iterates through the Vertcal lines
+    // iterates through the depth lines
     for(int i = 0; i < field->GetFieldSize() ;i++)
     {
-        // iterates through the depth Stacks
+        // iterates through the vertical Stacks
         for(int j = 0; j < field->GetFieldSize(); j++)
         {
             // sets the first line
@@ -363,7 +363,7 @@ bool CheckHorizLineWin(const PlayingField *field, PlayingField::OccupationState 
 
     // horizontal (x) direction
 
-    // iterates through levels
+    // iterates through vertical
     for(int i = 0; i < field->GetFieldSize() ;i++)
     {
         // iterates through depth
@@ -507,7 +507,7 @@ bool CheckPlainDiagLineWin(const PlayingField *field, PlayingField::OccupationSt
 
 bool CheckCrossHoriDiagLineWin(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range)
 {
-    // (x, z) diagonal direction
+    // (x, y) diagonal direction
 
     bool iterResult = false;
 

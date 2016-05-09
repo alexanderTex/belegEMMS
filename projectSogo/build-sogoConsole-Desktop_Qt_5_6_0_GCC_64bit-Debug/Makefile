@@ -51,11 +51,11 @@ OBJECTS_DIR   = ./
 SOURCES       = ../main.cpp \
 		../src/core/AI.cpp \
 		../src/core/PlayingField.cpp \
-		../src/core/SlotVector.cpp 
+		../src/core/Vector3.cpp 
 OBJECTS       = main.o \
 		AI.o \
 		PlayingField.o \
-		SlotVector.o
+		Vector3.o
 DIST          = /home/alex/bin/qt/5.6/gcc_64/mkspecs/features/spec_pre.prf \
 		/home/alex/bin/qt/5.6/gcc_64/mkspecs/common/unix.conf \
 		/home/alex/bin/qt/5.6/gcc_64/mkspecs/common/linux.conf \
@@ -191,7 +191,7 @@ DIST          = /home/alex/bin/qt/5.6/gcc_64/mkspecs/features/spec_pre.prf \
 		../sogoConsole/sogoConsole.pro  ../main.cpp \
 		../src/core/AI.cpp \
 		../src/core/PlayingField.cpp \
-		../src/core/SlotVector.cpp
+		../src/core/Vector3.cpp
 QMAKE_TARGET  = sogoConsole
 DESTDIR       = 
 TARGET        = sogoConsole
@@ -486,7 +486,7 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents ../main.cpp ../src/core/AI.cpp ../src/core/PlayingField.cpp ../src/core/SlotVector.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../main.cpp ../src/core/AI.cpp ../src/core/PlayingField.cpp ../src/core/Vector3.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -524,20 +524,21 @@ compiler_clean:
 ####### Compile
 
 main.o: ../main.cpp ../include/core/PlayingField.h \
-		../include/core/SlotVector.h \
+		../include/core/Vector3.h \
 		../include/core/AI.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../main.cpp
 
 AI.o: ../src/core/AI.cpp ../include/core/AI.h \
 		../include/core/PlayingField.h \
-		../include/core/SlotVector.h
+		../include/core/Vector3.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o AI.o ../src/core/AI.cpp
 
-PlayingField.o: ../src/core/PlayingField.cpp ../include/core/PlayingField.h
+PlayingField.o: ../src/core/PlayingField.cpp ../include/core/PlayingField.h \
+		../include/core/Vector3.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o PlayingField.o ../src/core/PlayingField.cpp
 
-SlotVector.o: ../src/core/SlotVector.cpp ../include/core/SlotVector.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o SlotVector.o ../src/core/SlotVector.cpp
+Vector3.o: ../src/core/Vector3.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Vector3.o ../src/core/Vector3.cpp
 
 ####### Install
 

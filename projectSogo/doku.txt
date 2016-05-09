@@ -10,6 +10,11 @@ dokumentation - Spielfelderstellung
 
 	AI - Plays currently with MiniMax
 	Check for Win is implemented !
+
+	Playingfield vector to vector *  (m Slots)
+	Destructor
+
+	PlainLineChecks all in one method - 3 boolean variables and one loop
 	
 
 to alex:
