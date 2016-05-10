@@ -17,8 +17,6 @@ AI::~AI()
 
 int MiniMax(const PlayingField *field, PlayingField::OccupationState max_Player, PlayingField::OccupationState current_player, Vector3 *choice) throw(out_of_range)
 {
-
-
     if(CheckForWin(field, current_player))
     {
         if(current_player == max_Player)
@@ -105,8 +103,6 @@ int MiniMax(const PlayingField *field, PlayingField::OccupationState max_Player,
 
 int MiniMax(const PlayingField *field, PlayingField::OccupationState max_Player, PlayingField::OccupationState current_player, int depth, Vector3 *choice) throw(out_of_range)
 {
-
-
     if(depth == 0 || CheckForWin(field, current_player))
     {
         if(current_player == max_Player)

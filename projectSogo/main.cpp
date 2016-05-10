@@ -437,7 +437,7 @@ void PlayingFieldAITest3x3x3NoDepth()
 
                 Vector3 choice;
 
-                MiniMax(&pF, PlayingField::Red, PlayingField::Red, 4, &choice);
+                MiniMax(&pF, PlayingField::Red, PlayingField::Red, &choice);
 
 
                 try
@@ -553,7 +553,7 @@ void PlayingFieldAITest3x3x3()
 
                 Vector3 choice;
 
-                MiniMax(&pF, PlayingField::Red, PlayingField::Red, &choice);
+                MiniMax(&pF, PlayingField::Red, PlayingField::Red, 4, &choice);
 
 
                 try
@@ -608,7 +608,7 @@ void PlayingFieldAITest3x3x3()
 int main()
 {
 
-    PlayingFieldAvailabelPos();
+    PlayingFieldAITest3x3x3();
 
     return 0;
 }
