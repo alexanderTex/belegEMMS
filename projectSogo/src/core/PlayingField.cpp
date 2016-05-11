@@ -65,7 +65,6 @@ PlayingField::PlayingField(const PlayingField *field):
 
 PlayingField::~PlayingField()
 {
-    // copies the states of the field
     //copies the field's horizontal lines
     for(int i = 0; i < this->m_FieldSize; i++)
     {
@@ -84,7 +83,6 @@ PlayingField::~PlayingField()
 
     delete(this->m_slots);
 }
-
 
 PlayingField::Slot* PlayingField::GetSlot( int x, int y, int z) const throw(out_of_range)
 {
