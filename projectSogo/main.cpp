@@ -2,7 +2,7 @@
 
 #include "./include/core/PlayingField.h"
 #include "./include/core/Vector3.h"
-#include "./include/core/AI.h"
+#include <AI.h>
 
 using namespace std;
 
@@ -12,7 +12,8 @@ using namespace std;
 */
 void RulesAndInfoDisplay()
 {
-    cout << "Goal : Four in a line ( horizontal, vertical or diagonal)\n" << endl;
+    cout << "You are x the opponent is o!" << endl;
+    cout << "Goal : Four in a line ( horizontal, vertical or diagonal)" << endl << endl;
 
 }
 
@@ -248,7 +249,7 @@ void PlayingFieldWinLose()
                 break;
             }
 
-            s << "-Player won!";
+            s << "-Player won!" << std::endl;;
 
             cout << s.str();
         }
@@ -364,7 +365,7 @@ void PlayingFieldAITest2x2x2()
                 break;
             }
 
-            s << "-Player won!";
+            s << "-Player won!" << std::endl;;
 
             cout << s.str();
             break;
@@ -409,9 +410,16 @@ void PlayingFieldAITest3x3x3NoDepth()
                 {
                     pF.OccupySlot(x,y,z, PlayingField::Blue);
                 }
-                catch(PlayingField::FieldExeptions)
+                catch(PlayingField::FieldExeptions e)
                 {
-                    cout << " ERROR : Field already assigned" << endl << endl;
+                    if(e == PlayingField::Occupied)
+                    {
+                        cout << " ERROR : Field already assigned" << endl << endl;
+                    }
+                    else
+                    {
+                        cout << " ERROR : Wrong Move!" << endl << endl;
+                    }
                 }
                 catch(out_of_range)
                 {
@@ -444,9 +452,16 @@ void PlayingFieldAITest3x3x3NoDepth()
                 {
                     pF.OccupySlot(choice.X,choice.Y,choice.Z, PlayingField::Red);
                 }
-                catch(PlayingField::FieldExeptions)
+                catch(PlayingField::FieldExeptions e)
                 {
-                    cout << " ERROR : Field already assigned" << endl << endl;
+                    if(e == PlayingField::Occupied)
+                    {
+                        cout << " ERROR : Field already assigned" << endl << endl;
+                    }
+                    else
+                    {
+                        cout << " ERROR : Wrong Move!" << endl << endl;
+                    }
                 }
                 catch(out_of_range)
                 {
@@ -481,7 +496,7 @@ void PlayingFieldAITest3x3x3NoDepth()
                 break;
             }
 
-            s << "-Player won!";
+            s << "-Player won!" << std::endl;;
 
             cout << s.str();
             break;
@@ -525,9 +540,17 @@ void PlayingFieldAITest3x3x3()
                 {
                     pF.OccupySlot(x,y,z, PlayingField::Blue);
                 }
-                catch(PlayingField::FieldExeptions)
+                catch(PlayingField::FieldExeptions e)
                 {
-                    cout << " ERROR : Field already assigned" << endl << endl;
+                    if(e == PlayingField::Occupied)
+                    {
+                        cout << " ERROR : Field already assigned" << endl << endl;
+                    }
+                    else
+                    {
+                        cout << " ERROR : Wrong Move!" << endl << endl;
+                    }
+
                 }
                 catch(out_of_range)
                 {
@@ -560,9 +583,16 @@ void PlayingFieldAITest3x3x3()
                 {
                     pF.OccupySlot(choice.X,choice.Y,choice.Z, PlayingField::Red);
                 }
-                catch(PlayingField::FieldExeptions)
+                catch(PlayingField::FieldExeptions e)
                 {
-                    cout << " ERROR : Field already assigned" << endl << endl;
+                    if(e == PlayingField::Occupied)
+                    {
+                        cout << " ERROR : Field already assigned" << endl << endl;
+                    }
+                    else
+                    {
+                        cout << " ERROR : Wrong Move!" << endl << endl;
+                    }
                 }
                 catch(out_of_range)
                 {
@@ -597,7 +627,7 @@ void PlayingFieldAITest3x3x3()
                 break;
             }
 
-            s << "-Player won!";
+            s << "-Player won!" << std::endl;
 
             cout << s.str();
             break;
@@ -619,8 +649,6 @@ void PlayingFieldAITestUltimateBattle()
 
     PlayingField::OccupationState playerState = PlayingField::Blue;
 
-    int x,y,z;
-
     bool win = false;
 
     while(true)
@@ -638,9 +666,16 @@ void PlayingFieldAITestUltimateBattle()
                 {
                     pF.OccupySlot(choice.X,choice.Y,choice.Z, PlayingField::Blue);
                 }
-                catch(PlayingField::FieldExeptions)
+                catch(PlayingField::FieldExeptions e)
                 {
-                    cout << " ERROR : Field already assigned" << endl << endl;
+                    if(e == PlayingField::Occupied)
+                    {
+                        cout << " ERROR : Field already assigned" << endl << endl;
+                    }
+                    else
+                    {
+                        cout << " ERROR : Wrong Move!" << endl << endl;
+                    }
                 }
                 catch(out_of_range)
                 {
@@ -675,9 +710,16 @@ void PlayingFieldAITestUltimateBattle()
                 {
                     pF.OccupySlot(choice.X,choice.Y,choice.Z, PlayingField::Red);
                 }
-                catch(PlayingField::FieldExeptions)
+                catch(PlayingField::FieldExeptions e)
                 {
-                    cout << " ERROR : Field already assigned" << endl << endl;
+                    if(e == PlayingField::Occupied)
+                    {
+                        cout << " ERROR : Field already assigned" << endl << endl;
+                    }
+                    else
+                    {
+                        cout << " ERROR : Wrong Move!" << endl << endl;
+                    }
                 }
                 catch(out_of_range)
                 {
@@ -712,7 +754,7 @@ void PlayingFieldAITestUltimateBattle()
                 break;
             }
 
-            s << "-Player won!";
+            s << "-Player won!" << std::endl;;
 
             cout << s.str();
             break;
@@ -723,7 +765,7 @@ void PlayingFieldAITestUltimateBattle()
 
 int main()
 {
-    PlayingFieldAITestUltimateBattle();
+    PlayingFieldAITest3x3x3();
     return 0;
 }
 

@@ -27,6 +27,7 @@ class PlayingField
         enum FieldExeptions
         {
             Occupied,
+            PositionNotAvailable,
         };
 
         /**

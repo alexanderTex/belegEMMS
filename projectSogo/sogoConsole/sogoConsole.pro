@@ -9,6 +9,9 @@ CONFIG -= app_bundle
 
 TEMPLATE = app
 
+INCLUDEPATH += ../include/* \
+
+HEADERS  += ../include/core/* \
+
 SOURCES += ../main.cpp \
-        ../include/core/* \
         ../src/core/* \

@@ -91,15 +91,37 @@ PlayingField::Slot* PlayingField::GetSlot( int x, int y, int z) const throw(out_
 
  void PlayingField::OccupySlot(int x, int y, int z, PlayingField::OccupationState id) throw(out_of_range, FieldExeptions)
  {
-     Slot *s = this->GetSlot(x,y,z);
+     Vector3 v(x, y, z);
 
-     if(s->Occupation == None)
+     bool b = false;
+
+     std::vector<Vector3> posPositions = GetAvaillablePositions(this);
+     for(int i = 0; i < posPositions.size(); i++)
      {
-        s->Occupation = id;
+        if(posPositions.at(i) == v)
+        {
+            b = true;
+            break;
+        }
+     }
+
+     if(b)
+     {
+         Slot *s = this->GetSlot(x,y,z);
+
+         if(s->Occupation == None)
+         {
+            s->Occupation = id;
+         }
+         else
+         {
+            throw Occupied;
+         }
+
      }
      else
      {
-        throw Occupied;
+        throw PositionNotAvailable;
      }
  }
 
