@@ -93,9 +93,14 @@ PlayingField::Slot* PlayingField::GetSlot( int x, int y, int z) const throw(out_
  {
      Vector3 v(x, y, z);
 
+     /**
+      * @brief b
+      * Encapsulate in Function ( Validate Vector is available )
+      */
+
      bool b = false;
 
-     std::vector<Vector3> posPositions = GetAvaillablePositions(this);
+     std::vector<Vector3> posPositions = GetAvailablePositions(this);
      for(int i = 0; i < posPositions.size(); i++)
      {
         if(posPositions.at(i) == v)
@@ -125,7 +130,7 @@ PlayingField::Slot* PlayingField::GetSlot( int x, int y, int z) const throw(out_
      }
  }
 
- std::vector<Vector3> GetAvaillablePositions(const PlayingField *field) throw(out_of_range)
+ std::vector<Vector3> GetAvailablePositions(const PlayingField *field) throw(out_of_range)
  {
     std::vector<Vector3> ret;
 

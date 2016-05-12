@@ -2,7 +2,7 @@
 
 #include "./include/core/PlayingField.h"
 #include "./include/core/Vector3.h"
-#include <AI.h>
+#include "./include/core/AI.h"
 
 using namespace std;
 
@@ -61,7 +61,7 @@ void PlayingFieldAvailabelPos()
 
     cout << DrawPlayingField(&pF);
 
-    vector<Vector3> v3s= GetAvaillablePositions(&pF);
+    vector<Vector3> v3s= GetAvailablePositions(&pF);
 
     for(int i = 0; i < v3s.size(); i++)
     {
@@ -533,12 +533,32 @@ void PlayingFieldAITest3x3x3()
                 cin >> x;
                 cout << "Please enter y :" << endl;
                 cin >> y;
-                cout << "Please enter z :" << endl;
-                cin >> z;
 
                 try
                 {
-                    pF.OccupySlot(x,y,z, PlayingField::Blue);
+                    std::vector<Vector3> posPositions = GetAvailablePositions(&pF);
+
+                    /**
+                     * @brief b
+                     * Encapsulate in Function ( Find first available Slot )
+                     * Define Vector2 => easier access
+                     * Logger schreiben ????
+                     */
+
+                    bool b = false;
+
+                    int i;
+
+                    for(i = 0; i < posPositions.size(); i++)
+                    {
+                       if(posPositions.at(i).X == x && posPositions.at(i).Y == y)
+                       {
+                           b = true;
+                           break;
+                       }
+                    }
+
+                    pF.OccupySlot(x,y,posPositions.at(i).Z, PlayingField::Blue);
                 }
                 catch(PlayingField::FieldExeptions e)
                 {
@@ -557,7 +577,6 @@ void PlayingFieldAITest3x3x3()
                     cout << " ERROR : Out of Range Error Player Blue" << endl << endl;
                     x = 0;
                     y = 0;
-                    z = 0;
                 }
 
                 if(CheckForWin(&pF, playerState))
@@ -573,6 +592,8 @@ void PlayingFieldAITest3x3x3()
             break;
 
            case PlayingField::Red:
+
+                cout << "Player Red : " << endl << endl;
 
                 Vector3 choice;
 
