@@ -28,6 +28,8 @@ struct Vector3
     int Y;
     int Z;
 
+    bool operator==(const Vector3 &v2);
+
 };
 
 inline std::ostream &operator<< (std::ostream &out, const Vector3 &vec)

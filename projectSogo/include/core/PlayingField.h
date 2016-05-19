@@ -27,6 +27,7 @@ class PlayingField
         enum FieldExeptions
         {
             Occupied,
+            PositionNotAvailable,
         };
 
         /**
@@ -128,7 +129,7 @@ class PlayingField
 * @throw out_of_range
 * @return return a vector of positions(Vector3)
 */
-std::vector<Vector3> GetAvaillablePositions(const PlayingField *field) throw(out_of_range);
+std::vector<Vector3> GetAvailablePositions(const PlayingField *field) throw(out_of_range);
 
 /**
 * Returns all none occupied slots
