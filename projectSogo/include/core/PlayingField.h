@@ -101,6 +101,16 @@ class PlayingField
         }
 
         /**
+        * Sets the occupationState of the Slot at pos(x,y, first possible z) to id
+        * @param x horizontal value
+        * @param y depth value
+        * @param id occupationstate for assignment
+        * @throw out_of_range if value is higher than fieldsize
+        * @throw FieldException if Slot is already occupied by other player
+        */
+        void OccupySlot(int x, int y, PlayingField::OccupationState id) throw(out_of_range, FieldExeptions);
+
+        /**
         * Sets the occupationState of the Slot at pos(x,y,z) to id
         * @param x horizontal value
         * @param y depth value
@@ -110,6 +120,17 @@ class PlayingField
         * @throw FieldException if Slot is already occupied by other player
         */
         void OccupySlot(int x, int y, int z, OccupationState id) throw (out_of_range, FieldExeptions);
+
+        /**
+        * Sets the occupationState of the Slot at pos(x,y,z) to id
+        * @param pos
+        * @param id occupationstate for assignment
+        * @throw out_of_range if value is higher than fieldsize
+        * @throw FieldException if Slot is already occupied by other player
+        */
+        void OccupySlot(Vector3 pos, PlayingField::OccupationState id) throw(out_of_range, FieldExeptions);
+
+        bool IsPositionAvailable(int x, int y, int z) const;
     protected:
     private:
 

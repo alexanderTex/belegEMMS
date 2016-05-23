@@ -89,28 +89,24 @@ PlayingField::Slot* PlayingField::GetSlot( int x, int y, int z) const throw(out_
     return this->m_slots->at(x)->at(y)->at(z);
 }
 
- void PlayingField::OccupySlot(int x, int y, int z, PlayingField::OccupationState id) throw(out_of_range, FieldExeptions)
- {
-     Vector3 v(x, y, z);
-
-     /**
-      * @brief b
-      * Encapsulate in Function ( Validate Vector is available )
-      */
-
-     bool b = false;
-
+void PlayingField::OccupySlot(int x, int y, PlayingField::OccupationState id) throw(out_of_range, FieldExeptions)
+{
      std::vector<Vector3> posPositions = GetAvailablePositions(this);
-     for(int i = 0; i < posPositions.size(); i++)
+     int i = 0;
+     for(i = 0; i < posPositions.size(); i++)
      {
-        if(posPositions.at(i) == v)
+        if(posPositions.at(i).X == x && posPositions.at(i).Y == y)
         {
-            b = true;
             break;
         }
      }
 
-     if(b)
+     OccupySlot(posPositions.at(i), id);
+}
+
+ void PlayingField::OccupySlot(int x, int y, int z, PlayingField::OccupationState id) throw(out_of_range, FieldExeptions)
+ {
+     if(this->IsPositionAvailable(x,y,z))
      {
          Slot *s = this->GetSlot(x,y,z);
 
@@ -128,6 +124,30 @@ PlayingField::Slot* PlayingField::GetSlot( int x, int y, int z) const throw(out_
      {
         throw PositionNotAvailable;
      }
+ }
+
+void PlayingField::OccupySlot(Vector3 pos, PlayingField::OccupationState id) throw(out_of_range, FieldExeptions)
+{
+    OccupySlot(pos.X, pos.Y, pos.Z, id);
+}
+
+ bool PlayingField::IsPositionAvailable(int x, int y, int z) const
+ {
+    Vector3 v(x, y, z);
+
+     bool b = false;
+
+     std::vector<Vector3> posPositions = GetAvailablePositions(this);
+     for(int i = 0; i < posPositions.size(); i++)
+     {
+        if(posPositions.at(i) == v)
+        {
+            b = true;
+            break;
+        }
+     }
+
+     return b;
  }
 
  std::vector<Vector3> GetAvailablePositions(const PlayingField *field) throw(out_of_range)
