@@ -14,10 +14,14 @@ TEMPLATE = app
 
 INCLUDEPATH +=  ../include/core/ \
                 ../include/gui/ \
+                ../include/utility/ \
 
 HEADERS +=      ../include/core/* \
                 ../include/gui/* \
+                ../include/utility/* \
 
-SOURCES +=      ../main.cpp \
+SOURCES +=      main.cpp \
                 ../src/core/* \
-                ../src/gui/*
+                ../src/gui/*  \
+                ../src/utility/* \
+
