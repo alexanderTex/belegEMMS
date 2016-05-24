@@ -14,11 +14,26 @@ dokumentation - Spielfelderstellung
 	Playingfield vector to vector *  (m Slots) -> Done
 	Destructor -> Done
 
-	PlainLineChecks all in one method - 3 boolean variables and one loop ( Not working as talked about in code review 2)
+	[PlainLineChecks all in one method - 3 boolean variables and one loop ( Not working as talked about in code review 2)]
 
 	
 	Play UI
+		-	Disable Player Input
+		
+	GameLoop integration
+		- GameManager : handles all gamelogic and calls events on datachange
+		
+	CustomEvent Type
+		-() overload to call
+	
 	History
+
+	
+	
+	
+
+	
+	
 	
 
 to alex:

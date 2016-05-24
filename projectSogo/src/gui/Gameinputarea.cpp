@@ -16,7 +16,7 @@ GameInputArea::GameInputArea(GameData *data, QWidget *parent) : QWidget(parent)
 
     this->m_XInput = new QSpinBox(XspinBoxField);
     xinputLayout->addWidget(this->m_XInput);
-    this->m_XInput->setRange(0, m_data->GetField()->GetFieldSize() - 1);
+    this->m_XInput->setRange(1, m_data->GetField()->GetFieldSize());
 
     //Y Input
     QWidget *YspinBoxField = new QWidget(this);
@@ -28,7 +28,7 @@ GameInputArea::GameInputArea(GameData *data, QWidget *parent) : QWidget(parent)
 
     this->m_YInput = new QSpinBox(YspinBoxField);
     yInputLayout->addWidget(this->m_YInput);
-    this->m_YInput->setRange(0, m_data->GetField()->GetFieldSize() - 1);
+    this->m_YInput->setRange(1, m_data->GetField()->GetFieldSize());
 
     // Input Confirm Button
     this->m_InputConfirm = new QPushButton("Confirm", this);
@@ -41,6 +41,6 @@ GameInputArea::GameInputArea(GameData *data, QWidget *parent) : QWidget(parent)
 
 void GameInputArea::ApplyInputs()
 {
-    Vector2 input(this->m_XInput->value(), this->m_YInput->value());
+    Vector2 input(this->m_XInput->value() - 1, this->m_YInput->value() - 1);
     this->m_data->MakeMove(&input);
 }
