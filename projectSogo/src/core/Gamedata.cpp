@@ -1,4 +1,4 @@
-#include "../../include/core/Gamedata.h"
+#include "../../include/core/GameData.h"
 
 GameData::GameData(PlayingField *field, PlayingField::OccupationState player)
 {

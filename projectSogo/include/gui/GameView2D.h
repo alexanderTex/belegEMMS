@@ -16,10 +16,10 @@
 #include <QPushButton>
 #include <QLabel>
 
-#include "../include/core/Gamedata.h"
+#include "../include/core/GameData.h"
 #include "../include/core/Vector3.h"
-#include "../include/core/Playingfield.h"
-#include "../include/Observer.h"
+#include "../include/core/PlayingField.h"
+#include "../include/IObserver.h"
 
 class GameView2D : public QWidget
 {
@@ -44,7 +44,7 @@ class GameView2D : public QWidget
                         {
                             this->m_SceneItems->at(i)->at(j)->at(k)->setBrush(QBrush(Qt::cyan));
                         }
-                        else if(m_data->GetField()->GetSlot(i,j,k)->Occupation == PlayingField::Red)
+                        else if(m_data->GetField()->GetSlot(k,j,i)->Occupation == PlayingField::Red)
                         {
                             this->m_SceneItems->at(i)->at(j)->at(k)->setBrush(QBrush(Qt::red));
                         }

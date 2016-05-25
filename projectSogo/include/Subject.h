@@ -2,14 +2,14 @@
 #define SUBJECT_H
 
 #include <vector>
-#include "./Observer.h"
+#include "./IObserver.h"
 
 class Subject
 {
     public:
         Subject()
         {
-            m_observer = new vector<Observer*>();
+            m_observer = new vector<IObserver*>();
         }
 
         ~Subject()
@@ -21,7 +21,7 @@ class Subject
 
             delete(this->m_observer);
         }
-        inline void AddListener(Observer *obs)
+        inline void AddListener(IObserver *obs)
         {
             m_observer->push_back(obs);
         }
@@ -41,7 +41,7 @@ class Subject
     protected:
     private:
 
-        vector<Observer*> *m_observer;
+        vector<IObserver*> *m_observer;
 };
 
 #endif // SUBJECT_H

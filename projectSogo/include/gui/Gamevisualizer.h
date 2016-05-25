@@ -5,12 +5,12 @@
 
 #include <QStackedLayout>
 
-#include "../include/core/Gamedata.h"
+#include "../include/core/GameData.h"
 #include "../include/gui/GameView2D.h"
 
 using namespace std;
 
-class GameVisualizer : public QWidget, public Observer
+class GameVisualizer : public QWidget, public IObserver
 {
     Q_OBJECT
 public:

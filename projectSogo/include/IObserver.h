@@ -2,10 +2,11 @@
 #define OBSERVER_H
 
 
-class Observer
+class IObserver
 {
     public:
-        Observer() {}
+        IObserver() {}
+        virtual ~IObserver(){}
 
         virtual void Notify() = 0;
     protected:
