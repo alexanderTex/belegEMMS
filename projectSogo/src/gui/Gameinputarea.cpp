@@ -41,6 +41,9 @@ GameInputArea::GameInputArea(GameData *data, QWidget *parent) : QWidget(parent)
 
 void GameInputArea::ApplyInputs()
 {
-    Vector2 input(this->m_XInput->value() - 1, this->m_YInput->value() - 1);
-    this->m_data->MakeMove(&input);
+    if(this->m_data->GetCurrentPlayer()->GetType() == Player::Human)
+    {
+        Vector3 input(this->m_XInput->value() - 1, this->m_YInput->value() - 1, GetAvailablePosition(this->m_XInput->value()-1, this->m_YInput->value() - 1, this->m_data->GetField()));
+        this->m_data->MakeMove(input);
+    }
 }

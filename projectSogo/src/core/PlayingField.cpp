@@ -89,21 +89,6 @@ PlayingField::Slot* PlayingField::GetSlot( int x, int y, int z) const throw(out_
     return this->m_slots->at(x)->at(y)->at(z);
 }
 
-void PlayingField::OccupySlot(int x, int y, PlayingField::OccupationState id) throw(out_of_range, FieldExeptions)
-{
-     std::vector<Vector3> posPositions = GetAvailablePositions(this);
-     int i = 0;
-     for(i = 0; i < posPositions.size(); i++)
-     {
-        if(posPositions.at(i).X == x && posPositions.at(i).Y == y)
-        {
-            break;
-        }
-     }
-
-     OccupySlot(posPositions.at(i), id);
-}
-
  void PlayingField::OccupySlot(int x, int y, int z, PlayingField::OccupationState id) throw(out_of_range, FieldExeptions)
  {
      if(this->IsPositionAvailable(x,y,z))
@@ -179,6 +164,19 @@ void PlayingField::OccupySlot(Vector3 pos, PlayingField::OccupationState id) thr
     return ret;
  }
 
+ int GetAvailablePosition(int x, int y, const PlayingField *field) throw(out_of_range)
+ {
+     std::vector<Vector3> avPositions = GetAvailablePositions(field);
+
+     for(int i = 0; i < avPositions.size(); i++)
+     {
+         if(avPositions.at(i).X == x && avPositions.at(i).Y == y)
+         {
+             return avPositions.at(i).Z;
+         }
+     }
+     return -1;
+ }
 
 std::vector<Vector3> GetAllFreePositions(const PlayingField *field) throw(out_of_range)
 {

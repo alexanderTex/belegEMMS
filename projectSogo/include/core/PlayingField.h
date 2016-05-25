@@ -101,16 +101,6 @@ class PlayingField
         }
 
         /**
-        * Sets the occupationState of the Slot at pos(x,y, first possible z) to id
-        * @param x horizontal value
-        * @param y depth value
-        * @param id occupationstate for assignment
-        * @throw out_of_range if value is higher than fieldsize
-        * @throw FieldException if Slot is already occupied by other player
-        */
-        void OccupySlot(int x, int y, PlayingField::OccupationState id) throw(out_of_range, FieldExeptions);
-
-        /**
         * Sets the occupationState of the Slot at pos(x,y,z) to id
         * @param x horizontal value
         * @param y depth value
@@ -143,6 +133,8 @@ class PlayingField
 
 };
 
+
+
 /**
 * Returns all positions that are available by
 * the game rules
@@ -151,6 +143,8 @@ class PlayingField
 * @return return a vector of positions(Vector3)
 */
 std::vector<Vector3> GetAvailablePositions(const PlayingField *field) throw(out_of_range);
+
+int GetAvailablePosition(int x, int y, const PlayingField *field) throw(out_of_range);
 
 /**
 * Returns all none occupied slots
@@ -173,7 +167,7 @@ std::string DrawPlayingField(const PlayingField *field);
 * NOT YET FINISHED!!!
 * Searches for a win condition in the Field
 * with a given last move
-* to optimize
+* to optimize (Not implemented yet)
 * @param[in] field to check
 * @param player player to check winCondition
 * @param x last changed position in grid

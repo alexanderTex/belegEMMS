@@ -28,8 +28,8 @@ class Subject
 
         //remove(Observer) method later
 
-
-        inline void NotifyAllObserver()
+    protected:
+        virtual inline void NotifyAllObserver()
         {
             for(int i= 0; i < this->m_observer->size(); i++)
             {
@@ -38,7 +38,7 @@ class Subject
 
         }
 
-    protected:
+
     private:
 
         vector<IObserver*> *m_observer;

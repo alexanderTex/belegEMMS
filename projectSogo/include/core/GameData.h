@@ -3,15 +3,17 @@
 
 #include <stdexcept>
 
-#include "../include/core/PlayingField.h"
-#include "../include/core/Vector2.h"
-#include "../include/utility/Logger.h"
+#include "PlayingField.h"
+#include "Vector2.h"
+#include "Logger.h"
 #include "../include/Subject.h"
+#include "Player.h"
+
 
 class GameData : public Subject
 {
 public:
-    GameData(PlayingField *field, PlayingField::OccupationState player);
+    GameData(PlayingField *field, Player *p1, Player *p2, Player *startingPlayer);
     virtual ~GameData();
 
 
@@ -20,22 +22,25 @@ public:
         return m_field;
     }
 
-    inline PlayingField::OccupationState GetCurrentPlayer() const
+    inline const Player *GetCurrentPlayer() const
     {
         return m_currentPlayer;
     }
 
-    inline void SetCurrentPlayer(PlayingField::OccupationState player)
+    inline void SwitchPlayer()
     {
-        m_currentPlayer = player;
+        m_currentPlayer = m_currentPlayer == player1 ? player2 : player1;
+        this->NotifyAllObserver();
     }
 
-    void MakeMove(const Vector2*pos);
 
+    void MakeMove(Vector3 pos);
 
 private:
     PlayingField *m_field;
-    PlayingField::OccupationState m_currentPlayer;
+    Player *m_currentPlayer;
+    Player *player1;
+    Player *player2;
 };
 
 #endif // GAMEDATA_H

@@ -21,7 +21,7 @@ HEADERS +=      ../include/core/* \
                 ../include/utility/* \
     ../include/gui/GameView2D.h \
     ../include/Subject.h \
-    ../include/IObserver.h
+    ../include/IObserver.h \
 
 SOURCES +=      main.cpp \
                 ../src/core/* \

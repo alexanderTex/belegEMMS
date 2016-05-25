@@ -7,6 +7,8 @@
 #include "./Gameview.h"
 #include "../include/core/PlayingField.h"
 #include "../include/core/GameData.h"
+#include "Player.h"
+#include "GameManager.h"
 
 class MainWindow : public QMainWindow
 {
@@ -19,6 +21,7 @@ public:
 private:
     GameView *m_GameView;
     GameData *data;
+    GameManager *manager;
 
 };
 

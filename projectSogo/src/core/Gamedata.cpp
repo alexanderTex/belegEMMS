@@ -1,26 +1,28 @@
 #include "../../include/core/GameData.h"
 
-GameData::GameData(PlayingField *field, PlayingField::OccupationState player)
+GameData::GameData(PlayingField *field, Player *p1, Player *p2, Player *startingPlayer)
 {
     this->m_field = field;
-    this->m_currentPlayer = player;
-
+    this->player1 = p1;
+    this->player2 = p2;
+    this->m_currentPlayer = startingPlayer;
 }
 
-void GameData::MakeMove(const Vector2*pos)
-{
+void GameData::MakeMove(Vector3 pos)
+{        
     try
     {
-        this->m_field->OccupySlot(pos->X, pos->Y, this->m_currentPlayer);
+        this->m_field->OccupySlot(pos.X, pos.Y, pos.Z, this->m_currentPlayer->GetColor());
 
-        if(CheckForWin(this->m_field, this->m_currentPlayer))
+        if(CheckForWin(this->m_field, this->m_currentPlayer->GetColor()))
         {
             //end game event
+            stringstream s;
+            s << this->m_currentPlayer->GetName() << " WON!" << std::endl;
+            Logger::GetLoggerIntance()->LogInfo(s.str());
         }
 
-        this->m_currentPlayer = this->m_currentPlayer == PlayingField::Blue ? PlayingField::Red : PlayingField::Blue;
-
-        this->NotifyAllObserver();
+        this->SwitchPlayer();
     }
     catch(PlayingField::FieldExeptions)
     {
@@ -35,4 +37,6 @@ void GameData::MakeMove(const Vector2*pos)
 GameData::~GameData()
 {
     delete(m_field);
+    delete(player1);
+    delete(player2);
 }
