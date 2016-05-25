@@ -2,8 +2,11 @@
 #define SUBJECT_H
 
 #include <vector>
-#include "./IObserver.h"
+#include "IObserver.h"
 
+/**
+ * @brief The Subject class
+ */
 class Subject
 {
     public:

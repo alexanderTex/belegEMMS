@@ -31,6 +31,7 @@ public:
 
 private:
     GameVisualizer *m_gameVis;
+    GameData *m_data;
     GameInputArea *m_inputArea;
 
 signals:

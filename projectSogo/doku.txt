@@ -5,12 +5,13 @@ ff: fortfolgend
 to nils:
 ========
 dokumentation - Spielfelderstellung
-    PlayingField.cpp -> L17ff : Done
+    PlayingField.cpp -> L17ff -> Done
 
-
+{
 	AI - Plays currently with MiniMax
 	Check for Win is implemented !
-
+} -> Done
+	
 	Playingfield vector to vector *  (m Slots) -> Done
 	Destructor -> Done
 
@@ -19,14 +20,24 @@ dokumentation - Spielfelderstellung
 	
 	Play UI
 		-	Disable Player Input
-		
+	
+{	
 	GameLoop integration
-		- GameManager : handles all gamelogic and calls events on datachange
+		- GameManager : handles all gamelogic and calls events on datachange --> Is integrated in GameData ( Which need to be named : GameState)
+	
+} -> Done	
+	
+	GameData --- rename --> GameState
+	
+	Need a threading implementation ( AI takes to long and makes the app unresponsive )
+	
 		
 	CustomEvent Type
 		-() overload to call
 	
-	History
+	
+	
+	History:
 
 	
 	

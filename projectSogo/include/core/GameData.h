@@ -8,6 +8,7 @@
 #include "Logger.h"
 #include "../include/Subject.h"
 #include "Player.h"
+#include "AI.h"
 
 
 class GameData : public Subject
@@ -31,10 +32,22 @@ public:
     {
         m_currentPlayer = m_currentPlayer == player1 ? player2 : player1;
         this->NotifyAllObserver();
+        ComputePossibleAITurn();
     }
 
-
     void MakeMove(Vector3 pos);
+
+
+    inline void ComputePossibleAITurn()
+    {
+        if(GetCurrentPlayer()->GetType() == Player::Ai)
+        {
+            Vector3 choice;
+            MiniMax(GetField(), GetCurrentPlayer()->GetColor(), GetCurrentPlayer()->GetColor(), 4, &choice);
+
+            MakeMove(choice);
+        }
+    }
 
 private:
     PlayingField *m_field;

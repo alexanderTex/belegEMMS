@@ -55,7 +55,7 @@ class GameView2D : public QWidget
                         this->m_SceneItems->at(i)->at(j)->at(k)->update();
                     }
                 }
-                this->m_Scenes->at(i)->update();
+                this->m_Scenes->at(i)->repaint();
             }
         }
 

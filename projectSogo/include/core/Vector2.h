@@ -4,9 +4,9 @@
 #include <ostream>
 
 /**
-* Defines a structures that encapsulates a position in 2D space
-* X
-* Y
+* @brief Defines a structures that encapsulates a position in 2D space
+* X is the horizontal value
+* Y is the depth value
 */
 struct Vector2
 {

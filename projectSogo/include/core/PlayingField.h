@@ -14,15 +14,18 @@ using namespace std;
 
 
 /**
-* Defines the Properties of a Playingfield
-*
-*
+* @brief Defines the Properties of a Playingfield
+* Which is a 3 dimensional Grid
+* Containing Slots
+* Slots can be occupied by players
 */
 class PlayingField
 {
     public:
         /**
         * Is thrown when in an Error in Playingfield
+        * Occupied when already occupied by other player
+        * PositionNotAvailable when position is under current fieldstate not valid for occupation
         */
         enum FieldExeptions
         {

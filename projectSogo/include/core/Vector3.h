@@ -4,7 +4,7 @@
 #include <ostream>
 
 /**
-* Defines a structures that encapsulates a position in 3D space
+* @brief Defines a structures that encapsulates a position in 3D space
 * X is the horizontal value
 * Y is the depth value
 * Z is the vertical value
