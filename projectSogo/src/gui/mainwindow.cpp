@@ -10,15 +10,17 @@ MainWindow::MainWindow(QWidget *parent)
 
     GameData *data = new GameData(new PlayingField(), one, two, one);
 
-    this->m_GameView = new GameView( data, this);
+    QWidget *main = new QWidget(this);
 
-    setCentralWidget(m_GameView);
+    this->m_gameView = new GameView( data, main);
+
+    setCentralWidget(m_gameView);
     show();
 }
 
 MainWindow::~MainWindow()
 {
-    delete(m_GameView);
+    delete(m_gameView);
 }
 
 

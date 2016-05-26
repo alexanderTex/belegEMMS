@@ -28,6 +28,7 @@ int MiniMax(const PlayingField *field, PlayingField::OccupationState max_Player,
             return -1;
         }
     }
+
     std::vector<Vector3> posPosistions = GetAvailablePositions(field);
 
     if(posPosistions.size() == 0)
@@ -44,8 +45,6 @@ int MiniMax(const PlayingField *field, PlayingField::OccupationState max_Player,
 
         posField.OccupySlot(posPosistions.at(i).X, posPosistions.at(i).Y, posPosistions.at(i).Z, current_player);
 
-
-
         if(current_player == PlayingField::Blue)
         {
             scores.push_back(MiniMax(&posField, max_Player, PlayingField::Red, choice));
@@ -55,8 +54,6 @@ int MiniMax(const PlayingField *field, PlayingField::OccupationState max_Player,
             scores.push_back(MiniMax(&posField, max_Player, PlayingField::Blue, choice));
         }
     }
-
-
 
 
     if(current_player == max_Player)

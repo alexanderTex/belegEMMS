@@ -468,6 +468,8 @@ void PlayingFieldAITestUltimateBattle()
 
            case PlayingField::Red:
 
+                cout << "Player Red : " << endl << endl;
+
                 MiniMax(&pF, PlayingField::Red, PlayingField::Red, 4, &choice);
 
 

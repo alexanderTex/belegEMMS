@@ -100,7 +100,7 @@ class PlayingField
         */
         inline int GetFieldSize() const
         {
-            return m_FieldSize;
+            return m_fieldSize;
         }
 
         /**
@@ -127,7 +127,7 @@ class PlayingField
     protected:
     private:
 
-        int m_FieldSize;
+        int m_fieldSize;
 
         // x ( horizontal ; layer 0 )
         // y ( depth ; layer 1 )

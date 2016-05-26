@@ -17,13 +17,14 @@
 
 class GameInputArea : public QWidget
 {
+    Q_OBJECT
 public:
     explicit GameInputArea(GameData *data, QWidget *parent = 0);
 
 private:
-    QSpinBox *m_XInput;
-    QSpinBox *m_YInput;
-    QPushButton *m_InputConfirm;
+    QSpinBox *m_xInput;
+    QSpinBox *m_yInput;
+    QPushButton *m_inputConfirm;
 
     GameData *m_data;
 

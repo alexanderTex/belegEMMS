@@ -5,6 +5,7 @@
 #include <QGridLayout>
 
 #include "./Gameview.h"
+#include <QTextEdit>
 #include "../include/core/PlayingField.h"
 #include "../include/core/GameData.h"
 #include "Player.h"
@@ -18,8 +19,7 @@ public:
     ~MainWindow();
 
 private:
-    GameView *m_GameView;
-
+    GameView *m_gameView;
 };
 
 #endif // MAINWINDOW_H

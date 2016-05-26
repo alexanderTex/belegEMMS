@@ -19,23 +19,23 @@ PlayingField:: PlayingField(int fieldSize)
 {
     //ctor
 
-    this->m_FieldSize = fieldSize;
+    this->m_fieldSize = fieldSize;
 
     this->m_slots = new vector<vector< vector<Slot*> *> *>();
 
     // fills the Field
     //fills the field's horizontal lines
-    for(int i = 0; i < this->m_FieldSize; i++)
+    for(int i = 0; i < this->m_fieldSize; i++)
     {
         this->m_slots->push_back(new vector< vector<Slot*> *>());
 
         //fills the field's depth lines
-        for(int j = 0; j < this->m_FieldSize; j++)
+        for(int j = 0; j < this->m_fieldSize; j++)
         {
             this->m_slots->at(i)->push_back(new vector<Slot*>());
 
             //fills the field's Vertical lines
-            for(int k = 0; k < this->m_FieldSize; k++)
+            for(int k = 0; k < this->m_fieldSize; k++)
             {
                 this->m_slots->at(i)->at(j)->push_back(new Slot());
             }
@@ -49,13 +49,13 @@ PlayingField::PlayingField(const PlayingField *field):
 {
     // copies the states of the field
     //copies the field's horizontal lines
-    for(int i = 0; i < this->m_FieldSize; i++)
+    for(int i = 0; i < this->m_fieldSize; i++)
     {
         //copies the field's depth lines
-        for(int j = 0; j < this->m_FieldSize; j++)
+        for(int j = 0; j < this->m_fieldSize; j++)
         {
             //copies the field's Vertical lines
-            for(int k = 0; k < this->m_FieldSize; k++)
+            for(int k = 0; k < this->m_fieldSize; k++)
             {
                 this->m_slots->at(i)->at(j)->at(k) = new Slot(field->GetSlot(i,j,k)->Occupation);
             }
@@ -66,13 +66,13 @@ PlayingField::PlayingField(const PlayingField *field):
 PlayingField::~PlayingField()
 {
     //copies the field's horizontal lines
-    for(int i = 0; i < this->m_FieldSize; i++)
+    for(int i = 0; i < this->m_fieldSize; i++)
     {
         //copies the field's depth lines
-        for(int j = 0; j < this->m_FieldSize; j++)
+        for(int j = 0; j < this->m_fieldSize; j++)
         {
             //copies the field's Vertical lines
-            for(int k = 0; k < this->m_FieldSize; k++)
+            for(int k = 0; k < this->m_fieldSize; k++)
             {
                 delete(this->m_slots->at(i)->at(j)->at(k));
             }

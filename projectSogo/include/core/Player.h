@@ -49,7 +49,7 @@ public:
      */
     inline std::string GetName() const
     {
-        return m_PlayerName;
+        return m_playerName;
     }
 
     /**
@@ -58,13 +58,13 @@ public:
      */
     inline PlayingField::OccupationState GetColor() const
     {
-        return m_PlayerColor;
+        return m_playerColor;
     }
 
 private:
     PlayerType m_type;
-    std::string m_PlayerName;    
-    PlayingField::OccupationState m_PlayerColor;
+    std::string m_playerName;
+    PlayingField::OccupationState m_playerColor;
 };
 
 #endif // PLAYER_H

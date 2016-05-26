@@ -30,6 +30,8 @@ public:
     }
 
 private:
+    QGridLayout *m_mainLayout;
+
     GameVisualizer *m_gameVis;
     GameData *m_data;
     GameInputArea *m_inputArea;

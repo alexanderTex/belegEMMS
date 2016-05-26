@@ -21,11 +21,12 @@ public:
 
     inline void Notify()
     {
-        this->view2D->ViewUpdate();
+        this->m_view2D->ViewUpdate();
     }
 
 private:
-    GameView2D *view2D;
+    GameView2D *m_view2D;
+    QStackedLayout *m_layout;
 
 };
 

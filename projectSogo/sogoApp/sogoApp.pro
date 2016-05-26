@@ -19,7 +19,6 @@ INCLUDEPATH +=  ../include/core/ \
 HEADERS +=      ../include/core/* \
                 ../include/gui/* \
                 ../include/utility/* \
-    ../include/gui/GameView2D.h \
     ../include/Subject.h \
     ../include/IObserver.h \
 

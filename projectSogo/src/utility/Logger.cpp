@@ -8,5 +8,5 @@ Logger::Logger()
 }
 Logger::~Logger()
 {
-    delete(Logger::GetLoggerIntance());
+
 }
