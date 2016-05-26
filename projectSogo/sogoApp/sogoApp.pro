@@ -1,6 +1,6 @@
 # /===============================================\
 #
-# Sogo Widget-Application
+#   Sogo Widget-Application
 #
 # \===============================================/
 
@@ -17,7 +17,9 @@ INCLUDEPATH +=  ../include/core/ \
 
 HEADERS +=      ../include/core/* \
                 ../include/gui/* \
+                #../include/gui/mainmenue.h
 
-SOURCES +=      ../main.cpp \
+SOURCES +=      ./main.cpp \
                 ../src/core/* \
-                ../src/gui/*
+                ../src/gui/* \
+    ../src/gui/mainmenue.cpp

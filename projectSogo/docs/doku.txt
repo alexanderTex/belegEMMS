@@ -16,22 +16,43 @@ dokumentation - Spielfelderstellung
 
 	PlainLineChecks all in one method - 3 boolean variables and one loop ( Not working as talked about in code review 2)
 
-	
+
 	Play UI
 	History
-	
+
 
 to alex:
 ========
 
-	Network (Qt ?)
-	MenuControls(UI) 
+  sequence:
+
+  1)MenuControls(UI)
 		-Start-/Main-Menu
 		-Load Save
 
-	Database
-	Chat
-	
+	2)Database
+    Moves
+    ---------
+    - Koordinaten (zwei, int Werte ) // zur bessenren Darstellung, da sonst nur
+                                     // ein int-Wert aussreicht
+                                     // ([x,y] => 11 (zwei Werte) == 11 (ein Wert))
+    - Anzahl der Züge inc. Zugnummer ()
+
+    Highscore
+    ---------
+  - Player1 name (String)
+  - Player2 name (String)
+  - win/lose (Player name String)
+  - Anzahl Züge
+  - Datum/Zeit
+  - Zugdokumentation
+
+  3)Network (Qt ?)
+
+  4)Chat
+  - Nachricht (String)
+
+
 doku:
 =====
 koordinatensystem -> modularer
@@ -62,5 +83,5 @@ Module:
 	- Netzwerk
 	- Gameengine
  	- Hightscore
-	- Save / Load 
+	- Save / Load
 	- GUI
