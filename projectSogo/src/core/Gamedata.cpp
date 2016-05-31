@@ -9,35 +9,24 @@ GameData::GameData(PlayingField *field, Player *p1, Player *p2, Player *starting
     this->m_history = new HistorySave();
 }
 
-void GameData::MakeMove(Vector3 pos)
+void GameData::MakeMove(Vector3 pos) throw(PlayingField::FieldExeptions, std::out_of_range)
 {
-    try
+    this->m_field->OccupySlot(pos.X, pos.Y, pos.Z, this->m_currentPlayer->GetColor());
+
+    if(CheckForWin(this->m_field, this->m_currentPlayer->GetColor()))
     {
-        this->m_field->OccupySlot(pos.X, pos.Y, pos.Z, this->m_currentPlayer->GetColor());
-
-        if(CheckForWin(this->m_field, this->m_currentPlayer->GetColor()))
-        {
-            //end game event
-            stringstream s;
-            s << this->m_currentPlayer->GetName() << " WON!" << std::endl;
-            Logger::GetLoggerIntance()->Log(s.str());
-        }
-        this->m_history->AddMove(pos, *(this->GetCurrentPlayer()));
-
+        //end game event
         stringstream s;
-        s << this->m_currentPlayer->GetName() << " set a piece at " << pos.X << " " << pos.Y << " " << pos.Z << std::endl;
-        Logger::GetLoggerIntance()->LogInfo(s.str());
+        s << this->m_currentPlayer->GetName() << " WON!" << std::endl;
+        Logger::GetLoggerIntance()->Log(s.str());
+    }
+    this->m_history->AddMove(pos, *(this->GetCurrentPlayer()));
 
-        this->SwitchPlayer();
-    }
-    catch(PlayingField::FieldExeptions e)
-    {
-        Logger::GetLoggerIntance()->LogError("Input not Valid");
-    }
-    catch(std::out_of_range e)
-    {
-        Logger::GetLoggerIntance()->LogError("Input Out of Range");
-    }
+    stringstream s;
+    s << this->m_currentPlayer->GetName() << " set a piece at " << pos.X << " " << pos.Y << " " << pos.Z << std::endl;
+    Logger::GetLoggerIntance()->LogInfo(s.str());
+
+    this->SwitchPlayer();
 }
 
 GameData::~GameData()

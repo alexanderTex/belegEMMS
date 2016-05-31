@@ -22,6 +22,9 @@
 #include "../include/IObserver.h"
 #include "../include/gui/GraphicsSlot2d.h"
 
+
+
+// maybe as a Graphicsscene overload
 class GameView2D : public QWidget
 {
     Q_OBJECT

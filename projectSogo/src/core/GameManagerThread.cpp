@@ -89,7 +89,18 @@ void AILoop(const Player *player, GameData *data)
             s << "Making move" << endl;
             Logger::GetLoggerIntance()->LogInfo(s.str());
 
-            data->MakeMove(futuremove);
+            try
+            {
+                data->MakeMove(futuremove);
+            }
+            catch(PlayingField::FieldExeptions e)
+            {
+                Logger::GetLoggerIntance()->LogError("Input not Valid");
+            }
+            catch(std::out_of_range e)
+            {
+                Logger::GetLoggerIntance()->LogError("Input Out of Range");
+            }
 
             stringstream stream2;
             stream2 << "Move done" << endl;

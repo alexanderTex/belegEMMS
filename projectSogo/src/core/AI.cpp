@@ -31,7 +31,7 @@ int MiniMax(const PlayingField *field, PlayingField::OccupationState max_Player,
 
     std::vector<Vector3> *posPosistions = GetAvailablePositions(field);
 
-    if(posPosistions->size() == 0)
+    if(posPosistions->size() < 1)
     {
         return 0;
     }
@@ -114,7 +114,7 @@ int MiniMax(const PlayingField *field, PlayingField::OccupationState max_Player,
     }
     std::vector<Vector3> *posPosistions = GetAvailablePositions(field);
 
-    if(posPosistions->size() == 0)
+    if(posPosistions->size() < 1)
     {
         return 0;
     }

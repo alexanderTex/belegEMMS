@@ -4,8 +4,6 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
 
-    Logger::GetLoggerIntance()->LogInfo(" MainWindow Constructor : AI in thread not optimized yet , Crash when Input that is out of spaces ( out of bound on z)");
-
     // JUST FOR TESTING WOULD BE GIVEN FROM OUTSIDE
     Player *one = new Player(Player::Human, "Dirk", PlayingField::Blue);
     Player *two = new Player(Player::Ai, "Frank", PlayingField::Red);
