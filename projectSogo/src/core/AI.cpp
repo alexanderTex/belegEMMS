@@ -29,21 +29,21 @@ int MiniMax(const PlayingField *field, PlayingField::OccupationState max_Player,
         }
     }
 
-    std::vector<Vector3> posPosistions = GetAvailablePositions(field);
+    std::vector<Vector3> *posPosistions = GetAvailablePositions(field);
 
-    if(posPosistions.size() == 0)
+    if(posPosistions->size() == 0)
     {
         return 0;
     }
 
     std::vector<int> scores;
 
-    for(int i = 0; i < posPosistions.size(); i++)
+    for(int i = 0; i < posPosistions->size(); i++)
     {
         PlayingField posField(field);
 
 
-        posField.OccupySlot(posPosistions.at(i).X, posPosistions.at(i).Y, posPosistions.at(i).Z, current_player);
+        posField.OccupySlot(posPosistions->at(i).X, posPosistions->at(i).Y, posPosistions->at(i).Z, current_player);
 
         if(current_player == PlayingField::Blue)
         {
@@ -69,10 +69,11 @@ int MiniMax(const PlayingField *field, PlayingField::OccupationState max_Player,
             }
         }
 
-        choice->X = posPosistions.at(best_score_index).X;
-        choice->Y = posPosistions.at(best_score_index).Y;
-        choice->Z = posPosistions.at(best_score_index).Z;
+        choice->X = posPosistions->at(best_score_index).X;
+        choice->Y = posPosistions->at(best_score_index).Y;
+        choice->Z = posPosistions->at(best_score_index).Z;
 
+        delete(posPosistions);
         return scores.at(best_score_index);
     }
     else
@@ -89,13 +90,13 @@ int MiniMax(const PlayingField *field, PlayingField::OccupationState max_Player,
             }
         }
 
-        choice->X = posPosistions.at(worst_Score_Index).X;
-        choice->Y = posPosistions.at(worst_Score_Index).Y;
-        choice->Z = posPosistions.at(worst_Score_Index).Z;
+        choice->X = posPosistions->at(worst_Score_Index).X;
+        choice->Y = posPosistions->at(worst_Score_Index).Y;
+        choice->Z = posPosistions->at(worst_Score_Index).Z;
 
+        delete(posPosistions);
         return scores.at(worst_Score_Index);
     }
-
 }
 
 int MiniMax(const PlayingField *field, PlayingField::OccupationState max_Player, PlayingField::OccupationState current_player, int depth, Vector3 *choice) throw(out_of_range)
@@ -111,21 +112,21 @@ int MiniMax(const PlayingField *field, PlayingField::OccupationState max_Player,
             return -1;
         }
     }
-    std::vector<Vector3> posPosistions = GetAvailablePositions(field);
+    std::vector<Vector3> *posPosistions = GetAvailablePositions(field);
 
-    if(posPosistions.size() == 0)
+    if(posPosistions->size() == 0)
     {
         return 0;
     }
 
     std::vector<int> scores;
 
-    for(int i = 0; i < posPosistions.size(); i++)
+    for(int i = 0; i < posPosistions->size(); i++)
     {
         PlayingField posField(field);
 
 
-        posField.OccupySlot(posPosistions.at(i).X, posPosistions.at(i).Y, posPosistions.at(i).Z, current_player);
+        posField.OccupySlot(posPosistions->at(i).X, posPosistions->at(i).Y, posPosistions->at(i).Z, current_player);
 
 
 
@@ -155,10 +156,11 @@ int MiniMax(const PlayingField *field, PlayingField::OccupationState max_Player,
             }
         }
 
-        choice->X = posPosistions.at(best_score_index).X;
-        choice->Y = posPosistions.at(best_score_index).Y;
-        choice->Z = posPosistions.at(best_score_index).Z;
+        choice->X = posPosistions->at(best_score_index).X;
+        choice->Y = posPosistions->at(best_score_index).Y;
+        choice->Z = posPosistions->at(best_score_index).Z;
 
+        delete(posPosistions);
         return scores.at(best_score_index);
     }
     else
@@ -175,10 +177,11 @@ int MiniMax(const PlayingField *field, PlayingField::OccupationState max_Player,
             }
         }
 
-        choice->X = posPosistions.at(worst_Score_Index).X;
-        choice->Y = posPosistions.at(worst_Score_Index).Y;
-        choice->Z = posPosistions.at(worst_Score_Index).Z;
+        choice->X = posPosistions->at(worst_Score_Index).X;
+        choice->Y = posPosistions->at(worst_Score_Index).Y;
+        choice->Z = posPosistions->at(worst_Score_Index).Z;
 
+        delete(posPosistions);
         return scores.at(worst_Score_Index);
     }
 

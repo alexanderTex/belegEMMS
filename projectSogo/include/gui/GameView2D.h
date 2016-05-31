@@ -9,7 +9,7 @@
 
 #include <QGraphicsView>
 #include <QGraphicsScene>
-#include <QGraphicsRectItem>
+
 #include <QPainter>
 
 #include <QSpinBox>
@@ -20,6 +20,7 @@
 #include "../include/core/Vector3.h"
 #include "../include/core/PlayingField.h"
 #include "../include/IObserver.h"
+#include "../include/gui/GraphicsSlot2d.h"
 
 class GameView2D : public QWidget
 {
@@ -28,7 +29,7 @@ class GameView2D : public QWidget
         explicit GameView2D(GameData *data, QWidget *parent = 0);
         virtual ~GameView2D();
 
-        inline QGraphicsRectItem *GetRect(Vector3 vec)
+        inline GraphicsSlot2D *GetRect(Vector3 vec)
         {
             return m_sceneItems->at(vec.X)->at(vec.Y)->at(vec.Z);
         }
@@ -43,20 +44,20 @@ class GameView2D : public QWidget
                     {
                         if(m_data->GetField()->GetSlot(k,j,i)->Occupation == PlayingField::Blue)
                         {
-                            this->m_sceneItems->at(i)->at(j)->at(k)->setBrush(QBrush(Qt::cyan));
+                            this->m_sceneItems->at(i)->at(j)->at(k)->SetColor(Qt::cyan);
                         }
                         else if(m_data->GetField()->GetSlot(k,j,i)->Occupation == PlayingField::Red)
                         {
-                            this->m_sceneItems->at(i)->at(j)->at(k)->setBrush(QBrush(Qt::red));
+                            this->m_sceneItems->at(i)->at(j)->at(k)->SetColor(Qt::red);
                         }
                         else
                         {
-                            this->m_sceneItems->at(i)->at(j)->at(k)->setBrush(QBrush(Qt::white));
+                            this->m_sceneItems->at(i)->at(j)->at(k)->SetColor(Qt::white);
                         }
-                        //this->m_sceneItems->at(i)->at(j)->at(k)->update();
+                        this->m_sceneItems->at(i)->at(j)->at(k)->update();
                     }
                 }
-                this->m_scenes->at(i)->repaint();
+                //this->m_scenes->at(i)->update();
             }
         }
 
@@ -67,9 +68,9 @@ private:
         GameData *m_data;
 
         vector<QGraphicsView*> *m_scenes;
-        vector< vector< vector< QGraphicsRectItem * > *> *> *m_sceneItems;
+        vector< vector< vector< GraphicsSlot2D * > *> *> *m_sceneItems;
     };
 
-    QGraphicsScene *CreateGrid(int rectCount, float rectSize, vector< vector <QGraphicsRectItem * > *> * sceneView);
+    QGraphicsScene *CreateGrid(int rectCount, float rectSize, vector< vector <GraphicsSlot2D * > *> * sceneView);
 
 #endif // GAMEVIEW2D_H

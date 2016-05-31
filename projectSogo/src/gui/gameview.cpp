@@ -1,6 +1,7 @@
 #include "./Gameview.h"
 
-GameView::GameView(GameData *data, QWidget *parent) : QWidget(parent)
+GameView::GameView(GameData *data, QWidget *parent)
+    : QWidget(parent)
 {
     m_mainLayout = new QGridLayout(this);
 

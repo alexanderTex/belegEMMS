@@ -29,6 +29,11 @@ public:
         return m_gameVis;
     }
 
+    inline GameData *GetGameData() const
+    {
+        return m_data;
+    }
+
 private:
     QGridLayout *m_mainLayout;
 

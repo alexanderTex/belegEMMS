@@ -31,6 +31,7 @@ class PlayingField
         {
             Occupied,
             PositionNotAvailable,
+            NoSpaceAnymore,
         };
 
         /**
@@ -145,7 +146,7 @@ class PlayingField
 * @throw out_of_range
 * @return return a vector of positions(Vector3)
 */
-std::vector<Vector3> GetAvailablePositions(const PlayingField *field) throw(out_of_range);
+std::vector<Vector3> *GetAvailablePositions(const PlayingField *field) throw(out_of_range);
 
 int GetAvailablePosition(int x, int y, const PlayingField *field) throw(out_of_range);
 

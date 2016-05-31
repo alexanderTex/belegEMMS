@@ -19,8 +19,8 @@ INCLUDEPATH +=  ../include/core/ \
 HEADERS +=      ../include/core/* \
                 ../include/gui/* \
                 ../include/utility/* \
-    ../include/Subject.h \
-    ../include/IObserver.h \
+                ../include/Subject.h \
+                ../include/IObserver.h \
 
 SOURCES +=      main.cpp \
                 ../src/core/* \

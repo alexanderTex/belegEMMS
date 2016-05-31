@@ -122,22 +122,24 @@ void PlayingField::OccupySlot(Vector3 pos, PlayingField::OccupationState id) thr
 
      bool b = false;
 
-     std::vector<Vector3> posPositions = GetAvailablePositions(this);
-     for(int i = 0; i < posPositions.size(); i++)
+     std::vector<Vector3> *posPositions = GetAvailablePositions(this);
+     for(int i = 0; i < posPositions->size(); i++)
      {
-        if(posPositions.at(i) == v)
+        if(posPositions->at(i) == v)
         {
             b = true;
             break;
         }
      }
 
+     delete(posPositions);
+
      return b;
  }
 
- std::vector<Vector3> GetAvailablePositions(const PlayingField *field) throw(out_of_range)
+ std::vector<Vector3> *GetAvailablePositions(const PlayingField *field) throw(out_of_range)
  {
-    std::vector<Vector3> ret;
+    std::vector<Vector3> *ret = new std::vector<Vector3>();
 
     Vector3 *vec = new Vector3();
 
@@ -152,7 +154,7 @@ void PlayingField::OccupySlot(Vector3 pos, PlayingField::OccupationState id) thr
                     vec->X = i;
                     vec->Y = j;
                     vec->Z = k;
-                    ret.push_back(*vec);
+                    ret->push_back(*vec);
                     break;
                 }
             }
@@ -164,18 +166,19 @@ void PlayingField::OccupySlot(Vector3 pos, PlayingField::OccupationState id) thr
     return ret;
  }
 
- int GetAvailablePosition(int x, int y, const PlayingField *field) throw(out_of_range)
+ int GetAvailablePosition(int x, int y, const PlayingField *field) throw(out_of_range, PlayingField::FieldExeptions)
  {
-     std::vector<Vector3> avPositions = GetAvailablePositions(field);
+     std::vector<Vector3> *avPositions = GetAvailablePositions(field);
 
-     for(int i = 0; i < avPositions.size(); i++)
+     for(int i = 0; i < avPositions->size(); i++)
      {
-         if(avPositions.at(i).X == x && avPositions.at(i).Y == y)
+         if(avPositions->at(i).X == x && avPositions->at(i).Y == y)
          {
-             return avPositions.at(i).Z;
+             return avPositions->at(i).Z;
          }
      }
-     return -1;
+
+     throw(PlayingField::NoSpaceAnymore);
  }
 
 std::vector<Vector3> GetAllFreePositions(const PlayingField *field) throw(out_of_range)

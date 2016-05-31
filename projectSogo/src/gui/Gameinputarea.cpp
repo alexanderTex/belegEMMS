@@ -1,6 +1,7 @@
 #include "Gameinputarea.h"
 
-GameInputArea::GameInputArea(GameData *data, QWidget *parent) : QWidget(parent)
+GameInputArea::GameInputArea(GameData *data, QWidget *parent)
+    : QWidget(parent)
 {
     this->m_data = data;
 

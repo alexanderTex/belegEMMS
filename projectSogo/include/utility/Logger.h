@@ -40,7 +40,6 @@ public:
     inline virtual void Log(std::string message)
     {
         std::cout << message << std::endl;
-
     }
 
 private:
