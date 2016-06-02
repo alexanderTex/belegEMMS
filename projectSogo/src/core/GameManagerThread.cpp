@@ -6,6 +6,7 @@
 
 void AILoop(const Player *player, GameData *data)
 {
+
     Logger::GetLoggerIntance()->LogInfo("GameLoop startet :" );
     Logger::GetLoggerIntance()->Log("\n" );
 
