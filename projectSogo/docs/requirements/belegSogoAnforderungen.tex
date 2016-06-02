@@ -1,0 +1,173 @@
+\documentclass[a4paper]{scrartcl}
+
+\usepackage[ngerman]{babel}
+\usepackage{amsmath,amssymb,amsthm,amsfonts,amsbsy,latexsym}
+
+\usepackage[utf8]{inputenc}
+
+
+\usepackage[T1]{fontenc}
+\usepackage{enumerate,url}
+\usepackage{graphicx}
+\usepackage{bibgerm}
+\usepackage[babel,german=guillemets]{csquotes}
+\usepackage{listings}
+\usepackage{color}
+\usepackage[svgnames]{xcolor}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amstext}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{listings}		% Quelltext verwenden
+\usepackage{color}
+
+\usepackage{fancybox}  	% Box um Formel
+ \usepackage{varwidth}
+ 
+ \usepackage{lscape}
+
+
+% /===============================================================================================
+%
+%		Dokumentanfang
+%
+% \===============================================================================================
+
+\begin{document}
+\thispagestyle{empty}
+
+% /===============================================================================================
+%
+%		Deckblatt
+%
+% \===============================================================================================
+
+\thispagestyle{empty}
+\begin{center}
+\Large{Hochschule für Technik und Wirtschaft Berlin (HTW)}\\
+\end{center}
+ 
+ 
+\begin{center}
+\Large{Fachbereich 4 - Informatik, Kommunikation und Wirtschaft}
+\end{center}
+\begin{verbatim}
+
+
+\end{verbatim}
+\begin{center}
+\textbf{\LARGE{Belegarbeit - Anforderungserstellung}}
+\end{center}
+\begin{verbatim}
+ 
+ 
+\end{verbatim}
+\begin{center}
+\textbf{im Studiengang Angewandte Informatik}
+\end{center}
+\begin{verbatim}
+\end{verbatim}
+ 
+\begin{flushleft}
+\begin{tabular}{lll}
+\textbf{Fach:} & & Entwicklung von Multimediasystemen\\
+& & \\
+& & \\
+\textbf{Thema:} & & Sogo (Freestyle)\\
+& & \\
+& & \\
+\textbf{eingereicht von:} & & Alexander Lüdke (548965)\\
+& & Nils Brandt (549906)\\
+& & \\
+\textbf{eingereicht am:} & & Sommersemester 2016 \\
+& & \\
+& & \\
+\textbf{Dozenten:} & & Sebastian Bauer\\
+& & Sebastian Keppler \\
+\end{tabular}
+\end{flushleft}
+
+\newpage
+
+% /===============================================================================================
+%
+%		Inhaltsverzeichnis
+%
+% \===============================================================================================
+
+\thispagestyle{empty}
+
+\tableofcontents
+%\maketitle
+
+\newpage
+
+% /===============================================================================================
+%
+%		Hauptteil
+%
+% \===============================================================================================
+
+\setcounter{page}{3}
+\section*{Projektidee}
+
+\section{Sogo}
+\subsection{Beschreibung}
+
+In diesem Projekt geht es um das Spiel \textit{Sogo} oder auch bekannt unter dem Namen Raummühle, 3D-Mühle, 3D-Tic-Tac-Toe oder Vier gewinnt Professional. Dieses soll mit Hilfe von Qt implementiert werden. Die grundlegende Spielumgebung sieht wie folgt aus:
+\begin{itemize}
+	\item Es treten zwei Spieler gegeneinander an.
+	\item Das Spielfeld wird in ein dreidimensionales Raster von 4x4x4 Feldern aufgeteilt.
+	\item \textit{optional} Das Raster kann in Felder von 3x3x3 aufgeteilt werden, wobei die Grundfläche von eins bis neun. Das Resultat sind folgende Notationen\\ $\mathcal{M}=\{(1,1),(1,2),(1,3),...(9,3)\}$.
+	\item \textit{optional} Das Raster kann in Felder von 5x5x5 aufgeteilt werden, wobei die Grundfläche nach der Schachnotation aufgeteilt wird (A-E, 1-5). Das Resultat sind folgende Notationen $\mathcal{M}=\{(A,1,1),(A,2,1),(A,3,1),...(E,5,5)\}$.
+	\item Um die Koordination innerhalb des 4x4x4 Rasters zu ermöglichen wird die Grundfläche mittels Hexadezimal-Notation(0-9, A-F) aufgeteilt und die vier Ebenen von eins bis vier durchnummeriert. Das Resultat sind folgende Notationen\\ $\mathcal{M}=\{(1,1),(2,1),(3,1),...(F,4)\}$, wobei die erste Zahl die Position auf der Grundfläche und die zweite Zahl die Position der Ebene darstellt.
+	\item Jeder Spieler verfügt im Raster
+	\begin{itemize}
+		\item 4x4x4 über 32 Spielsteine
+		\item \textit{optional} 3x3x3 über 13 Spielsteine
+		\item \textit{optional} 5x5x5 über 62 Spielsteine
+	\end{itemize}	
+\end{itemize}
+Darüber hinaus gelten folgende \textit{grundlegenden} Regeln:
+\begin{itemize}
+	\item Grundsätzlich beginnt der Spieler mit den weißen Steinen beginnt, was jedoch durch eine Vorabsprache individuell festgelegt werden kann. 
+	\item Die Spielsteine werden abwechselnd gesetzt
+\end{itemize}
+Ziel des Spiels ist es, vier eigenen Steine in einer Linie zu setzen. D.h. sie können waagerecht, senkrecht oder auch diagonal zueinander gesetzt werden um die Partie für sich zu entscheiden.
+
+\subsection{Implementierungskriterien}
+	\begin{enumerate}
+		\item (1 point) Es können zwei Menschen gegeneinander oder ein Mensch gegen den Computer spielen.
+		\item (1 point) Generell soll vor Beginn des Spiels festgelegt werden, wer beginnt.
+		\item (1 point) Menschliche Spieler sollen vor Spielbeginn in der GUI Ihre Spielnamen eingeben können.
+		\item (1 point) Bei der Auswahl einer Position soll ein Sound abgespielt werden, wobei jede Partei einen eigenen hat.
+		\item (1 point) Die Anwendung lässt ungültige Züge nicht zu und signalisiert diese mit einem Sound.
+		\item (1 point) Die Anwendung erkennt eine Gewinnposition, sowie ein Unentschieden und spielt dazu einen geeigneten Sound inklusive Animation am.
+		\item (1 point) Alle Spielergebnisse sollen in einer lokalen Datenbank(SQLite) abgespeichert werden und alle wichtigen Informationen über die gespielten Spiele beinhalten.
+		\item (1 point) Die Spielergebnisse sollen in der GUI abrufbar sein.
+		\item (1 point) Die Spielergebnisse sollen veröffentlicht werden können.
+		\item (1 point) Es soll die Möglichkeit bereitstehen die laufende Partie zu unterbrechen (Speichern) und zu beliebiger Zeit, auch nach einem Neustart der Anwendung, wieder zu starten (Laden).
+		\item (1 point) Es soll die Möglichkeit bereitstehen das Spiel zu pausieren.
+		\item (5 points) Beim Spiel Mensch gegen Computer soll eine einfache Spielstrategie(Heuristik) zum Beispiel auf Basis des Minimax-Algorithmus (\textit{http://mnemstudio.org/game-reversi-example-2.htm}) implementiert werden.	
+		\item (5 points) Beim Spiel Mensch gegen Computer soll es möglich sein, die Spielstärke des Computer aus drei Schwierigkeitsgraden auszuwählen.
+		\item (1 point) Die Anwendung soll es den Spielern erlauben ihre Partie über das Netzwerk zu spielen, wobei ausgegangen werden kann, dass sich die beiden Anwendungen im selben Subnetz sind und die Ports erreichbar sind.
+		\item (1 point) Die Anwendung soll eine Remote-Verbindung annehmen können (als Server agieren), als auch sich mit einer anderen Anwendung aktiv verbinden können (als Client agieren).
+		\item (1 point) Eintreffende Verbindungswünsche sollen angezeigt werden.
+		\item (1 point) Der Anwender des Servers soll die Möglichkeit haben einen Verbindungswunsch anzunehmen oder ihn abzulehnen.
+		\item (1 point) Der Anwender des Clients wird über die Entscheidung nach dem gestellten Verbindungswunsch informiert.
+		\item (1 point) Die Verbindung soll solange gehalten werden bis die Partie beendet ist.
+		\item (1 point) Ist ein Spiel zu Ende, wird eine Spielauswertung angezeigt.
+		\item (2 point) Das Spiel ist sowohl in 2D- als auch in 3D-Ansicht spielbar/visualisierbar.
+	\end{enumerate}
+		
+\subsection{Eigene Implementierungskriterien}
+	\begin{enumerate}
+		\item (1 point) Wenn ein Mensch gegen einen Computer spielt, hat er die Möglichkeit im ersten Schwierigkeitsgrad(leicht) die letzten fünf Platzierungsrunden zurückzugehen.
+		\item (1 point) Die Größe des Spielfelds soll vor der Partie in der GUI konfigurierbar sein. Die Standardgröße ist 4x4x4, wobei die Möglichkeit zum 3x3x3 oder 5x5x5 ausgewählt werden kann.
+		\item (1 point) Die aktuelle Spielhistorie wird für das laufende Spiel angezeigt.
+		\item (1 point) Integrierte Chat-Funktion wird angezeigt. 
+		\item (1 point) Bei der Rastergröße 5x5x5 stellt die Mittelschicht die Grundschicht dar. D.h. der Spieler muss zuerst diese befüllen und hat anschließend die Möglichkeit von beiden Seiten seine Steine zu setzen. 
+	\end{enumerate}
+\end{document}
