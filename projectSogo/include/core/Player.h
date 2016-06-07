@@ -34,6 +34,9 @@ public:
      */
     Player(PlayerType type, std::string name, PlayingField::OccupationState color);
 
+
+    Player(const Player* src);
+
     /**
      * @brief GetType
      * @return

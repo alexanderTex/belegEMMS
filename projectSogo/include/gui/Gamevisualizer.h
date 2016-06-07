@@ -11,19 +11,17 @@
 
 using namespace std;
 
-class GameVisualizer : public QWidget, public IObserver
+class GameVisualizer : public QWidget
 {
     Q_OBJECT
 public:
      explicit GameVisualizer(GameData *data, QWidget *parent = 0);
-    ~GameVisualizer();
+     virtual ~GameVisualizer();
 
-    inline void Notify()
+    inline void UpdateView()
     {
         this->m_view2D->ViewUpdate();
     }
-
-    void SwitchViews(int index);
 
     void SetTo2DView();
 
@@ -36,14 +34,13 @@ public:
 
 private:
 
-    QGridLayout *m_overallLayout;
+    QVBoxLayout *m_overallLayout;
     QWidget *m_viewSelectionArea;
     QWidget *m_viewArea;
 
     QHBoxLayout *m_selectionLayout;
     QPushButton *m_viewSelect2D;
     QPushButton *m_viewSelect3D;
-    QComboBox *m_selector;
 
     QStackedLayout *m_viewLayout;
     GameView2D *m_view2D;

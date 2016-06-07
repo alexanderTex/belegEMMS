@@ -57,6 +57,33 @@ GameView2D::~GameView2D()
     delete(m_scenes);
 }
 
+void GameView2D::ViewUpdate()
+{
+   for(int i = 0; i < m_data->GetField()->GetFieldSize(); i++)
+    {
+        for(int j = 0; j < m_data->GetField()->GetFieldSize(); j++)
+        {
+            for(int k = 0; k < m_data->GetField()->GetFieldSize(); k++)
+            {
+                if(m_data->GetField()->GetSlot(k,j,i)->Occupation == PlayingField::Blue)
+                {
+                    this->m_sceneItems->at(i)->at(j)->at(k)->SetColor(Qt::cyan);
+                }
+                else if(m_data->GetField()->GetSlot(k,j,i)->Occupation == PlayingField::Red)
+                {
+                    this->m_sceneItems->at(i)->at(j)->at(k)->SetColor(Qt::red);
+                }
+                else
+                {
+                    this->m_sceneItems->at(i)->at(j)->at(k)->SetColor(Qt::white);
+                }
+                this->m_sceneItems->at(i)->at(j)->at(k)->update();
+            }
+        }
+        //this->m_scenes->at(i)->update();
+    }
+}
+
 QGraphicsScene *CreateGrid(int rectCount, float rectSize, vector< vector <GraphicsSlot2D * > *> * sceneView)
 {
     QGraphicsScene *scene = new QGraphicsScene();

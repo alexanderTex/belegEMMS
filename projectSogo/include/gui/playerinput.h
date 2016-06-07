@@ -20,10 +20,17 @@ class PlayerInput : public QWidget
 public:
     explicit PlayerInput(GameData *data, QWidget *parent = 0);
 
+    virtual ~PlayerInput();
+signals:
+    void InputMade();
+
+    void PlayerWon();
+
 private:
-    //----- Input Controls
-    QWidget *m_inputControls;
-    QGridLayout *m_inputLayout;
+    QVBoxLayout *m_inputLayout;
+
+    QWidget *m_inputFields;
+    QHBoxLayout *m_inputFieldLayout;
 
     QWidget *XspinBoxField;
     QHBoxLayout *xinputLayout;

@@ -6,7 +6,6 @@
 
 #include <QWidget>
 
-#include <QGridLayout>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 
@@ -15,14 +14,16 @@
 #include "Gamevisualizer.h"
 #include "Gameinputarea.h"
 
+#include "GameManagerThread.h"
+
 using namespace std;
 
-class GameView : public QWidget
+class GameView : public QWidget, public Subject
 {
     Q_OBJECT
 public:
     explicit GameView(GameData *data, QWidget *parent = 0);
-    ~GameView();
+    virtual ~GameView();
 
     inline GameVisualizer *GetVisualizer() const
     {
@@ -34,8 +35,14 @@ public:
         return m_data;
     }
 
+    void EndGame();
+
+
+signals:
+    void GameEnded(GameData data);
+
 private:
-    QGridLayout *m_mainLayout;
+    QVBoxLayout *m_mainLayout;
 
     GameVisualizer *m_gameVis;
 
@@ -43,9 +50,7 @@ private:
 
     GameData *m_data;
 
-signals:
-
-public slots:
+    AIGameLoop *gameLoop;
 
 
 };

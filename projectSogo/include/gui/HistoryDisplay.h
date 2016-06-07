@@ -5,22 +5,27 @@
 #include <QLabel>
 #include <QVBoxLayout>
 #include <QTextEdit>
+#include "../IObserver.h"
+#include "GameData.h"
 
 class HistoryDisplay : public QWidget
 {
     Q_OBJECT
 public:
-    explicit HistoryDisplay(QWidget *parent = 0);
+    explicit HistoryDisplay(const GameData *data, QWidget *parent = 0);
 
-    inline void WriteToDisplay(std::string entry)
-    {
-        m_display->append(QString(entry.c_str()));
-    }
+    virtual ~HistoryDisplay();
+
+    void UpdateHistory();
+
+    void DisplayText(std::string entry);
 
 private:
     QVBoxLayout *m_layout;
     QLabel *m_label;
     QTextEdit *m_display;
+
+    const GameData *m_data;
 };
 
 #endif // HISTORYDISPLAY_H

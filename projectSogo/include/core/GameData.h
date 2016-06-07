@@ -12,7 +12,7 @@
 #include "HistorySave.h"
 
 
-class GameData : public Subject
+class GameData
 {
 public:
     enum GameDataException
@@ -21,12 +21,25 @@ public:
     };
 
     GameData(PlayingField *field, Player *p1, Player *p2, Player *startingPlayer);
+
+    GameData(const GameData *src);
+
     virtual ~GameData();
 
 
     inline const PlayingField *GetField() const
     {
         return m_field;
+    }
+
+    inline Player *GetPlayer1() const
+    {
+        return m_player1;
+    }
+
+    inline Player *GetPlayer2() const
+    {
+        return m_player2;
     }
 
     inline const Player *GetCurrentPlayer() const
@@ -55,13 +68,23 @@ public:
         }
     }
 
-    inline void SwitchPlayer()
+    inline const HistorySave *GetHistory() const
     {
-        m_currentPlayer = m_currentPlayer == m_player1 ? m_player2 : m_player1;
-        this->NotifyAllObserver();
+        return m_history;
     }
 
-    void MakeMove(Vector3 pos) throw(PlayingField::FieldExeptions, std::out_of_range);
+    inline void SwitchPlayer()
+    {
+        m_currentPlayer = m_currentPlayer == m_player1 ? m_player2 : m_player1;        
+    }
+
+    /**
+     * @brief Tries to Occupy the given position , adds the move to the history, checks if the player won ( return true if won),
+     * switches currentplayer, and sends out event that a move is done
+     * @param pos
+     * @return true if the player just won the game
+     */
+    bool MakeMove(Vector3 pos) throw(PlayingField::FieldExeptions, std::out_of_range);
 
 
 private:

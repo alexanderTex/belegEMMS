@@ -24,6 +24,8 @@ struct Vector3
     */
     Vector3(int x, int y ,int z);
 
+    Vector3(const Vector3 *src);
+
     int X;
     int Y;
     int Z;

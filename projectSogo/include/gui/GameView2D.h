@@ -37,32 +37,7 @@ class GameView2D : public QWidget
             return m_sceneItems->at(vec.X)->at(vec.Y)->at(vec.Z);
         }
 
-        inline void ViewUpdate()
-        {
-           for(int i = 0; i < m_data->GetField()->GetFieldSize(); i++)
-            {
-                for(int j = 0; j < m_data->GetField()->GetFieldSize(); j++)
-                {
-                    for(int k = 0; k < m_data->GetField()->GetFieldSize(); k++)
-                    {
-                        if(m_data->GetField()->GetSlot(k,j,i)->Occupation == PlayingField::Blue)
-                        {
-                            this->m_sceneItems->at(i)->at(j)->at(k)->SetColor(Qt::cyan);
-                        }
-                        else if(m_data->GetField()->GetSlot(k,j,i)->Occupation == PlayingField::Red)
-                        {
-                            this->m_sceneItems->at(i)->at(j)->at(k)->SetColor(Qt::red);
-                        }
-                        else
-                        {
-                            this->m_sceneItems->at(i)->at(j)->at(k)->SetColor(Qt::white);
-                        }
-                        this->m_sceneItems->at(i)->at(j)->at(k)->update();
-                    }
-                }
-                //this->m_scenes->at(i)->update();
-            }
-        }
+        void ViewUpdate();
 
     protected:
 private:

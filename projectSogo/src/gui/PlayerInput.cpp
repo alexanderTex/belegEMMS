@@ -6,43 +6,64 @@ PlayerInput::PlayerInput(GameData *data, QWidget *parent)
     this->m_data = data;
 
 
+    this->m_inputLayout = new QVBoxLayout((this));
 
-    m_inputControls = new QWidget(this);
 
-    this->m_inputLayout = new QGridLayout(m_inputControls);
+    this->m_inputFields = new QWidget(this);
+    this->m_inputFieldLayout = new QHBoxLayout(this->m_inputFields);
+    this->m_inputFieldLayout->setContentsMargins(-1, 0, -1, 0);
 
     //X Input
-    XspinBoxField = new QWidget(this);
-    xinputLayout = new QHBoxLayout(XspinBoxField);
-    XspinBoxField->setLayout(xinputLayout);
+    this->XspinBoxField = new QWidget(m_inputFields);
+    this->m_inputFieldLayout->addWidget(this->XspinBoxField);
 
-    xInputLabel = new QLabel("X-Input : ");
-    xinputLayout->addWidget(xInputLabel);
 
-    this->m_xInput = new QSpinBox(XspinBoxField);
-    xinputLayout->addWidget(this->m_xInput);
-    this->m_xInput->setRange(1, m_data->GetField()->GetFieldSize());
+    this->xinputLayout = new QHBoxLayout(this->XspinBoxField);
+    this->xinputLayout->setContentsMargins(1, 0, 1, 0);
+
+    this->xInputLabel = new QLabel("X-Input : ");
+    this->xinputLayout->addWidget(this->xInputLabel);
+
+    this->m_xInput = new QSpinBox(this->XspinBoxField);
+    this->xinputLayout->addWidget(this->m_xInput);
+    this->m_xInput->setRange(1, this->m_data->GetField()->GetFieldSize());
 
 
     //Y Input
-    YspinBoxField = new QWidget(this);
-    yInputLayout = new QHBoxLayout(YspinBoxField);
-    YspinBoxField->setLayout(yInputLayout);
+    this->YspinBoxField = new QWidget(m_inputFields);
+    this->m_inputFieldLayout->addWidget(this->YspinBoxField);
 
-    yInputLabel = new QLabel("Y-Input : ");
-    yInputLayout->addWidget(yInputLabel);
 
-    this->m_yInput = new QSpinBox(YspinBoxField);
-    yInputLayout->addWidget(this->m_yInput);
-    this->m_yInput->setRange(1, m_data->GetField()->GetFieldSize());
+    this->yInputLayout = new QHBoxLayout(this->YspinBoxField);
+
+    this->yInputLabel = new QLabel("Y-Input : ");
+    this->yInputLayout->addWidget(this->yInputLabel);
+
+    this->m_yInput = new QSpinBox(this->YspinBoxField);
+    this->yInputLayout->addWidget(this->m_yInput);
+    this->m_yInput->setRange(1, this->m_data->GetField()->GetFieldSize());
+
+
 
     // Input Confirm Button
     this->m_inputConfirm = new QPushButton("Confirm", this);
     QObject::connect(this->m_inputConfirm, &QPushButton::clicked, this, &PlayerInput::ApplyInputs);
 
-    m_inputLayout->addWidget(XspinBoxField, 0, 0);
-    m_inputLayout->addWidget(YspinBoxField, 0, 1);
-    m_inputLayout->addWidget(this->m_inputConfirm, 1, 0, 1, 2);
+    this->m_inputLayout->addWidget(this->m_inputFields);
+    this->m_inputLayout->addWidget(this->m_inputConfirm);
+
+}
+
+PlayerInput::~PlayerInput()
+{
+    Logger::GetLoggerIntance()->LogInfo("PlayerInput Destructor");
+
+    delete(m_inputLayout);
+    Logger::GetLoggerIntance()->LogInfo("m_inputLayout destroyed");
+
+    delete(m_inputFieldLayout);
+    Logger::GetLoggerIntance()->LogInfo("m_inputFields destroyed");
+
 }
 
 void PlayerInput::ApplyInputs()
@@ -53,7 +74,15 @@ void PlayerInput::ApplyInputs()
         {
             Vector3 input(this->m_xInput->value() - 1, this->m_yInput->value() - 1, GetAvailablePosition(this->m_xInput->value()-1, this->m_yInput->value() - 1, this->m_data->GetField()));
 
-            this->m_data->MakeMove(input);
+            if(this->m_data->MakeMove(input))
+            {
+                InputMade();
+                emit PlayerWon();
+            }
+            else
+            {
+                InputMade();
+            }
         }
         catch(PlayingField::FieldExeptions)
         {

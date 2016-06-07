@@ -4,6 +4,7 @@
 #include <vector>
 #include "Vector3.h"
 #include "Player.h"
+#include "../Subject.h"
 
 class HistorySave
 {
@@ -11,11 +12,16 @@ class HistorySave
 
     struct Move
     {
-        Move(Vector3 pos, Player player)
+        Move(Vector3 *pos, Player *player)
         {
-            this->position = &pos;
-            this->player = &player;
+            this->position = pos;
+            this->player = player;
         }
+
+        Move(const Move* src);
+
+        ~Move();
+
 
         Vector3 *position;
         Player *player;
@@ -24,17 +30,23 @@ class HistorySave
 public:
 
     HistorySave();
+    HistorySave(const HistorySave *src);
     ~HistorySave();
 
     void AddMove(Vector3 pos, Player player);
     void RevertLast();
 
-    inline const Move *GetMove(int number) throw(out_of_range)
+    inline int GetMoveCount() const
+    {
+        return this->m_pastMoves->size();
+    }
+
+    inline const Move *GetMove(int number) const throw(out_of_range)
     {
         return m_pastMoves->at(number);
     }
 
-    inline const Move *GetLastMove() throw(out_of_range)
+    inline const Move *GetLastMove() const throw(out_of_range)
     {
         return m_pastMoves->at(m_pastMoves->size() - 1);
     }

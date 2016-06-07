@@ -3,6 +3,7 @@
 
 #include <vector>
 #include "IObserver.h"
+#include "Logger.h"
 
 /**
  * @brief The Subject class
@@ -15,7 +16,7 @@ class Subject
             m_observer = new vector<IObserver*>();
         }
 
-        ~Subject()
+        virtual ~Subject()
         {
             for(int i= 0; i < this->m_observer->size(); i++)
             {
