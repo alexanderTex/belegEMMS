@@ -9,25 +9,33 @@
 #include "../include/core/PlayingField.h"
 #include "../include/core/GameData.h"
 #include "Player.h"
-#include <thread>
-#include "GameManagerThread.h"
 
-class MainWindow : public QMainWindow
+class MainWindow : public QMainWindow, public IObserver
 {
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = 0);
-    ~MainWindow();
+    explicit MainWindow(QWidget *parent = 0);
+    virtual ~MainWindow();
 
     inline GameView *GetGameView() const
     {
         return m_gameView;
     }
 
+    inline void Notify()
+    {
+        ShowWinScreen(*(this->m_gameView->GetGameData()));
+    }
+
+    void ShowWinScreen(GameData data);
+
 private:
+    QStackedLayout *m_layout;
+
     GameView *m_gameView;
-    std::thread *gameLoop;
+    QLabel *WinLabel;
+
 };
 
 #endif // MAINWINDOW_H

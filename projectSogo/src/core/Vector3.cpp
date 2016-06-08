@@ -14,6 +14,13 @@ Vector3::Vector3(int x, int y, int z)
     this->Z = z;
 }
 
+Vector3::Vector3(const Vector3 *src)
+{
+    this->X = src->X;
+    this->Y = src->Y;
+    this->Z = src->Z;
+}
+
 bool Vector3::operator==(const Vector3 &v2)
 {
     return this->X == v2.X && this->Y == v2.Y && this->Z == v2.Z;

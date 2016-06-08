@@ -2,17 +2,10 @@
 #define GAMEINPUTAREA_H
 
 #include <QWidget>
+#include <QStackedLayout>
 
-#include <QGridLayout>
-#include <QVBoxLayout>
-#include <QHBoxLayout>
-
-#include <QSpinBox>
-#include <QPushButton>
-#include <QLabel>
-
-#include "../include/core/GameData.h"
-#include "../include/core/Vector2.h"
+#include "PlayerInput.h"
+#include "HistoryDisplay.h"
 
 
 class GameInputArea : public QWidget
@@ -21,16 +14,48 @@ class GameInputArea : public QWidget
 public:
     explicit GameInputArea(GameData *data, QWidget *parent = 0);
 
+    virtual ~GameInputArea();
+
+    inline void SelectHistoryView()
+    {
+        this->m_inputAreaLayout->setCurrentWidget(this->m_historyDisplay);
+    }
+
+
+    inline void SelectInputView()
+    {
+        this->m_inputAreaLayout->setCurrentWidget(this->m_playerInput);
+    }
+
+    inline HistoryDisplay *GetHistoryDisplay() const
+    {
+        return this->m_historyDisplay;
+    }
+
+    inline PlayerInput *GetPlayerInputControls() const
+    {
+        return this->m_playerInput;
+    }
+
 private:
-    QSpinBox *m_xInput;
-    QSpinBox *m_yInput;
-    QPushButton *m_inputConfirm;
 
-    GameData *m_data;
+    QVBoxLayout *m_main;
 
-    void ApplyInputs();
+    QWidget *m_viewSelectionArea;
+
+    QHBoxLayout *m_selectionLayout;
+    QPushButton *m_historyView;
+    QPushButton *m_inputView;
+
+    QWidget *m_inputInfoDisplayArea;
+
+    QStackedLayout *m_inputAreaLayout;
+
+    HistoryDisplay *m_historyDisplay;
+
+    PlayerInput *m_playerInput;
+
+
 };
-
-void InputConfirmed();
 
 #endif // GAMEINPUTAREA_H

@@ -8,5 +8,5 @@ Logger::Logger()
 }
 Logger::~Logger()
 {
-
+    std::cout << "Logger destroyed" << std::endl;
 }

@@ -1,50 +1,44 @@
-#include "Gameinputarea.h"
+#include "GameInputArea.h"
 
 GameInputArea::GameInputArea(GameData *data, QWidget *parent)
-    : QWidget(parent)
+    :QWidget(parent)
 {
-    this->m_data = data;
 
-    QGridLayout *inputLayout = new QGridLayout(this);
+    this->m_main = new QVBoxLayout(this);
 
-    //X Input
-    QWidget *XspinBoxField = new QWidget(this);
-    QHBoxLayout *xinputLayout = new QHBoxLayout(XspinBoxField);
-    XspinBoxField->setLayout(xinputLayout);
+    this->m_viewSelectionArea = new QWidget(this);
+    this->m_main->addWidget(this->m_viewSelectionArea);
 
-    QLabel *xInputLabel = new QLabel("X-Input : ");
-    xinputLayout->addWidget(xInputLabel);
+    this->m_selectionLayout = new QHBoxLayout(m_viewSelectionArea);
 
-    this->m_xInput = new QSpinBox(XspinBoxField);
-    xinputLayout->addWidget(this->m_xInput);
-    this->m_xInput->setRange(1, m_data->GetField()->GetFieldSize());
+    this->m_historyView = new QPushButton("History", m_viewSelectionArea);
+    QObject::connect(this->m_historyView, &QPushButton::clicked, this, &GameInputArea::SelectHistoryView);
+    this->m_selectionLayout->addWidget(this->m_historyView);
 
-    //Y Input
-    QWidget *YspinBoxField = new QWidget(this);
-    QHBoxLayout *yInputLayout = new QHBoxLayout(YspinBoxField);
-    YspinBoxField->setLayout(yInputLayout);
+    this->m_inputView = new QPushButton("Input", m_viewSelectionArea);
+    QObject::connect(this->m_inputView, &QPushButton::clicked, this, &GameInputArea::SelectInputView);
+    this->m_selectionLayout->addWidget(this->m_inputView);
 
-    QLabel *yInputLabel = new QLabel("Y-Input : ");
-    yInputLayout->addWidget(yInputLabel);
 
-    this->m_yInput = new QSpinBox(YspinBoxField);
-    yInputLayout->addWidget(this->m_yInput);
-    this->m_yInput->setRange(1, m_data->GetField()->GetFieldSize());
+    this->m_inputInfoDisplayArea = new QWidget(this);
+    this->m_main->addWidget(this->m_inputInfoDisplayArea);
 
-    // Input Confirm Button
-    this->m_inputConfirm = new QPushButton("Confirm", this);
-    QObject::connect(this->m_inputConfirm, &QPushButton::clicked, this, &GameInputArea::ApplyInputs);
+    this->m_inputAreaLayout = new QStackedLayout(this->m_inputInfoDisplayArea);
 
-    inputLayout->addWidget(XspinBoxField, 0, 0);
-    inputLayout->addWidget(YspinBoxField, 0, 1);
-    inputLayout->addWidget(this->m_inputConfirm, 1, 0, 1, 2);
+    this->m_playerInput = new PlayerInput(data, m_inputInfoDisplayArea);
+    this->m_inputAreaLayout->addWidget(this->m_playerInput);
+
+    this->m_historyDisplay = new HistoryDisplay(data, m_inputInfoDisplayArea);
+    this->m_inputAreaLayout->addWidget(this->m_historyDisplay);
+
+
 }
 
-void GameInputArea::ApplyInputs()
+GameInputArea::~GameInputArea()
 {
-    if(this->m_data->GetCurrentPlayer()->GetType() == Player::Human)
-    {
-        Vector3 input(this->m_xInput->value() - 1, this->m_yInput->value() - 1, GetAvailablePosition(this->m_xInput->value()-1, this->m_yInput->value() - 1, this->m_data->GetField()));
-        this->m_data->MakeMove(input);
-    }
+    Logger::GetLoggerIntance()->LogInfo("GameInputArea Destructor");
+
+    delete(m_main);
+    Logger::GetLoggerIntance()->LogInfo("m_main deleted");
 }
+
