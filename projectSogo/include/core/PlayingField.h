@@ -148,7 +148,7 @@ class PlayingField
 */
 std::vector<Vector3> *GetAvailablePositions(const PlayingField *field) throw(out_of_range);
 
-int GetAvailablePosition(int x, int y, const PlayingField *field) throw(out_of_range);
+int GetAvailablePosition(int x, int y, const PlayingField *field) throw(out_of_range, PlayingField::FieldExeptions);
 
 /**
 * Returns all none occupied slots

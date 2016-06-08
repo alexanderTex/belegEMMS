@@ -12,7 +12,7 @@
 #include "../include/core/GameData.h"
 #include "../include/core/Vector3.h"
 #include "Gamevisualizer.h"
-#include "Gameinputarea.h"
+#include "GameInputArea.h"
 
 #include "GameManagerThread.h"
 
