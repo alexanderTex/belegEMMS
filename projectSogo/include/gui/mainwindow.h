@@ -10,7 +10,7 @@
 #include "../include/core/GameData.h"
 #include "Player.h"
 
-class MainWindow : public QMainWindow, public IObserver
+class MainWindow : public QMainWindow
 {
     Q_OBJECT
 

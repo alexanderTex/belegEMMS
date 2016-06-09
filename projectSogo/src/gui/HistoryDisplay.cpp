@@ -37,8 +37,6 @@ void HistoryDisplay::UpdateHistory()
     }
 
     this->DisplayText(s.str());
-
-    Logger::GetLoggerIntance()->LogInfo(s.str());
 }
 
 void HistoryDisplay::DisplayText(std::string entry)

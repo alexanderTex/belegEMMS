@@ -11,6 +11,7 @@ class AIGameLoop : public QThread
     Q_OBJECT
 public:
     AIGameLoop(GameData *data);
+    ~AIGameLoop();
 
     virtual void run();
 

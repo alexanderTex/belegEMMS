@@ -27,20 +27,21 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
-    Logger::GetLoggerIntance()->LogInfo("Main Window Destructor");
     delete(m_gameView);
-    Logger::GetLoggerIntance()->LogInfo("m_gameView deleted");
     delete(WinLabel);
-    Logger::GetLoggerIntance()->LogInfo("WinLabel deleted");
 }
 
 
 void MainWindow::ShowWinScreen(GameData data)
 {
-    //WinLabel->setText(QString(data.GetCurrentPlayer()->GetName().c_str()));
-
     stringstream s;
-    s << "Show Win Screen; Winner : " << data.GetCurrentPlayer()->GetName() << endl;
+
+    s << "The winner is : " << data.GetCurrentPlayer()->GetName().c_str() << "! YEAH!";
+
+    WinLabel->setText(QString(s.str().c_str()));
+
+    m_layout->setCurrentWidget(WinLabel);
+
     Logger::GetLoggerIntance()->LogInfo(s.str());
 }
 

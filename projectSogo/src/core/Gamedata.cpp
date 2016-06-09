@@ -23,6 +23,9 @@ bool GameData::MakeMove(Vector3 pos) throw(PlayingField::FieldExeptions, std::ou
     this->m_field->OccupySlot(pos.X, pos.Y, pos.Z, this->m_currentPlayer->GetColor());
 
     this->m_history->AddMove(pos, *(this->GetCurrentPlayer()));
+
+
+
     if(CheckForWin(this->m_field, this->m_currentPlayer->GetColor()))
     {
         //end game event

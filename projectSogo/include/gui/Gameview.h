@@ -18,7 +18,7 @@
 
 using namespace std;
 
-class GameView : public QWidget, public Subject
+class GameView : public QWidget
 {
     Q_OBJECT
 public:
@@ -37,16 +37,25 @@ public:
 
     void EndGame();
 
+    void SwitchToEndGameButton();
+
 
 signals:
-    void GameEnded(GameData data);
+    void GameEnded(GameData &data);
+    void GameQuit(GameData &data);
+    void PauseMenu();
+
 
 private:
     QVBoxLayout *m_mainLayout;
 
     GameVisualizer *m_gameVis;
 
+    QStackedLayout *bottomViewLayout;
+
     GameInputArea *m_inputArea;
+
+    QPushButton *QuitButton;
 
     GameData *m_data;
 

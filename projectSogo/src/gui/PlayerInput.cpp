@@ -56,13 +56,8 @@ PlayerInput::PlayerInput(GameData *data, QWidget *parent)
 
 PlayerInput::~PlayerInput()
 {
-    Logger::GetLoggerIntance()->LogInfo("PlayerInput Destructor");
-
     delete(m_inputLayout);
-    Logger::GetLoggerIntance()->LogInfo("m_inputLayout destroyed");
-
     delete(m_inputFieldLayout);
-    Logger::GetLoggerIntance()->LogInfo("m_inputFields destroyed");
 
 }
 

@@ -7,12 +7,21 @@ GameView::GameView(GameData *data, QWidget *parent)
 
     this->m_data = data;
 
-    Logger::GetLoggerIntance()->LogInfo("Stuff");
 
+    QWidget *bottomView = new QWidget();
+    m_mainLayout->addWidget(bottomView);
+
+    this->bottomViewLayout = new QStackedLayout(bottomView);
 
     this->m_inputArea = new GameInputArea(this->m_data, this);
-    m_mainLayout->addWidget(this->m_inputArea);
 
+    bottomViewLayout->addWidget(m_inputArea);
+
+    QuitButton = new QPushButton("End", this);
+
+    QObject::connect(this->QuitButton, &QPushButton::clicked, this, &GameView::SwitchToEndGameButton);
+
+    bottomViewLayout->addWidget(QuitButton);
 
     this->m_gameVis = new GameVisualizer(this->m_data, this);
     m_mainLayout->addWidget(this->m_gameVis);
@@ -28,10 +37,8 @@ GameView::GameView(GameData *data, QWidget *parent)
 
         QObject::connect(this->gameLoop, &AIGameLoop::AITurnFinished, this->m_gameVis, &GameVisualizer::UpdateView);
         this->gameLoop->start();
+        QObject::connect(this->gameLoop, &AIGameLoop::finished, this->gameLoop, &AIGameLoop::deleteLater);
     }
-
-    Logger::GetLoggerIntance()->LogInfo("Stuff2");
-
 
 
     QObject::connect(this->m_inputArea->GetPlayerInputControls(), &PlayerInput::PlayerWon, this, &GameView::EndGame);
@@ -44,42 +51,28 @@ GameView::GameView(GameData *data, QWidget *parent)
 
 GameView::~GameView()
 {
-    Logger::GetLoggerIntance()->LogInfo("GameView Destructor");
-
     delete(this->m_mainLayout);
-    Logger::GetLoggerIntance()->LogInfo("m_mainLayout deleted");
-
-    Logger::GetLoggerIntance()->LogInfo("Stopping gameLoop");
-    if(this->gameLoop != NULL)
-    {
-        this->gameLoop->Stop();
-        Logger::GetLoggerIntance()->LogInfo("gameLoop stopped");
-    }
-    else
-    {
-        Logger::GetLoggerIntance()->LogInfo("gameLoop already null");
-    }
-
-    Logger::GetLoggerIntance()->LogInfo("GameView Destructor");
-
-    Logger::GetLoggerIntance()->LogInfo("Deleting m_data");
     delete(this->m_data);
-    Logger::GetLoggerIntance()->LogInfo("m_data deleted");
 }
+
+void GameView::SwitchToEndGameButton()
+{
+    this->GameEnded(*(this->m_data));
+}
+
 
 void GameView::EndGame()
 {
 
     if(this->gameLoop != NULL)
     {
-        Logger::GetLoggerIntance()->LogInfo("Before gameloop stop");
         this->gameLoop->Stop();
-        Logger::GetLoggerIntance()->LogInfo("After gameloop stop");
+    }
+    else
+    {
+        Logger::GetLoggerIntance()->LogInfo("gameLoop already null");
     }
 
-    Logger::GetLoggerIntance()->LogInfo("Before GameEnded Event");
-    Logger::GetLoggerIntance()->LogInfo(this->m_data->GetPlayer1()->GetName());
-    NotifyAllObserver();
-    std::cout << "FUCK THIS SHIT!" << std::endl;
-    Logger::GetLoggerIntance()->LogInfo("After GameEnded Event");
+    bottomViewLayout->setCurrentWidget(this->QuitButton);
+    //emit GameEnded(*(this->m_data));
 }

@@ -36,9 +36,6 @@ GameInputArea::GameInputArea(GameData *data, QWidget *parent)
 
 GameInputArea::~GameInputArea()
 {
-    Logger::GetLoggerIntance()->LogInfo("GameInputArea Destructor");
-
     delete(m_main);
-    Logger::GetLoggerIntance()->LogInfo("m_main deleted");
 }
 

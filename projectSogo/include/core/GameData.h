@@ -22,6 +22,8 @@ public:
 
     GameData(PlayingField *field, Player *p1, Player *p2, Player *startingPlayer);
 
+    // constructor with historysave*
+
     GameData(const GameData *src);
 
     virtual ~GameData();

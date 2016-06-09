@@ -10,6 +10,11 @@ AIGameLoop::AIGameLoop( GameData *data)
     m_stop = false;
 }
 
+AIGameLoop::~AIGameLoop()
+{
+    Logger::GetLoggerIntance()->LogInfo("GameLoop deleted");
+}
+
 void AIGameLoop::run()
 {
     this->AILoop();
@@ -109,10 +114,6 @@ void AIGameLoop::AILoop()
                 }
             }
             */
-
-            stringstream s;
-            s << "player 1 Making move" << endl;
-            Logger::GetLoggerIntance()->LogInfo(s.str());
 
             try
             {
@@ -252,19 +253,19 @@ void AIGameLoop::AILoop()
 
             aiPlayer2->hasMove = false;
 
-            if(this->m_stop)
-            {
-                Logger::GetLoggerIntance()->LogInfo("Thread stopped");
-            }
-            else
-            {
-                Logger::GetLoggerIntance()->LogInfo("Thread running...");
-            }
 
             //delete(futureMoves);
             //delete(possibleOpponentMoves);
 
         }
 
+        if(this->m_stop)
+        {
+            Logger::GetLoggerIntance()->LogInfo("Thread stopped");
+        }
+        else
+        {
+            Logger::GetLoggerIntance()->LogInfo("Thread running...");
+        }
     }    
 }
