@@ -5,15 +5,20 @@ GameView::GameView(GameData *data, QWidget *parent)
 {
     m_mainLayout = new QVBoxLayout(this);
 
-    this->m_data = data;
-
-
     QWidget *bottomView = new QWidget();
     m_mainLayout->addWidget(bottomView);
 
     this->bottomViewLayout = new QStackedLayout(bottomView);
 
-    this->m_inputArea = new GameInputArea(this->m_data, this);
+
+
+    this->m_data = data;
+
+    this->m_gameLoop = new GameManager(this->m_data);
+
+
+
+    this->m_inputArea = new GameInputArea(this->m_gameLoop, this);
 
     bottomViewLayout->addWidget(m_inputArea);
 
@@ -26,26 +31,26 @@ GameView::GameView(GameData *data, QWidget *parent)
     this->m_gameVis = new GameVisualizer(this->m_data, this);
     m_mainLayout->addWidget(this->m_gameVis);
 
-    this->gameLoop = NULL;
 
-    if(data->GetPlayer1()->GetType() == Player::Ai || data->GetPlayer2()->GetType() == Player::Ai)
-    {
-        this->gameLoop = new AIGameLoop(this->m_data);
-        QObject::connect(this->gameLoop, &AIGameLoop::AIWon, this, &GameView::EndGame);
+    QObject::connect(this->m_gameLoop, &GameManager::AIWon, this, &GameView::EndGame);
 
-        QObject::connect(this->gameLoop, &AIGameLoop::AITurnFinished, this->m_inputArea->GetHistoryDisplay(), &HistoryDisplay::UpdateHistory);
+    QObject::connect(this->m_gameLoop, &GameManager::AITurnFinished, this->m_inputArea->GetHistoryDisplay(), &HistoryDisplay::UpdateHistory);
 
-        QObject::connect(this->gameLoop, &AIGameLoop::AITurnFinished, this->m_gameVis, &GameVisualizer::UpdateView);
-        this->gameLoop->start();
-        QObject::connect(this->gameLoop, &AIGameLoop::finished, this->gameLoop, &AIGameLoop::deleteLater);
-    }
+    QObject::connect(this->m_gameLoop, &GameManager::AITurnFinished, this->m_gameVis, &GameVisualizer::UpdateView);
+
+    QObject::connect(this->m_gameLoop, &GameManager::finished, this->m_gameLoop, &GameManager::deleteLater);
+
+    this->m_gameLoop->start();
 
 
-    QObject::connect(this->m_inputArea->GetPlayerInputControls(), &PlayerInput::PlayerWon, this, &GameView::EndGame);
 
-    QObject::connect(this->m_inputArea->GetPlayerInputControls(), &PlayerInput::InputMade, this->m_inputArea->GetHistoryDisplay(), &HistoryDisplay::UpdateHistory);
+    QObject::connect(this->m_gameLoop, &GameManager::PlayerWon, this, &GameView::EndGame);
 
-    QObject::connect(this->m_inputArea->GetPlayerInputControls(), &PlayerInput::InputMade, this->m_gameVis, &GameVisualizer::UpdateView);
+    QObject::connect(this->m_gameLoop, &GameManager::InputMade, this->m_inputArea->GetHistoryDisplay(), &HistoryDisplay::UpdateHistory);
+
+    QObject::connect(this->m_gameLoop, &GameManager::InputMade, this->m_gameVis, &GameVisualizer::UpdateView);
+
+    QObject::connect(this->m_inputArea->GetPlayerInputControls(), &PlayerInput::InputConfirmed, this->m_gameLoop, &GameManager::InputConfirmationDetected);
 
 }
 
@@ -64,9 +69,9 @@ void GameView::SwitchToEndGameButton()
 void GameView::EndGame()
 {
 
-    if(this->gameLoop != NULL)
+    if(this->m_gameLoop != NULL)
     {
-        this->gameLoop->Stop();
+        this->m_gameLoop->Stop();
     }
     else
     {

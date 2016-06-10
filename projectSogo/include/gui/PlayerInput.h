@@ -11,20 +11,19 @@
 #include <QPushButton>
 #include <QLabel>
 
-#include "GameData.h"
+#include "GameManagerThread.h"
 #include "Vector2.h"
 
 class PlayerInput : public QWidget
 {
     Q_OBJECT
 public:
-    explicit PlayerInput(GameData *data, QWidget *parent = 0);
+    explicit PlayerInput(GameManager *gameManager, QWidget *parent = 0);
 
     virtual ~PlayerInput();
-signals:
-    void InputMade();
 
-    void PlayerWon();
+signals:
+    void InputConfirmed(Vector2 pos);
 
 private:
     QVBoxLayout *m_inputLayout;
@@ -46,7 +45,7 @@ private:
     //--------
 
 
-    GameData *m_data;
+    GameManager *m_gameManager;
 
     void ApplyInputs();
 };

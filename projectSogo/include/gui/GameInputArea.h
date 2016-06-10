@@ -12,7 +12,7 @@ class GameInputArea : public QWidget
 {
     Q_OBJECT
 public:
-    explicit GameInputArea(GameData *data, QWidget *parent = 0);
+    explicit GameInputArea(GameManager *gameManager, QWidget *parent = 0);
 
     virtual ~GameInputArea();
 

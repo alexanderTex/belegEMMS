@@ -1,6 +1,6 @@
 #include "GameInputArea.h"
 
-GameInputArea::GameInputArea(GameData *data, QWidget *parent)
+GameInputArea::GameInputArea(GameManager *gameManager, QWidget *parent)
     :QWidget(parent)
 {
 
@@ -25,10 +25,10 @@ GameInputArea::GameInputArea(GameData *data, QWidget *parent)
 
     this->m_inputAreaLayout = new QStackedLayout(this->m_inputInfoDisplayArea);
 
-    this->m_playerInput = new PlayerInput(data, m_inputInfoDisplayArea);
+    this->m_playerInput = new PlayerInput(gameManager, m_inputInfoDisplayArea);
     this->m_inputAreaLayout->addWidget(this->m_playerInput);
 
-    this->m_historyDisplay = new HistoryDisplay(data, m_inputInfoDisplayArea);
+    this->m_historyDisplay = new HistoryDisplay(gameManager->GetGameData(), m_inputInfoDisplayArea);
     this->m_inputAreaLayout->addWidget(this->m_historyDisplay);
 
 

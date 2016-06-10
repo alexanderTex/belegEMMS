@@ -59,7 +59,7 @@ private:
 
     GameData *m_data;
 
-    AIGameLoop *gameLoop;
+    GameManager *m_gameLoop;
 
 
 };

@@ -1,9 +1,9 @@
 #include "PlayerInput.h"
 
-PlayerInput::PlayerInput(GameData *data, QWidget *parent)
+PlayerInput::PlayerInput(GameManager *gameManager, QWidget *parent)
     : QWidget(parent)
 {
-    this->m_data = data;
+    this->m_gameManager = gameManager;
 
 
     this->m_inputLayout = new QVBoxLayout((this));
@@ -26,7 +26,7 @@ PlayerInput::PlayerInput(GameData *data, QWidget *parent)
 
     this->m_xInput = new QSpinBox(this->XspinBoxField);
     this->xinputLayout->addWidget(this->m_xInput);
-    this->m_xInput->setRange(1, this->m_data->GetField()->GetFieldSize());
+    this->m_xInput->setRange(1, this->m_gameManager->GetGameData()->GetField()->GetFieldSize());
 
 
     //Y Input
@@ -41,7 +41,7 @@ PlayerInput::PlayerInput(GameData *data, QWidget *parent)
 
     this->m_yInput = new QSpinBox(this->YspinBoxField);
     this->yInputLayout->addWidget(this->m_yInput);
-    this->m_yInput->setRange(1, this->m_data->GetField()->GetFieldSize());
+    this->m_yInput->setRange(1, this->m_gameManager->GetGameData()->GetField()->GetFieldSize());
 
 
 
@@ -63,29 +63,10 @@ PlayerInput::~PlayerInput()
 
 void PlayerInput::ApplyInputs()
 {
-    if(this->m_data->GetCurrentPlayer()->GetType() == Player::Human)
+    if(this->m_gameManager->GetGameData()->GetCurrentPlayer()->GetType() == Player::Human)
     {
-        try
-        {
-            Vector3 input(this->m_xInput->value() - 1, this->m_yInput->value() - 1, GetAvailablePosition(this->m_xInput->value()-1, this->m_yInput->value() - 1, this->m_data->GetField()));
+        Vector2 input(this->m_xInput->value() - 1, this->m_yInput->value() - 1);
+        emit InputConfirmed(input);
 
-            if(this->m_data->MakeMove(input))
-            {
-                InputMade();
-                emit PlayerWon();
-            }
-            else
-            {
-                InputMade();
-            }
-        }
-        catch(PlayingField::FieldExeptions)
-        {
-            Logger::GetLoggerIntance()->LogError("Input not Valid");
-        }
-        catch(std::out_of_range)
-        {
-            Logger::GetLoggerIntance()->LogError("Input Out of Range");
-        }
     }
 }

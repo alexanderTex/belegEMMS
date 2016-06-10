@@ -34,6 +34,11 @@ public:
         return m_field;
     }
 
+    inline std::vector<Player*> *GetPlayers() const
+    {
+        return new std::vector<Player*>();
+    }
+
     inline Player *GetPlayer1() const
     {
         return m_player1;
@@ -49,12 +54,12 @@ public:
         return m_currentPlayer;
     }
 
-    inline  Vector3 *const GetLastMove() const
+    inline Vector3  GetLastMove() const
     {
         return m_history->GetLastMove()->position;
     }
 
-    inline  Player *const GetOpponent(const Player *p) const throw(GameDataException)
+    inline const Player * GetOpponent(const Player *p) const throw(GameDataException)
     {
         if(p == m_player1)
         {
@@ -75,18 +80,20 @@ public:
         return m_history;
     }
 
+    inline void OccupySlot(int x, int y, int z, PlayingField::OccupationState playerColor) throw(out_of_range, PlayingField::FieldExeptions)
+    {
+        this->m_field->OccupySlot(x, y, z, playerColor);
+        Vector3 pos(x,y,z);
+        this->m_history->AddMove(pos, *(this->GetCurrentPlayer()));
+    }
+
+
     inline void SwitchPlayer()
     {
         m_currentPlayer = m_currentPlayer == m_player1 ? m_player2 : m_player1;        
     }
 
-    /**
-     * @brief Tries to Occupy the given position , adds the move to the history, checks if the player won ( return true if won),
-     * switches currentplayer, and sends out event that a move is done
-     * @param pos
-     * @return true if the player just won the game
-     */
-    bool MakeMove(Vector3 pos) throw(PlayingField::FieldExeptions, std::out_of_range);
+
 
 
 private:
