@@ -10,7 +10,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = sogoApp
 TEMPLATE = app
-
+TRANSLATIONS = sogoApp_de.ts
 
 INCLUDEPATH +=  ../include/core/ \
                 ../include/gui/ \

@@ -5,9 +5,11 @@
 
 
 #include <QWidget>
+#include <QEvent>
 
 #include <QVBoxLayout>
 #include <QHBoxLayout>
+#include <QGroupBox>
 
 #include "../include/core/GameData.h"
 #include "../include/core/Vector3.h"

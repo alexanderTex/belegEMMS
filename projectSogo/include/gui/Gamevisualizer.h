@@ -3,15 +3,14 @@
 
 #include <QWidget>
 
-#include <QStackedLayout>
-#include <QComboBox>
+#include <QTabWidget>
 
 #include "../include/core/GameData.h"
 #include "../include/gui/GameView2D.h"
 
 using namespace std;
 
-class GameVisualizer : public QWidget
+class GameVisualizer : public QTabWidget
 {
     Q_OBJECT
 public:
@@ -23,26 +22,11 @@ public:
         this->m_view2D->ViewUpdate();
     }
 
-    void SetTo2DView();
-
-    void SetTo3DView();
-
-
 
 
 
 
 private:
-
-    QVBoxLayout *m_overallLayout;
-    QWidget *m_viewSelectionArea;
-    QWidget *m_viewArea;
-
-    QHBoxLayout *m_selectionLayout;
-    QPushButton *m_viewSelect2D;
-    QPushButton *m_viewSelect3D;
-
-    QStackedLayout *m_viewLayout;
     GameView2D *m_view2D;
     QWidget *m_view3D;
 

@@ -4,7 +4,7 @@ HistoryDisplay::HistoryDisplay(const GameData *data, QWidget *parent)
     : QWidget(parent)
 {
     this->m_layout = new QVBoxLayout(this);
-    this->m_label = new QLabel("History :");
+    this->m_label = new QLabel(tr("History :"));
     this->m_display = new QTextEdit(this);
     this->m_display->setReadOnly(true);
 

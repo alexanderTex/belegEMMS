@@ -21,7 +21,7 @@ PlayerInput::PlayerInput(GameManager *gameManager, QWidget *parent)
     this->xinputLayout = new QHBoxLayout(this->XspinBoxField);
     this->xinputLayout->setContentsMargins(1, 0, 1, 0);
 
-    this->xInputLabel = new QLabel("X-Input : ");
+    this->xInputLabel = new QLabel(tr("X-Input : "));
     this->xinputLayout->addWidget(this->xInputLabel);
 
     this->m_xInput = new QSpinBox(this->XspinBoxField);
@@ -36,7 +36,7 @@ PlayerInput::PlayerInput(GameManager *gameManager, QWidget *parent)
 
     this->yInputLayout = new QHBoxLayout(this->YspinBoxField);
 
-    this->yInputLabel = new QLabel("Y-Input : ");
+    this->yInputLabel = new QLabel(tr("Y-Input : "));
     this->yInputLayout->addWidget(this->yInputLabel);
 
     this->m_yInput = new QSpinBox(this->YspinBoxField);
@@ -46,7 +46,7 @@ PlayerInput::PlayerInput(GameManager *gameManager, QWidget *parent)
 
 
     // Input Confirm Button
-    this->m_inputConfirm = new QPushButton("Confirm", this);
+    this->m_inputConfirm = new QPushButton(tr("Confirm"), this);
     QObject::connect(this->m_inputConfirm, &QPushButton::clicked, this, &PlayerInput::ApplyInputs);
 
     this->m_inputLayout->addWidget(this->m_inputFields);
