@@ -5,6 +5,10 @@
 #include <QColor>
 #include <QPainter>
 
+
+/**
+ * @brief The GraphicsSlot2D class
+ */
 class GraphicsSlot2D : public QGraphicsObject
 {
     Q_OBJECT

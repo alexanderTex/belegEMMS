@@ -10,6 +10,9 @@
 
 using namespace std;
 
+/**
+ * @brief The GameVisualizer class
+ */
 class GameVisualizer : public QTabWidget
 {
     Q_OBJECT
@@ -17,6 +20,9 @@ public:
      explicit GameVisualizer(GameData *data, QWidget *parent = 0);
      virtual ~GameVisualizer();
 
+    /**
+     * @brief UpdateView
+     */
     inline void UpdateView()
     {
         this->m_view2D->ViewUpdate();

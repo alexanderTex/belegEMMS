@@ -67,6 +67,18 @@ public:
         return this->m_data;
     }
 
+
+    inline void Start()
+    {
+        m_paused = false;
+    }
+
+
+    inline void Pause()
+    {
+        m_paused = true;
+    }
+
     /**
      * @brief Stop
      * sets the boolean to end the game logic loop
@@ -96,20 +108,27 @@ public:
 
 signals:
     /**
-     * @brief InputMade
+     * @brief TurnFinished
+     * emitted when players turn finishes
      */
     void TurnFinished();
     /**
      * @brief PlayerWon
+     * emitted when a player won
      */
     void PlayerWon();
 
 private:
     /**
      * @brief GameLoop
+     * processes the game loop with ai and player actions
      */
     void GameLoop();
 
+    /**
+     * @brief AIProcess
+     * @param ai to process
+     */
     void AIProcess(AIPlayer *ai);
 
 
@@ -121,6 +140,10 @@ private:
      * @brief m_data
      */
     GameData *m_data;
+    /**
+     * @brief m_stop
+     */
+    bool m_paused;
     /**
      * @brief m_stop
      */

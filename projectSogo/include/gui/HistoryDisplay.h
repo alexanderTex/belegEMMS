@@ -8,6 +8,9 @@
 #include "../IObserver.h"
 #include "GameData.h"
 
+/**
+ * @brief The HistoryDisplay class
+ */
 class HistoryDisplay : public QWidget
 {
     Q_OBJECT
@@ -16,8 +19,19 @@ public:
 
     virtual ~HistoryDisplay();
 
+    /**
+     * @brief UpdateHistory
+     * clears display
+     * reevaluates past moves
+     * and displays new text
+     */
     void UpdateHistory();
 
+    /**
+     * @brief DisplayText
+     * Called to change the text in the Display box
+     * @param entry
+     */
     void DisplayText(std::string entry);
 
 private:

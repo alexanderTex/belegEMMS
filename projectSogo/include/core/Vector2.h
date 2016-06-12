@@ -22,7 +22,13 @@ struct Vector2
     */
     Vector2(int x, int y);
 
+    /**
+     * @brief X x value
+     */
     int X;
+    /**
+     * @brief Y y value
+     */
     int Y;
 
     bool operator==(const Vector2 &v);

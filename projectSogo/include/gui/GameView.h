@@ -13,13 +13,16 @@
 
 #include "../include/core/GameData.h"
 #include "../include/core/Vector3.h"
-#include "Gamevisualizer.h"
+#include "GameVisualizer.h"
 #include "GameInputArea.h"
 
 #include "GameManagerThread.h"
 
 using namespace std;
 
+/**
+ * @brief The GameView class
+ */
 class GameView : public QWidget
 {
     Q_OBJECT
@@ -37,19 +40,47 @@ public:
         return m_data;
     }
 
-    void EndGame();
+    void StartGame();
 
-    void SwitchToEndGameButton();
+    void PauseGame();
+
+    /**
+     * @brief GameFinished
+     * Called if a player won
+     * to stop the gamelogic thread and
+     * show leave button
+     */
+    void GameFinished();
+
+    /**
+     * @brief EndGame
+     * called from leave button
+     * calls GameEnded
+     */
+    void EndGame();
 
 
 signals:
-    void GameEnded(GameData &data);
-    void GameQuit(GameData &data);
+    /**
+     * @brief GameEnded
+     * Called when leave button pressed to go back to menu screen
+     * @param data gamedata after game ended
+     */
+    void GameEnded(GameData *data);
+    /**
+     * @brief PauseMenu
+     */
     void PauseMenu();
 
 
 private:
+    QStackedLayout *m_layoutSwitch;
+
+    QWidget *m_pauseMenu;
+
     QVBoxLayout *m_mainLayout;
+
+    QPushButton *m_pauseMenuButton;
 
     GameVisualizer *m_gameVis;
 
@@ -60,6 +91,7 @@ private:
     QPushButton *QuitButton;
 
     GameData *m_data;
+
 
     GameManager *m_gameLoop;
 

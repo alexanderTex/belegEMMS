@@ -8,7 +8,9 @@
 #include "PlayerInput.h"
 #include "HistoryDisplay.h"
 
-
+/**
+ * @brief The GameInputArea class
+ */
 class GameInputArea : public QTabWidget
 {
     Q_OBJECT

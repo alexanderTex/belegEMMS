@@ -127,12 +127,18 @@ class PlayingField
         bool IsPositionAvailable(int x, int y, int z) const;
     protected:
     private:
-
+        /**
+         * @brief m_fieldSize
+         */
         int m_fieldSize;
 
-        // x ( horizontal ; layer 0 )
-        // y ( depth ; layer 1 )
-        // z ( vertical ; layer 2 )
+        //
+        /**
+         * @brief m_slots
+         *  x ( horizontal ; layer 0 )
+         *  y ( depth ; layer 1 )
+         *  z ( vertical ; layer 2 )
+         */
         vector<vector<vector<Slot*> *> *> *m_slots;
 
 };

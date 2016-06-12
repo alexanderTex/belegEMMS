@@ -25,6 +25,9 @@
 
 
 // maybe as a Graphicsscene overload
+/**
+ * @brief The GameView2D class
+ */
 class GameView2D : public QWidget
 {
     Q_OBJECT
@@ -37,6 +40,9 @@ class GameView2D : public QWidget
             return m_sceneItems->at(vec.X)->at(vec.Y)->at(vec.Z);
         }
 
+        /**
+         * @brief ViewUpdate
+         */
         void ViewUpdate();
 
     protected:

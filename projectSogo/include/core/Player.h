@@ -65,8 +65,17 @@ public:
     }
 
 private:
+    /**
+     * @brief m_type
+     */
     PlayerType m_type;
+    /**
+     * @brief m_playerName
+     */
     std::string m_playerName;
+    /**
+     * @brief m_playerColor
+     */
     PlayingField::OccupationState m_playerColor;
 };
 

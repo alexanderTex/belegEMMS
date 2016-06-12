@@ -8,6 +8,7 @@ GameManager::GameManager( GameData *data)
 {
     this->m_data = data;
     m_stop = false;
+    m_paused = false;
     this->m_playerInputConfirmed = false;
 }
 
@@ -67,51 +68,55 @@ void GameManager::GameLoop()
 
     while(m_stop == false && this->m_data != NULL)
     {
-        if(this->m_data->GetCurrentPlayer()->GetType() == Player::Human)
+        if(!m_paused)
         {
-            //wait for input accepted
-            // if accepted do input conformed process
-            if(this->m_playerInputConfirmed)
+            if(this->m_data->GetCurrentPlayer()->GetType() == Player::Human)
             {
-                try
+                //wait for input accepted
+                // if accepted do input conformed process
+                if(this->m_playerInputConfirmed)
                 {
-                    Vector3 pos(this->playerPosChoice.X, this->playerPosChoice.Y, GetAvailablePosition(this->playerPosChoice.X, this->playerPosChoice.Y, this->GetGameData()->GetField()));
-
-                    if(MakeMove(pos))
+                    try
                     {
-                        TurnFinished();
-                        emit PlayerWon();
+                        Vector3 pos(this->playerPosChoice.X, this->playerPosChoice.Y, GetAvailablePosition(this->playerPosChoice.X, this->playerPosChoice.Y, this->GetGameData()->GetField()));
+
+                        if(MakeMove(pos))
+                        {
+                            TurnFinished();
+                            emit PlayerWon();
+                        }
+                        else
+                        {
+                            TurnFinished();
+                        }
+                        Logger::GetLoggerIntance()->LogInfo("PlayerInput Applied");
+
                     }
-                    else
+                    catch(PlayingField::FieldExeptions)
                     {
-                        TurnFinished();
+                        Logger::GetLoggerIntance()->LogError("Input not Valid");
                     }
-                    Logger::GetLoggerIntance()->LogInfo("PlayerInput Applied");
+                    catch(std::out_of_range)
+                    {
+                        Logger::GetLoggerIntance()->LogError("Input Out of Range");
+                    }
 
+                    this->m_playerInputConfirmed = false;
                 }
-                catch(PlayingField::FieldExeptions)
-                {
-                    Logger::GetLoggerIntance()->LogError("Input not Valid");
-                }
-                catch(std::out_of_range)
-                {
-                    Logger::GetLoggerIntance()->LogError("Input Out of Range");
-                }
-
-                this->m_playerInputConfirmed = false;
             }
+
+
+            AIProcess(aiPlayer1);
+            AIProcess(aiPlayer2);
+
+
+            if(this->m_stop)
+            {
+                Logger::GetLoggerIntance()->LogInfo("GameManager Loop stopped");
+            }
+
         }
-
-
-        AIProcess(aiPlayer1);
-        AIProcess(aiPlayer2);
-
-
-        if(this->m_stop)
-        {
-            Logger::GetLoggerIntance()->LogInfo("GameManager Loop stopped");
-        }
-    }    
+     }
 }
 
 void GameManager::AIProcess(AIPlayer *ai)
@@ -224,5 +229,6 @@ void GameManager::AIProcess(AIPlayer *ai)
             //delete(possibleOpponentMoves);
 
         }
+
     }
 }

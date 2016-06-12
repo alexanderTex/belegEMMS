@@ -1,4 +1,4 @@
-#include "Gamevisualizer.h"
+#include "GameVisualizer.h"
 
 GameVisualizer::GameVisualizer(GameData *data, QWidget *parent)
     : QTabWidget(parent)
@@ -13,6 +13,7 @@ GameVisualizer::GameVisualizer(GameData *data, QWidget *parent)
 
 GameVisualizer::~GameVisualizer()
 {
-
+    delete(m_view2D);
+    delete(m_view3D);
 }
 

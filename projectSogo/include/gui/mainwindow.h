@@ -4,12 +4,15 @@
 #include <QMainWindow>
 #include <QGridLayout>
 
-#include "./Gameview.h"
+#include "./GameView.h"
 #include <QTextEdit>
 #include "../include/core/PlayingField.h"
 #include "../include/core/GameData.h"
 #include "Player.h"
 
+/**
+ * @brief The MainWindow class
+ */
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -23,17 +26,27 @@ public:
         return m_gameView;
     }
 
-    inline void Notify()
-    {
-        ShowWinScreen(*(this->m_gameView->GetGameData()));
-    }
+    /**
+     * @brief ShowGameView
+     */
+    void ShowGameView();
 
-    void ShowWinScreen(GameData data);
+    /**
+     * @brief ShowPauseMenu
+     */
+    void ShowPauseMenu();
+
+    /**
+     * @brief ShowWinScreen
+     * @param data
+     */
+    void ShowWinScreen(GameData *data);
 
 private:
     QStackedLayout *m_layout;
 
     GameView *m_gameView;
+    QPushButton *m_pauseMenu;
     QLabel *WinLabel;
 
 };

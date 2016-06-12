@@ -24,10 +24,23 @@ struct Vector3
     */
     Vector3(int x, int y ,int z);
 
+    /**
+     * @brief Vector3
+     * @param src
+     */
     Vector3(const Vector3 *src);
 
+    /**
+     * @brief X
+     */
     int X;
+    /**
+     * @brief Y
+     */
     int Y;
+    /**
+     * @brief Z
+     */
     int Z;
 
     bool operator==(const Vector3 &v2);
