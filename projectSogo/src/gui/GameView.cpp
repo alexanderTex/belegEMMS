@@ -26,14 +26,21 @@ GameView::GameView(GameData *data, QWidget *parent)
     this->m_inputArea = new GameInputArea(this->m_gameLoop, bottomView);
     bottomViewLayout->addWidget(m_inputArea);
 
-    QuitButton = new QPushButton(tr("End"), bottomView);
+    endView = new QWidget(this);
+    bottomViewLayout->addWidget(endView);
+    endScreen = new QVBoxLayout(endView);
+
+    this->WinLabel = new QLabel(endView);
+    endScreen->addWidget(this->WinLabel);
+
+    QuitButton = new QPushButton(tr("End"), endView);
     QObject::connect(this->QuitButton, &QPushButton::clicked, this, &GameView::EndGame);
-    bottomViewLayout->addWidget(QuitButton);
+    endScreen->addWidget(QuitButton);
 
 
     QObject::connect(this->m_gameLoop, &GameManager::PlayerWon, this, &GameView::GameFinished);
 
-    QObject::connect(this->m_gameLoop, &GameManager::TurnFinished, this->m_inputArea->GetHistoryDisplay(), &HistoryDisplay::UpdateHistory);
+    QObject::connect(this->m_gameLoop, &GameManager::TurnFinished, this->m_inputArea->GetHistoryDisplay(), &HistoryDisplay::RedrawHistory);
 
     QObject::connect(this->m_gameLoop, &GameManager::TurnFinished, this->m_gameVis, &GameVisualizer::UpdateView);
 
@@ -41,7 +48,7 @@ GameView::GameView(GameData *data, QWidget *parent)
 
     QObject::connect(this->m_gameLoop, &GameManager::PlayerWon, this, &GameView::GameFinished);
 
-    QObject::connect(this->m_gameLoop, &GameManager::TurnFinished, this->m_inputArea->GetHistoryDisplay(), &HistoryDisplay::UpdateHistory);
+    QObject::connect(this->m_gameLoop, &GameManager::TurnFinished, this->m_inputArea->GetHistoryDisplay(), &HistoryDisplay::RedrawHistory);
 
     QObject::connect(this->m_gameLoop, &GameManager::TurnFinished, this->m_gameVis, &GameVisualizer::UpdateView);
 
@@ -87,6 +94,20 @@ void GameView::GameFinished()
         Logger::GetLoggerIntance()->LogInfo("gameLoop already null");
     }
 
-    bottomViewLayout->setCurrentWidget(this->QuitButton);
+    FillInWinner();
+    bottomViewLayout->setCurrentWidget(this->endView);
 
+}
+
+void GameView::FillInWinner()
+{
+    stringstream s;
+
+    s << "The winner is : " << this->m_data->GetCurrentPlayer()->GetName().c_str() << "! YEAH!";
+
+    this->WinLabel->setText(QString(s.str().c_str()));
+
+    this->bottomViewLayout->setCurrentWidget(this->endView);
+
+    Logger::GetLoggerIntance()->LogInfo(s.str());
 }

@@ -36,18 +36,14 @@ public:
      */
     void ShowPauseMenu();
 
-    /**
-     * @brief ShowWinScreen
-     * @param data
-     */
-    void ShowWinScreen(GameData *data);
+signals:
+    void QuitMainWindow();
 
 private:
     QStackedLayout *m_layout;
 
     GameView *m_gameView;
     QPushButton *m_pauseMenu;
-    QLabel *WinLabel;
 
 };
 

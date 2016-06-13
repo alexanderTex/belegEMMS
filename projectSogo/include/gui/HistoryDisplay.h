@@ -28,11 +28,17 @@ public:
     void UpdateHistory();
 
     /**
+     * @brief RedrawHistory
+     * clears and redraws history
+     */
+    void RedrawHistory();
+
+    /**
      * @brief DisplayText
      * Called to change the text in the Display box
      * @param entry
      */
-    void DisplayText(std::string entry);
+    void SetDisplayText(std::string entry);
 
 private:
     QVBoxLayout *m_layout;

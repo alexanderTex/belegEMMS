@@ -16,10 +16,7 @@ MainWindow::MainWindow(QWidget *parent)
     this->m_gameView = new GameView( data, this);
     m_layout->addWidget(this->m_gameView);
     QObject::connect(this->m_gameView, &GameView::PauseMenu, this, &MainWindow::ShowPauseMenu);
-    QObject::connect(this->m_gameView, &GameView::GameEnded, this, &MainWindow::ShowWinScreen);
-
-    this->WinLabel = new QLabel(this);
-    m_layout->addWidget(this->WinLabel);
+    QObject::connect(this->m_gameView, &GameView::GameEnded, this, &MainWindow::QuitMainWindow);
 
     this->m_pauseMenu = new QPushButton(tr("Resume"), this);
     m_layout->addWidget(this->m_pauseMenu);
@@ -32,7 +29,6 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete(m_gameView);
-    delete(WinLabel);
 }
 
 void MainWindow::ShowGameView()
@@ -45,19 +41,3 @@ void MainWindow::ShowPauseMenu()
 {
     m_layout->setCurrentWidget(this->m_pauseMenu);
 }
-
-void MainWindow::ShowWinScreen(GameData *data)
-{
-    stringstream s;
-
-    s << "The winner is : " << data->GetCurrentPlayer()->GetName().c_str() << "! YEAH!";
-
-    WinLabel->setText(QString(s.str().c_str()));
-
-    m_layout->setCurrentWidget(WinLabel);
-
-    Logger::GetLoggerIntance()->LogInfo(s.str());
-
-    delete(data);
-}
-

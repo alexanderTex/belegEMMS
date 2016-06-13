@@ -21,8 +21,16 @@ HistoryDisplay::~HistoryDisplay()
     delete(m_display);
 }
 
-
 void HistoryDisplay::UpdateHistory()
+{
+    stringstream s;
+
+    s << this->m_data->GetHistory()->GetLastMove()->player->GetName() << " : " << *(this->m_data->GetHistory()->GetLastMove()->position) << endl;
+
+    this->m_display->append(s.str().c_str());
+}
+
+void HistoryDisplay::RedrawHistory()
 {
     this->m_display->clear();
 
@@ -36,10 +44,10 @@ void HistoryDisplay::UpdateHistory()
         s << this->m_data->GetHistory()->GetMove(i)->player->GetName() << " : " << *(this->m_data->GetHistory()->GetMove(i)->position) << endl;
     }
 
-    this->DisplayText(s.str());
+    this->SetDisplayText(s.str());
 }
 
-void HistoryDisplay::DisplayText(std::string entry)
+void HistoryDisplay::SetDisplayText(std::string entry)
 {
     this->m_display->setText(QString(entry.c_str()));
 }

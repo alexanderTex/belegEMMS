@@ -22,5 +22,7 @@ int main(int argc, char *argv[])
 
     MainWindow w;
 
+    QObject::connect(&w, &MainWindow::QuitMainWindow, &app, &QApplication::quit);
+
     return app.exec();
 }

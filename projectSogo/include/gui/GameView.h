@@ -45,6 +45,11 @@ public:
     void PauseGame();
 
     /**
+     * @brief ShowWinScreen
+     */
+    void FillInWinner();
+
+    /**
      * @brief GameFinished
      * Called if a player won
      * to stop the gamelogic thread and
@@ -88,10 +93,15 @@ private:
 
     GameInputArea *m_inputArea;
 
+    QWidget *endView;
+    QVBoxLayout *endScreen;
+
+    QLabel *WinLabel;
     QPushButton *QuitButton;
 
-    GameData *m_data;
 
+
+    GameData *m_data;
 
     GameManager *m_gameLoop;
 
