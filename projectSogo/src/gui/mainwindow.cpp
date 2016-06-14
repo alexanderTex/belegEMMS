@@ -7,7 +7,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     // JUST FOR TESTING WOULD BE GIVEN FROM OUTSIDE
     Player *one = new Player(Player::Ai, "Dirk", PlayingField::Blue);
-    Player *two = new Player(Player::Ai, "Frank", PlayingField::Red);
+    Player *two = new Player(Player::Human, "Frank", PlayingField::Red);
 
     GameData *data = new GameData(new PlayingField(), one, two, one);
 
