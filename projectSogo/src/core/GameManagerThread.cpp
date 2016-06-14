@@ -4,7 +4,43 @@
 #include <iostream>
 #include "PlayingField.h"
 
-void AILoop(const Player *player, GameData *data)
+GameManager::GameManager( GameData *data)
+{
+    this->m_data = data;
+    m_stop = false;
+    m_paused = false;
+    this->m_playerInputConfirmed = false;
+}
+
+GameManager::~GameManager()
+{
+    Logger::GetLoggerIntance()->LogInfo("GameLoop deleted");
+}
+
+void GameManager::run()
+{
+    this->GameLoop();
+}
+
+bool GameManager::MakeMove(Vector3 pos) throw(PlayingField::FieldExeptions, std::out_of_range)
+{
+    this->m_data->OccupySlot(pos.X, pos.Y, pos.Z, this->m_data->GetCurrentPlayer()->GetColor());
+
+
+
+
+
+    if(CheckForWin(this->m_data->GetField(), this->m_data->GetCurrentPlayer()->GetColor()))
+    {
+        //end game event
+        return true;
+    }
+
+    this->m_data->SwitchPlayer();
+    return false;
+}
+
+void GameManager::GameLoop()
 {
 
     Logger::GetLoggerIntance()->LogInfo("GameLoop startet :" );
@@ -13,13 +49,82 @@ void AILoop(const Player *player, GameData *data)
     vector<Vector3> *possibleOpponentMoves;
     vector<Vector3> *futureMoves = new vector<Vector3>();
 
-    bool needNewMove = true;
+    AIPlayer *aiPlayer1 = NULL;
 
-    Player *opponent = data->GetOpponent(player);
 
-    while(data != NULL)
+
+    if(this->m_data->GetPlayer1()->GetType() == Player::Ai)
     {
-        if(needNewMove == true)
+        aiPlayer1 = new AIPlayer(this->m_data->GetPlayer1());
+    }
+
+    AIPlayer *aiPlayer2 = NULL;
+
+    if(this->m_data->GetPlayer2()->GetType() == Player::Ai)
+    {
+        aiPlayer2 = new AIPlayer(this->m_data->GetPlayer2());
+    }
+
+
+
+    while(m_stop == false && this->m_data != NULL)
+    {
+        if(!m_paused)
+        {
+            if(this->m_data->GetCurrentPlayer()->GetType() == Player::Human)
+            {
+                //wait for input accepted
+                // if accepted do input conformed process
+                if(this->m_playerInputConfirmed)
+                {
+                    try
+                    {
+                        Vector3 pos(this->playerPosChoice.X, this->playerPosChoice.Y, GetAvailablePosition(this->playerPosChoice.X, this->playerPosChoice.Y, this->GetGameData()->GetField()));
+
+                        if(MakeMove(pos))
+                        {
+                            TurnFinished();
+                            emit PlayerWon();
+                        }
+                        else
+                        {
+                            TurnFinished();
+                        }
+                        Logger::GetLoggerIntance()->LogInfo("PlayerInput Applied");
+
+                    }
+                    catch(PlayingField::FieldExeptions)
+                    {
+                        Logger::GetLoggerIntance()->LogError("Input not Valid");
+                    }
+                    catch(std::out_of_range)
+                    {
+                        Logger::GetLoggerIntance()->LogError("Input Out of Range");
+                    }
+
+                    this->m_playerInputConfirmed = false;
+                }
+            }
+
+
+            AIProcess(aiPlayer1);
+            AIProcess(aiPlayer2);
+
+
+            if(this->m_stop)
+            {
+                Logger::GetLoggerIntance()->LogInfo("GameManager Loop stopped");
+            }
+
+        }
+     }
+}
+
+void GameManager::AIProcess(AIPlayer *ai)
+{
+    if(ai != NULL)
+    {
+        if(ai->hasMove == false)
         {
            /*
             Logger::GetLoggerIntance()->Log(DrawPlayingField(data->GetField()));
@@ -63,13 +168,17 @@ void AILoop(const Player *player, GameData *data)
 
             */
 
-            needNewMove = false;
+            ai->hasMove = true;
         }
-        if(data->GetCurrentPlayer() == player && needNewMove == false)
+
+        if(ai->hasMove == true && this->m_data->GetCurrentPlayer() == ai->player)
         {
+            const Player *opponent = this->m_data->GetOpponent(ai->player);
+
             Vector3 futuremove;
 
-            MiniMax(data->GetField(), player->GetColor(), player->GetColor(), 3, &futuremove);
+            MiniMax(this->m_data->GetField(), ai->player->GetColor(), ai->player->GetColor(), 4, &futuremove);
+
 
             /*
             stringstream check;
@@ -86,35 +195,41 @@ void AILoop(const Player *player, GameData *data)
             }
             */
 
-            stringstream s;
-            s << "Making move" << endl;
-            Logger::GetLoggerIntance()->LogInfo(s.str());
 
             try
             {
-                data->MakeMove(futuremove);
+                if(this->MakeMove(futuremove))
+                {
+                    TurnFinished();
+                    emit PlayerWon();
+                    this->m_stop = true;
+                }
+                else
+                {
+                    TurnFinished();
+                }
             }
             catch(PlayingField::FieldExeptions e)
             {
                 Logger::GetLoggerIntance()->LogError("Input not Valid");
+                this->m_stop = true;
             }
             catch(std::out_of_range e)
             {
                 Logger::GetLoggerIntance()->LogError("Input Out of Range");
+                this->m_stop = true;
             }
 
-            stringstream stream2;
-            stream2 << "Move done" << endl;
-            Logger::GetLoggerIntance()->LogInfo(stream2.str());
 
 
-            needNewMove = true;
 
+            ai->hasMove = false;
 
 
             //delete(futureMoves);
             //delete(possibleOpponentMoves);
 
         }
+
     }
 }

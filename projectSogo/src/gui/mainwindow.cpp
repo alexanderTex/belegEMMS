@@ -3,27 +3,41 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
+    QWidget *main = new QWidget();
 
     // JUST FOR TESTING WOULD BE GIVEN FROM OUTSIDE
-    Player *one = new Player(Player::Human, "Dirk", PlayingField::Blue);
-    Player *two = new Player(Player::Ai, "Frank", PlayingField::Red);
+    Player *one = new Player(Player::Ai, "Dirk", PlayingField::Blue);
+    Player *two = new Player(Player::Human, "Frank", PlayingField::Red);
 
     GameData *data = new GameData(new PlayingField(), one, two, one);
 
-    QWidget *main = new QWidget(this);
+    m_layout = new QStackedLayout(main);
 
-    this->m_gameView = new GameView( data, main);
-    gameLoop = new std::thread(AILoop, two, data);
-    gameLoop->detach();
+    this->m_gameView = new GameView( data, this);
+    m_layout->addWidget(this->m_gameView);
+    QObject::connect(this->m_gameView, &GameView::PauseMenu, this, &MainWindow::ShowPauseMenu);
+    QObject::connect(this->m_gameView, &GameView::GameEnded, this, &MainWindow::QuitMainWindow);
 
-    setCentralWidget(m_gameView);
+    this->m_pauseMenu = new QPushButton(tr("Resume"), this);
+    m_layout->addWidget(this->m_pauseMenu);
+    QObject::connect(this->m_pauseMenu, &QPushButton::clicked, this, &MainWindow::ShowGameView);
+
+    setCentralWidget(main);
     show();
 }
 
 MainWindow::~MainWindow()
 {
     delete(m_gameView);
-    delete(gameLoop);
 }
 
+void MainWindow::ShowGameView()
+{
+    m_layout->setCurrentWidget(this->m_gameView);
+    m_gameView->StartGame();
+}
 
+void MainWindow::ShowPauseMenu()
+{
+    m_layout->setCurrentWidget(this->m_pauseMenu);
+}

@@ -11,19 +11,32 @@
 #include <QPushButton>
 #include <QLabel>
 
-#include "GameData.h"
+#include "GameManagerThread.h"
 #include "Vector2.h"
 
+/**
+ * @brief The PlayerInput class
+ */
 class PlayerInput : public QWidget
 {
     Q_OBJECT
 public:
-    explicit PlayerInput(GameData *data, QWidget *parent = 0);
+    explicit PlayerInput(GameManager *gameManager, QWidget *parent = 0);
+
+    virtual ~PlayerInput();
+
+signals:
+    /**
+     * @brief InputConfirmed
+     * @param pos
+     */
+    void InputConfirmed(Vector2 pos);
 
 private:
-    //----- Input Controls
-    QWidget *m_inputControls;
-    QGridLayout *m_inputLayout;
+    QVBoxLayout *m_inputLayout;
+
+    QWidget *m_inputFields;
+    QHBoxLayout *m_inputFieldLayout;
 
     QWidget *XspinBoxField;
     QHBoxLayout *xinputLayout;
@@ -36,13 +49,17 @@ private:
     QSpinBox *m_yInput;
 
     QPushButton *m_inputConfirm;
-    //--------
 
+    GameManager *m_gameManager;
 
-    GameData *m_data;
-
+    /**
+     * @brief ApplyInputs
+     */
     void ApplyInputs();
 };
 
+/**
+ * @brief InputConfirmed
+ */
 void InputConfirmed();
 #endif // PLAYERINPUT_H

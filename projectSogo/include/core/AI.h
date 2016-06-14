@@ -23,7 +23,7 @@ class AI
 
 
 /**
-* Calculates the best next move
+* Calculates the best move for the next turn
 * @param[in] field current state of the field
 * @param max_Player the player for who the algorithm searches a good move
 * @param current_Player the player who is currently making a move
@@ -34,7 +34,7 @@ class AI
 int MiniMax(const PlayingField *field, PlayingField::OccupationState max_Player, PlayingField::OccupationState current_player, Vector3 *choice) throw(out_of_range);
 
 /**
-* Calculates the best next move
+* Calculates the best next for the next turn
 * @param[in] field current state of the field
 * @param max_Player the player for who the algorithm searches a good move
 * @param current_Player the player who is currently making a move

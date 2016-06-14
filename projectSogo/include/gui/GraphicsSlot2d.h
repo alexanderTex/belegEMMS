@@ -5,11 +5,20 @@
 #include <QColor>
 #include <QPainter>
 
+
+/**
+ * @brief The GraphicsSlot2D class
+ */
 class GraphicsSlot2D : public QGraphicsObject
 {
     Q_OBJECT
 public:
     GraphicsSlot2D(float x, float y, float width, float height, QColor color = Qt::white, QGraphicsItem *parent = 0);
+    virtual ~GraphicsSlot2D()
+    {
+
+    }
+
 
     virtual QRectF boundingRect() const Q_DECL_OVERRIDE
     {

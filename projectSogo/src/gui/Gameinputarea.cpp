@@ -1,14 +1,17 @@
 #include "GameInputArea.h"
 
-GameInputArea::GameInputArea(GameData *data, QWidget *parent)
-    :QWidget(parent)
+GameInputArea::GameInputArea(GameManager *gameManager, QWidget *parent)
+    :QTabWidget(parent)
 {
-    this->m_inputAreaLayout = new QStackedLayout(this);
-
-    this->m_playerInput = new PlayerInput(data, this);
-    this->m_inputAreaLayout->addWidget(this->m_playerInput);
-
-    this->m_historyDisplay = new HistoryDisplay(this);
-    this->m_inputAreaLayout->addWidget(this->m_historyDisplay);
-
+    this->m_playerInput = new PlayerInput(gameManager, this);
+    this->addTab(this->m_playerInput, tr("Player Input"));
+    this->m_historyDisplay = new HistoryDisplay(gameManager->GetGameData(), this);
+    this->addTab(this->m_historyDisplay, tr("History Display"));
 }
+
+GameInputArea::~GameInputArea()
+{
+    delete(this->m_historyDisplay);
+    delete(this->m_playerInput);
+}
+

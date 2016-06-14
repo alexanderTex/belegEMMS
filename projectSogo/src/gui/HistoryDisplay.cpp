@@ -1,12 +1,53 @@
 #include "HistoryDisplay.h"
 
-HistoryDisplay::HistoryDisplay(QWidget *parent)
+HistoryDisplay::HistoryDisplay(const GameData *data, QWidget *parent)
     : QWidget(parent)
 {
     this->m_layout = new QVBoxLayout(this);
-    this->m_label = new QLabel("History :");
+    this->m_label = new QLabel(tr("History :"));
     this->m_display = new QTextEdit(this);
+    this->m_display->setReadOnly(true);
 
     m_layout->addWidget(m_label);
     m_layout->addWidget(m_display);
+
+    this->m_data = data;    
+}
+
+HistoryDisplay::~HistoryDisplay()
+{
+    delete(m_layout);
+    delete(m_label);
+    delete(m_display);
+}
+
+void HistoryDisplay::UpdateHistory()
+{
+    stringstream s;
+
+    s << this->m_data->GetHistory()->GetLastMove()->player->GetName() << " : " << *(this->m_data->GetHistory()->GetLastMove()->position) << endl;
+
+    this->m_display->append(s.str().c_str());
+}
+
+void HistoryDisplay::RedrawHistory()
+{
+    this->m_display->clear();
+
+    stringstream s;
+
+    for(int i = 0; i < this->m_data->GetHistory()->GetMoveCount(); i++)
+    {
+        stringstream posStream;
+        posStream << *(this->m_data->GetHistory()->GetLastMove()->position) << endl;
+
+        s << this->m_data->GetHistory()->GetMove(i)->player->GetName() << " : " << *(this->m_data->GetHistory()->GetMove(i)->position) << endl;
+    }
+
+    this->SetDisplayText(s.str());
+}
+
+void HistoryDisplay::SetDisplayText(std::string entry)
+{
+    this->m_display->setText(QString(entry.c_str()));
 }
