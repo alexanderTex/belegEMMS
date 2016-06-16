@@ -35,6 +35,8 @@ signals:
 private:
     QVBoxLayout *m_inputLayout;
 
+    QLabel *m_infoText;
+
     QWidget *m_inputFields;
     QHBoxLayout *m_inputFieldLayout;
 
