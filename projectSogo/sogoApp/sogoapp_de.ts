@@ -17,7 +17,12 @@
 <context>
     <name>GameView</name>
     <message>
-        <location filename="../src/gui/gameview.cpp" line="30"/>
+        <location filename="../src/gui/GameView.cpp" line="13"/>
+        <source>Pausemenu</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/gui/GameView.cpp" line="36"/>
         <source>End</source>
         <translation>Ende</translation>
     </message>
@@ -25,12 +30,12 @@
 <context>
     <name>GameVisualizer</name>
     <message>
-        <location filename="../src/gui/Gamevisualizer.cpp" line="8"/>
+        <location filename="../src/gui/GameVisualizer.cpp" line="8"/>
         <source>2D</source>
         <translation>2D</translation>
     </message>
     <message>
-        <location filename="../src/gui/Gamevisualizer.cpp" line="11"/>
+        <location filename="../src/gui/GameVisualizer.cpp" line="11"/>
         <source>3D</source>
         <translation>3D</translation>
     </message>
@@ -41,6 +46,14 @@
         <location filename="../src/gui/HistoryDisplay.cpp" line="7"/>
         <source>History :</source>
         <translation>Verlauf :</translation>
+    </message>
+</context>
+<context>
+    <name>MainWindow</name>
+    <message>
+        <location filename="../src/gui/mainwindow.cpp" line="21"/>
+        <source>Resume</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
