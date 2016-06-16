@@ -9,6 +9,7 @@
 #include "../include/core/PlayingField.h"
 #include "../include/core/GameData.h"
 #include "Player.h"
+#include "PauseMenu.h"
 
 /**
  * @brief The MainWindow class
@@ -43,7 +44,7 @@ private:
     QStackedLayout *m_layout;
 
     GameView *m_gameView;
-    QPushButton *m_pauseMenu;
+    PauseMenu *m_pauseMenu;
 
 };
 

@@ -18,9 +18,9 @@ MainWindow::MainWindow(QWidget *parent)
     QObject::connect(this->m_gameView, &GameView::PauseMenu, this, &MainWindow::ShowPauseMenu);
     QObject::connect(this->m_gameView, &GameView::GameEnded, this, &MainWindow::QuitMainWindow);
 
-    this->m_pauseMenu = new QPushButton(tr("Resume"), this);
+    this->m_pauseMenu = new PauseMenu(this);
     m_layout->addWidget(this->m_pauseMenu);
-    QObject::connect(this->m_pauseMenu, &QPushButton::clicked, this, &MainWindow::ShowGameView);
+    QObject::connect(this->m_pauseMenu, &PauseMenu::ResumeButtonPressed, this, &MainWindow::ShowGameView);
 
     setCentralWidget(main);
     show();
