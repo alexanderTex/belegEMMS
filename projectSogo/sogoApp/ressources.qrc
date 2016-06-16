@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/de/sogoapp_de">
+        <file>sogoapp_de.qm</file>
+    </qresource>
+</RCC>

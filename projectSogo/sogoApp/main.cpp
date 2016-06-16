@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
 
     QTranslator translator;
 
-    if(translator.load("sogoApp_de"))
+    if(translator.load(":/de/sogoapp_de/sogoapp_de.qm"))
     {
         std::cout << "translator loaded" << std::endl;
     }
@@ -18,6 +18,10 @@ int main(int argc, char *argv[])
     {
         std::cout << "translator did not load...whyever!!!" << std::endl;
     }
+
+    // qm datei muss in Ressource ordner sein um geladen werden
+    //
+
     app.installTranslator(&translator);
 
     MainWindow w;

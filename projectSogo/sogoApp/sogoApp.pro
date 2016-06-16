@@ -27,3 +27,6 @@ SOURCES +=      main.cpp \
                 ../src/gui/*  \
                 ../src/utility/* \
 
+RESOURCES += \
+    ressources.qrc
+
