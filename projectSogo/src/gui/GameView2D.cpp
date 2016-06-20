@@ -12,7 +12,7 @@ GameView2D::GameView2D(GameData *data, QWidget *parent)
 
     this->m_sceneItems = new vector<vector< vector <GraphicsSlot2D * > *> *>();
 
-    QHBoxLayout *sceneViewLayout = new QHBoxLayout(this);
+    sceneViewLayout = new QHBoxLayout(this);
     for(int i = 0; i < m_data->GetField()->GetFieldSize(); i++)
     {
         QWidget *sceneArea = new QWidget(this);

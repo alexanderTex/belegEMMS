@@ -84,6 +84,8 @@ private:
 
         GameData *m_data;
 
+        QHBoxLayout *sceneViewLayout;
+
         vector<QGraphicsView*> *m_scenes;
         vector< vector< vector< GraphicsSlot2D * > *> *> *m_sceneItems;
     };
