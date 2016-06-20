@@ -1,5 +1,6 @@
 <RCC>
-    <qresource prefix="/de/sogoapp_de">
+    <qresource prefix="/sprache">
         <file>sogoapp_de.qm</file>
+        <file>sogoapp_en.qm</file>
     </qresource>
 </RCC>

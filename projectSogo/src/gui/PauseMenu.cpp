@@ -1,5 +1,8 @@
 #include "PauseMenu.h"
 
+#include <QApplication>
+#include "Logger.h"
+
 PauseMenu::PauseMenu(QWidget *parent) : QWidget(parent)
 {
     m_pauseMenuLayout = new QVBoxLayout(this);

@@ -7,6 +7,7 @@
 
 #include "../include/core/GameData.h"
 #include "../include/gui/GameView2D.h"
+#include "../include/gui/GameView3D.h"
 
 using namespace std;
 
@@ -34,7 +35,7 @@ public:
 
 private:
     GameView2D *m_view2D;
-    QWidget *m_view3D;
+    GameView3D *m_view3D;
 
 };
 

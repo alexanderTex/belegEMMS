@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="de_DE">
+<TS version="2.1" language="en_US">
 <context>
     <name>GameInputArea</name>
     <message>
         <location filename="../src/gui/Gameinputarea.cpp" line="7"/>
         <source>Player Input</source>
-        <translation>Spielereingabe</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/gui/Gameinputarea.cpp" line="9"/>
         <source>History Display</source>
-        <translation>Verlaufanzeige</translation>
+        <translation>Bla Bla history display</translation>
     </message>
 </context>
 <context>
@@ -24,7 +24,7 @@
     <message>
         <location filename="../src/gui/GameView.cpp" line="36"/>
         <source>End</source>
-        <translation>Ende</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -32,12 +32,12 @@
     <message>
         <location filename="../src/gui/GameVisualizer.cpp" line="8"/>
         <source>2D</source>
-        <translation>2D</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/gui/GameVisualizer.cpp" line="11"/>
         <source>3D</source>
-        <translation>3D</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -45,7 +45,7 @@
     <message>
         <location filename="../src/gui/HistoryDisplay.cpp" line="7"/>
         <source>History :</source>
-        <translation>Verlauf :</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -87,17 +87,17 @@
     <message>
         <location filename="../src/gui/PlayerInput.cpp" line="26"/>
         <source>X-Input : </source>
-        <translation>X-Eingabe : </translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/gui/PlayerInput.cpp" line="41"/>
         <source>Y-Input : </source>
-        <translation>Y-Eingabe : </translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/gui/PlayerInput.cpp" line="51"/>
         <source>Confirm</source>
-        <translation>Bestaetigen</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

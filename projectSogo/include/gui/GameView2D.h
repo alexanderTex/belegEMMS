@@ -9,6 +9,7 @@
 
 #include <QGraphicsView>
 #include <QGraphicsScene>
+#include <QResizeEvent>
 
 #include <QPainter>
 
@@ -45,7 +46,39 @@ class GameView2D : public QWidget
          */
         void ViewUpdate();
 
-    protected:
+ protected:
+        /*
+        inline virtual void resizeEvent(QResizeEvent *event)
+        {
+            float diff ;
+            if(event->size().height() <  event->size().width())
+            {
+                diff = event->oldSize().height() % event->size().height();
+            }
+            else
+            {
+                diff = event->oldSize().width() % event->size().width();
+            }
+
+            this->m_sceneItems->at(0)->at(0)->at(0)->SetSize(m_squareDrawSize -1, m_squareDrawSize -1);
+
+            for(int i = 0; i < this->m_sceneItems->size(); i++)
+            {
+                // iterates through the depth lines
+                for(int j = 0; j < this->m_sceneItems->at(i)->size(); j++)
+                {
+                    // iterates through the horizontal lines
+                    for(int k = 0; k < this->m_sceneItems->at(i)->at(j)->size(); k++)
+                    {
+                        //this->m_sceneItems->at(i)->at(j)->at(k)->SetSize(m_squareDrawSize * diff, m_squareDrawSize * diff);
+                    }
+                }
+                this->m_scenes->at(i)->update();
+            }
+            this->update();
+            QWidget::resizeEvent(event);
+        }
+        */
 private:
         float m_squareDrawSize;
 

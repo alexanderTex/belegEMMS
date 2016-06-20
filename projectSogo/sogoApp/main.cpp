@@ -8,9 +8,9 @@ int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
 
-    QTranslator translator;
+    QTranslator *translator = new QTranslator();
 
-    if(translator.load(":/de/sogoapp_de/sogoapp_de.qm"))
+    if(translator->load(":/sprache/sogoapp_de.qm"))
     {
         std::cout << "translator loaded" << std::endl;
     }
@@ -20,9 +20,8 @@ int main(int argc, char *argv[])
     }
 
     // qm datei muss in Ressource ordner sein um geladen werden
-    //
 
-    app.installTranslator(&translator);
+    app.installTranslator(translator);
 
     MainWindow w;
 

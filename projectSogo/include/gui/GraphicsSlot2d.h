@@ -30,6 +30,12 @@ public:
         return m_Color;
     }
 
+    inline void SetSize(float x, float y)
+    {
+        this->m_x = x;
+        this->m_y = y;
+    }
+
     inline void SetColor(QColor color)
     {
         m_Color = color;

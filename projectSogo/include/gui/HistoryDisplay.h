@@ -5,8 +5,10 @@
 #include <QLabel>
 #include <QVBoxLayout>
 #include <QTextEdit>
+#include <QEvent>
 #include "../IObserver.h"
 #include "GameData.h"
+
 
 /**
  * @brief The HistoryDisplay class
@@ -39,6 +41,14 @@ public:
      * @param entry
      */
     void SetDisplayText(std::string entry);
+
+    inline void changeEvent(QEvent *event)
+    {
+        if (event->type() == QEvent::LanguageChange) {
+            m_label->setText(tr("History :"));
+        } else
+            QWidget::changeEvent(event);
+    }
 
 private:
     QVBoxLayout *m_layout;
