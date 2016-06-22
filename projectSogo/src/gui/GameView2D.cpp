@@ -12,22 +12,34 @@ GameView2D::GameView2D(GameData *data, QWidget *parent)
 
     this->m_sceneItems = new vector<vector< vector <GraphicsSlot2D * > *> *>();
 
-    sceneViewLayout = new QHBoxLayout(this);
+    this->sceneViewLayout = new QHBoxLayout(this);
+    this->m_sceneLabels = new vector<QLabel *>();
+    this->m_sceneLayouts = new vector<QVBoxLayout*>();
     for(int i = 0; i < m_data->GetField()->GetFieldSize(); i++)
     {
-        QWidget *sceneArea = new QWidget(this);
-        sceneArea->setMinimumSize(sceneViewLayout->spacing() + m_data->GetField()->GetFieldSize() * this->m_squareDrawSize, sceneViewLayout->spacing() + m_data->GetField()->GetFieldSize() * this->m_squareDrawSize);
-        sceneViewLayout->addWidget(sceneArea);
-
         this->m_sceneItems->push_back(new vector< vector <GraphicsSlot2D * > *>());
 
         QGraphicsScene *graphicsScene = CreateGrid(data->GetField()->GetFieldSize(), this->m_squareDrawSize, this->m_sceneItems->at(i));
 
-        QGraphicsView *view = new QGraphicsView(graphicsScene, sceneArea);
+        QGraphicsView *view = new QGraphicsView(graphicsScene, this);
         view->setViewportUpdateMode(QGraphicsView::BoundingRectViewportUpdate);
         this->m_scenes->push_back(view);
         this->m_scenes->at(i)->ensureVisible(graphicsScene->sceneRect());
         this->m_scenes->at(i)->show();
+
+        QVBoxLayout *sceneLayout = new QVBoxLayout();
+        stringstream s;
+        s << "Layer " << i ;
+
+        QLabel *label = new QLabel(tr(s.str().c_str()));
+        m_sceneLabels->push_back(label);
+
+        sceneLayout->addWidget(label);
+        sceneLayout->addWidget(view);
+
+        sceneViewLayout->addLayout(sceneLayout);
+
+
     }
 }
 
