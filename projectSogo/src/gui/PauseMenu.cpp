@@ -15,12 +15,8 @@ PauseMenu::PauseMenu(QWidget *parent) : QWidget(parent)
     QObject::connect(this->m_saveButton, &QPushButton::clicked, this, &PauseMenu::SaveButtonPressed);
     this->m_pauseMenuLayout->addWidget(this->m_saveButton);
 
-    this->m_optionsButton = new QPushButton(tr("Options"), this);
-    QObject::connect(this->m_optionsButton, &QPushButton::clicked, this, &PauseMenu::OptionButtonPressed);
-    this->m_pauseMenuLayout->addWidget(this->m_optionsButton);
-
-    this->m_quitButton = new QPushButton(tr("Quit"), this);
-    QObject::connect(this->m_quitButton, &QPushButton::clicked, this, &PauseMenu::QuitButtonPressed);
-    this->m_pauseMenuLayout->addWidget(this->m_quitButton);
+    this->m_quitGameButton = new QPushButton(tr("Quit"), this);
+    QObject::connect(this->m_quitGameButton, &QPushButton::clicked, this, &PauseMenu::QuitGameButtonPressed);
+    this->m_pauseMenuLayout->addWidget(this->m_quitGameButton);
 
 }

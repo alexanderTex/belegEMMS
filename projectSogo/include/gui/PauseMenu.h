@@ -15,8 +15,7 @@ public:
 signals:
     void ResumeButtonPressed();
     void SaveButtonPressed();
-    void OptionButtonPressed();
-    void QuitButtonPressed();
+    void QuitGameButtonPressed();
 
 public slots:
 
@@ -25,8 +24,7 @@ private:
 
     QPushButton *m_resumeButton;
     QPushButton *m_saveButton;
-    QPushButton *m_optionsButton;
-    QPushButton *m_quitButton;
+    QPushButton *m_quitGameButton;
 
 };
 
