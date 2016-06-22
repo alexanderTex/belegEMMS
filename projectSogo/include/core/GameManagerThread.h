@@ -43,6 +43,11 @@ public:
 
     /**
      * @brief GameManager
+     */
+    GameManager();
+
+    /**
+     * @brief GameManager
      * @param data
      */
     GameManager(GameData *data);
@@ -67,6 +72,13 @@ public:
         return this->m_data;
     }
 
+    /**
+     * @brief SetGameData
+     */
+    inline void SetGameData(GameData * data)
+    {
+        this->m_data = data;
+    }
 
     inline void Start()
     {

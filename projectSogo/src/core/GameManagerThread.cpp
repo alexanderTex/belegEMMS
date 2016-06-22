@@ -4,6 +4,14 @@
 #include <iostream>
 #include "PlayingField.h"
 
+GameManager::GameManager()
+{
+    this->m_data = NULL;
+    m_stop = false;
+    m_paused = false;
+    this->m_playerInputConfirmed = false;
+}
+
 GameManager::GameManager( GameData *data)
 {
     this->m_data = data;

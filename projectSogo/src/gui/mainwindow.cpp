@@ -29,6 +29,7 @@ MainWindow::MainWindow( QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete(m_gameView);
+    delete(m_pauseMenu);
 }
 
 void MainWindow::ShowGameView()

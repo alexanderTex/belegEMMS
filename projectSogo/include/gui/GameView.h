@@ -27,7 +27,8 @@ class GameView : public QWidget
 {
     Q_OBJECT
 public:
-    explicit GameView(GameData *data, QWidget *parent = 0);
+    explicit GameView( QWidget *parent = 0);
+    GameView(GameData *data, QWidget *parent = 0);
     virtual ~GameView();
 
     inline GameVisualizer *GetVisualizer() const
@@ -38,6 +39,11 @@ public:
     inline GameData *GetGameData() const
     {
         return m_data;
+    }
+
+    inline void InitGame(GameData *data)
+    {
+
     }
 
     void StartGame();
