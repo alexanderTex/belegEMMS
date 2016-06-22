@@ -6,7 +6,6 @@
 // Include GLM
 #include "../external/glm-0.9.4.0/glm/glm.hpp"
 #include "../external/glm-0.9.4.0/glm/gtc/matrix_transform.hpp"
-using namespace glm;
 
 #include "../external/objloader.hpp"
 
@@ -128,26 +127,26 @@ protected:
     //this is where all the code before the graphics loop goes
     inline virtual void initializeGL()
     {
-
+        QOpenGLFunctions_4_0_Core *f = (QOpenGLFunctions_4_0_Core*)(QOpenGLContext::currentContext()->versionFunctions());
 
         // Auf Keyboard-Events reagieren
             //glfwSetKeyCallback(window, key_callback);
 
             // white background
-            glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
+            f->glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
 
-            glEnable(GL_DEPTH_TEST);
+            f->glEnable(GL_DEPTH_TEST);
 
             // Punkte die kleiner sind kommen durch.
-            glDepthFunc(GL_LESS);
+            f->glDepthFunc(GL_LESS);
 
             // Create and compile our GLSL program from the shaders
             shaders = new QOpenGLShaderProgram();
-            if(shaders->addShaderFromSourceFile(QOpenGLShader::Vertex , "StandardShading.vertexshader"))
+            if(shaders->addShaderFromSourceFile(QOpenGLShader::Vertex , ":/shader/Shader/StandardShading.vertexshader"))
             {
                 Logger::GetLoggerIntance()->LogError("Shader incompatible whyyyyyyy?");
             }
-            shaders->addShaderFromSourceFile(QOpenGLShader::Fragment , "StandardShading.fragmentshader");
+            shaders->addShaderFromSourceFile(QOpenGLShader::Fragment , ":/shader/Shader/StandardShading.fragmentshader");
             shaders->link();
 
             shaders->bind();
@@ -171,7 +170,7 @@ protected:
 
         // Clear the screen
         //glClear(GL_COLOR_BUFFER_BIT);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        f->glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         // Projection matrix : 45° Field of View, 4:3 ratio, display range : 0.1 unit <-> 100 units
         Projection = glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 100.0f);
@@ -223,8 +222,8 @@ protected:
                 Model = glm::translate(Model, glm::vec3(x * (kugelRad * 2) - lookAtPoint, -lookAtPoint, z * (kugelRad * 2) - lookAtPoint));
                 Model = glm::scale(Model, glm::vec3(kugelRad * 2, kugelRad /4, kugelRad * 2));
                 // Bind our texture in Texture Unit 0
-                glActiveTexture(GL_TEXTURE0);				// Die Textturen sind durchnummeriert
-                glBindTexture(GL_TEXTURE_2D, m_tAffe->textureId());		// Verbindet die Textur
+                f->glActiveTexture(GL_TEXTURE0);				// Die Textturen sind durchnummeriert
+                f->glBindTexture(GL_TEXTURE_2D, m_tAffe->textureId());		// Verbindet die Textur
                                                                 // Set our "myTextureSampler" sampler to user Texture Unit 0
                 f->glUniform1i(f->glGetUniformLocation(shaders->programId(), "myTextureSampler"), 0);
 
@@ -253,8 +252,8 @@ protected:
 
 
                         // Bind our texture in Texture Unit 0
-                        glActiveTexture(GL_TEXTURE0);				// Die Textturen sind durchnummeriert
-                        glBindTexture(GL_TEXTURE_2D, m_tAffe->textureId());		// Verbindet die Textur
+                        f->glActiveTexture(GL_TEXTURE0);				// Die Textturen sind durchnummeriert
+                        f->glBindTexture(GL_TEXTURE_2D, m_tAffe->textureId());		// Verbindet die Textur
                                                                     // Set our "myTextureSampler" sampler to user Texture Unit 0
                         f->glUniform1i(f->glGetUniformLocation(shaders->programId(), "myTextureSampler"), 0);
 
@@ -268,8 +267,8 @@ protected:
                     {
                         Model = glm::scale(Model, glm::vec3(kugelRad / 5, kugelRad * 2, kugelRad / 5));
                         // Bind our texture in Texture Unit 0
-                        glActiveTexture(GL_TEXTURE0);				// Die Textturen sind durchnummeriert
-                        glBindTexture(GL_TEXTURE_2D, m_tLoewe->textureId());		// Verbindet die Textur
+                        f->glActiveTexture(GL_TEXTURE0);				// Die Textturen sind durchnummeriert
+                        f->glBindTexture(GL_TEXTURE_2D, m_tLoewe->textureId());		// Verbindet die Textur
                                                                         // Set our "myTextureSampler" sampler to user Texture Unit 0
                         f->glUniform1i(f->glGetUniformLocation(shaders->programId(), "myTextureSampler"), 0);
 

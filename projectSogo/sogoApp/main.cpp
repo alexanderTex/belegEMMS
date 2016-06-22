@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
 
     QTranslator *translator = new QTranslator();
 
-    if(translator->load(":/sprache/sogoapp_de.qm"))
+    if(translator->load(":/sprache/Translations/sogoapp_de.qm"))
     {
         std::cout << "translator loaded" << std::endl;
     }

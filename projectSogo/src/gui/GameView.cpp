@@ -110,7 +110,6 @@ GameView::GameView(GameData *data, QWidget *parent)
 
     this->m_gameLoop->start();
 
-
 }
 
 GameView::~GameView()

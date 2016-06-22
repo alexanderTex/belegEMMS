@@ -29,6 +29,11 @@ public:
     };
 
     /**
+     * @brief GameData Default Constructor
+    */
+    GameData();
+
+    /**
      * @brief GameData Initializes a Gamedata object with a given PlayingField
      * both players and the designated starting player
      * @param field given PlayingField

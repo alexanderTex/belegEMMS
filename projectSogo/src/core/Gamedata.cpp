@@ -1,5 +1,14 @@
 #include "../../include/core/GameData.h"
 
+GameData::GameData()
+{
+    this->m_field = NULL;
+    this->m_player1 = NULL;
+    this->m_player2 = NULL;
+    this->m_currentPlayer = NULL;
+    this->m_history = new HistorySave();
+}
+
 GameData::GameData(PlayingField *field, Player *p1, Player *p2, Player *startingPlayer)
 {
     this->m_field = field;

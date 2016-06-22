@@ -35,9 +35,6 @@ bool GameManager::MakeMove(Vector3 pos) throw(PlayingField::FieldExeptions, std:
     this->m_data->OccupySlot(pos.X, pos.Y, pos.Z, this->m_data->GetCurrentPlayer()->GetColor());
 
 
-
-
-
     if(CheckForWin(this->m_data->GetField(), this->m_data->GetCurrentPlayer()->GetColor()))
     {
         //end game event
@@ -75,9 +72,9 @@ void GameManager::GameLoop()
 
 
 
-    while(m_stop == false && this->m_data != NULL)
+    while(m_stop == false)
     {
-        if(!m_paused)
+        if(this->m_data != NULL)
         {
             if(this->m_data->GetCurrentPlayer()->GetType() == Player::Human)
             {
@@ -112,20 +109,22 @@ void GameManager::GameLoop()
 
                     this->m_playerInputConfirmed = false;
                 }
+
+
+                if(!m_paused)
+                {
+                    AIProcess(aiPlayer1);
+                    AIProcess(aiPlayer2);
+                }
+
+                if(this->m_stop)
+                {
+                    Logger::GetLoggerIntance()->LogInfo("GameManager Loop stopped");
+                }
             }
 
-
-            AIProcess(aiPlayer1);
-            AIProcess(aiPlayer2);
-
-
-            if(this->m_stop)
-            {
-                Logger::GetLoggerIntance()->LogInfo("GameManager Loop stopped");
-            }
-
-        }
-     }
+         }
+    }
 }
 
 void GameManager::AIProcess(AIPlayer *ai)

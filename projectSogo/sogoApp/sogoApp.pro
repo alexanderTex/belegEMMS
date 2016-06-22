@@ -12,8 +12,8 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = sogoApp
 TEMPLATE = app
-TRANSLATIONS += sogoapp_de.ts \
-                sogoapp_en.ts
+TRANSLATIONS += ./Translations/sogoapp_de.ts \
+                ./Translations/sogoapp_en.ts
 
 INCLUDEPATH +=  ../include/core/ \
                 ../include/gui/ \
@@ -24,7 +24,8 @@ HEADERS +=      ../include/core/* \
                 ../include/gui/* \
                 ../include/utility/* \
                 ../include/Subject.h \
-                ../include/IObserver.h \
+                ../include/IObserver.h \    
+                ../external/objloader.hpp \
     ../external/glm-0.9.4.0/glm/core/_detail.hpp \
     ../external/glm-0.9.4.0/glm/core/_fixes.hpp \
     ../external/glm-0.9.4.0/glm/core/_swizzle.hpp \
@@ -84,14 +85,13 @@ HEADERS +=      ../include/core/* \
     ../external/glm-0.9.4.0/glm/gtc/type_ptr.hpp \
     ../external/glm-0.9.4.0/glm/gtc/ulp.hpp \
     ../external/glm-0.9.4.0/glm/ext.hpp \
-    ../external/glm-0.9.4.0/glm/glm.hpp \
-    ../external/objloader.hpp
+    ../external/glm-0.9.4.0/glm/glm.hpp
 
 SOURCES +=      main.cpp \
                 ../src/core/* \
                 ../src/gui/*  \
                 ../src/utility/* \
-    ../external/objloader.cpp
+    ../external/objloader.cpp \
 
 RESOURCES += \
     ressources.qrc
