@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include <QApplication>
 #include <QMainWindow>
 #include <QGridLayout>
 
@@ -20,6 +21,7 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = 0);
+    MainWindow(QTranslator *translator, QWidget *parent = 0);
     virtual ~MainWindow();
 
     inline GameView *GetGameView() const
@@ -37,10 +39,55 @@ public:
      */
     void ShowPauseMenu();
 
+    inline void ChangeLanguage()
+    {
+        qApp->removeTranslator(m_translator);
+
+        delete(m_translator);
+
+        m_translator = new QTranslator();
+
+        if(m_languageEnglish)
+        {
+            if(m_translator->load(":/sprache/Translations/sogoapp_de.qm"))
+            {
+                std::cout << "translator loaded" << std::endl;
+            }
+            else
+            {
+                std::cout << "translator did not load...whyever!!!" << std::endl;
+            }
+            m_languageEnglish = false;
+        }
+        else
+        {
+            if(m_translator->load(":/sprache/Translations/sogoapp_en.qm"))
+            {
+                std::cout << "translator loaded" << std::endl;
+            }
+            else
+            {
+                std::cout << "translator did not load...whyever!!!" << std::endl;
+            }
+            m_languageEnglish = true;
+        }
+        // qm datei muss in Ressource ordner sein um geladen werden
+
+        qApp->installTranslator(m_translator);
+
+    }
+
 signals:
     void QuitMainWindow();
 
 private:
+    bool m_languageEnglish = false;
+
+
+    QTranslator *m_translator;
+
+    QVBoxLayout *m_allAroundLayout;
+
     QStackedLayout *m_layout;
 
     GameView *m_gameView;

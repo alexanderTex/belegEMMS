@@ -71,6 +71,15 @@ public:
      */
     void EndGame();
 
+    inline void changeEvent(QEvent *event)
+    {
+        if (event->type() == QEvent::LanguageChange) {
+            m_pauseMenuButton->setText(tr("Pausemenu"));
+
+        } else
+            QWidget::changeEvent(event);
+    }
+
 
 signals:
     /**

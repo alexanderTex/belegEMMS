@@ -111,16 +111,18 @@ void GameManager::GameLoop()
                 }
 
 
-                if(!m_paused)
-                {
-                    AIProcess(aiPlayer1);
-                    AIProcess(aiPlayer2);
-                }
 
-                if(this->m_stop)
-                {
-                    Logger::GetLoggerIntance()->LogInfo("GameManager Loop stopped");
-                }
+            }
+
+            if(!m_paused)
+            {
+                AIProcess(aiPlayer1);
+                AIProcess(aiPlayer2);
+            }
+
+            if(this->m_stop)
+            {
+                Logger::GetLoggerIntance()->LogInfo("GameManager Loop stopped");
             }
 
          }

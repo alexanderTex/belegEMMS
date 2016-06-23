@@ -1,6 +1,7 @@
 #ifndef GAMEVIEW3D_H
 #define GAMEVIEW3D_H
 
+#include <typeinfo>
 
 
 // Include GLM
@@ -13,13 +14,14 @@
 #include <QWidget>
 #include <QVector3D>
 #include <QOpenGLWidget>
-#include <QOpenGLFunctions_4_0_Core>
+#include <QOpenGLFunctions_4_5_Core>
 #include <QOpenGLVertexArrayObject>
 #include <QOpenGLBuffer>
 #include <QOpenGLShaderProgram>
 #include <QOpenGLTexture>
 
 #include "Logger.h"
+#include <sstream>
 
 class GameView3D : public QOpenGLWidget
 {
@@ -33,7 +35,7 @@ class GameView3D : public QOpenGLWidget
         */
         Mesh(std::string fileName)
         {
-            QOpenGLFunctions_4_0_Core *f = (QOpenGLFunctions_4_0_Core*)(QOpenGLContext::currentContext()->versionFunctions());
+            QOpenGLFunctions_4_5_Core *f = (QOpenGLFunctions_4_5_Core*)(QOpenGLContext::currentContext()->versionFunctions());
             // --- Kannenmodell
             std::vector<glm::vec3> vertices;
             std::vector<glm::vec2> uvs;
@@ -81,7 +83,7 @@ class GameView3D : public QOpenGLWidget
 
         virtual ~Mesh()
         {
-            QOpenGLFunctions_4_0_Core *f = (QOpenGLFunctions_4_0_Core*)(QOpenGLContext::currentContext()->versionFunctions());
+            QOpenGLFunctions_4_5_Core *f = (QOpenGLFunctions_4_5_Core*)(QOpenGLContext::currentContext()->versionFunctions());
 
             f->glDeleteBuffers(1, &vertexbuffer);
 
@@ -111,7 +113,7 @@ protected:
 
     void sendMVP(GLuint programID)
     {
-        QOpenGLFunctions_4_0_Core *f = (QOpenGLFunctions_4_0_Core*)(QOpenGLContext::currentContext()->versionFunctions());
+        QOpenGLFunctions_4_5_Core *f = (QOpenGLFunctions_4_5_Core*)(QOpenGLContext::currentContext()->versionFunctions());
         // Our ModelViewProjection : multiplication of our 3 matrices
         glm::mat4 MVP = Projection * View * Model;
         // Send our transformation to the currently bound shader,
@@ -127,7 +129,15 @@ protected:
     //this is where all the code before the graphics loop goes
     inline virtual void initializeGL()
     {
-        QOpenGLFunctions_4_0_Core *f = (QOpenGLFunctions_4_0_Core*)(QOpenGLContext::currentContext()->versionFunctions());
+
+
+        std::stringstream s;
+        s << QOpenGLContext::currentContext()->format().minorVersion();
+
+        Logger::GetLoggerIntance()->Log(s.str().c_str());
+
+
+        QOpenGLFunctions_4_5_Core *f = (QOpenGLFunctions_4_5_Core*)(QOpenGLContext::currentContext()->versionFunctions());
 
         // Auf Keyboard-Events reagieren
             //glfwSetKeyCallback(window, key_callback);
@@ -141,12 +151,15 @@ protected:
             f->glDepthFunc(GL_LESS);
 
             // Create and compile our GLSL program from the shaders
-            shaders = new QOpenGLShaderProgram();
-            if(shaders->addShaderFromSourceFile(QOpenGLShader::Vertex , ":/shader/Shader/StandardShading.vertexshader"))
+            shaders = new QOpenGLShaderProgram(this);
+            if(shaders->addShaderFromSourceFile(QOpenGLShader::Vertex, ":/shader/Shader/StandardShading.vertexshader"))
             {
-                Logger::GetLoggerIntance()->LogError("Shader incompatible whyyyyyyy?");
+                Logger::GetLoggerIntance()->LogError("VertexShader incompatible whyyyyyyy?");
             }
-            shaders->addShaderFromSourceFile(QOpenGLShader::Fragment , ":/shader/Shader/StandardShading.fragmentshader");
+            if(shaders->addShaderFromSourceFile(QOpenGLShader::Fragment, ":/shader/Shader/StandardShading.fragmentshader"))
+            {
+                Logger::GetLoggerIntance()->LogError("FragmentShader incompatible whyyyyyyy?");
+            }
             shaders->link();
 
             shaders->bind();
@@ -166,7 +179,7 @@ protected:
 
     inline virtual void paintGL()
     {
-        QOpenGLFunctions_4_0_Core *f = (QOpenGLFunctions_4_0_Core*)(QOpenGLContext::currentContext()->versionFunctions());
+        QOpenGLFunctions_4_5_Core *f = (QOpenGLFunctions_4_5_Core*)(QOpenGLContext::currentContext()->versionFunctions());
 
         // Clear the screen
         //glClear(GL_COLOR_BUFFER_BIT);
