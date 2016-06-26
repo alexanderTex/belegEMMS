@@ -3,6 +3,8 @@
 #include <QLibraryInfo>
 #include "../include/gui/mainwindow.h"
 
+#include "Menu.h"
+
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
@@ -32,6 +34,8 @@ int main(int argc, char *argv[])
     MainWindow w(translator);
 
     QObject::connect(&w, &MainWindow::QuitMainWindow, &app, &QApplication::quit);
+
+    Menu m;
 
     return app.exec();
 }
