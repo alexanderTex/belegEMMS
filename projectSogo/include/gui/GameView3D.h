@@ -151,6 +151,17 @@ protected:
             f->glDepthFunc(GL_LESS);
 
             // Create and compile our GLSL program from the shaders
+            programID = LoadShaders("StandardShading.vertexshader", "StandardShading.fragmentshader");
+            //programID = LoadShaders("TransformVertexShader.vertexshader", "ColorFragmentShader.fragmentshader");
+
+            // Shader auch benutzen !
+            glUseProgram(programID);
+
+            /*
+
+              // Fails to add shaders to shaderprogram
+
+            // Create and compile our GLSL program from the shaders
             shaders = new QOpenGLShaderProgram(this);
             if(shaders->addShaderFromSourceFile(QOpenGLShader::Vertex, ":/shader/Shader/StandardShading.vertexshader"))
             {
@@ -164,7 +175,7 @@ protected:
 
             shaders->bind();
 
-
+            */
             Sphere = new Mesh("Sphere.obj");
             Cube = new Mesh("Cube.obj");
             Kanne = new Mesh("teapot.obj");

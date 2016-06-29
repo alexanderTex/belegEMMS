@@ -85,13 +85,15 @@ HEADERS +=      ../include/core/* \
     ../external/glm-0.9.4.0/glm/gtc/type_ptr.hpp \
     ../external/glm-0.9.4.0/glm/gtc/ulp.hpp \
     ../external/glm-0.9.4.0/glm/ext.hpp \
-    ../external/glm-0.9.4.0/glm/glm.hpp
+    ../external/glm-0.9.4.0/glm/glm.hpp \
+    ../external/shader.hpp
 
 SOURCES +=      main.cpp \
                 ../src/core/* \
                 ../src/gui/*  \
                 ../src/utility/* \
     ../external/objloader.cpp \
+    ../external/shader.cpp
 
 RESOURCES += \
     ressources.qrc
