@@ -92,8 +92,8 @@ SOURCES +=      main.cpp \
                 ../src/core/* \
                 ../src/gui/*  \
                 ../src/utility/* \
-    ../external/objloader.cpp \
-    ../external/shader.cpp
+                ../external/objloader.cpp \
+                ../external/shader.cpp
 
 RESOURCES += \
     ressources.qrc

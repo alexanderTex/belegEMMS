@@ -9,16 +9,20 @@
 #include "../external/glm-0.9.4.0/glm/gtc/matrix_transform.hpp"
 
 #include "../external/objloader.hpp"
+#include "../external/shader.hpp"
 
-
+#include <QApplication>
 #include <QWidget>
 #include <QVector3D>
 #include <QOpenGLWidget>
 #include <QOpenGLFunctions_4_5_Core>
 #include <QOpenGLVertexArrayObject>
-#include <QOpenGLBuffer>
 #include <QOpenGLShaderProgram>
+#include <QOpenGLBuffer>
 #include <QOpenGLTexture>
+#include <QFile>
+#include <QFileInfo>
+#include <QDir>
 
 #include "Logger.h"
 #include <sstream>
@@ -35,13 +39,18 @@ class GameView3D : public QOpenGLWidget
         */
         Mesh(std::string fileName)
         {
+            Logger::GetLoggerIntance()->LogInfo("Mesh Const");
             QOpenGLFunctions_4_5_Core *f = (QOpenGLFunctions_4_5_Core*)(QOpenGLContext::currentContext()->versionFunctions());
             // --- Kannenmodell
             std::vector<glm::vec3> vertices;
             std::vector<glm::vec2> uvs;
             std::vector<glm::vec3> normals;
             // Laden der Objektdatei
+            Logger::GetLoggerIntance()->LogInfo("before LoadObj");
+
             bool res = loadOBJ(fileName.c_str(), vertices, uvs, normals);
+            if(!res)
+                Logger::GetLoggerIntance()->LogError("Load OBJ Failed");
 
             // Jedes Objekt eigenem VAO zuordnen, damit mehrere Objekte moeglich sind
             // VAOs sind Container fuer mehrere Buffer, die zusammen gesetzt werden sollen.
@@ -130,13 +139,6 @@ protected:
     inline virtual void initializeGL()
     {
 
-
-        std::stringstream s;
-        s << QOpenGLContext::currentContext()->format().minorVersion();
-
-        Logger::GetLoggerIntance()->Log(s.str().c_str());
-
-
         QOpenGLFunctions_4_5_Core *f = (QOpenGLFunctions_4_5_Core*)(QOpenGLContext::currentContext()->versionFunctions());
 
         // Auf Keyboard-Events reagieren
@@ -149,47 +151,73 @@ protected:
 
             // Punkte die kleiner sind kommen durch.
             f->glDepthFunc(GL_LESS);
+            Logger::GetLoggerIntance()->Log("before shader");
+
+            /*std::stringstream s;
+
+            s << (QFileInfo(QFile(":/shaderaaa/Shader/StandardShading.fragmentshader"))).absoluteFilePath().toStdString();
+
+            Logger::GetLoggerIntance()->Log(s.str());
 
             // Create and compile our GLSL program from the shaders
-            programID = LoadShaders("StandardShading.vertexshader", "StandardShading.fragmentshader");
+            programID = LoadShaders( f, ":/shader/Shader/StandardShading.vertexshader", ":/shader/Shader/StandardShading.fragmentshader");
             //programID = LoadShaders("TransformVertexShader.vertexshader", "ColorFragmentShader.fragmentshader");
-
+            Logger::GetLoggerIntance()->Log("after shaderload");
             // Shader auch benutzen !
-            glUseProgram(programID);
+            f->glUseProgram(programID);
+            Logger::GetLoggerIntance()->Log("after shaderprogram in use");
 
-            /*
-
+*/
               // Fails to add shaders to shaderprogram
 
             // Create and compile our GLSL program from the shaders
-            shaders = new QOpenGLShaderProgram(this);
-            if(shaders->addShaderFromSourceFile(QOpenGLShader::Vertex, ":/shader/Shader/StandardShading.vertexshader"))
+           shaderProgram = new QOpenGLShaderProgram(this);
+
+
+            if(!shaderProgram->addShaderFromSourceFile(QOpenGLShader::Vertex, ":/shader/Shader/StandardShading.vertexshader"))
             {
                 Logger::GetLoggerIntance()->LogError("VertexShader incompatible whyyyyyyy?");
             }
-            if(shaders->addShaderFromSourceFile(QOpenGLShader::Fragment, ":/shader/Shader/StandardShading.fragmentshader"))
+            if(!shaderProgram->addShaderFromSourceFile(QOpenGLShader::Fragment, ":/shader/Shader/StandardShading.fragmentshader"))
             {
                 Logger::GetLoggerIntance()->LogError("FragmentShader incompatible whyyyyyyy?");
             }
-            shaders->link();
+            shaderProgram->link();
 
-            shaders->bind();
+            if(shaderProgram->bind())
+            {
+                Logger::GetLoggerIntance()->LogInfo("Shader Binding Completed");
+            }
 
-            */
-            Sphere = new Mesh("Sphere.obj");
-            Cube = new Mesh("Cube.obj");
-            Kanne = new Mesh("teapot.obj");
+            std::stringstream path;
+
+            path << qApp->applicationFilePath().toStdString() << "/Objects/sphere.obj";
+
+            Sphere = new Mesh(path.str());
+
+            path.flush();
+
+            path << qApp->applicationFilePath().toStdString() << "/Objects/cube.obj";
+
+            Cube = new Mesh(path.str());
+
+            path.flush();
+
+            path << qApp->applicationFilePath().toStdString() << "/Objects/teapot.obj";
+
+            Kanne = new Mesh(path.str());
 
 
             // Load the texture
-            m_tAffe = new QOpenGLTexture(QImage("mandrill.bmp"));
-            m_tLoewe = new QOpenGLTexture(QImage("Loewe.jpg"));
+            m_tAffe = new QOpenGLTexture(QImage(":/textures/Textures/mandrill.bmp"));
+            m_tLoewe = new QOpenGLTexture(QImage(":/textures/Textures/mandrill.bmp"));
 
-
+            Logger::GetLoggerIntance()->LogInfo("GLInit finishes");
     }
 
     inline virtual void paintGL()
     {
+        Logger::GetLoggerIntance()->LogInfo("Paint Loop Start");
         QOpenGLFunctions_4_5_Core *f = (QOpenGLFunctions_4_5_Core*)(QOpenGLContext::currentContext()->versionFunctions());
 
         // Clear the screen
@@ -199,7 +227,7 @@ protected:
         // Projection matrix : 45° Field of View, 4:3 ratio, display range : 0.1 unit <-> 100 units
         Projection = glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 100.0f);
 
-
+        Logger::GetLoggerIntance()->LogInfo("Paint Loop Start");
 
         // =========================================================================
         //
@@ -249,9 +277,9 @@ protected:
                 f->glActiveTexture(GL_TEXTURE0);				// Die Textturen sind durchnummeriert
                 f->glBindTexture(GL_TEXTURE_2D, m_tAffe->textureId());		// Verbindet die Textur
                                                                 // Set our "myTextureSampler" sampler to user Texture Unit 0
-                f->glUniform1i(f->glGetUniformLocation(shaders->programId(), "myTextureSampler"), 0);
+                f->glUniform1i(f->glGetUniformLocation(shaderProgram->programId(), "myTextureSampler"), 0);
 
-                sendMVP(shaders->programId());
+                sendMVP(shaderProgram->programId());
                 f->glBindVertexArray(Cube->VertexArrayID);
                 f->glDrawArrays(GL_TRIANGLES, 0, Cube->vertexCount);
             }
@@ -279,9 +307,9 @@ protected:
                         f->glActiveTexture(GL_TEXTURE0);				// Die Textturen sind durchnummeriert
                         f->glBindTexture(GL_TEXTURE_2D, m_tAffe->textureId());		// Verbindet die Textur
                                                                     // Set our "myTextureSampler" sampler to user Texture Unit 0
-                        f->glUniform1i(f->glGetUniformLocation(shaders->programId(), "myTextureSampler"), 0);
+                        f->glUniform1i(f->glGetUniformLocation(shaderProgram->programId(), "myTextureSampler"), 0);
 
-                        sendMVP(shaders->programId());
+                        sendMVP(shaderProgram->programId());
                         f->glBindVertexArray(Sphere->VertexArrayID);
                         f->glDrawArrays(GL_TRIANGLES, 0, Sphere->vertexCount);
 
@@ -294,9 +322,9 @@ protected:
                         f->glActiveTexture(GL_TEXTURE0);				// Die Textturen sind durchnummeriert
                         f->glBindTexture(GL_TEXTURE_2D, m_tLoewe->textureId());		// Verbindet die Textur
                                                                         // Set our "myTextureSampler" sampler to user Texture Unit 0
-                        f->glUniform1i(f->glGetUniformLocation(shaders->programId(), "myTextureSampler"), 0);
+                        f->glUniform1i(f->glGetUniformLocation(shaderProgram->programId(), "myTextureSampler"), 0);
 
-                        sendMVP(shaders->programId());
+                        sendMVP(shaderProgram->programId());
                         f->glBindVertexArray(Cube->VertexArrayID);
                         f->glDrawArrays(GL_TRIANGLES, 0, Cube->vertexCount);
                     }
@@ -309,13 +337,14 @@ protected:
 
         // Lichtposition an der Spitze des letzten Segments
         glm::vec4 lightPos = glm::vec4(8, 3, 0, 1);
-        f->glUniform3f(f->glGetUniformLocation(shaders->programId(), "LightPosition_worldspace"), lightPos.x, lightPos.y, lightPos.z);
+        f->glUniform3f(f->glGetUniformLocation(shaderProgram->programId(), "LightPosition_worldspace"), lightPos.x, lightPos.y, lightPos.z);
 
+        Logger::GetLoggerIntance()->LogInfo("Paint Loop END");
     }
 
     inline virtual void resizeGL(int w, int h)
     {
-
+        Logger::GetLoggerIntance()->LogInfo("Resize Start");
     }
 
 signals:
@@ -352,7 +381,7 @@ private :
     /***
      * Ressources
      */
-    QOpenGLShaderProgram *shaders;
+    QOpenGLShaderProgram *shaderProgram;
     QOpenGLTexture *m_tAffe;
     QOpenGLTexture *m_tLoewe;
 

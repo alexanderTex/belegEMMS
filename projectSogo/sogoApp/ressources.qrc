@@ -7,4 +7,12 @@
         <file>Shader/StandardShading.fragmentshader</file>
         <file>Shader/StandardShading.vertexshader</file>
     </qresource>
+    <qresource prefix="/textures">
+        <file>Textures/mandrill.bmp</file>
+    </qresource>
+    <qresource prefix="/objects">
+        <file>Objects/cube.obj</file>
+        <file>Objects/sphere.obj</file>
+        <file>Objects/teapot.obj</file>
+    </qresource>
 </RCC>

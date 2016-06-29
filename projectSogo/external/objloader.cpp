@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string>
 #include <cstring>
+#include "Logger.h"
 
 #include "../external/glm-0.9.4.0/glm/glm.hpp"
 
@@ -23,7 +24,7 @@ bool loadOBJ(
 	std::vector<glm::vec2> & out_uvs,
 	std::vector<glm::vec3> & out_normals
 ){
-	printf("Loading OBJ file %s...\n", path);
+    Logger::GetLoggerIntance()->LogInfo("Loading OBJ file %s...\n");
 
 	std::vector<unsigned int> vertexIndices, uvIndices, normalIndices;
 	std::vector<glm::vec3> temp_vertices; 
@@ -33,7 +34,7 @@ bool loadOBJ(
 
 	FILE * file = fopen(path, "r");
 	if( file == NULL ){
-		printf("Impossible to open the file ! Are you in the right path ? See Tutorial 1 for details\n");
+        Logger::GetLoggerIntance()->LogError("Impossible to open the file ! Are you in the right path ? See Tutorial 1 for details\n");
 		getchar();
 		return false;
 	}
@@ -73,7 +74,7 @@ bool loadOBJ(
 
 					if (matches != 2)
 					{
-						printf("File can't be read by our simple parser (%d matches) :-( Try exporting with other options\n", matches);
+                        Logger::GetLoggerIntance()->LogError("File can't be read by our simple parser (%d matches) :-( Try exporting with other options\n");
 						return false;
 					}
 					else
