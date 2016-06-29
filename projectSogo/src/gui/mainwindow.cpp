@@ -19,7 +19,7 @@ MainWindow::MainWindow(QWidget *parent)
     Player *one = new Player(Player::Ai, "Dirk", PlayingField::Blue);
     Player *two = new Player(Player::Human, "Frank", PlayingField::Red);
 
-    GameData *data = new GameData(new PlayingField(), one, two, one);
+    GameData *data = new GameData(new PlayingField(), one, two, one);    
 
     m_layout = new QStackedLayout(workspace);
 
@@ -61,6 +61,17 @@ MainWindow::MainWindow(QTranslator *translator, QWidget *parent)
 
     m_layout = new QStackedLayout(workspace);
 
+    // inout mainmenu
+/*    this->m_startMenu = new StartMenu(workspace);
+    m_layout->addWidget(m_startMenu);
+    QObject::connect(m_startMenu, &StartMenu::quitGame, this, &MainWindow::close);
+
+    this->m_newSessionMenu = new NewSessionMenu(workspace);
+    m_layout->addWidget(m_newSessionMenu);
+
+    this->m_highscoreMenu = new HighscoreMenu(workspace);
+    m_layout->addWidget(m_highscoreMenu);
+*/
     this->m_gameView = new GameView( data, workspace);
     m_layout->addWidget(this->m_gameView);
     QObject::connect(this->m_gameView, &GameView::PauseMenu, this, &MainWindow::ShowPauseMenu);
@@ -87,6 +98,21 @@ void MainWindow::ShowGameView()
 {
     m_layout->setCurrentWidget(this->m_gameView);
     m_gameView->StartGame();
+}
+
+void MainWindow::showNewSessionMenu()
+{
+    m_layout->setCurrentWidget(this->m_newSessionMenu);
+}
+
+void MainWindow::showHighscoreMenu()
+{
+    m_layout->setCurrentWidget(this->m_highscoreMenu);
+}
+
+void MainWindow::showStartMenu()
+{
+    m_layout->setCurrentWidget(this->m_startMenu);
 }
 
 void MainWindow::ShowPauseMenu()
