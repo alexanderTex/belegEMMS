@@ -11,7 +11,6 @@ Menu::Menu(QWidget *parent) : QMainWindow(parent)
     StartMenu *startMenu = new StartMenu(mainWidget);
     NewSessionMenu *newSessionMenu =new NewSessionMenu(mainWidget);
     HighscoreMenu *highscoreMenu = new HighscoreMenu(mainWidget);
-    LoadMenu *loadMenu = new LoadMenu(mainWidget);
 
     mainLayout->addWidget(newSessionMenu);
 

@@ -11,9 +11,6 @@ StartMenu::StartMenu(QWidget *parent) : QWidget(parent)
     m_newSessionButton = new QPushButton(tr("new session"));
     m_newSessionButton->setGeometry(30,10,400,30);
 
-    m_loadButton = new QPushButton(tr("load"));
-    m_loadButton->setGeometry(30,90,400,30);
-
     m_highscoreButton = new QPushButton(tr("highscore"));
     m_highscoreButton->setGeometry(30,90,1,30);
 
@@ -22,7 +19,6 @@ StartMenu::StartMenu(QWidget *parent) : QWidget(parent)
 
     m_controlLayout->addWidget(m_mainMenueLabel);
     m_controlLayout->addWidget(m_newSessionButton);
-    m_controlLayout->addWidget(m_loadButton);
     m_controlLayout->addWidget(m_highscoreButton);
     m_controlLayout->addWidget(m_exitButton);
 }

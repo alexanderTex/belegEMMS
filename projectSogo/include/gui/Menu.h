@@ -20,7 +20,6 @@
 #include "StartMenu.h"
 #include "NewSessionMenu.h"
 #include "HighscoreMenu.h"
-#include "LoadMenu.h"
 
 class Menu : public QMainWindow
 {

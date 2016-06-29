@@ -12,7 +12,13 @@ class StartMenu : public QWidget
 public:
     explicit StartMenu(QWidget *parent = 0);
 
+
 signals:
+    void switchToNewSession();
+
+    void switchToHighscore();
+
+    void quitGame();
 
 public slots:
 
@@ -22,8 +28,6 @@ private:
     QLabel *m_mainMenueLabel;
 
     QPushButton *m_newSessionButton;
-
-    QPushButton *m_loadButton;
 
     QPushButton *m_highscoreButton;
 

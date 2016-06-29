@@ -11,6 +11,9 @@
 #include "../include/core/GameData.h"
 #include "Player.h"
 #include "PauseMenu.h"
+#include "HighscoreMenu.h"
+#include "NewSessionMenu.h"
+#include "StartMenu.h"
 
 /**
  * @brief The MainWindow class
@@ -77,6 +80,13 @@ public:
 
     }
 
+    void showNewSessionMenu();
+
+    void showStartMenu();
+
+    void showHighscoreMenu();
+
+
 signals:
     void QuitMainWindow();
 
@@ -92,6 +102,10 @@ private:
 
     GameView *m_gameView;
     PauseMenu *m_pauseMenu;
+
+    StartMenu *m_startMenu;
+    HighscoreMenu * m_highscoreMenu;
+    NewSessionMenu *m_newSessionMenu;
 
 };
 
