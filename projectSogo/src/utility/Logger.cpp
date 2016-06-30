@@ -6,6 +6,12 @@ Logger::Logger()
 {
 
 }
+
+Logger::Logger(const Logger &src)
+{
+
+}
+
 Logger::~Logger()
 {
     std::cout << "Logger destroyed" << std::endl;

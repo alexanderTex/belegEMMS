@@ -137,11 +137,13 @@ private:
      */
     void GameLoop();
 
+    bool PlayerInputProcess(Vector3 *pos) throw(out_of_range, PlayingField::FieldExeptions);
+
     /**
      * @brief AIProcess
      * @param ai to process
      */
-    void AIProcess(AIPlayer *ai);
+    bool AIProcess(AIPlayer *ai, Vector3 *move);
 
 
     /**

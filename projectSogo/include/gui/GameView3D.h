@@ -170,6 +170,7 @@ protected:
 */
               // Fails to add shaders to shaderprogram
 
+            /*
             // Create and compile our GLSL program from the shaders
            shaderProgram = new QOpenGLShaderProgram(this);
 
@@ -188,10 +189,12 @@ protected:
             {
                 Logger::GetLoggerIntance()->LogInfo("Shader Binding Completed");
             }
-
+*/
             std::stringstream path;
 
-            path << qApp->applicationFilePath().toStdString() << "/Objects/sphere.obj";
+            path << qApp->applicationFilePath().toStdString() << "/objects/Objects/sphere.obj";
+
+            Logger::GetLoggerIntance()->Log(path.str());
 
             Sphere = new Mesh(path.str());
 

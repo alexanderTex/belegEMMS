@@ -106,10 +106,6 @@ GameView::GameView(GameData *data, QWidget *parent)
     QObject::connect(this->m_gameLoop, &GameManager::TurnFinished, this->m_gameVis, &GameVisualizer::UpdateView);
 
     QObject::connect(this->m_inputArea->GetPlayerInputControls(), &PlayerInput::InputConfirmed, this->m_gameLoop, &GameManager::InputConfirmationDetected);
-
-
-    this->m_gameLoop->start();
-
 }
 
 GameView::~GameView()
@@ -145,6 +141,8 @@ void GameView::GameFinished()
     {
         Logger::GetLoggerIntance()->LogInfo("gameLoop already null");
     }
+
+    // Play WinSound
 
     FillInWinner();
     bottomViewLayout->setCurrentWidget(this->endView);

@@ -17,7 +17,7 @@ public:
 
     static Logger *GetLoggerIntance()
     {
-        if(Logger::instance == NULL)
+        if(instance == NULL)
         {
             instance = new Logger();
         }
@@ -66,6 +66,7 @@ private:
     static Logger *instance;
 
     Logger();
+    Logger(const Logger &src);
 
 };
 

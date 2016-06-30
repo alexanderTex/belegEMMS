@@ -79,7 +79,7 @@ class PlayingField
         /**
         * Copy constructor
         */
-        PlayingField(const PlayingField *field);
+        PlayingField(const PlayingField &field);
 
         /**
         * Destructor clears the field

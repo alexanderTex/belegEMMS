@@ -48,7 +48,7 @@ public:
      * @brief GameData Copy Constructor
      * @param src Gamedata to copy from
      */
-    GameData(const GameData *src);
+    GameData(const GameData &src);
 
     /**
      * @brief ~GameData
@@ -108,7 +108,7 @@ public:
      */
     inline Vector3 GetLastMove() const
     {
-        return m_history->GetLastMove()->position;
+        return *(m_history->GetLastMove()->position);
     }
 
     /**

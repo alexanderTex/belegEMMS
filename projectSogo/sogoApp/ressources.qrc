@@ -15,4 +15,5 @@
         <file>Objects/sphere.obj</file>
         <file>Objects/teapot.obj</file>
     </qresource>
+    <qresource prefix="/sounts"/>
 </RCC>

@@ -51,9 +51,6 @@ void GameManager::GameLoop()
     Logger::GetLoggerIntance()->LogInfo("GameLoop startet :" );
     Logger::GetLoggerIntance()->Log("\n" );
 
-    vector<Vector3> *possibleOpponentMoves;
-    vector<Vector3> *futureMoves = new vector<Vector3>();
-
     AIPlayer *aiPlayer1 = NULL;
 
 
@@ -70,7 +67,8 @@ void GameManager::GameLoop()
         aiPlayer2 = new AIPlayer(this->m_data->GetPlayer2());
     }
 
-
+    bool currentPlayerMoveReady = false;
+    Vector3 *pos = new Vector3();
 
     while(m_stop == false)
     {
@@ -84,161 +82,104 @@ void GameManager::GameLoop()
                 {
                     try
                     {
-                        Vector3 pos(this->playerPosChoice.X, this->playerPosChoice.Y, GetAvailablePosition(this->playerPosChoice.X, this->playerPosChoice.Y, this->GetGameData()->GetField()));
-
-                        if(MakeMove(pos))
-                        {
-                            TurnFinished();
-                            emit PlayerWon();
-                        }
-                        else
-                        {
-                            TurnFinished();
-                        }
-                        Logger::GetLoggerIntance()->LogInfo("PlayerInput Applied");
-
+                        currentPlayerMoveReady = PlayerInputProcess(pos);
                     }
-                    catch(PlayingField::FieldExeptions)
+                    catch(PlayingField::FieldExeptions e)
                     {
-                        Logger::GetLoggerIntance()->LogError("Input not Valid");
+                        Logger::GetLoggerIntance()->LogError("Player Input not Valid");
+                        // Play Bad Input sound
                     }
-                    catch(std::out_of_range)
+                    catch(std::out_of_range e)
                     {
-                        Logger::GetLoggerIntance()->LogError("Input Out of Range");
+                        Logger::GetLoggerIntance()->LogError("Player Input Out of Range");
+                        // Play Bad Input sound
                     }
 
                     this->m_playerInputConfirmed = false;
                 }
-
-
-
             }
 
-            if(!m_paused)
+            if(!m_paused && !currentPlayerMoveReady)
             {
-                AIProcess(aiPlayer1);
-                AIProcess(aiPlayer2);
+                currentPlayerMoveReady = AIProcess(aiPlayer1, pos) || AIProcess(aiPlayer2, pos);
             }
 
-            if(this->m_stop)
+
+            if(currentPlayerMoveReady)
             {
-                Logger::GetLoggerIntance()->LogInfo("GameManager Loop stopped");
-            }
+                Logger::GetLoggerIntance()->LogInfo("Currentplayer moves start");
+                try
+                {
+                    if(this->MakeMove(*pos))
+                    {
+                        TurnFinished();
+                        emit PlayerWon();
+                        this->m_stop = true;
+                    }
+                    else
+                    {
+                        TurnFinished();
+                    }
+                }
+                catch(PlayingField::FieldExeptions e)
+                {
+                    Logger::GetLoggerIntance()->LogError("Input not Valid");
+                    this->m_stop = true;
+                }
+                catch(std::out_of_range e)
+                {
+                    Logger::GetLoggerIntance()->LogError("Input Out of Range");
+                    this->m_stop = true;
+                }
 
+                currentPlayerMoveReady = false;
+            }
          }
+
+        if(this->m_stop)
+        {
+            Logger::GetLoggerIntance()->LogInfo("GameManager Loop stopped");
+        }
+
+
     }
 }
 
-void GameManager::AIProcess(AIPlayer *ai)
+bool GameManager::PlayerInputProcess(Vector3 *pos) throw(out_of_range, PlayingField::FieldExeptions)
+{
+
+    Logger::GetLoggerIntance()->LogInfo("PlayerInput start");
+    int z = GetAvailablePosition(this->playerPosChoice.X, this->playerPosChoice.Y, this->GetGameData()->GetField());
+
+    if(z >= 0)
+        Logger::GetLoggerIntance()->LogInfo("PlayerInput Input available");
+    else
+        Logger::GetLoggerIntance()->LogInfo("PlayerInput Input not available");
+
+    pos->X = this->playerPosChoice.X;
+    pos->Y = this->playerPosChoice.Y;
+    pos->Z = z;
+    Logger::GetLoggerIntance()->LogInfo("PlayerInput assigned");
+    return true;
+
+
+}
+
+bool GameManager::AIProcess(AIPlayer *ai, Vector3 *move)
 {
     if(ai != NULL)
     {
-        if(ai->hasMove == false)
-        {
-           /*
-            Logger::GetLoggerIntance()->Log(DrawPlayingField(data->GetField()));
-
-            Logger::GetLoggerIntance()->LogInfo("Calculating...");
-            Logger::GetLoggerIntance()->Log("\n" );
-
-            possibleOpponentMoves = GetAvailablePositions(data->GetField());
-
-            stringstream possiblePosSize;
-
-            possiblePosSize << possibleOpponentMoves->size() << endl;
-
-            Logger::GetLoggerIntance()->LogInfo(possiblePosSize.str());
-
-            if(futureMoves == NULL)
-            {
-                futureMoves = new vector<Vector3>();
-            }
-
-            for(int i = 0; i < possibleOpponentMoves->size(); i++)
-            {
-                Vector3 futuremove;
-                PlayingField p(data->GetField());
-                p.OccupySlot(possibleOpponentMoves->at(i), opponent->GetColor());
-
-                MiniMax(data->GetField(), player->GetColor(), player->GetColor(), 3, &futuremove);
-                futureMoves->push_back(futuremove);
-
-
-                stringstream s;
-                s << i << " calculated!" << endl;
-
-                Logger::GetLoggerIntance()->LogInfo(s.str());
-            }
-
-            stringstream s;
-
-            s << "Calculating finished" << endl;
-            Logger::GetLoggerIntance()->LogInfo(s.str());
-
-            */
-
-            ai->hasMove = true;
-        }
-
-        if(ai->hasMove == true && this->m_data->GetCurrentPlayer() == ai->player)
+        if(this->m_data->GetCurrentPlayer() == ai->player)
         {
             const Player *opponent = this->m_data->GetOpponent(ai->player);
 
-            Vector3 futuremove;
-
-            MiniMax(this->m_data->GetField(), ai->player->GetColor(), ai->player->GetColor(), 4, &futuremove);
 
 
-            /*
-            stringstream check;
-            check << "Checking moves" << endl;
-            Logger::GetLoggerIntance()->LogInfo(check.str());
+            MiniMax(this->m_data->GetField(), ai->player->GetColor(), ai->player->GetColor(), 4, move);
 
-            int i = -1;
-            for( i = 0; i < possibleOpponentMoves->size(); i++)
-            {
-                if(*(data->GetLastMove()) == possibleOpponentMoves->at(i))
-                {
-                    break;
-                }
-            }
-            */
-
-
-            try
-            {
-                if(this->MakeMove(futuremove))
-                {
-                    TurnFinished();
-                    emit PlayerWon();
-                    this->m_stop = true;
-                }
-                else
-                {
-                    TurnFinished();
-                }
-            }
-            catch(PlayingField::FieldExeptions e)
-            {
-                Logger::GetLoggerIntance()->LogError("Input not Valid");
-                this->m_stop = true;
-            }
-            catch(std::out_of_range e)
-            {
-                Logger::GetLoggerIntance()->LogError("Input Out of Range");
-                this->m_stop = true;
-            }
-
-
-
-
-            ai->hasMove = false;
-
-
-            //delete(futureMoves);
-            //delete(possibleOpponentMoves);
-
+            return true;
         }
 
     }
+    return false;
 }

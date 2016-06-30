@@ -28,7 +28,7 @@ struct Vector3
      * @brief Vector3
      * @param src
      */
-    Vector3(const Vector3 *src);
+    Vector3(const Vector3 &src);
 
     /**
      * @brief X

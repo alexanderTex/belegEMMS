@@ -15,6 +15,9 @@ struct Vector2
     * Initializes X,Y to zero
     */
     Vector2();
+
+    Vector2(const Vector2 &src);
+
     /**
     * constructor
     * @param x will be assigned to X

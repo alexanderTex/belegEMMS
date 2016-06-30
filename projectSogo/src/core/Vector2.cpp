@@ -13,6 +13,15 @@ Vector2::Vector2(int x, int y)
     this->Y = y;
 }
 
+Vector2::Vector2(const Vector2 &src)
+{
+    //ctor
+
+    this->X = src.X;
+    this->Y = src.Y;
+}
+
+
 bool Vector2::operator==(const Vector2 &v)
 {
     return this->X == v.X && this->Y == v.Y;
