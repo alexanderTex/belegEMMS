@@ -43,8 +43,8 @@ public:
 
     inline void InitGame(GameData *data)
     {
+        *(this->m_data) = *data;
         delete(m_data);
-        this->m_data = data;
     }
 
     void StartGame();

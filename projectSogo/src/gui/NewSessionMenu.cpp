@@ -140,7 +140,6 @@ NewSessionMenu::NewSessionMenu(QWidget *parent) : QWidget(parent)
 
 void NewSessionMenu::setPlayfieldSize()
 {
-    /*
     if(this->m_checkBoxPlayfieldSizeX3->isChecked())
     {
         this->m_playingField = new PlayingField(3);
@@ -153,13 +152,11 @@ void NewSessionMenu::setPlayfieldSize()
     {
         this->m_playingField = new PlayingField(5);
     }
-    */
-    this->m_playingField = new PlayingField(3);
 }
 
 void NewSessionMenu::setPlayer()
 {
-    /*
+   /*
     if (this->m_checkBoxPvC->isChecked())
     {
         this->m_player1 = new Player(Player::Human,this->m_input1stPlayername->text().toStdString(), PlayingField::Blue);
@@ -170,9 +167,9 @@ void NewSessionMenu::setPlayer()
         this->m_player1 = new Player(Player::Human, this->m_input1stPlayername->text().toStdString(), PlayingField::Blue);
         this->m_player2 = new Player(Player::Human, this->m_input2ndPlayername->text().toStdString(), PlayingField::Red);
     }
-    */
+*/
 
-    this->m_player1 = new Player(Player::Human,"Alex", PlayingField::Blue);
+    this->m_player1 = new Player(Player::Human, "Alex", PlayingField::Blue);
     this->m_player2 = new Player(Player::Ai, "Skynet", PlayingField::Red);
 
     // TODO: Networkgame
@@ -186,7 +183,14 @@ void NewSessionMenu::mergeGameData()
     this->m_gameData = new GameData(this->m_playingField,
                                     this->m_player1,
                                     this->m_player2,
-                                    this->m_player1);
+                                    this->m_player2);
+
+    Logger::GetLoggerIntance()->LogInfo(this->m_player1->GetName());
+    Logger::GetLoggerIntance()->LogInfo(this->m_player2->GetName());
+    std::stringstream s;
+    s << this->m_playingField->GetFieldSize();
+    Logger::GetLoggerIntance()->LogInfo(s.str());
+
 }
 
 
