@@ -1,10 +1,12 @@
 #include "./GameView.h"
 
 GameView::GameView( QWidget *parent)
+    : QWidget(parent)
 {
-    this->m_data = NULL;
+    this->m_data = new GameData();
 
     this->m_gameLoop = new GameManager();
+    this->m_gameLoop->PauseGame();
     QObject::connect(this->m_gameLoop, &GameManager::finished, this->m_gameLoop, &GameManager::deleteLater);
 
     m_mainLayout = new QVBoxLayout(this);
@@ -115,12 +117,12 @@ GameView::~GameView()
 
 void GameView::StartGame()
 {
-    this->m_gameLoop->Start();
+    this->m_gameLoop->StartGame();
 }
 
 void GameView::PauseGame()
 {
-    this->m_gameLoop->Pause();
+    this->m_gameLoop->PauseGame();
     PauseMenu();
 }
 
@@ -135,7 +137,7 @@ void GameView::GameFinished()
 
     if(this->m_gameLoop != NULL)
     {
-        this->m_gameLoop->Stop();
+        this->m_gameLoop->StopGame();
     }
     else
     {

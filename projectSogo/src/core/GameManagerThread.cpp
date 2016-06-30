@@ -8,16 +8,18 @@ GameManager::GameManager()
 {
     this->m_data = NULL;
     m_stop = false;
-    m_paused = false;
+    m_paused = true;
     this->m_playerInputConfirmed = false;
+    this->start();
 }
 
 GameManager::GameManager( GameData *data)
 {
     this->m_data = data;
     m_stop = false;
-    m_paused = false;
+    m_paused = true;
     this->m_playerInputConfirmed = false;
+    this->start();
 }
 
 GameManager::~GameManager()
@@ -72,6 +74,7 @@ void GameManager::GameLoop()
 
     while(m_stop == false)
     {
+
         if(this->m_data != NULL)
         {
             if(this->m_data->GetCurrentPlayer()->GetType() == Player::Human)

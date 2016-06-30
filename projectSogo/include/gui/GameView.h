@@ -43,8 +43,9 @@ public:
 
     inline void InitGame(GameData *data)
     {
-        delete(m_data);
-        this->m_data = data;
+
+        *(this->m_data) = *data;
+        delete(data);
     }
 
     void StartGame();

@@ -35,6 +35,8 @@ int main(int argc, char *argv[])
 
     QObject::connect(&w, &MainWindow::QuitMainWindow, &app, &QApplication::quit);
 
+    w.ShowGameView();
+
     //Menu m;
 
     return app.exec();
