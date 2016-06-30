@@ -19,12 +19,12 @@ HistorySave::HistorySave()
     this->m_pastMoves = new std::vector<Move *>();
 }
 
-HistorySave::HistorySave(const HistorySave *src)
+HistorySave::HistorySave(const HistorySave &src)
 {
     this->m_pastMoves = new std::vector<Move *>();
-    for(int i = 0; i < src->m_pastMoves->size(); i++)
+    for(int i = 0; i < src.m_pastMoves->size(); i++)
     {
-        this->m_pastMoves->push_back(new Move(src->m_pastMoves->at(i)));
+        this->m_pastMoves->push_back(new Move(src.m_pastMoves->at(i)));
     }
 }
 

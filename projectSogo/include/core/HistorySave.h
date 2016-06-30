@@ -56,7 +56,7 @@ public:
      * @brief HistorySave
      * @param src
      */
-    HistorySave(const HistorySave *src);
+    HistorySave(const HistorySave &src);
 
     ~HistorySave();
 

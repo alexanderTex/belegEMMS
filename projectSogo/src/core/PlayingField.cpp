@@ -44,8 +44,8 @@ PlayingField:: PlayingField(int fieldSize)
 
 }
 
-PlayingField::PlayingField(const PlayingField *field):
-    PlayingField(field->GetFieldSize())
+PlayingField::PlayingField(const PlayingField &field):
+    PlayingField(field.GetFieldSize())
 {
     // copies the states of the field
     //copies the field's horizontal lines
@@ -57,7 +57,7 @@ PlayingField::PlayingField(const PlayingField *field):
             //copies the field's Vertical lines
             for(int k = 0; k < this->m_fieldSize; k++)
             {
-                this->m_slots->at(i)->at(j)->at(k) = new Slot(field->GetSlot(i,j,k)->Occupation);
+                this->m_slots->at(i)->at(j)->at(k) = new Slot(field.GetSlot(i,j,k)->Occupation);
             }
         }
     }

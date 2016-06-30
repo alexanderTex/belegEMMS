@@ -40,7 +40,7 @@ int MiniMax(const PlayingField *field, PlayingField::OccupationState max_Player,
 
     for(int i = 0; i < posPosistions->size(); i++)
     {
-        PlayingField posField(field);
+        PlayingField posField(*field);
 
 
         posField.OccupySlot(posPosistions->at(i).X, posPosistions->at(i).Y, posPosistions->at(i).Z, current_player);
@@ -123,7 +123,7 @@ int MiniMax(const PlayingField *field, PlayingField::OccupationState max_Player,
 
     for(int i = 0; i < posPosistions->size(); i++)
     {
-        PlayingField posField(field);
+        PlayingField posField(*field);
 
 
         posField.OccupySlot(posPosistions->at(i).X, posPosistions->at(i).Y, posPosistions->at(i).Z, current_player);
