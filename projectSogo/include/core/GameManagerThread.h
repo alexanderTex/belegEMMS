@@ -80,13 +80,13 @@ public:
         this->m_data = data;
     }
 
-    inline void Start()
+    inline void StartGame()
     {
         m_paused = false;
     }
 
 
-    inline void Pause()
+    inline void PauseGame()
     {
         m_paused = true;
     }
@@ -95,7 +95,7 @@ public:
      * @brief Stop
      * sets the boolean to end the game logic loop
      */
-    inline void Stop()
+    inline void StopGame()
     {
         m_stop = true;
     }
@@ -143,7 +143,7 @@ private:
      * @brief AIProcess
      * @param ai to process
      */
-    bool AIProcess(AIPlayer *ai, Vector3 *move);
+    bool AIProcess(Player *player, Vector3 *move);
 
 
     /**

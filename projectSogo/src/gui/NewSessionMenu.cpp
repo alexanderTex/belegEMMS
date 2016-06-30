@@ -169,8 +169,8 @@ void NewSessionMenu::setPlayer()
     }
 */
 
-    this->m_player1 = new Player(Player::Human, "Alex", PlayingField::Blue);
-    this->m_player2 = new Player(Player::Ai, "Skynet", PlayingField::Red);
+    this->m_player1 = new Player(Player::Ai, "Alex", PlayingField::Blue);
+    this->m_player2 = new Player(Player::Human, "Skynet", PlayingField::Red);
 
     // TODO: Networkgame
 

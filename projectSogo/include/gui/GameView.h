@@ -43,8 +43,8 @@ public:
 
     inline void InitGame(GameData *data)
     {
+        Logger::GetLoggerIntance()->LogInfo("InitGame");
         *(this->m_data) = *data;
-        delete(m_data);
     }
 
     void StartGame();
