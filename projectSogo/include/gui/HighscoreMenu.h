@@ -15,6 +15,7 @@ public:
     explicit HighscoreMenu(QWidget *parent = 0);
 
 signals:
+    void showStartMenu();
 
 public slots:
 

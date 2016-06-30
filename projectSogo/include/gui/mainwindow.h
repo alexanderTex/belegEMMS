@@ -86,6 +86,8 @@ public:
 
     void showHighscoreMenu();
 
+    void startNewGame();
+
 
 signals:
     void QuitMainWindow();

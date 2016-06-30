@@ -10,5 +10,6 @@ HighscoreMenu::HighscoreMenu(QWidget *parent) : QWidget(parent)
     this->m_controlLayout->addWidget(m_mainMenueLabel);
 
     this->m_backToMainButtonHS = new QPushButton(tr("back"));
+    QObject::connect(m_backToMainButtonHS, &QPushButton::clicked, this, &HighscoreMenu::showStartMenu);
     this->m_controlLayout->addWidget(m_backToMainButtonHS);
 }

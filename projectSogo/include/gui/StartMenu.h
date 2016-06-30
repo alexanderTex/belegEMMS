@@ -12,6 +12,8 @@ class StartMenu : public QWidget
 public:
     explicit StartMenu(QWidget *parent = 0);
 
+    //void newSessionButtonPressed();
+
 
 signals:
     void switchToNewSession();

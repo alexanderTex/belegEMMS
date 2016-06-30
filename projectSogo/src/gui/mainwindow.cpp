@@ -62,16 +62,20 @@ MainWindow::MainWindow(QTranslator *translator, QWidget *parent)
     m_layout = new QStackedLayout(workspace);
 
     // inout mainmenu
-/*    this->m_startMenu = new StartMenu(workspace);
+    this->m_startMenu = new StartMenu(workspace);
     m_layout->addWidget(m_startMenu);
-    QObject::connect(m_startMenu, &StartMenu::quitGame, this, &MainWindow::close);
+    QObject::connect(m_startMenu, &StartMenu::switchToNewSession, this, &MainWindow::showNewSessionMenu);
+    QObject::connect(m_startMenu, &StartMenu::switchToHighscore, this, &MainWindow::showHighscoreMenu);
+    QObject::connect(m_startMenu, &StartMenu::quitGame, this, &MainWindow::QuitMainWindow);
 
     this->m_newSessionMenu = new NewSessionMenu(workspace);
     m_layout->addWidget(m_newSessionMenu);
+    QObject::connect(m_newSessionMenu, &NewSessionMenu::showStartMenu, this, &MainWindow::showStartMenu);
 
     this->m_highscoreMenu = new HighscoreMenu(workspace);
     m_layout->addWidget(m_highscoreMenu);
-*/
+    QObject::connect(m_highscoreMenu, &HighscoreMenu::showStartMenu, this, &MainWindow::showStartMenu);
+
     this->m_gameView = new GameView( data, workspace);
     m_layout->addWidget(this->m_gameView);
     QObject::connect(this->m_gameView, &GameView::PauseMenu, this, &MainWindow::ShowPauseMenu);
@@ -80,6 +84,10 @@ MainWindow::MainWindow(QTranslator *translator, QWidget *parent)
     this->m_pauseMenu = new PauseMenu(workspace);
     m_layout->addWidget(this->m_pauseMenu);
     QObject::connect(this->m_pauseMenu, &PauseMenu::ResumeButtonPressed, this, &MainWindow::ShowGameView);
+
+    // catch startGame from NewSession to start a new Game
+    //QObject::connect(this->m_newSessionMenu, &NewSessionMenu::startGame, this, &MainWindow::startNewGame);
+    QObject::connect(this->m_newSessionMenu, &NewSessionMenu::startGame, this, &MainWindow::ShowGameView);
 
     setCentralWidget(main);
     show();
@@ -92,6 +100,13 @@ MainWindow::~MainWindow()
 {
     delete(m_gameView);
     delete(m_pauseMenu);
+}
+
+void MainWindow::startNewGame()
+{
+    this->m_newSessionMenu->mergeGameData();
+    this->m_gameView->InitGame(this->m_newSessionMenu->m_gameData);
+    this->ShowGameView();
 }
 
 void MainWindow::ShowGameView()

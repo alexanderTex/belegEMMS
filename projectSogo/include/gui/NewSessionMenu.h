@@ -11,6 +11,11 @@
 #include <QGridLayout>
 #include <QPushButton>
 #include <QObject>
+#include "GameData.h"
+#include "PlayingField.h"
+#include "Player.h"
+#include "HistorySave.h"
+#include "Logger.h"
 
 
 class NewSessionMenu : public QWidget
@@ -19,54 +24,78 @@ class NewSessionMenu : public QWidget
 public:
     explicit NewSessionMenu(QWidget *parent = 0);
 
+    GameData *m_gameData;
+
+    void mergeGameData();
+
+    void setPlayfieldSize();
+
+    void setPlayer();
+
+    // network / solo
+    void setGameEnviorment();
+
 signals:
+    void showStartMenu();
+
+    void createGameData(GameData gameData);
+
+    void startGame();
 
 public slots:
 
 private:
-    QVBoxLayout *m_controlLayout;
+    QVBoxLayout *m_controlLayout,
+                *m_checkBoxPlayfieldLayout,
+                *m_checkBoxNetworkLayout;
 
-    QLabel *m_mainMenueLabel;
 
-    QLineEdit *m_inputPlayername;
+    QLabel  *m_mainMenueLabel,
+            *m_checkBoxPlayfieldLabel,
+            *m_checkBoxNetworkLabel,
+            *m_hostadress,
+            *m_hostport;
 
-    QVBoxLayout *m_checkBoxPlayfieldLayout;
 
-    QLabel *m_checkBoxPlayfieldLabel;
+    QLineEdit   *m_input1stPlayername,
+                *m_input2ndPlayername,
+                *m_inputHostaddress,
+                *m_inputHostport;
 
-    QCheckBox *m_checkBoxPlayfieldSizeX3;
 
-    QCheckBox *m_checkBoxPlayfieldSizeX4;
 
-    QCheckBox *m_checkBoxPlayfieldSizeX5;
+    QCheckBox   *m_checkBoxPlayfieldSizeX3,
+                *m_checkBoxPlayfieldSizeX4,
+                *m_checkBoxPlayfieldSizeX5,
+                *m_checkBoxPvC,
+                *m_checkBoxPvPlocal,
+                *m_checkBoxPvPnetwork;
 
-    QButtonGroup *m_checkButtonGrp;
+    QButtonGroup    *m_checkButtonGrp,
+                    *m_checkBoxNetworkGrp;
 
-    QVBoxLayout *m_checkBoxNetworkLayout;
+    QGridLayout *m_inputToHostlayout,
+                *m_input2ndPlayernameLayout;
 
-    QCheckBox *m_checkBoxNetworkSolo;
+    QWidget *m_networkparameterWidget,
+            *m_pvpLocalWidget;
 
-    QCheckBox *m_checkBoxNetworkMulti;
+    QPushButton *m_connectButtion,
+                *m_backToMainButtonNS,
+                *m_playGameButton;
 
-    QLabel *m_checkBoxNetworkLabel;
+    // GameData collection
 
-    QButtonGroup *m_checkBoxNetworkGrp;
 
-    QGridLayout *m_inputToHostlayout;
+    PlayingField *m_playingField;
 
-    QWidget *m_networkparameterWidget;
+    Player  *m_player1,
+            *m_player2;
 
-    QLabel *m_hostadress;
+    HistorySave *m_historySave;
 
-    QLineEdit *m_inputHostaddress;
 
-    QLabel *m_hostport;
 
-    QLineEdit *m_inputHostport;
-
-    QPushButton *m_connectButtion;
-
-    QPushButton *m_backToMainButtonNS;
 };
 
 #endif // NEWSESSIONMENU_H
