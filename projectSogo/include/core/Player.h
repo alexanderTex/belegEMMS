@@ -64,6 +64,12 @@ public:
         return m_playerColor;
     }
 
+
+    inline void SetName(std::string name)
+    {
+        m_playerName = name;
+    }
+
 private:
     /**
      * @brief m_type
