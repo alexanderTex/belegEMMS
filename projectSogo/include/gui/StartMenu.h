@@ -5,15 +5,13 @@
 #include <QVBoxLayout>
 #include <QLabel>
 #include <QPushButton>
+#include <QGridLayout>
 
 class StartMenu : public QWidget
 {
     Q_OBJECT
 public:
     explicit StartMenu(QWidget *parent = 0);
-
-    //void newSessionButtonPressed();
-
 
 signals:
     void switchToNewSession();
@@ -34,6 +32,8 @@ private:
     QPushButton *m_highscoreButton;
 
     QPushButton *m_exitButton;
+
+    QGridLayout *m_gridLayout;
 };
 
 #endif // STARTMENU_H

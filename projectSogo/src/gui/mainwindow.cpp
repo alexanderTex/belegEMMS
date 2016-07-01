@@ -84,6 +84,7 @@ MainWindow::MainWindow(QTranslator *translator, QWidget *parent)
     this->m_pauseMenu = new PauseMenu(workspace);
     m_layout->addWidget(this->m_pauseMenu);
     QObject::connect(this->m_pauseMenu, &PauseMenu::ResumeButtonPressed, this, &MainWindow::ShowGameView);
+    QObject::connect(this->m_pauseMenu, &PauseMenu::QuitGameButtonPressed, this, &MainWindow::showStartMenu);
 
     // catch startGame from NewSession to start a new Game
     QObject::connect(this->m_newSessionMenu, &NewSessionMenu::startGame, this, &MainWindow::startNewGame);

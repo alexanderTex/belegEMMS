@@ -2,11 +2,6 @@
 
 NewSessionMenu::NewSessionMenu(QWidget *parent) : QWidget(parent)
 {
-
-    // pvc , pvp(local), pvp(network)
-
-
-
     this->m_controlLayout = new QVBoxLayout(this);
 
     this->m_mainMenueLabel = new QLabel(tr("New Session"));
@@ -15,7 +10,7 @@ NewSessionMenu::NewSessionMenu(QWidget *parent) : QWidget(parent)
 
     // input field for player
     this->m_input1stPlayername = new QLineEdit();
-    this->m_input1stPlayername->setPlaceholderText(tr("1st Playername"));
+    this->m_input1stPlayername->setPlaceholderText(tr("1stPlayername"));
 
     // checkboxlayot(cluster) the checkbox which select the playfieldsize
     this->m_checkBoxPlayfieldLayout = new QVBoxLayout();
@@ -30,8 +25,8 @@ NewSessionMenu::NewSessionMenu(QWidget *parent) : QWidget(parent)
         // add checkbox to layout
         this->m_checkBoxPlayfieldLayout->addWidget(m_checkBoxPlayfieldLabel);
         this->m_checkBoxPlayfieldLayout->addWidget(m_checkBoxPlayfieldSizeX3);
-        this->m_checkBoxPlayfieldSizeX3->setChecked(true);
         this->m_checkBoxPlayfieldLayout->addWidget(m_checkBoxPlayfieldSizeX4);
+        this->m_checkBoxPlayfieldSizeX4->setChecked(true);
         this->m_checkBoxPlayfieldLayout->addWidget(m_checkBoxPlayfieldSizeX5);
 
         // Buttongroup for exclusive click
@@ -41,11 +36,9 @@ NewSessionMenu::NewSessionMenu(QWidget *parent) : QWidget(parent)
         this->m_checkButtonGrp->addButton(m_checkBoxPlayfieldSizeX5);
         this->m_checkButtonGrp->setExclusive(true);
 
-    Logger::GetLoggerIntance()->LogInfo("after ButtonGrp");
-
     this->m_input2ndPlayernameLayout = new QGridLayout();
     this->m_input2ndPlayername = new QLineEdit();
-    this->m_input2ndPlayername->setPlaceholderText(tr("2nd Playername"));
+    this->m_input2ndPlayername->setPlaceholderText(tr("2ndPlayername"));
     this->m_input2ndPlayernameLayout->addWidget(m_input2ndPlayername);
 
     // Network area
@@ -69,8 +62,6 @@ NewSessionMenu::NewSessionMenu(QWidget *parent) : QWidget(parent)
         this->m_checkBoxNetworkGrp->addButton(m_checkBoxPvPnetwork);
         this->m_checkBoxNetworkGrp->setExclusive(true);
 
-    Logger::GetLoggerIntance()->LogInfo("after ButtonGrp");
-
     // Cluster input for network connection
     this->m_inputToHostlayout = new QGridLayout();
 
@@ -93,14 +84,10 @@ NewSessionMenu::NewSessionMenu(QWidget *parent) : QWidget(parent)
 
     this->m_connectButtion = new QPushButton(tr("Verbinden"));
 
-    Logger::GetLoggerIntance()->LogInfo("after connectButton");
-
     this->m_inputToHostlayout->addWidget(m_hostadress,1,1,1,1,Qt::AlignCenter);
     this->m_inputToHostlayout->addWidget(m_inputHostaddress,1,2,1,1,Qt::AlignCenter);
     this->m_inputToHostlayout->addWidget(m_hostport,2,1,1,1,Qt::AlignCenter);
     this->m_inputToHostlayout->addWidget(m_inputHostport,2,2,1,1,Qt::AlignCenter);
-
-    Logger::GetLoggerIntance()->LogInfo("after Hostlayout");
 
     this->m_playGameButton = new QPushButton(tr("Start Spiel"));
 
@@ -156,22 +143,26 @@ void NewSessionMenu::setPlayfieldSize()
 
 void NewSessionMenu::setPlayer()
 {
-   /*
+
     if (this->m_checkBoxPvC->isChecked())
     {
-        this->m_player1 = new Player(Player::Human,this->m_input1stPlayername->text().toStdString(), PlayingField::Blue);
+        if(this->m_input1stPlayername->text().toStdString().length() > 0 )
+        {
+            this->m_player1 = new Player(Player::Human,this->m_input1stPlayername->text().toStdString(), PlayingField::Blue);
+        }
+        else
+        {
+            this->m_player1 = new Player(Player::Human,m_input1stPlayername->placeholderText().toStdString(), PlayingField::Blue);
+        }
+
         this->m_player2 = new Player(Player::Ai, "Skynet", PlayingField::Red);
+
     }
     else if (this->m_checkBoxPvPlocal->isChecked())
     {
         this->m_player1 = new Player(Player::Human, this->m_input1stPlayername->text().toStdString(), PlayingField::Blue);
         this->m_player2 = new Player(Player::Human, this->m_input2ndPlayername->text().toStdString(), PlayingField::Red);
     }
-*/
-
-    this->m_player1 = new Player(Player::Ai, "Alex", PlayingField::Blue);
-    this->m_player2 = new Player(Player::Human, "Skynet", PlayingField::Red);
-
     // TODO: Networkgame
 
 }
@@ -180,17 +171,7 @@ void NewSessionMenu::mergeGameData()
 {
     this->setPlayfieldSize();
     this->setPlayer();
-    this->m_gameData = new GameData(this->m_playingField,
-                                    this->m_player1,
-                                    this->m_player2,
-                                    this->m_player2);
-
-    Logger::GetLoggerIntance()->LogInfo(this->m_player1->GetName());
-    Logger::GetLoggerIntance()->LogInfo(this->m_player2->GetName());
-    std::stringstream s;
-    s << this->m_playingField->GetFieldSize();
-    Logger::GetLoggerIntance()->LogInfo(s.str());
-
+    this->m_gameData = new GameData(this->m_playingField, this->m_player1, this->m_player2, this->m_player2);
 }
 
 
