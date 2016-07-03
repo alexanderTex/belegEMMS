@@ -4,9 +4,7 @@
 #
 # \===============================================/
 
-QT       += core gui \
-            opengl
-
+QT       += core gui opengl \
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -15,10 +13,13 @@ TEMPLATE = app
 TRANSLATIONS += ./Translations/sogoapp_de.ts \
                 ./Translations/sogoapp_en.ts
 
+
 INCLUDEPATH +=  ../include/core/ \
                 ../include/gui/ \
                 ../include/utility/ \
                 ../external/ \
+                ./Objects/
+
 
 HEADERS +=      ../include/core/* \
                 ../include/gui/* \
@@ -95,7 +96,12 @@ SOURCES +=      main.cpp \
                 ../external/objloader.cpp \
                 ../external/shader.cpp
 
-RESOURCES += \
+RESOURCES +=  \
     ressources.qrc
+
+CONFIG += copy_files
+
+COPY_FILES += docs/*.txt
+
 
 

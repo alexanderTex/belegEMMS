@@ -6,6 +6,9 @@
 
 #include "../external/glm-0.9.4.0/glm/glm.hpp"
 
+#include <QFile>
+#include <QIODevice>
+
 #include "objloader.hpp"
 
 // Very, VERY simple OBJ loader.
@@ -31,8 +34,16 @@ bool loadOBJ(
 	std::vector<glm::vec2> temp_uvs;
 	std::vector<glm::vec3> temp_normals;
 
+    QFile * n = new QFile(":/objects/Objects/cube.obj");
+    if(n->exists())
+    {
+        Logger::GetLoggerIntance()->LogInfo("It apparently exists!!!");
+    }
 
-	FILE * file = fopen(path, "r");
+    FILE *file = NULL;
+    n->open(file, QIODevice::ReadOnly);
+
+    //FILE * file = fopen(path, "r");
 	if( file == NULL ){
         Logger::GetLoggerIntance()->LogError("Impossible to open the file ! Are you in the right path ? See Tutorial 1 for details\n");
 		getchar();
@@ -125,7 +136,7 @@ bool loadOBJ(
 	
 	}
 
-	return true;
+    return true;
 }
 
 

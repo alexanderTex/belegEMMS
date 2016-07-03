@@ -51,7 +51,8 @@ class GameView3D : public QOpenGLWidget
             bool res = loadOBJ(fileName.c_str(), vertices, uvs, normals);
             if(!res)
                 Logger::GetLoggerIntance()->LogError("Load OBJ Failed");
-
+            else
+                Logger::GetLoggerIntance()->LogInfo("Obj loaded");
             // Jedes Objekt eigenem VAO zuordnen, damit mehrere Objekte moeglich sind
             // VAOs sind Container fuer mehrere Buffer, die zusammen gesetzt werden sollen.
             f->glGenVertexArrays(1, &VertexArrayID);
@@ -88,6 +89,8 @@ class GameView3D : public QOpenGLWidget
             f->glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, (void*)0);
 
             vertexCount = vertices.size();
+
+            Logger::GetLoggerIntance()->LogInfo("Mesh successfully created! Yeah");
         }
 
         virtual ~Mesh()
@@ -170,7 +173,7 @@ protected:
 */
               // Fails to add shaders to shaderprogram
 
-            /*
+
             // Create and compile our GLSL program from the shaders
            shaderProgram = new QOpenGLShaderProgram(this);
 
@@ -189,26 +192,12 @@ protected:
             {
                 Logger::GetLoggerIntance()->LogInfo("Shader Binding Completed");
             }
-*/
-            std::stringstream path;
 
-            path << qApp->applicationFilePath().toStdString() << "/objects/Objects/sphere.obj";
+            Sphere = new Mesh("/Objects/sphere.obj");
 
-            Logger::GetLoggerIntance()->Log(path.str());
+            Cube = new Mesh("./Objects/cube.obj");
 
-            Sphere = new Mesh(path.str());
-
-            path.flush();
-
-            path << qApp->applicationFilePath().toStdString() << "/Objects/cube.obj";
-
-            Cube = new Mesh(path.str());
-
-            path.flush();
-
-            path << qApp->applicationFilePath().toStdString() << "/Objects/teapot.obj";
-
-            Kanne = new Mesh(path.str());
+            Kanne = new Mesh("./Objects/teapot.obj");
 
 
             // Load the texture
