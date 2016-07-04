@@ -4,6 +4,7 @@
 #include <iostream>
 #include "PlayingField.h"
 
+
 GameManager::GameManager()
 {
     this->m_data = NULL;
@@ -72,8 +73,11 @@ void GameManager::GameLoop()
     bool currentPlayerMoveReady = false;
     Vector3 *pos = new Vector3();
 
+
+
+
     while(m_stop == false)
-    {
+    {             
         if(!m_paused)
         {
             if(this->m_data != NULL)
@@ -92,11 +96,18 @@ void GameManager::GameLoop()
                         {
                             Logger::GetLoggerIntance()->LogError("Player Input not Valid");
                             // Play Bad Input sound
+                            currentPlayerMoveReady = false;
+
+                            PlayInputErrorSound();
+
                         }
                         catch(std::out_of_range e)
                         {
                             Logger::GetLoggerIntance()->LogError("Player Input Out of Range");
                             // Play Bad Input sound
+                            currentPlayerMoveReady = false;
+
+                            PlayInputErrorSound();
                         }
 
                         this->m_playerInputConfirmed = false;
@@ -123,6 +134,8 @@ void GameManager::GameLoop()
                         else
                         {
                             TurnFinished();
+
+                            PlayInputAcceptSound();
                         }
                     }
                     catch(PlayingField::FieldExeptions e)

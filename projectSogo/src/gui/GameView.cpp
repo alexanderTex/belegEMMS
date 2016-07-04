@@ -1,6 +1,6 @@
 #include "./GameView.h"
 
-GameView::GameView( QWidget *parent)
+GameView::GameView(QWidget *parent)
     : QWidget(parent)
 {
     this->m_data = new GameData();
@@ -52,6 +52,14 @@ GameView::GameView( QWidget *parent)
     QObject::connect(this->m_gameLoop, &GameManager::TurnFinished, this->m_gameVis, &GameVisualizer::UpdateView);
 
     QObject::connect(this->m_inputArea->GetPlayerInputControls(), &PlayerInput::InputConfirmed, this->m_gameLoop, &GameManager::InputConfirmationDetected);
+
+
+    Logger::GetLoggerIntance()->LogInfo("Sound Initialization");
+
+    QObject::connect(this->m_gameLoop, &GameManager::PlayInputAcceptSound, this, &GameView::PlayAcceptSound);
+    QObject::connect(this->m_gameLoop, &GameManager::PlayInputErrorSound, this, &GameView::PlayErrorSound);
+
+    PlayAcceptSound();
 
 }
 
@@ -108,6 +116,18 @@ GameView::GameView(GameData *data, QWidget *parent)
     QObject::connect(this->m_gameLoop, &GameManager::TurnFinished, this->m_gameVis, &GameVisualizer::UpdateView);
 
     QObject::connect(this->m_inputArea->GetPlayerInputControls(), &PlayerInput::InputConfirmed, this->m_gameLoop, &GameManager::InputConfirmationDetected);
+
+
+
+
+
+    Logger::GetLoggerIntance()->LogInfo("Sound Initialization");
+
+    QObject::connect(this->m_gameLoop, &GameManager::PlayInputAcceptSound, this, &GameView::PlayAcceptSound);
+    QObject::connect(this->m_gameLoop, &GameManager::PlayInputErrorSound, this, &GameView::PlayErrorSound);
+
+    PlayAcceptSound();
+
 }
 
 GameView::~GameView()

@@ -4,7 +4,9 @@
 #
 # \===============================================/
 
-QT       += core gui opengl \
+QT      += core gui \
+            opengl \
+            multimedia
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -98,10 +100,6 @@ SOURCES +=      main.cpp \
 
 RESOURCES +=  \
     ressources.qrc
-
-CONFIG += copy_files
-
-COPY_FILES += docs/*.txt
 
 
 

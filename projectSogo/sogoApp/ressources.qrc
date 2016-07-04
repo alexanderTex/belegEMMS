@@ -15,5 +15,7 @@
         <file>Objects/sphere.obj</file>
         <file>Objects/teapot.obj</file>
     </qresource>
-    <qresource prefix="/sounts"/>
+    <qresource prefix="/sounds">
+        <file>Sounds/UI Error Double Note Down (stereo).wav</file>
+    </qresource>
 </RCC>

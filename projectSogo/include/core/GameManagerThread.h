@@ -119,6 +119,10 @@ public:
     bool MakeMove(Vector3 pos) throw(PlayingField::FieldExeptions, std::out_of_range);   
 
 signals:
+    void PlayInputErrorSound();
+
+    void PlayInputAcceptSound();
+
     /**
      * @brief TurnFinished
      * emitted when players turn finishes

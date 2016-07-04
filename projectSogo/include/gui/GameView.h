@@ -3,6 +3,7 @@
 
 #include <vector>
 
+#include <QSound>
 
 #include <QWidget>
 #include <QEvent>
@@ -50,6 +51,17 @@ public:
     void StartGame();
 
     void PauseGame();
+
+    inline void PlayAcceptSound()
+    {
+        QSound::play(":/sounds/Sounds/UI Error Double Note Down (stereo).wav");
+    }
+
+    inline void PlayErrorSound()
+    {
+        QSound::play(":/sounds/Sounds/UI Error Double Note Down (stereo).wav");
+    }
+
 
     /**
      * @brief ShowWinScreen
@@ -116,10 +128,11 @@ private:
     QPushButton *QuitButton;
 
 
-
     GameData *m_data;
 
     GameManager *m_gameLoop;
+
+
 
 
 };
