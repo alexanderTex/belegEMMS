@@ -65,7 +65,7 @@ PlayerInput::~PlayerInput()
 
 void PlayerInput::ApplyInputs()
 {
-    if(this->m_gameManager->GetGameData()->GetCurrentPlayer()->GetType() == Player::Human)
+    if(this->m_gameManager->GetGameData()->GetCurrentPlayer()->GetType() == Player::HUMAN)
     {
         Vector2 input(this->m_xInput->value() - 1, this->m_yInput->value() - 1);
         emit InputConfirmed(input);

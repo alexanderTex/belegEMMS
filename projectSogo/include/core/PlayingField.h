@@ -29,9 +29,9 @@ class PlayingField
         */
         enum FieldExeptions
         {
-            Occupied,
-            PositionNotAvailable,
-            NoSpaceAnymore,
+            OCCUPIED,
+            POSITION_NOT_AVAILABLE,
+            NO_SPACE_ANYMORE,
         };
 
         /**
@@ -39,9 +39,9 @@ class PlayingField
         */
         enum OccupationState
         {
-            None,
-            Red,
-            Blue,
+            NONE,
+            RED,
+            BLUE,
         };
 
         /**

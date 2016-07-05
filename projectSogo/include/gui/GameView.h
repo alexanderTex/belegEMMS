@@ -46,6 +46,7 @@ public:
     {
         Logger::GetLoggerIntance()->LogInfo("InitGame");
         *(this->m_data) = *data;
+        this->m_gameVis->GameChanged();
     }
 
     void StartGame();
@@ -54,7 +55,7 @@ public:
 
     inline void PlayAcceptSound()
     {
-        QSound::play(":/sounds/Sounds/UI Error Double Note Down (stereo).wav");
+        QSound::play(":/sounds/Sounds/UI Beep Double Alternative (stereo).wav");
     }
 
     inline void PlayErrorSound()

@@ -16,8 +16,8 @@ MainWindow::MainWindow(QWidget *parent)
     m_allAroundLayout->addWidget(workspace);
 
     // JUST FOR TESTING WOULD BE GIVEN FROM OUTSIDE
-    Player *one = new Player(Player::Ai, "Dirk", PlayingField::Blue);
-    Player *two = new Player(Player::Human, "Frank", PlayingField::Red);
+    Player *one = new Player(Player::AI, "Dirk", PlayingField::BLUE);
+    Player *two = new Player(Player::HUMAN, "Frank", PlayingField::RED);
 
     GameData *data = new GameData(new PlayingField(), one, two, one);    
 
@@ -54,8 +54,8 @@ MainWindow::MainWindow(QTranslator *translator, QWidget *parent)
     m_allAroundLayout->addWidget(workspace);
 
     // JUST FOR TESTING WOULD BE GIVEN FROM OUTSIDE
-    Player *one = new Player(Player::Ai, "Dirk", PlayingField::Blue);
-    Player *two = new Player(Player::Human, "Frank", PlayingField::Red);
+    Player *one = new Player(Player::AI, "Dirk", PlayingField::BLUE, 4);
+    Player *two = new Player(Player::HUMAN, "Frank", PlayingField::RED);
 
     GameData *data = new GameData(new PlayingField(), one, two, one);
 

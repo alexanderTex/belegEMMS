@@ -82,7 +82,7 @@ void GameManager::GameLoop()
         {
             if(this->m_data != NULL)
             {
-                if(this->m_data->GetCurrentPlayer()->GetType() == Player::Human)
+                if(this->m_data->GetCurrentPlayer()->GetType() == Player::HUMAN)
                 {
                     //wait for input accepted
                     // if accepted do input conformed process
@@ -191,7 +191,7 @@ bool GameManager::AIProcess(Player *player, Vector3 *move)
             const Player *opponent = this->m_data->GetOpponent(player);
 
 
-            MiniMax(this->m_data->GetField(), player->GetColor(), player->GetColor(), 4, move);
+            MiniMax(this->m_data->GetField(), player->GetColor(), player->GetColor(), player->GetSkill(), move);
 
             return true;
         }

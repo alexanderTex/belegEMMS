@@ -41,6 +41,10 @@ class GameView2D : public QWidget
             return m_sceneItems->at(vec.X)->at(vec.Y)->at(vec.Z);
         }
 
+        void ClearGrid();
+
+        void RecalculateGrid();
+
         /**
          * @brief ViewUpdate
          */
@@ -85,7 +89,6 @@ private:
         GameData *m_data;
 
         QHBoxLayout *sceneViewLayout;
-        vector<QVBoxLayout *> *m_sceneLayouts;
 
         vector<QLabel *> *m_sceneLabels;
         vector<QGraphicsView*> *m_scenes;

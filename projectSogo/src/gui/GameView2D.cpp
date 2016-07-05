@@ -14,12 +14,11 @@ GameView2D::GameView2D(GameData *data, QWidget *parent)
 
     this->sceneViewLayout = new QHBoxLayout(this);
     this->m_sceneLabels = new vector<QLabel *>();
-    this->m_sceneLayouts = new vector<QVBoxLayout*>();
     for(int i = 0; i < m_data->GetField()->GetFieldSize(); i++)
     {
         this->m_sceneItems->push_back(new vector< vector <GraphicsSlot2D * > *>());
 
-        QGraphicsScene *graphicsScene = CreateGrid(data->GetField()->GetFieldSize(), this->m_squareDrawSize, this->m_sceneItems->at(i));
+        QGraphicsScene *graphicsScene = CreateGrid(m_data->GetField()->GetFieldSize(), this->m_squareDrawSize, this->m_sceneItems->at(i));
 
         QGraphicsView *view = new QGraphicsView(graphicsScene, this);
         view->setViewportUpdateMode(QGraphicsView::BoundingRectViewportUpdate);
@@ -41,11 +40,20 @@ GameView2D::GameView2D(GameData *data, QWidget *parent)
 
 
     }
+
+
+    Logger::GetLoggerIntance()->LogInfo("GameView2D constr");
 }
 
 GameView2D::~GameView2D()
 {
     //dtor
+    ClearGrid();
+}
+
+void GameView2D::ClearGrid()
+{
+
     for(int i = 0; i < this->m_sceneItems->size(); i++)
     {
         // iterates through the depth lines
@@ -63,10 +71,48 @@ GameView2D::~GameView2D()
     delete(this->m_sceneItems);
     for(int i = 0; i < this->m_scenes->size(); i++)
     {
+        delete(m_sceneLabels->at(i));
         delete(m_scenes->at(i));
     }
 
     delete(m_scenes);
+}
+
+void GameView2D::RecalculateGrid()
+{
+    this->ClearGrid();
+    this->m_scenes = new vector<QGraphicsView *>();
+
+    this->m_sceneItems = new vector<vector< vector <GraphicsSlot2D * > *> *>();
+
+    this->m_sceneLabels = new vector<QLabel *>();
+    for(int i = 0; i < m_data->GetField()->GetFieldSize(); i++)
+    {
+        this->m_sceneItems->push_back(new vector< vector <GraphicsSlot2D * > *>());
+
+        QGraphicsScene *graphicsScene = CreateGrid(m_data->GetField()->GetFieldSize(), this->m_squareDrawSize, this->m_sceneItems->at(i));
+
+        QGraphicsView *view = new QGraphicsView(graphicsScene, this);
+        view->setViewportUpdateMode(QGraphicsView::BoundingRectViewportUpdate);
+        this->m_scenes->push_back(view);
+        this->m_scenes->at(i)->ensureVisible(graphicsScene->sceneRect());
+        this->m_scenes->at(i)->show();
+
+        QVBoxLayout *sceneLayout = new QVBoxLayout();
+        stringstream s;
+        s << "Layer " << i ;
+
+        QLabel *label = new QLabel(tr(s.str().c_str()));
+        m_sceneLabels->push_back(label);
+
+        sceneLayout->addWidget(label);
+        sceneLayout->addWidget(view);
+
+        sceneViewLayout->addLayout(sceneLayout);
+
+
+    }
+
 }
 
 void GameView2D::ViewUpdate()
@@ -77,11 +123,11 @@ void GameView2D::ViewUpdate()
         {
             for(int k = 0; k < m_data->GetField()->GetFieldSize(); k++)
             {
-                if(m_data->GetField()->GetSlot(k,j,i)->Occupation == PlayingField::Blue)
+                if(m_data->GetField()->GetSlot(k,j,i)->Occupation == PlayingField::BLUE)
                 {
                     this->m_sceneItems->at(i)->at(j)->at(k)->SetColor(Qt::cyan);
                 }
-                else if(m_data->GetField()->GetSlot(k,j,i)->Occupation == PlayingField::Red)
+                else if(m_data->GetField()->GetSlot(k,j,i)->Occupation == PlayingField::RED)
                 {
                     this->m_sceneItems->at(i)->at(j)->at(k)->SetColor(Qt::red);
                 }

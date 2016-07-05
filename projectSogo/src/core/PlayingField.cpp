@@ -5,7 +5,7 @@
 PlayingField::Slot::Slot()
 {
     //ctor
-    this->Occupation = None;
+    this->Occupation = NONE;
 }
 
 PlayingField::Slot::Slot(PlayingField::OccupationState occupation)
@@ -95,19 +95,19 @@ PlayingField::Slot* PlayingField::GetSlot( int x, int y, int z) const throw(out_
      {
          Slot *s = this->GetSlot(x,y,z);
 
-         if(s->Occupation == None)
+         if(s->Occupation == NONE)
          {
             s->Occupation = id;
          }
          else
          {
-            throw Occupied;
+            throw OCCUPIED;
          }
 
      }
      else
      {
-        throw PositionNotAvailable;
+        throw POSITION_NOT_AVAILABLE;
      }
  }
 
@@ -149,7 +149,7 @@ void PlayingField::OccupySlot(Vector3 pos, PlayingField::OccupationState id) thr
         {
             for(int k = 0; k < field->GetFieldSize(); k++)
             {
-                if(field->GetSlot(i,j,k)->Occupation == PlayingField::None)
+                if(field->GetSlot(i,j,k)->Occupation == PlayingField::NONE)
                 {
                     vec->X = i;
                     vec->Y = j;
@@ -178,7 +178,7 @@ void PlayingField::OccupySlot(Vector3 pos, PlayingField::OccupationState id) thr
          }
      }
 
-     throw(PlayingField::NoSpaceAnymore);
+     throw(PlayingField::NO_SPACE_ANYMORE);
  }
 
 std::vector<Vector3> GetAllFreePositions(const PlayingField *field) throw(out_of_range)
@@ -193,7 +193,7 @@ std::vector<Vector3> GetAllFreePositions(const PlayingField *field) throw(out_of
         {
             for(int k = 0; k < field->GetFieldSize(); k++)
             {
-                if(field->GetSlot(i,j,k)->Occupation == PlayingField::None)
+                if(field->GetSlot(i,j,k)->Occupation == PlayingField::NONE)
                 {
                     vec->X = i;
                     vec->Y = j;
@@ -227,13 +227,13 @@ std::string DrawPlayingField(const PlayingField *field)
             {
                 switch(field->GetSlot(k, i, j)->Occupation)
                 {
-                    case PlayingField::None:
+                    case PlayingField::NONE:
                         sStream << " - |";
                         break;
-                    case PlayingField::Blue:
+                    case PlayingField::BLUE:
                         sStream << " x |";
                         break;
-                    case PlayingField::Red:
+                    case PlayingField::RED:
                         sStream << " o |";
                         break;
                 }

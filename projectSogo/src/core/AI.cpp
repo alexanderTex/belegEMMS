@@ -45,13 +45,13 @@ int MiniMax(const PlayingField *field, PlayingField::OccupationState max_Player,
 
         posField.OccupySlot(posPosistions->at(i).X, posPosistions->at(i).Y, posPosistions->at(i).Z, current_player);
 
-        if(current_player == PlayingField::Blue)
+        if(current_player == PlayingField::BLUE)
         {
-            scores.push_back(MiniMax(&posField, max_Player, PlayingField::Red, choice));
+            scores.push_back(MiniMax(&posField, max_Player, PlayingField::RED, choice));
         }
         else
         {
-            scores.push_back(MiniMax(&posField, max_Player, PlayingField::Blue, choice));
+            scores.push_back(MiniMax(&posField, max_Player, PlayingField::BLUE, choice));
         }
     }
 
@@ -130,13 +130,13 @@ int MiniMax(const PlayingField *field, PlayingField::OccupationState max_Player,
 
 
 
-        if(current_player == PlayingField::Blue)
+        if(current_player == PlayingField::BLUE)
         {
-            scores.push_back(MiniMax(&posField, max_Player, PlayingField::Red, depth - 1, choice));
+            scores.push_back(MiniMax(&posField, max_Player, PlayingField::RED, depth - 1, choice));
         }
         else
         {
-            scores.push_back(MiniMax(&posField, max_Player, PlayingField::Blue, depth - 1, choice));
+            scores.push_back(MiniMax(&posField, max_Player, PlayingField::BLUE, depth - 1, choice));
         }
     }
 

@@ -11,6 +11,7 @@
  * the type, which the player belongs to ( human or ai player )
  * a name
  * a Color ( Currently Occupationstate )
+ * skill ( currently only effectively used by ai)
  */
 class Player
 {
@@ -22,8 +23,8 @@ public:
      */
     enum PlayerType
     {
-        Human,
-        Ai,
+        HUMAN,
+        AI,
     };
 
     /**
@@ -31,10 +32,14 @@ public:
      * @param type
      * @param name
      * @param color
+     * @param skill
      */
-    Player(PlayerType type, std::string name, PlayingField::OccupationState color);
+    Player(PlayerType type, std::string name, PlayingField::OccupationState color, int skill = 1);
 
-
+    /**
+     * @brief Player
+     * @param src
+     */
     Player(const Player &src);
 
     /**
@@ -43,7 +48,7 @@ public:
      */
     inline PlayerType GetType() const
     {
-        return m_type;
+        return m_playerType;
     }
 
     /**
@@ -64,17 +69,38 @@ public:
         return m_playerColor;
     }
 
-
+    /**
+     * @brief SetName
+     * @param name
+     */
     inline void SetName(std::string name)
     {
         m_playerName = name;
+    }
+
+    /**
+     * @brief GetSkill
+     * @return
+     */
+    inline int GetSkill() const
+    {
+        return m_playerSkill;
+    }
+
+    /**
+     * @brief SetSkill
+     * @param skill
+     */
+    inline void SetSkill(int skill)
+    {
+        m_playerSkill = skill;
     }
 
 private:
     /**
      * @brief m_type
      */
-    PlayerType m_type;
+    PlayerType m_playerType;
     /**
      * @brief m_playerName
      */
@@ -83,6 +109,11 @@ private:
      * @brief m_playerColor
      */
     PlayingField::OccupationState m_playerColor;
+    /**
+     * @brief m_skill
+     */
+    int m_playerSkill;
+
 };
 
 #endif // PLAYER_H

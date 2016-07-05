@@ -30,7 +30,10 @@ public:
     }
 
 
-
+    inline void GameChanged()
+    {
+        this->m_view2D->RecalculateGrid();
+    }
 
 
 private:

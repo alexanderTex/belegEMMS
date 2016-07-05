@@ -148,20 +148,20 @@ void NewSessionMenu::setPlayer()
     {
         if(this->m_input1stPlayername->text().toStdString().length() > 0 )
         {
-            this->m_player1 = new Player(Player::Human,this->m_input1stPlayername->text().toStdString(), PlayingField::Blue);
+            this->m_player1 = new Player(Player::HUMAN,this->m_input1stPlayername->text().toStdString(), PlayingField::BLUE);
         }
         else
         {
-            this->m_player1 = new Player(Player::Human,m_input1stPlayername->placeholderText().toStdString(), PlayingField::Blue);
+            this->m_player1 = new Player(Player::HUMAN,m_input1stPlayername->placeholderText().toStdString(), PlayingField::BLUE);
         }
 
-        this->m_player2 = new Player(Player::Ai, "Skynet", PlayingField::Red);
+        this->m_player2 = new Player(Player::AI, "Skynet", PlayingField::RED, 4);
 
     }
     else if (this->m_checkBoxPvPlocal->isChecked())
     {
-        this->m_player1 = new Player(Player::Human, this->m_input1stPlayername->text().toStdString(), PlayingField::Blue);
-        this->m_player2 = new Player(Player::Human, this->m_input2ndPlayername->text().toStdString(), PlayingField::Red);
+        this->m_player1 = new Player(Player::HUMAN, this->m_input1stPlayername->text().toStdString(), PlayingField::BLUE);
+        this->m_player2 = new Player(Player::HUMAN, this->m_input2ndPlayername->text().toStdString(), PlayingField::RED);
     }
     // TODO: Networkgame
 
