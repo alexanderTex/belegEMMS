@@ -407,6 +407,10 @@ return false;
 }
 
 
+void GetAllWinPositions(const PlayingField *field, std::vector<Vector3> *positions) throw(out_of_range)
+{
+    // not implemented ( and a bit clueless)
+}
 
 bool CheckForWin(const PlayingField *field, PlayingField::OccupationState player) throw(out_of_range)
 {
