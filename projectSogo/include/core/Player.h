@@ -34,7 +34,7 @@ public:
      * @param color
      * @param skill
      */
-    Player(PlayerType type, std::string name, PlayingField::OccupationState color, int skill = 1);
+    Player(PlayerType type, std::string name, PlayingField::OccupationState color, unsigned int skill = 0);
 
     /**
      * @brief Player
@@ -112,7 +112,7 @@ private:
     /**
      * @brief m_skill
      */
-    int m_playerSkill;
+    unsigned int m_playerSkill;
 
 };
 
