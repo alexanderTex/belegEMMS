@@ -96,6 +96,7 @@ class GameView3D : public QOpenGLWidget
 
         virtual ~Mesh()
         {
+            Logger::GetLoggerIntance()->LogInfo("Mesh destrS");
             QOpenGLFunctions_4_5_Core *f = (QOpenGLFunctions_4_5_Core*)(QOpenGLContext::currentContext()->versionFunctions());
 
             f->glDeleteBuffers(1, &vertexbuffer);
@@ -149,7 +150,7 @@ protected:
             //glfwSetKeyCallback(window, key_callback);
 
             // white background
-            f->glClearColor(0.0f, 0.0f, 1.0f, 0.0f);
+            f->glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
 
 
             f->glEnable(GL_DEPTH_TEST);
@@ -158,21 +159,14 @@ protected:
             f->glDepthFunc(GL_LESS);
             Logger::GetLoggerIntance()->Log("before shader");
 
-            std::stringstream s;
-
-            s << (QFileInfo(QFile(":/shaderaaa/Shader/StandardShading.fragmentshader"))).absoluteFilePath().toStdString();
-
-            Logger::GetLoggerIntance()->Log(s.str());
 
             // Create and compile our GLSL program from the shaders
-            programID = LoadShaders( f, "/home/alex/sourceCode/gitProject/belegArbeitEMMS/projectSogo/sogoApp/Shader/StandardShading.vertexshader", "/home/alex/sourceCode/gitProject/belegArbeitEMMS/projectSogo/sogoApp/Shader/StandardShading.fragmentshader");
+            programID = LoadShaders("/home/alex/sourceCode/gitProject/belegArbeitEMMS/projectSogo/sogoApp/Shader/StandardShading.vertexshader", "/home/alex/sourceCode/gitProject/belegArbeitEMMS/projectSogo/sogoApp/Shader/StandardShading.fragmentshader");
             //programID = LoadShaders("TransformVertexShader.vertexshader", "ColorFragmentShader.fragmentshader");
             Logger::GetLoggerIntance()->Log("after shaderload");
 
-            Logger::GetLoggerIntance()->Log("after shaderprogram in use");
 
 
-              // Fails to add shaders to shaderprogram
 
 /*
             // Create and compile our GLSL program from the shaders
@@ -250,7 +244,7 @@ protected:
         Model = glm::rotate(Model, right, glm::vec3(0.0f, 1.0f, 0.0f));
 
         Save = Model;
-
+        drawCube();
         // =========================================================================
         //
         //	Playfield
@@ -265,7 +259,7 @@ protected:
 
         glm::mat4 offsetSaves = glm::translate(Model, glm::vec3(0, kugelRad, 0));
 
-        //drawCube();
+
 
 
 
@@ -322,13 +316,18 @@ protected:
                     else
                     {
                         Model = glm::scale(Model, glm::vec3(kugelRad / 5, kugelRad * 2, kugelRad / 5));
+
+
                         // Bind our texture in Texture Unit 0
                         f->glActiveTexture(GL_TEXTURE0);				// Die Textturen sind durchnummeriert
-                        f->glBindTexture(GL_TEXTURE_2D, m_tLoewe->textureId());		// Verbindet die Textur
+                        f->glBindTexture(GL_TEXTURE_2D, m_tAffe->textureId());		// Verbindet die Textur
                                                                         // Set our "myTextureSampler" sampler to user Texture Unit 0
                         f->glUniform1i(f->glGetUniformLocation(programID, "myTextureSampler"), 0);
 
                         sendMVP(programID);
+
+                        drawCube();
+
                         f->glBindVertexArray(Cube->VertexArrayID);
                         f->glDrawArrays(GL_TRIANGLES, 0, Cube->vertexCount);
                     }

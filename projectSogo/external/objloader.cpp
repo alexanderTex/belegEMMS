@@ -43,7 +43,7 @@ bool loadOBJ(
 		return false;
 	}
     else
-        Logger::GetLoggerIntance()->LogError("File is not null! JUHU");
+        Logger::GetLoggerIntance()->LogInfo("File is not null! JUHU");
 
 
 

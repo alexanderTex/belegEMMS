@@ -14,8 +14,10 @@ using namespace std;
 #include "shader.hpp"
 #include "Logger.h"
 
-GLuint LoadShaders( QOpenGLFunctions_4_5_Core *f, const char * vertex_file_path,const char * fragment_file_path){
+GLuint LoadShaders( const char * vertex_file_path,const char * fragment_file_path){
  Logger::GetLoggerIntance()->Log("loadshader start");
+
+    QOpenGLFunctions_4_5_Core *f = (QOpenGLFunctions_4_5_Core*)(QOpenGLContext::currentContext()->versionFunctions());
 	// Create the shaders
     GLuint VertexShaderID = f->glCreateShader(GL_VERTEX_SHADER);
     GLuint FragmentShaderID = f->glCreateShader(GL_FRAGMENT_SHADER);
