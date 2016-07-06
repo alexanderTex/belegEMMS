@@ -24,11 +24,6 @@ class Subject
          */
         virtual ~Subject()
         {
-            for(int i= 0; i < this->m_observer->size(); i++)
-            {
-                delete(this->m_observer->at(i));
-            }
-
             delete(this->m_observer);
         }
         /**

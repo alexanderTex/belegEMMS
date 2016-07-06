@@ -34,27 +34,25 @@ bool loadOBJ(
 	std::vector<glm::vec2> temp_uvs;
 	std::vector<glm::vec3> temp_normals;
 
-    QFile * n = new QFile(":/objects/Objects/cube.obj");
-    if(n->exists())
-    {
-        Logger::GetLoggerIntance()->LogInfo("It apparently exists!!!");
-    }
 
-    FILE *file = NULL;
-    n->open(file, QIODevice::ReadOnly);
+    FILE *file = fopen(path, "r");
 
-    //FILE * file = fopen(path, "r");
 	if( file == NULL ){
         Logger::GetLoggerIntance()->LogError("Impossible to open the file ! Are you in the right path ? See Tutorial 1 for details\n");
 		getchar();
 		return false;
 	}
+    else
+        Logger::GetLoggerIntance()->LogError("File is not null! JUHU");
+
+
 
 	while( 1 ){
 
 		char lineHeader[128];
 		// read the first word of the line
 		int res = fscanf(file, "%s", lineHeader);
+
 		if (res == EOF)
 			break; // EOF = End Of File. Quit the loop.
 

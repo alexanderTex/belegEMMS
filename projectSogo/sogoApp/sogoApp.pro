@@ -5,7 +5,6 @@
 # \===============================================/
 
 QT      += core gui \
-            opengl \
             multimedia
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -89,14 +88,17 @@ HEADERS +=      ../include/core/* \
     ../external/glm-0.9.4.0/glm/gtc/ulp.hpp \
     ../external/glm-0.9.4.0/glm/ext.hpp \
     ../external/glm-0.9.4.0/glm/glm.hpp \
-    ../external/shader.hpp
+    ../external/shader.hpp \
+    ../external/objects.hpp
+
 
 SOURCES +=      main.cpp \
                 ../src/core/* \
                 ../src/gui/*  \
                 ../src/utility/* \
                 ../external/objloader.cpp \
-                ../external/shader.cpp
+                ../external/shader.cpp \
+    ../external/objects.cpp
 
 RESOURCES +=  \
     ressources.qrc
