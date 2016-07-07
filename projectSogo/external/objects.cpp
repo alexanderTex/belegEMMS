@@ -5,8 +5,6 @@
 #include <math.h>
 #include <vector>
 
-// Include GLEW
-#include <GL/glew.h>
 #include <QOpenGLFunctions_4_5_Core>
 
 
