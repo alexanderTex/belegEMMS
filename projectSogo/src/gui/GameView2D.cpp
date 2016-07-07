@@ -102,10 +102,10 @@ void GameView2D::RecalculateGrid()
         stringstream s;
         s << "Layer " << i ;
 
-        QLabel *label = new QLabel(tr(s.str().c_str()));
-        m_sceneLabels->push_back(label);
+        m_label = new QLabel(tr(s.str().c_str()));
+        m_sceneLabels->push_back(m_label);
 
-        sceneLayout->addWidget(label);
+        sceneLayout->addWidget(m_label);
         sceneLayout->addWidget(view);
 
         sceneViewLayout->addLayout(sceneLayout);

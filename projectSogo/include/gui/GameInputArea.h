@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QStackedLayout>
 #include <QTabWidget>
+#include <QEvent>
 
 #include "PlayerInput.h"
 #include "HistoryDisplay.h"
@@ -16,6 +17,16 @@ class GameInputArea : public QTabWidget
     Q_OBJECT
 public:
     explicit GameInputArea(GameManager *gameManager, QWidget *parent = 0);
+
+    inline void changeEvent(QEvent *event)
+    {
+        if (event->type() == QEvent::LanguageChange) {
+            this->setTabText(0,tr("Player Input"));
+            this->setTabText(1, tr("History Display"));
+
+        } else
+            QWidget::changeEvent(event);
+    }
 
     virtual ~GameInputArea();
 

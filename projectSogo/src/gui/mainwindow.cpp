@@ -5,11 +5,12 @@ MainWindow::MainWindow(QWidget *parent)
 {
     QWidget *main = new QWidget();
 
+
     m_allAroundLayout = new QVBoxLayout(main);
 
-    QPushButton *changeLanguageButton = new QPushButton(tr("changeButton"), main);
-    QObject::connect(changeLanguageButton, &QPushButton::clicked, this, &MainWindow::ChangeLanguage);
-    m_allAroundLayout->addWidget(changeLanguageButton);
+    m_changeLanguageButton = new QPushButton(tr("changeButton"), main);
+    QObject::connect(m_changeLanguageButton, &QPushButton::clicked, this, &MainWindow::ChangeLanguage);
+    m_allAroundLayout->addWidget(m_changeLanguageButton);
 
 
     QWidget *workspace = new QWidget();
@@ -45,9 +46,9 @@ MainWindow::MainWindow(QTranslator *translator, QWidget *parent)
 
     m_allAroundLayout = new QVBoxLayout(main);
 
-    QPushButton *changeLanguageButton = new QPushButton(tr("changeButton"), main);
-    QObject::connect(changeLanguageButton, &QPushButton::clicked, this, &MainWindow::ChangeLanguage);
-    m_allAroundLayout->addWidget(changeLanguageButton);
+    m_changeLanguageButton = new QPushButton(tr("changeButton"), main);
+    QObject::connect(m_changeLanguageButton , &QPushButton::clicked, this, &MainWindow::ChangeLanguage);
+    m_allAroundLayout->addWidget(m_changeLanguageButton);
 
 
     QWidget *workspace = new QWidget();

@@ -10,6 +10,7 @@
 #include <QSpinBox>
 #include <QPushButton>
 #include <QLabel>
+#include <QEvent>
 
 #include "GameManagerThread.h"
 #include "Vector2.h"
@@ -22,6 +23,17 @@ class PlayerInput : public QWidget
     Q_OBJECT
 public:
     explicit PlayerInput(GameManager *gameManager, QWidget *parent = 0);
+
+    inline void changeEvent(QEvent *event)
+    {
+        if (event->type() == QEvent::LanguageChange) {
+            xInputLabel->setText(tr("X-Input : "));
+            yInputLabel->setText(tr("Y-Input : "));
+            m_inputConfirm->setText(tr("Confirm"));
+
+        } else
+            QWidget::changeEvent(event);
+    }
 
     virtual ~PlayerInput();
 

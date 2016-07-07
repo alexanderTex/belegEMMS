@@ -14,6 +14,7 @@
 #include "HighscoreMenu.h"
 #include "NewSessionMenu.h"
 #include "StartMenu.h"
+#include <QEvent>
 
 /**
  * @brief The MainWindow class
@@ -80,6 +81,14 @@ public:
 
     }
 
+    inline void changeEvent(QEvent *event)
+    {
+        if (event->type() == QEvent::LanguageChange) {
+            m_changeLanguageButton->setText(tr("changeButton"));
+        } else
+            QWidget::changeEvent(event);
+    }
+
     void showNewSessionMenu();
 
     void showStartMenu();
@@ -95,7 +104,7 @@ signals:
 private:
     bool m_languageEnglish = false;
 
-
+    QPushButton *m_changeLanguageButton;
     QTranslator *m_translator;
 
     QVBoxLayout *m_allAroundLayout;

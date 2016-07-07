@@ -90,6 +90,8 @@ private:
 
         QHBoxLayout *sceneViewLayout;
 
+        QLabel *m_label;
+
         vector<QLabel *> *m_sceneLabels;
         vector<QGraphicsView*> *m_scenes;
         vector< vector< vector< GraphicsSlot2D * > *> *> *m_sceneItems;

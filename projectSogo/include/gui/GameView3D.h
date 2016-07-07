@@ -159,46 +159,47 @@ protected:
             f->glDepthFunc(GL_LESS);
             Logger::GetLoggerIntance()->Log("before shader");
 
+            Logger::GetLoggerIntance()->Log(QDir::currentPath().toStdString());
+            Logger::GetLoggerIntance()->Log(QCoreApplication::applicationDirPath().toStdString());
+
+            std::stringstream vertexShaderPath;
+            vertexShaderPath << QCoreApplication::applicationDirPath().toStdString() << "/Shader/StandardShading.vertexshader";
+
+            std::stringstream fragmentShaderPath;
+            fragmentShaderPath << QCoreApplication::applicationDirPath().toStdString() << "/Shader/StandardShading.fragmentshader";
 
             // Create and compile our GLSL program from the shaders
-            programID = LoadShaders("/home/alex/sourceCode/gitProject/belegArbeitEMMS/projectSogo/sogoApp/Shader/StandardShading.vertexshader", "/home/alex/sourceCode/gitProject/belegArbeitEMMS/projectSogo/sogoApp/Shader/StandardShading.fragmentshader");
-            //programID = LoadShaders("TransformVertexShader.vertexshader", "ColorFragmentShader.fragmentshader");
+            programID = LoadShaders(vertexShaderPath.str().c_str(), fragmentShaderPath.str().c_str());
+
             Logger::GetLoggerIntance()->Log("after shaderload");
 
 
+            std::stringstream sphereObjectPath;
+            sphereObjectPath << QCoreApplication::applicationDirPath().toStdString() << "/Objects/sphere.obj";
+
+            std::stringstream cubeObjectPath;
+            cubeObjectPath << QCoreApplication::applicationDirPath().toStdString() << "/Objects/cube.obj";
+
+            std::stringstream teapotObjectPath;
+            teapotObjectPath << QCoreApplication::applicationDirPath().toStdString() << "/Objects/teapot.obj";
+
+            Sphere = new Mesh(sphereObjectPath.str().c_str());
+
+            Cube = new Mesh(cubeObjectPath.str().c_str());
+
+            Kanne = new Mesh(teapotObjectPath.str().c_str());
 
 
-/*
-            // Create and compile our GLSL program from the shaders
-           shaderProgram = new QOpenGLShaderProgram(this);
+            std::stringstream affeTexturePath;
+            affeTexturePath << QCoreApplication::applicationDirPath().toStdString() << "/Textures/mandrill.bmp";
 
-
-            if(!shaderProgram->addShaderFromSourceFile(QOpenGLShader::Vertex, ":/shader/Shader/StandardShading.vertexshader"))
-            {
-                Logger::GetLoggerIntance()->LogError("VertexShader incompatible whyyyyyyy?");
-            }
-            if(!shaderProgram->addShaderFromSourceFile(QOpenGLShader::Fragment, ":/shader/Shader/StandardShading.fragmentshader"))
-            {
-                Logger::GetLoggerIntance()->LogError("FragmentShader incompatible whyyyyyyy?");
-            }
-
-            if(!shaderProgram->link())
-            {
-                Logger::GetLoggerIntance()->LogInfo("Shader linking failed");
-            }
-
-            f->glUseProgram(shaderProgram->programId());
-*/
-            Sphere = new Mesh("/home/alex/sourceCode/gitProject/belegArbeitEMMS/projectSogo/sogoApp/Objects/sphere.obj");
-
-            Cube = new Mesh("/home/alex/sourceCode/gitProject/belegArbeitEMMS/projectSogo/sogoApp/Objects/cube.obj");
-
-            Kanne = new Mesh("/home/alex/sourceCode/gitProject/belegArbeitEMMS/projectSogo/sogoApp/Objects/teapot.obj");
+            std::stringstream loeweTexturePath;
+            loeweTexturePath << QCoreApplication::applicationDirPath().toStdString() << "/Textures/mandrill.bmp";
 
 
             // Load the texture
-            m_tAffe = new QOpenGLTexture(QImage(":/textures/Textures/mandrill.bmp"));
-            m_tLoewe = new QOpenGLTexture(QImage(":/textures/Textures/mandrill.bmp"));
+            m_tAffe = new QOpenGLTexture(QImage(affeTexturePath.str().c_str()));
+            m_tLoewe = new QOpenGLTexture(QImage(loeweTexturePath.str().c_str()));
 
             Logger::GetLoggerIntance()->LogInfo("GLInit finishes");
 

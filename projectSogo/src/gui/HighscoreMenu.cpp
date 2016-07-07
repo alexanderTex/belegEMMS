@@ -9,7 +9,7 @@ HighscoreMenu::HighscoreMenu(QWidget *parent) : QWidget(parent)
     this->m_mainMenueLabel->setFont(QFont("Times",18,QFont::Bold));
     this->m_controlLayout->addWidget(m_mainMenueLabel);
 
-    this->m_backToMainButtonHS = new QPushButton(tr("back"));
+    this->m_backToMainButtonHS = new QPushButton(tr("Back"));
     QObject::connect(m_backToMainButtonHS, &QPushButton::clicked, this, &HighscoreMenu::showStartMenu);
     this->m_controlLayout->addWidget(m_backToMainButtonHS);
 }

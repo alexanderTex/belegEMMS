@@ -11,6 +11,9 @@
 #include <QGridLayout>
 #include <QPushButton>
 #include <QObject>
+#include <QEvent>
+#include <QGroupBox>
+
 #include "GameData.h"
 #include "PlayingField.h"
 #include "Player.h"
@@ -22,6 +25,30 @@ class NewSessionMenu : public QWidget
 {
     Q_OBJECT
 public:
+
+    inline void changeEvent(QEvent *event)
+    {
+        if (event->type() == QEvent::LanguageChange) {
+            m_mainMenueLabel->setText(tr("New Session"));
+            m_input1stPlayername->setText(tr(("Player1")));
+            m_plyfieldGroupBox->setTitle(tr("Playfield"));
+            m_input2ndPlayername->setText(tr("Player2"));
+            m_checkBoxNetworkLabel->setText(tr("Network"));
+            m_checkBoxPvPnetwork->setText(tr("PvP(network)"));
+            m_checkBoxPvPlocal->setText(tr("PvP(local)"));
+            m_hostadress->setText(tr("Hostaddress:"));
+            m_inputHostaddress->setText(tr("Hostaddress"));
+            m_hostport->setText(tr("Port:"));
+            m_inputHostport->setText(tr("Port"));
+            m_connectButtion->setText(tr("Connect"));
+            m_playGameButton->setText(tr("Start Game"));
+            m_backToMainButtonNS->setText(tr("Back"));
+
+
+        } else
+            QWidget::changeEvent(event);
+    }
+
     explicit NewSessionMenu(QWidget *parent = 0);
 
     GameData *m_gameData;
@@ -51,7 +78,6 @@ private:
 
 
     QLabel  *m_mainMenueLabel,
-            *m_checkBoxPlayfieldLabel,
             *m_checkBoxNetworkLabel,
             *m_hostadress,
             *m_hostport;
@@ -70,6 +96,8 @@ private:
                 *m_checkBoxPvC,
                 *m_checkBoxPvPlocal,
                 *m_checkBoxPvPnetwork;
+
+    QGroupBox   *m_plyfieldGroupBox;
 
     QButtonGroup    *m_checkButtonGrp,
                     *m_checkBoxNetworkGrp;

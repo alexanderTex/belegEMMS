@@ -10,11 +10,11 @@ NewSessionMenu::NewSessionMenu(QWidget *parent) : QWidget(parent)
 
     // input field for player
     this->m_input1stPlayername = new QLineEdit();
-    this->m_input1stPlayername->setPlaceholderText(tr("1stPlayername"));
+    this->m_input1stPlayername->setPlaceholderText(tr("Player1"));
 
     // checkboxlayot(cluster) the checkbox which select the playfieldsize
     this->m_checkBoxPlayfieldLayout = new QVBoxLayout();
-    this->m_checkBoxPlayfieldLabel = new QLabel(tr("Playfield"));
+    //this->m_checkBoxPlayfieldLabel = new QLabel(tr("Playfield"));
 
 
         // checkbox
@@ -23,27 +23,32 @@ NewSessionMenu::NewSessionMenu(QWidget *parent) : QWidget(parent)
         this->m_checkBoxPlayfieldSizeX5 = new QCheckBox("5x5x5");
 
         // add checkbox to layout
-        this->m_checkBoxPlayfieldLayout->addWidget(m_checkBoxPlayfieldLabel);
         this->m_checkBoxPlayfieldLayout->addWidget(m_checkBoxPlayfieldSizeX3);
         this->m_checkBoxPlayfieldLayout->addWidget(m_checkBoxPlayfieldSizeX4);
         this->m_checkBoxPlayfieldSizeX4->setChecked(true);
         this->m_checkBoxPlayfieldLayout->addWidget(m_checkBoxPlayfieldSizeX5);
+        this->m_checkBoxPlayfieldLayout->addStretch(1);
 
-        // Buttongroup for exclusive click
-        this->m_checkButtonGrp = new QButtonGroup();
-        this->m_checkButtonGrp->addButton(m_checkBoxPlayfieldSizeX3);
-        this->m_checkButtonGrp->addButton(m_checkBoxPlayfieldSizeX4);
-        this->m_checkButtonGrp->addButton(m_checkBoxPlayfieldSizeX5);
-        this->m_checkButtonGrp->setExclusive(true);
+    // Buttongroup for exclusive click
+    this->m_checkButtonGrp = new QButtonGroup();
+    this->m_checkButtonGrp->addButton(m_checkBoxPlayfieldSizeX3);
+    this->m_checkButtonGrp->addButton(m_checkBoxPlayfieldSizeX4);
+    this->m_checkButtonGrp->addButton(m_checkBoxPlayfieldSizeX5);
+    this->m_checkButtonGrp->setExclusive(true);
+
+    m_plyfieldGroupBox = new QGroupBox(tr("Playfield"));
+    m_plyfieldGroupBox->setLayout(m_checkBoxPlayfieldLayout);
+
+
 
     this->m_input2ndPlayernameLayout = new QGridLayout();
     this->m_input2ndPlayername = new QLineEdit();
-    this->m_input2ndPlayername->setPlaceholderText(tr("2ndPlayername"));
+    this->m_input2ndPlayername->setPlaceholderText(tr("Player2"));
     this->m_input2ndPlayernameLayout->addWidget(m_input2ndPlayername);
 
     // Network area
     this->m_checkBoxNetworkLayout = new QVBoxLayout();
-    this->m_checkBoxNetworkLabel = new QLabel(tr("Netzwerk"));
+    this->m_checkBoxNetworkLabel = new QLabel(tr("Network"));
 
         this->m_checkBoxPvC = new QCheckBox(tr("PvC"));
         this->m_checkBoxPvPnetwork = new QCheckBox(tr("PvP(network)"));
@@ -73,7 +78,7 @@ NewSessionMenu::NewSessionMenu(QWidget *parent) : QWidget(parent)
     this->m_networkparameterWidget->setLayout(m_inputToHostlayout);
     this->m_networkparameterWidget->setVisible(false);
 
-    this->m_hostadress = new QLabel(tr("Hostadresse:"));
+    this->m_hostadress = new QLabel(tr("Hostaddress:"));
     this->m_inputHostaddress = new QLineEdit();
     this->m_inputHostaddress->setPlaceholderText(tr("Hostaddress"));
 
@@ -82,16 +87,16 @@ NewSessionMenu::NewSessionMenu(QWidget *parent) : QWidget(parent)
     this->m_inputHostport = new QLineEdit();
     this->m_inputHostport->setPlaceholderText(tr("Port"));
 
-    this->m_connectButtion = new QPushButton(tr("Verbinden"));
+    this->m_connectButtion = new QPushButton(tr("Connect"));
 
     this->m_inputToHostlayout->addWidget(m_hostadress,1,1,1,1,Qt::AlignCenter);
     this->m_inputToHostlayout->addWidget(m_inputHostaddress,1,2,1,1,Qt::AlignCenter);
     this->m_inputToHostlayout->addWidget(m_hostport,2,1,1,1,Qt::AlignCenter);
     this->m_inputToHostlayout->addWidget(m_inputHostport,2,2,1,1,Qt::AlignCenter);
 
-    this->m_playGameButton = new QPushButton(tr("Start Spiel"));
+    this->m_playGameButton = new QPushButton(tr("Start Game"));
 
-    this->m_backToMainButtonNS = new QPushButton(tr("Zurueck"));
+    this->m_backToMainButtonNS = new QPushButton(tr("Back"));
     QObject::connect(m_backToMainButtonNS, &QPushButton::clicked, this, &NewSessionMenu::showStartMenu);
 
     //this->mergeGameData();
@@ -106,7 +111,8 @@ NewSessionMenu::NewSessionMenu(QWidget *parent) : QWidget(parent)
     // add menu item to menue layout
     this->m_controlLayout->addWidget(m_mainMenueLabel);
     this->m_controlLayout->addWidget(m_input1stPlayername);
-    this->m_controlLayout->addLayout(m_checkBoxPlayfieldLayout);
+    this->m_controlLayout->addWidget(m_plyfieldGroupBox);
+    //this->m_controlLayout->addLayout(m_checkBoxPlayfieldLayout);
     this->m_controlLayout->addLayout(m_checkBoxNetworkLayout);
     this->m_controlLayout->addWidget(m_pvpLocalWidget);
     this->m_controlLayout->addWidget(m_networkparameterWidget);
