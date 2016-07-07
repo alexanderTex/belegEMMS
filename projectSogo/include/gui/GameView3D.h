@@ -361,6 +361,46 @@ protected:
     }
 
 
+    inline bool RayCast()
+    {
+        float interDistance = 0;
+
+        return false;
+
+
+    }
+
+    inline bool RayIntersection(glm::vec3 ray_origin, glm::vec3 ray_direction, glm::vec3 aabb_min, glm::vec3 aabb_max, float &intersectionDistance)
+    {
+        float tMin = 0.0f;
+        float tMax = 100000.0f;
+
+
+        glm::vec3 OBBposition_worldspace(Model[3].x, Model[3].y, Model[3].z);
+
+        glm::vec3 delta = OBBposition_worldspace - ray_origin;
+
+        glm::vec3 xaxis(Model[0].x, Model[0].y, Model[0].z);
+        float e = glm::dot(xaxis, delta);
+        float f = glm::dot(ray_direction, xaxis);
+
+        // Beware, don't do the division if f is near 0 ! See full source code for details.
+        float t1 = (e+aabb_min.x)/f; // Intersection with the "left" plane
+        float t2 = (e+aabb_max.x)/f; // Intersection with the "right" plane
+
+        if (t1>t2){ // if wrong order
+            float w=t1;t1=t2;t2=w; // swap t1 and t2
+        }
+
+        // tMax is the nearest "far" intersection (amongst the X,Y and Z planes pairs)
+        if ( t2 < tMax ) tMax = t2;
+        // tMin is the farthest "near" intersection (amongst the X,Y and Z planes pairs)
+        if ( t1 > tMin ) tMin = t1;
+
+        if (tMax < tMin )
+            return false;
+    }
+
 signals:
 
 public slots:
