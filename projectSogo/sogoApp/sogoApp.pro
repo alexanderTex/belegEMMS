@@ -89,7 +89,8 @@ HEADERS +=      ../include/core/* \
     ../external/glm-0.9.4.0/glm/ext.hpp \
     ../external/glm-0.9.4.0/glm/glm.hpp \
     ../external/shader.hpp \
-    ../external/objects.hpp
+    ../external/objects.hpp \
+    ../external/texture.hpp
 
 
 SOURCES +=      main.cpp \
@@ -98,7 +99,8 @@ SOURCES +=      main.cpp \
                 ../src/utility/* \
                 ../external/objloader.cpp \
                 ../external/shader.cpp \
-    ../external/objects.cpp
+    ../external/objects.cpp \
+    ../external/texture.cpp
 
 RESOURCES +=  \
     ressources.qrc

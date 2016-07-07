@@ -67,7 +67,7 @@ void drawWireCube()
 
     QOpenGLFunctions_4_5_Core *f = (QOpenGLFunctions_4_5_Core*)(QOpenGLContext::currentContext()->versionFunctions());
     f->glBindVertexArray(VertexArrayIDWireCube);
-	glDrawArrays(GL_LINES, 0, 24); // 12 Linien haben 24 Punkte
+    f->glDrawArrays(GL_LINES, 0, 24); // 12 Linien haben 24 Punkte
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////

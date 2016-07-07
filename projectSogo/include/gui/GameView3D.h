@@ -2,7 +2,7 @@
 #define GAMEVIEW3D_H
 
 #include <typeinfo>
-
+#include <sstream>
 
 // Include GLM
 #include "../external/glm-0.9.4.0/glm/glm.hpp"
@@ -11,22 +11,20 @@
 #include "../external/objloader.hpp"
 #include "../external/shader.hpp"
 #include "../external/objects.hpp"
+#include "../external/texture.hpp"
 
 #include <QApplication>
 #include <QWidget>
 #include <QVector3D>
 #include <QOpenGLWidget>
 #include <QOpenGLFunctions_4_5_Core>
-#include <QOpenGLVertexArrayObject>
-#include <QOpenGLShaderProgram>
-#include <QOpenGLBuffer>
 #include <QOpenGLTexture>
 #include <QFile>
 #include <QFileInfo>
 #include <QDir>
 
 #include "Logger.h"
-#include <sstream>
+
 
 class GameView3D : public QOpenGLWidget
 {
@@ -198,8 +196,8 @@ protected:
 
 
             // Load the texture
-            m_tAffe = new QOpenGLTexture(QImage(affeTexturePath.str().c_str()));
-            m_tLoewe = new QOpenGLTexture(QImage(loeweTexturePath.str().c_str()));
+            m_tAffe = loadBMP_custom(affeTexturePath.str().c_str());
+            m_tLoewe = loadBMP_custom(loeweTexturePath.str().c_str());
 
             Logger::GetLoggerIntance()->LogInfo("GLInit finishes");
 
@@ -275,7 +273,7 @@ protected:
                 Model = glm::scale(Model, glm::vec3(kugelRad * 2, kugelRad /4, kugelRad * 2));
                 // Bind our texture in Texture Unit 0
                 f->glActiveTexture(GL_TEXTURE0);				// Die Textturen sind durchnummeriert
-                f->glBindTexture(GL_TEXTURE_2D, m_tAffe->textureId());		// Verbindet die Textur
+                f->glBindTexture(GL_TEXTURE_2D, m_tAffe);		// Verbindet die Textur
                                                                 // Set our "myTextureSampler" sampler to user Texture Unit 0
                 f->glUniform1i(f->glGetUniformLocation(programID, "myTextureSampler"), 0);
 
@@ -304,7 +302,7 @@ protected:
 
                         // Bind our texture in Texture Unit 0
                         f->glActiveTexture(GL_TEXTURE0);				// Die Textturen sind durchnummeriert
-                        f->glBindTexture(GL_TEXTURE_2D, m_tAffe->textureId());		// Verbindet die Textur
+                        f->glBindTexture(GL_TEXTURE_2D, m_tAffe);		// Verbindet die Textur
                                                                     // Set our "myTextureSampler" sampler to user Texture Unit 0
                         f->glUniform1i(f->glGetUniformLocation(programID, "myTextureSampler"), 0);
 
@@ -321,13 +319,11 @@ protected:
 
                         // Bind our texture in Texture Unit 0
                         f->glActiveTexture(GL_TEXTURE0);				// Die Textturen sind durchnummeriert
-                        f->glBindTexture(GL_TEXTURE_2D, m_tAffe->textureId());		// Verbindet die Textur
+                        f->glBindTexture(GL_TEXTURE_2D, m_tAffe);		// Verbindet die Textur
                                                                         // Set our "myTextureSampler" sampler to user Texture Unit 0
                         f->glUniform1i(f->glGetUniformLocation(programID, "myTextureSampler"), 0);
 
                         sendMVP(programID);
-
-                        drawCube();
 
                         f->glBindVertexArray(Cube->VertexArrayID);
                         f->glDrawArrays(GL_TRIANGLES, 0, Cube->vertexCount);
@@ -436,8 +432,8 @@ private :
      * Ressources
      */
     GLuint programID;
-    QOpenGLTexture *m_tAffe;
-    QOpenGLTexture *m_tLoewe;
+    GLuint m_tAffe;
+    GLuint m_tLoewe;
 
     Mesh *Sphere;
     Mesh *Cube;
