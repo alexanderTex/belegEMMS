@@ -36,7 +36,7 @@ public:
         if (event->type() == QEvent::LanguageChange) {
             m_mainMenueLabel->setText(tr("New Session"));
             m_input1stPlayername->setText(tr(("Player1")));
-            m_plyfieldGroupBox->setTitle(tr("Playfield"));
+            m_playfieldGroupBox->setTitle(tr("Playfield"));
             m_input2ndPlayername->setText(tr("Player2"));
             m_checkBoxNetworkLabel->setText(tr("Network"));
             m_checkBoxPvPnetwork->setText(tr("PvP(network)"));
@@ -60,9 +60,11 @@ public:
 
     void mergeGameData();
 
-    void setPlayfieldSize();
+    void checkPlayfieldSize();
 
     void setPlayer();
+
+    void checkSkill();
 
     // network / solo
     void setGameEnviorment();
@@ -108,7 +110,8 @@ private:
                     *m_radioButtonskill2,
                     *m_radioButtonskill3;
 
-    QGroupBox   *m_plyfieldGroupBox,
+    QGroupBox   *m_playfieldGroupBox,
+                *m_modeGroupBox,
                 *m_skillGroupBox;
 
     QButtonGroup    *m_checkButtonGrp,
@@ -119,6 +122,7 @@ private:
                 *m_input2ndPlayernameLayout;
 
     QWidget *m_networkparameterWidget,
+            *m_skillWidget,
             *m_pvpLocalWidget;
 
     QPushButton *m_connectButtion,

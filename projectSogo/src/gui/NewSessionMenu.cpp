@@ -2,188 +2,233 @@
 
 NewSessionMenu::NewSessionMenu(QWidget *parent) : QWidget(parent)
 {
-    this->m_controlLayout = new QVBoxLayout(this);
+    // mainlayout
+    m_controlLayout = new QVBoxLayout(this);
 
-    this->m_mainMenueLabel = new QLabel(tr("New Session"));
-    this->m_mainMenueLabel->setAlignment(Qt::AlignHCenter);
-    this->m_mainMenueLabel->setFont(QFont("Times",18,QFont::Bold));
+    // mainlabel with title
+    m_mainMenueLabel = new QLabel(tr("New Session"));
+    m_mainMenueLabel->setAlignment(Qt::AlignHCenter);
+    m_mainMenueLabel->setFont(QFont("Times",18,QFont::Bold));
 
-    // input field for player
-    this->m_input1stPlayername = new QLineEdit();
-    this->m_input1stPlayername->setPlaceholderText(tr("Player1"));
+    // inputfields for players
+    m_input1stPlayername = new QLineEdit();
+    m_input1stPlayername->setPlaceholderText(tr("Player1"));
 
-    // checkboxlayot(cluster) the checkbox which select the playfieldsize
-    this->m_checkBoxPlayfieldLayout = new QVBoxLayout();
-    //this->m_checkBoxPlayfieldLabel = new QLabel(tr("Playfield"));
+    // "Start Game" Button
+    m_playGameButton = new QPushButton(tr("Start Game"));
+    QObject::connect(m_playGameButton, &QPushButton::clicked, this, &NewSessionMenu::startGame);
 
-
-        // checkbox
-        this->m_checkBoxPlayfieldSizeX3 = new QCheckBox("3x3x3");
-        this->m_checkBoxPlayfieldSizeX4 = new QCheckBox("4x4x4");
-        this->m_checkBoxPlayfieldSizeX5 = new QCheckBox("5x5x5");
-
-        // add checkbox to layout
-        this->m_checkBoxPlayfieldLayout->addWidget(m_checkBoxPlayfieldSizeX3);
-        this->m_checkBoxPlayfieldLayout->addWidget(m_checkBoxPlayfieldSizeX4);
-        this->m_checkBoxPlayfieldSizeX4->setChecked(true);
-        this->m_checkBoxPlayfieldLayout->addWidget(m_checkBoxPlayfieldSizeX5);
-        this->m_checkBoxPlayfieldLayout->addStretch(1);
-
-    // Buttongroup for exclusive click
-    this->m_checkButtonGrp = new QButtonGroup();
-    this->m_checkButtonGrp->addButton(m_checkBoxPlayfieldSizeX3);
-    this->m_checkButtonGrp->addButton(m_checkBoxPlayfieldSizeX4);
-    this->m_checkButtonGrp->addButton(m_checkBoxPlayfieldSizeX5);
-    this->m_checkButtonGrp->setExclusive(true);
-
-    m_plyfieldGroupBox = new QGroupBox(tr("Playfield"));
-    m_plyfieldGroupBox->setLayout(m_checkBoxPlayfieldLayout);
-
-
-
-    this->m_input2ndPlayernameLayout = new QGridLayout();
-    this->m_input2ndPlayername = new QLineEdit();
-    this->m_input2ndPlayername->setPlaceholderText(tr("Player2"));
-    this->m_input2ndPlayernameLayout->addWidget(m_input2ndPlayername);
-
-    // Network area
-    this->m_checkBoxNetworkLayout = new QVBoxLayout();
-    this->m_checkBoxNetworkLabel = new QLabel(tr("Network"));
-
-        this->m_checkBoxPvC = new QCheckBox(tr("PvC"));
-        this->m_checkBoxPvPnetwork = new QCheckBox(tr("PvP(network)"));
-        this->m_checkBoxPvPlocal = new QCheckBox(tr("PvP(local)"));
-
-        this->m_checkBoxNetworkLayout->addWidget(m_checkBoxNetworkLabel);
-        this->m_checkBoxNetworkLayout->addWidget(m_checkBoxPvC);
-        this->m_checkBoxPvC->setChecked(true);
-        this->m_checkBoxNetworkLayout->addWidget(m_checkBoxPvPlocal);
-        this->m_checkBoxNetworkLayout->addWidget(m_checkBoxPvPnetwork);
-
-        // Buttongroup for exclusive click
-        this->m_checkBoxNetworkGrp = new QButtonGroup();
-        this->m_checkBoxNetworkGrp->addButton(m_checkBoxPvC);
-        this->m_checkBoxNetworkGrp->addButton(m_checkBoxPvPlocal);
-        this->m_checkBoxNetworkGrp->addButton(m_checkBoxPvPnetwork);
-        this->m_checkBoxNetworkGrp->setExclusive(true);
-
-    // Cluster input for network connection
-    this->m_inputToHostlayout = new QGridLayout();
-
-    this->m_pvpLocalWidget = new QWidget();
-    this->m_pvpLocalWidget->setLayout(m_input2ndPlayernameLayout);
-    this->m_pvpLocalWidget->setVisible(false);
-
-    this->m_networkparameterWidget = new QWidget();
-    this->m_networkparameterWidget->setLayout(m_inputToHostlayout);
-    this->m_networkparameterWidget->setVisible(false);
-
-    this->m_hostadress = new QLabel(tr("Hostaddress:"));
-    this->m_inputHostaddress = new QLineEdit();
-    this->m_inputHostaddress->setPlaceholderText(tr("Hostaddress"));
-
-
-    this->m_hostport = new QLabel(tr("Port:"));
-    this->m_inputHostport = new QLineEdit();
-    this->m_inputHostport->setPlaceholderText(tr("Port"));
-
-    this->m_connectButtion = new QPushButton(tr("Connect"));
-
-    this->m_inputToHostlayout->addWidget(m_hostadress,1,1,1,1,Qt::AlignCenter);
-    this->m_inputToHostlayout->addWidget(m_inputHostaddress,1,2,1,1,Qt::AlignCenter);
-    this->m_inputToHostlayout->addWidget(m_hostport,2,1,1,1,Qt::AlignCenter);
-    this->m_inputToHostlayout->addWidget(m_inputHostport,2,2,1,1,Qt::AlignCenter);
-
-    this->m_playGameButton = new QPushButton(tr("Start Game"));
-
-    this->m_backToMainButtonNS = new QPushButton(tr("Back"));
+    // "Back" Button
+    m_backToMainButtonNS = new QPushButton(tr("Back"));
     QObject::connect(m_backToMainButtonNS, &QPushButton::clicked, this, &NewSessionMenu::showStartMenu);
 
-    //this->mergeGameData();
+    setPlayfield();
 
-    this->setPlayfieldSize();
-    /* test playfieldsize
-    std::stringstream s;
-    s << this->m_playingField->GetFieldSize();
-    Logger::GetLoggerIntance()->LogInfo(s.str());
-    */
+    checkPlayfieldSize();
 
-    // add menu item to menue layout
-    this->m_controlLayout->addWidget(m_mainMenueLabel);
-    this->m_controlLayout->addWidget(m_input1stPlayername);
-    this->m_controlLayout->addWidget(m_plyfieldGroupBox);
-    //this->m_controlLayout->addLayout(m_checkBoxPlayfieldLayout);
-    this->m_controlLayout->addLayout(m_checkBoxNetworkLayout);
-    this->m_controlLayout->addWidget(m_pvpLocalWidget);
-    this->m_controlLayout->addWidget(m_networkparameterWidget);
-    this->m_controlLayout->addWidget(m_playGameButton);
-    this->m_controlLayout->addWidget(m_backToMainButtonNS);
+    setMode();
 
     // Signals to switch between Solo- and Multiplayergame
     QObject::connect(m_checkBoxPvPnetwork, &QCheckBox::clicked, m_networkparameterWidget, &QWidget::show);
     QObject::connect(m_checkBoxPvPnetwork, &QCheckBox::clicked, m_pvpLocalWidget, &QWidget::hide);
+    QObject::connect(m_checkBoxPvPnetwork, &QCheckBox::clicked, m_skillWidget, &QWidget::hide);
+
     QObject::connect(m_checkBoxPvPlocal, &QCheckBox::clicked, m_networkparameterWidget, &QWidget::hide);
+    QObject::connect(m_checkBoxPvPlocal, &QCheckBox::clicked, m_skillWidget, &QWidget::hide);
     QObject::connect(m_checkBoxPvPlocal, &QCheckBox::clicked, m_pvpLocalWidget, &QWidget::show );
+
+    QObject::connect(m_checkBoxPvC, &QCheckBox::clicked, m_skillWidget, &QWidget::show);
     QObject::connect(m_checkBoxPvC, &QCheckBox::clicked, m_pvpLocalWidget, &QWidget::hide);
     QObject::connect(m_checkBoxPvC, &QCheckBox::clicked, m_networkparameterWidget, &QWidget::hide);
 
-    QObject::connect(m_playGameButton, &QPushButton::clicked, this, &NewSessionMenu::startGame);
-
+    // add menu item to menue layout
+    m_controlLayout->addWidget(m_mainMenueLabel);
+    m_controlLayout->addWidget(m_input1stPlayername);
+    m_controlLayout->addWidget(m_playfieldGroupBox);
+    m_controlLayout->addWidget(m_modeGroupBox);
+    m_controlLayout->addWidget(m_skillWidget);
+    m_controlLayout->addLayout(m_checkBoxNetworkLayout);
+    m_controlLayout->addWidget(m_pvpLocalWidget);
+    m_controlLayout->addWidget(m_networkparameterWidget);
+    m_controlLayout->addWidget(m_playGameButton);
+    m_controlLayout->addWidget(m_backToMainButtonNS);
 }
 
 void NewSessionMenu::setPlayfield()
 {
+    // checkboxlayot(cluster) the checkbox which select the playfieldsize
+    m_checkBoxPlayfieldLayout = new QVBoxLayout();
+
+    // checkboxes
+    m_checkBoxPlayfieldSizeX3 = new QCheckBox("3x3x3");
+    m_checkBoxPlayfieldSizeX4 = new QCheckBox("4x4x4");
+    m_checkBoxPlayfieldSizeX5 = new QCheckBox("5x5x5");
+
+    m_playfieldGroupBox = new QGroupBox(tr("Playfield"));
+    m_playfieldGroupBox->setLayout(m_checkBoxPlayfieldLayout);
+
+    // add checkbox to layout
+    m_checkBoxPlayfieldLayout->addWidget(m_checkBoxPlayfieldSizeX3);
+    m_checkBoxPlayfieldLayout->addWidget(m_checkBoxPlayfieldSizeX4);
+    m_checkBoxPlayfieldSizeX4->setChecked(true);
+    m_checkBoxPlayfieldLayout->addWidget(m_checkBoxPlayfieldSizeX5);
+    m_checkBoxPlayfieldLayout->addStretch(1);
+
+    // Buttongroup for exclusive click
+    m_checkButtonGrp = new QButtonGroup();
+    m_checkButtonGrp->addButton(m_checkBoxPlayfieldSizeX3);
+    m_checkButtonGrp->addButton(m_checkBoxPlayfieldSizeX4);
+    m_checkButtonGrp->addButton(m_checkBoxPlayfieldSizeX5);
+    m_checkButtonGrp->setExclusive(true);
 
 }
 
-
-void NewSessionMenu::setPlayfieldSize()
+void NewSessionMenu::setMode()
 {
-    if(this->m_checkBoxPlayfieldSizeX3->isChecked())
+    // Network area
+    m_checkBoxNetworkLayout = new QVBoxLayout();
+    m_modeGroupBox = new QGroupBox(tr("Mode"));
+    m_modeGroupBox->setLayout(m_checkBoxNetworkLayout);
+
+    // create checkboxes
+    m_checkBoxPvC = new QCheckBox(tr("PvC"));
+    m_checkBoxPvPnetwork = new QCheckBox(tr("PvP(network)"));
+    m_checkBoxPvPlocal = new QCheckBox(tr("PvP(local)"));
+
+    // add checkboxes to mainlayout
+    m_checkBoxNetworkLayout->addWidget(m_checkBoxPvC);
+    m_checkBoxPvC->setChecked(true);
+    m_checkBoxNetworkLayout->addWidget(m_checkBoxPvPlocal);
+    m_checkBoxNetworkLayout->addWidget(m_checkBoxPvPnetwork);
+
+    // Buttongroup for exclusive click
+    m_checkBoxNetworkGrp = new QButtonGroup();
+    m_checkBoxNetworkGrp->addButton(m_checkBoxPvC);
+    m_checkBoxNetworkGrp->addButton(m_checkBoxPvPlocal);
+    m_checkBoxNetworkGrp->addButton(m_checkBoxPvPnetwork);
+    m_checkBoxNetworkGrp->setExclusive(true);
+
+    m_input2ndPlayernameLayout = new QGridLayout();
+    m_input2ndPlayername = new QLineEdit();
+    m_input2ndPlayername->setPlaceholderText(tr("Player2"));
+    m_input2ndPlayernameLayout->addWidget(m_input2ndPlayername);
+
+    // insert Player2 name
+    m_pvpLocalWidget = new QWidget();
+    m_pvpLocalWidget->setLayout(m_input2ndPlayernameLayout);
+    m_pvpLocalWidget->setVisible(false);
+
+    m_radioButtonskill1 = new QRadioButton(tr("1"));
+    m_radioButtonskill2 = new QRadioButton(tr("2"));
+    m_radioButtonskill3 = new QRadioButton(tr("3"));
+    m_radioButtonskill1->setChecked(true);
+
+    m_checkPlayerSkillGrp = new QButtonGroup();
+    m_checkPlayerSkillGrp->addButton(m_radioButtonskill1);
+    m_checkPlayerSkillGrp->addButton(m_radioButtonskill2);
+    m_checkPlayerSkillGrp->addButton(m_radioButtonskill3);
+    m_checkPlayerSkillGrp->setExclusive(true);
+
+    // difficult mode
+    m_skillBoxLayout = new QHBoxLayout();
+    m_skillBoxLayout->addWidget(m_radioButtonskill1);
+    m_skillBoxLayout->addWidget(m_radioButtonskill2);
+    m_skillBoxLayout->addWidget(m_radioButtonskill3);
+
+    m_skillWidget = new QWidget();
+    m_skillWidget->setLayout(m_skillBoxLayout);
+    //m_skillWidget->setVisible(false);
+
+    // network connection
+    m_inputToHostlayout = new QGridLayout();
+
+    // set networklayout
+    m_networkparameterWidget = new QWidget();
+    m_networkparameterWidget->setLayout(m_inputToHostlayout);
+    m_networkparameterWidget->setVisible(false);
+
+    // set hostaddress
+    m_hostadress = new QLabel(tr("Hostaddress:"));
+    m_inputHostaddress = new QLineEdit();
+    m_inputHostaddress->setPlaceholderText(tr("Hostaddress"));
+
+    // set port
+    m_hostport = new QLabel(tr("Port:"));
+    m_inputHostport = new QLineEdit();
+    m_inputHostport->setPlaceholderText(tr("Port"));
+
+    // connect button
+    m_connectButtion = new QPushButton(tr("Connect"));
+
+    // add item to networklayout
+    m_inputToHostlayout->addWidget(m_hostadress,1,1,Qt::AlignCenter);
+    m_inputToHostlayout->addWidget(m_inputHostaddress,1,2,Qt::AlignCenter);
+    m_inputToHostlayout->addWidget(m_hostport,2,1,Qt::AlignCenter);
+    m_inputToHostlayout->addWidget(m_inputHostport,2,2,Qt::AlignCenter);
+}
+
+void NewSessionMenu::checkPlayfieldSize()
+{
+    if(m_checkBoxPlayfieldSizeX3->isChecked())
     {
-        this->m_playingField = new PlayingField(3);
+        m_playingField = new PlayingField(3);
     }
-    if(this->m_checkBoxPlayfieldSizeX4->isChecked())
+    if(m_checkBoxPlayfieldSizeX4->isChecked())
     {
-        this->m_playingField = new PlayingField(4);
+        m_playingField = new PlayingField(4);
     }
-    if(this->m_checkBoxPlayfieldSizeX5->isChecked())
+    if(m_checkBoxPlayfieldSizeX5->isChecked())
     {
-        this->m_playingField = new PlayingField(5);
+        m_playingField = new PlayingField(5);
     }
 }
 
 void NewSessionMenu::setPlayer()
 {
 
-    if (this->m_checkBoxPvC->isChecked())
+    if (m_checkBoxPvC->isChecked())
     {
-        if(this->m_input1stPlayername->text().toStdString().length() > 0 )
+        if(m_input1stPlayername->text().toStdString().length() > 0 )
         {
-            this->m_player1 = new Player(Player::HUMAN,this->m_input1stPlayername->text().toStdString(), PlayingField::BLUE);
+            m_player1 = new Player(Player::HUMAN,m_input1stPlayername->text().toStdString(), PlayingField::BLUE);
         }
         else
         {
-            this->m_player1 = new Player(Player::HUMAN,m_input1stPlayername->placeholderText().toStdString(), PlayingField::BLUE);
+            m_player1 = new Player(Player::HUMAN,m_input1stPlayername->placeholderText().toStdString(), PlayingField::BLUE);
         }
 
-        this->m_player2 = new Player(Player::AI, "Skynet", PlayingField::RED, 4);
+        m_player2 = new Player(Player::AI, "Skynet", PlayingField::RED);
 
     }
-    else if (this->m_checkBoxPvPlocal->isChecked())
+    else if (m_checkBoxPvPlocal->isChecked())
     {
-        this->m_player1 = new Player(Player::HUMAN, this->m_input1stPlayername->text().toStdString(), PlayingField::BLUE);
-        this->m_player2 = new Player(Player::HUMAN, this->m_input2ndPlayername->text().toStdString(), PlayingField::RED);
+        m_player1 = new Player(Player::HUMAN, m_input1stPlayername->text().toStdString(), PlayingField::BLUE);
+        m_player2 = new Player(Player::HUMAN, m_input2ndPlayername->text().toStdString(), PlayingField::RED);
     }
-    // TODO: Networkgame
+}
 
+void NewSessionMenu::checkSkill()
+{
+    if(m_radioButtonskill1->isChecked())
+    {
+        m_player2->SetSkill(1);
+    }
+    if(m_radioButtonskill2->isChecked())
+    {
+        m_player2->SetSkill(2);
+    }
+    if(m_radioButtonskill3->isChecked())
+    {
+        m_player2->SetSkill(3);
+    }
 }
 
 void NewSessionMenu::mergeGameData()
 {
-    this->setPlayfieldSize();
-    this->setPlayer();
-    this->m_gameData = new GameData(this->m_playingField, this->m_player1, this->m_player2, this->m_player2);
+    checkPlayfieldSize();
+    setPlayer();
+    checkSkill();
+    m_gameData = new GameData(m_playingField, m_player1, m_player2, m_player2);
 }
 
 
