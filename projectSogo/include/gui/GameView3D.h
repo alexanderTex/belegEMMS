@@ -243,10 +243,7 @@ protected:
         Model = glm::rotate(Model, right, glm::vec3(0.0f, 1.0f, 0.0f));
 
         Save = Model;
-<<<<<<< HEAD
-=======
         //drawCube();
->>>>>>> ec562579a3b1af09233e87730fdf6ca341fce8bd
         // =========================================================================
         //
         //	Playfield
