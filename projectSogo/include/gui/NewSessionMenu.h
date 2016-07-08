@@ -13,6 +13,8 @@
 #include <QObject>
 #include <QEvent>
 #include <QGroupBox>
+#include <QRadioButton>
+#include <QHBoxLayout>
 
 #include "GameData.h"
 #include "PlayingField.h"
@@ -25,6 +27,9 @@ class NewSessionMenu : public QWidget
 {
     Q_OBJECT
 public:
+    void setPlayfield();
+
+    void setMode();
 
     inline void changeEvent(QEvent *event)
     {
@@ -76,6 +81,8 @@ private:
                 *m_checkBoxPlayfieldLayout,
                 *m_checkBoxNetworkLayout;
 
+    QHBoxLayout *m_skillBoxLayout;
+
 
     QLabel  *m_mainMenueLabel,
             *m_checkBoxNetworkLabel,
@@ -97,9 +104,15 @@ private:
                 *m_checkBoxPvPlocal,
                 *m_checkBoxPvPnetwork;
 
-    QGroupBox   *m_plyfieldGroupBox;
+    QRadioButton    *m_radioButtonskill1,
+                    *m_radioButtonskill2,
+                    *m_radioButtonskill3;
+
+    QGroupBox   *m_plyfieldGroupBox,
+                *m_skillGroupBox;
 
     QButtonGroup    *m_checkButtonGrp,
+                    *m_checkPlayerSkillGrp,
                     *m_checkBoxNetworkGrp;
 
     QGridLayout *m_inputToHostlayout,

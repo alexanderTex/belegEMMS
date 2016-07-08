@@ -131,6 +131,12 @@ NewSessionMenu::NewSessionMenu(QWidget *parent) : QWidget(parent)
 
 }
 
+void NewSessionMenu::setPlayfield()
+{
+
+}
+
+
 void NewSessionMenu::setPlayfieldSize()
 {
     if(this->m_checkBoxPlayfieldSizeX3->isChecked())
