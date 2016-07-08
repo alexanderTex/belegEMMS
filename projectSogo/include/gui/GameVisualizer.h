@@ -21,9 +21,7 @@ public:
      explicit GameVisualizer(GameManager *manager, QWidget *parent = 0);
      virtual ~GameVisualizer();
 
-    /**
-     * @brief UpdateView
-     */
+
     inline void UpdateView()
     {
         this->m_view2D->ViewUpdate();

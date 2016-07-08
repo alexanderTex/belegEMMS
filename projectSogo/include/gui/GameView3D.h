@@ -22,6 +22,7 @@
 #include <QFile>
 #include <QFileInfo>
 #include <QDir>
+#include <QKeyEvent>
 
 #include "Logger.h"
 
@@ -169,6 +170,9 @@ protected:
             // Create and compile our GLSL program from the shaders
             programID = LoadShaders(vertexShaderPath.str().c_str(), fragmentShaderPath.str().c_str());
 
+            // Shader auch benutzen !
+            f->glUseProgram(programID);
+
             Logger::GetLoggerIntance()->Log("after shaderload");
 
 
@@ -200,8 +204,6 @@ protected:
             m_tLoewe = loadBMP_custom(loeweTexturePath.str().c_str());
 
             Logger::GetLoggerIntance()->LogInfo("GLInit finishes");
-
-            setAutoFillBackground(false);
     }
 
     inline virtual void paintGL()
@@ -211,8 +213,7 @@ protected:
 
         QOpenGLFunctions_4_5_Core *f = (QOpenGLFunctions_4_5_Core*)(QOpenGLContext::currentContext()->versionFunctions());
 
-        // Shader auch benutzen !
-        f->glUseProgram(programID);
+
 
         // Clear the screen
         //glClear(GL_COLOR_BUFFER_BIT);
@@ -240,6 +241,10 @@ protected:
         s<<up << std::endl;
 
         Logger::GetLoggerIntance()->LogInfo(s.str());
+
+
+        Model = glm::rotate(Model, x_achse, glm::vec3(1.0f, 0.0f, 0.0f));
+        Model = glm::rotate(Model, y_achse, glm::vec3(0.0f, 1.0f, 0.0f));
 
         // Modellierung mit Pfeiltasten
         Model = glm::rotate(Model, up, glm::vec3(1.0f, 0.0f, 0.0f));
@@ -367,6 +372,32 @@ protected:
         return false;
     }
 
+    inline void keyPressEvent(QKeyEvent *event)
+    {
+        switch(event->key())
+        {
+            case Qt::Key_A:
+                y_achse -= 1;
+            break;
+            case Qt::Key_D:
+                y_achse += 1;
+            break;
+            case Qt::Key_W:
+                x_achse += 1;
+            break;
+            case Qt::Key_S:
+                x_achse -= 1;
+            break;
+        }
+
+        update();
+    }
+
+    inline void mousePressEvent(QMouseEvent *event)
+    {
+        update();
+    }
+
     inline bool RayIntersection(glm::vec3 ray_origin, glm::vec3 ray_direction, glm::vec3 aabb_min, glm::vec3 aabb_max, float &intersectionDistance)
     {
         float tMin = 0.0f;
@@ -418,7 +449,6 @@ private :
     float right = 0;
     float up = 0;
     float down = 0;
-
 
 
 
