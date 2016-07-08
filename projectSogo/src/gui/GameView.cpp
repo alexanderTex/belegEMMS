@@ -15,7 +15,7 @@ GameView::GameView(QWidget *parent)
     m_mainLayout->addWidget(this->m_pauseMenuButton);
     QObject::connect(this->m_pauseMenuButton, &QPushButton::clicked, this, &GameView::PauseGame);
 
-    this->m_gameVis = new GameVisualizer(this->m_data, this);
+    this->m_gameVis = new GameVisualizer(this->m_gameLoop, this);
     m_mainLayout->addWidget(m_gameVis);
 
     QGroupBox *bottomView = new QGroupBox(this);
@@ -75,7 +75,7 @@ GameView::GameView(GameData *data, QWidget *parent)
 
 
 
-    this->m_gameVis = new GameVisualizer(this->m_data, this);
+    this->m_gameVis = new GameVisualizer(this->m_gameLoop, this);
     m_mainLayout->addWidget(m_gameVis);
 
     QGroupBox *bottomView = new QGroupBox(this);
@@ -138,22 +138,13 @@ void GameView::PauseGame()
 
 void GameView::EndGame()
 {
+    this->m_gameLoop->SuspendProcessingLoop();
     emit GameEnded(this->m_data);
 }
 
 
 void GameView::GameFinished()
 {
-
-    if(this->m_gameLoop != NULL)
-    {
-        this->m_gameLoop->StopGame();
-    }
-    else
-    {
-        Logger::GetLoggerIntance()->LogInfo("gameLoop already null");
-    }
-
     // Play WinSound
 
     FillInWinner();

@@ -18,7 +18,7 @@ class GameVisualizer : public QTabWidget
 {
     Q_OBJECT
 public:
-     explicit GameVisualizer(GameData *data, QWidget *parent = 0);
+     explicit GameVisualizer(GameManager *manager, QWidget *parent = 0);
      virtual ~GameVisualizer();
 
     /**

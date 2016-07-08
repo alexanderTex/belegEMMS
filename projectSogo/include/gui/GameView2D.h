@@ -17,7 +17,7 @@
 #include <QPushButton>
 #include <QLabel>
 
-#include "../include/core/GameData.h"
+#include "../include/core/GameManagerThread.h"
 #include "../include/core/Vector3.h"
 #include "../include/core/PlayingField.h"
 #include "../include/IObserver.h"
@@ -33,7 +33,7 @@ class GameView2D : public QWidget
 {
     Q_OBJECT
     public:
-        explicit GameView2D(GameData *data, QWidget *parent = 0);
+        explicit GameView2D(GameManager *manager, QWidget *parent = 0);
         virtual ~GameView2D();
 
         inline GraphicsSlot2D *GetRect(Vector3 vec)
@@ -86,7 +86,7 @@ class GameView2D : public QWidget
 private:
         float m_squareDrawSize;
 
-        GameData *m_data;
+        GameManager *m_manager;
 
         QHBoxLayout *sceneViewLayout;
 

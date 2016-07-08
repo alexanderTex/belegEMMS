@@ -1,10 +1,10 @@
 #include "GameView2D.h"
 
-GameView2D::GameView2D(GameData *data, QWidget *parent)
+GameView2D::GameView2D(GameManager *manager, QWidget *parent)
     : QWidget(parent)
 {
     //ctor
-    this->m_data = data;
+    this->m_manager = manager;
 
     this->m_squareDrawSize = 20;
 
@@ -14,11 +14,11 @@ GameView2D::GameView2D(GameData *data, QWidget *parent)
 
     this->sceneViewLayout = new QHBoxLayout(this);
     this->m_sceneLabels = new vector<QLabel *>();
-    for(int i = 0; i < m_data->GetField()->GetFieldSize(); i++)
+    for(int i = 0; i < m_manager->GetGameData()->GetField()->GetFieldSize(); i++)
     {
         this->m_sceneItems->push_back(new vector< vector <GraphicsSlot2D * > *>());
 
-        QGraphicsScene *graphicsScene = CreateGrid(m_data->GetField()->GetFieldSize(), this->m_squareDrawSize, this->m_sceneItems->at(i));
+        QGraphicsScene *graphicsScene = CreateGrid(m_manager->GetGameData()->GetField()->GetFieldSize(), this->m_squareDrawSize, this->m_sceneItems->at(i));
 
         QGraphicsView *view = new QGraphicsView(graphicsScene, this);
         view->setViewportUpdateMode(QGraphicsView::BoundingRectViewportUpdate);
@@ -86,11 +86,11 @@ void GameView2D::RecalculateGrid()
     this->m_sceneItems = new vector<vector< vector <GraphicsSlot2D * > *> *>();
 
     this->m_sceneLabels = new vector<QLabel *>();
-    for(int i = 0; i < m_data->GetField()->GetFieldSize(); i++)
+    for(int i = 0; i < m_manager->GetGameData()->GetField()->GetFieldSize(); i++)
     {
         this->m_sceneItems->push_back(new vector< vector <GraphicsSlot2D * > *>());
 
-        QGraphicsScene *graphicsScene = CreateGrid(m_data->GetField()->GetFieldSize(), this->m_squareDrawSize, this->m_sceneItems->at(i));
+        QGraphicsScene *graphicsScene = CreateGrid(m_manager->GetGameData()->GetField()->GetFieldSize(), this->m_squareDrawSize, this->m_sceneItems->at(i));
 
         QGraphicsView *view = new QGraphicsView(graphicsScene, this);
         view->setViewportUpdateMode(QGraphicsView::BoundingRectViewportUpdate);
@@ -117,17 +117,17 @@ void GameView2D::RecalculateGrid()
 
 void GameView2D::ViewUpdate()
 {
-   for(int i = 0; i < m_data->GetField()->GetFieldSize(); i++)
+   for(int i = 0; i < m_manager->GetGameData()->GetField()->GetFieldSize(); i++)
     {
-        for(int j = 0; j < m_data->GetField()->GetFieldSize(); j++)
+        for(int j = 0; j < m_manager->GetGameData()->GetField()->GetFieldSize(); j++)
         {
-            for(int k = 0; k < m_data->GetField()->GetFieldSize(); k++)
+            for(int k = 0; k < m_manager->GetGameData()->GetField()->GetFieldSize(); k++)
             {
-                if(m_data->GetField()->GetSlot(k,j,i)->Occupation == PlayingField::BLUE)
+                if(m_manager->GetGameData()->GetField()->GetSlot(k,j,i)->Occupation == PlayingField::BLUE)
                 {
                     this->m_sceneItems->at(i)->at(j)->at(k)->SetColor(Qt::cyan);
                 }
-                else if(m_data->GetField()->GetSlot(k,j,i)->Occupation == PlayingField::RED)
+                else if(m_manager->GetGameData()->GetField()->GetSlot(k,j,i)->Occupation == PlayingField::RED)
                 {
                     this->m_sceneItems->at(i)->at(j)->at(k)->SetColor(Qt::red);
                 }

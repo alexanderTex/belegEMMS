@@ -67,7 +67,7 @@ MainWindow::MainWindow(QTranslator *translator, QWidget *parent)
     m_layout->addWidget(m_startMenu);
     QObject::connect(m_startMenu, &StartMenu::switchToNewSession, this, &MainWindow::showNewSessionMenu);
     QObject::connect(m_startMenu, &StartMenu::switchToHighscore, this, &MainWindow::showHighscoreMenu);
-    QObject::connect(m_startMenu, &StartMenu::quitGame, this, &MainWindow::QuitMainWindow);
+    QObject::connect(m_startMenu, &StartMenu::quitGame, this, &MainWindow::showStartMenu);
 
     this->m_newSessionMenu = new NewSessionMenu(workspace);
     m_layout->addWidget(m_newSessionMenu);
@@ -80,11 +80,13 @@ MainWindow::MainWindow(QTranslator *translator, QWidget *parent)
     this->m_gameView = new GameView( data, workspace);
     m_layout->addWidget(this->m_gameView);
     QObject::connect(this->m_gameView, &GameView::PauseMenu, this, &MainWindow::ShowPauseMenu);
-    QObject::connect(this->m_gameView, &GameView::GameEnded, this, &MainWindow::QuitMainWindow);
+
+    QObject::connect(this->m_gameView, &GameView::GameEnded, this, &MainWindow::showStartMenu);
 
     this->m_pauseMenu = new PauseMenu(workspace);
     m_layout->addWidget(this->m_pauseMenu);
     QObject::connect(this->m_pauseMenu, &PauseMenu::ResumeButtonPressed, this, &MainWindow::ShowGameView);
+    QObject::connect(this->m_pauseMenu, &PauseMenu::QuitGameButtonPressed, this->m_gameView, &GameView::EndGame);
     QObject::connect(this->m_pauseMenu, &PauseMenu::QuitGameButtonPressed, this, &MainWindow::showStartMenu);
 
     // catch startGame from NewSession to start a new Game

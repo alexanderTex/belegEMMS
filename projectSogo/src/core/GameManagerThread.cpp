@@ -9,6 +9,7 @@ GameManager::GameManager()
 {
     this->m_data = NULL;
     m_stop = false;
+    m_endGame = false;
     m_paused = true;
     this->m_playerInputConfirmed = false;
     this->start();
@@ -18,6 +19,7 @@ GameManager::GameManager( GameData *data)
 {
     this->m_data = data;
     m_stop = false;
+    m_endGame = false;
     m_paused = true;
     this->m_playerInputConfirmed = false;
     this->start();
@@ -53,23 +55,7 @@ void GameManager::GameLoop()
 
     Logger::GetLoggerIntance()->LogInfo("GameLoop startet :" );
     Logger::GetLoggerIntance()->Log("\n" );
-/*
-    AIPlayer *aiPlayer1 = NULL;
 
-
-
-    if(this->m_data->GetPlayer1()->GetType() == Player::Ai)
-    {
-        aiPlayer1 = new AIPlayer(this->m_data->GetPlayer1());
-    }
-
-    AIPlayer *aiPlayer2 = NULL;
-
-    if(this->m_data->GetPlayer2()->GetType() == Player::Ai)
-    {
-        aiPlayer2 = new AIPlayer(this->m_data->GetPlayer2());
-    }
-*/
     bool currentPlayerMoveReady = false;
     Vector3 *pos = new Vector3();
 
@@ -77,85 +63,93 @@ void GameManager::GameLoop()
 
 
     while(m_stop == false)
-    {             
-        if(!m_paused)
+    {
+        while(m_endGame == false)
         {
-            if(this->m_data != NULL)
+            InputRoutine(currentPlayerMoveReady, pos);
+
+            if(this->m_endGame)
             {
-                if(this->m_data->GetCurrentPlayer()->GetType() == Player::HUMAN)
+                break;
+            }
+
+            if(currentPlayerMoveReady)
+            {
+                try
                 {
-                    //wait for input accepted
-                    // if accepted do input conformed process
-                    if(this->m_playerInputConfirmed)
+                    if(this->MakeMove(*pos))
                     {
-                        try
-                        {
-                            currentPlayerMoveReady = PlayerInputProcess(pos);
-                        }
-                        catch(PlayingField::FieldExeptions e)
-                        {
-                            Logger::GetLoggerIntance()->LogError("Player Input not Valid");
-                            // Play Bad Input sound
-                            currentPlayerMoveReady = false;
+                        TurnFinished();
+                        emit PlayerWon();
+                        this->m_stop = true;
+                    }
+                    else
+                    {
+                        TurnFinished();
 
-                            PlayInputErrorSound();
-
-                        }
-                        catch(std::out_of_range e)
-                        {
-                            Logger::GetLoggerIntance()->LogError("Player Input Out of Range");
-                            // Play Bad Input sound
-                            currentPlayerMoveReady = false;
-
-                            PlayInputErrorSound();
-                        }
-
-                        this->m_playerInputConfirmed = false;
+                        PlayInputAcceptSound();
                     }
                 }
-                else
+                catch(PlayingField::FieldExeptions e)
                 {
-                    currentPlayerMoveReady = AIProcess(m_data->GetCurrentPlayer(), pos);
+                    Logger::GetLoggerIntance()->LogError("Input not Valid");
+                    this->m_stop = true;
+                }
+                catch(std::out_of_range e)
+                {
+                    Logger::GetLoggerIntance()->LogError("Input Out of Range");
+                    this->m_stop = true;
                 }
 
+                currentPlayerMoveReady = false;
+            }
+        }
+    }
+    Logger::GetLoggerIntance()->LogInfo("GameManager Loop stopped");
+    delete(pos);
+}
 
-                if(currentPlayerMoveReady)
+void GameManager::InputRoutine(bool &currentPlayerMoveReady, Vector3 *pos) throw(out_of_range, PlayingField::FieldExeptions)
+{
+    if(!m_paused)
+    {
+        if(this->m_data != NULL)
+        {
+
+            if(this->m_data->GetCurrentPlayer()->GetType() == Player::HUMAN)
+            {
+                //wait for input accepted
+                // if accepted do input conformed process
+                if(this->m_playerInputConfirmed)
                 {
-                    Logger::GetLoggerIntance()->LogInfo("Currentplayer moves start");
                     try
                     {
-                        Logger::GetLoggerIntance()->Log(((this->m_data == NULL ? "Arhfdgfdglkfdjglf" : "Yeah there is a gamdata")));
-                        if(this->MakeMove(*pos))
-                        {
-                            TurnFinished();
-                            emit PlayerWon();
-                            this->m_stop = true;
-                        }
-                        else
-                        {
-                            TurnFinished();
-
-                            PlayInputAcceptSound();
-                        }
+                        currentPlayerMoveReady = PlayerInputProcess(pos);
                     }
                     catch(PlayingField::FieldExeptions e)
                     {
-                        Logger::GetLoggerIntance()->LogError("Input not Valid");
-                        this->m_stop = true;
+                        Logger::GetLoggerIntance()->LogError("Player Input not Valid");
+                        // Play Bad Input sound
+                        currentPlayerMoveReady = false;
+
+                        PlayInputErrorSound();
+
                     }
                     catch(std::out_of_range e)
                     {
-                        Logger::GetLoggerIntance()->LogError("Input Out of Range");
-                        this->m_stop = true;
+                        Logger::GetLoggerIntance()->LogError("Player Input Out of Range");
+                        // Play Bad Input sound
+                        currentPlayerMoveReady = false;
+
+                        PlayInputErrorSound();
                     }
 
-                    currentPlayerMoveReady = false;
+                    this->m_playerInputConfirmed = false;
                 }
-             }
-
-            if(this->m_stop)
+            }
+            else
             {
-                Logger::GetLoggerIntance()->LogInfo("GameManager Loop stopped");
+                currentPlayerMoveReady = AIProcess(m_data->GetCurrentPlayer(), pos);
             }
 
         }

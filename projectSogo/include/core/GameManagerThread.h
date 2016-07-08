@@ -91,12 +91,18 @@ public:
         m_paused = true;
     }
 
+    inline void SuspendProcessingLoop()
+    {
+        m_endGame = true;
+    }
+
     /**
      * @brief Stop
-     * sets the boolean to end the game logic loop
+     * sets the boolean to end the Main processing thread when the user quits the game
      */
-    inline void StopGame()
+    inline void StopGameManagerThread()
     {
+        m_endGame = true;
         m_stop = true;
     }
 
@@ -141,6 +147,8 @@ private:
      */
     void GameLoop();
 
+    void InputRoutine(bool &currentPlayerMoveReady, Vector3 *pos) throw(out_of_range, PlayingField::FieldExeptions);
+
     bool PlayerInputProcess(Vector3 *pos) throw(out_of_range, PlayingField::FieldExeptions);
 
     /**
@@ -162,6 +170,9 @@ private:
      * @brief m_stop
      */
     bool m_paused;
+
+    bool m_endGame;
+
     /**
      * @brief m_stop
      */

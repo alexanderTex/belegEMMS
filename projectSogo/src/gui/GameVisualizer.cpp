@@ -1,9 +1,9 @@
 #include "GameVisualizer.h"
 
-GameVisualizer::GameVisualizer(GameData *data, QWidget *parent)
+GameVisualizer::GameVisualizer(GameManager *manager, QWidget *parent)
     : QTabWidget(parent)
 {
-    this->m_view2D = new GameView2D(data, this);
+    this->m_view2D = new GameView2D(manager, this);
 
     this->addTab(m_view2D, tr("2D"));
 
