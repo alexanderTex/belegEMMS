@@ -243,7 +243,6 @@ protected:
         Model = glm::rotate(Model, right, glm::vec3(0.0f, 1.0f, 0.0f));
 
         Save = Model;
-        drawCube();
         // =========================================================================
         //
         //	Playfield
@@ -262,7 +261,6 @@ protected:
 
 
 
-  ///*
         for (x = 0; x <= koord1; x++)
         {
             for (z = 0; z <= koord1; z++)
@@ -332,7 +330,6 @@ protected:
 
             }
         }
-//*/
         Model = Save;
 
 
@@ -362,8 +359,6 @@ protected:
         float interDistance = 0;
 
         return false;
-
-
     }
 
     inline bool RayIntersection(glm::vec3 ray_origin, glm::vec3 ray_direction, glm::vec3 aabb_min, glm::vec3 aabb_max, float &intersectionDistance)
