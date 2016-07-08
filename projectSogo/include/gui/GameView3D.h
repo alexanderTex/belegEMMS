@@ -203,6 +203,8 @@ protected:
             m_tAffe = loadBMP_custom(affeTexturePath.str().c_str());
             m_tLoewe = loadBMP_custom(loeweTexturePath.str().c_str());
 
+
+            this->setFocus();
             Logger::GetLoggerIntance()->LogInfo("GLInit finishes");
     }
 
@@ -245,12 +247,14 @@ protected:
 
         Model = glm::rotate(Model, x_achse, glm::vec3(1.0f, 0.0f, 0.0f));
         Model = glm::rotate(Model, y_achse, glm::vec3(0.0f, 1.0f, 0.0f));
-
+/*
         // Modellierung mit Pfeiltasten
         Model = glm::rotate(Model, up, glm::vec3(1.0f, 0.0f, 0.0f));
         Model = glm::rotate(Model, down, glm::vec3(-1.0f, 0.0f, 0.0f));
         Model = glm::rotate(Model, left, glm::vec3(0.0f, -1.0f, 0.0f));
         Model = glm::rotate(Model, right, glm::vec3(0.0f, 1.0f, 0.0f));
+*/
+
 
         Save = Model;
         //drawCube();
