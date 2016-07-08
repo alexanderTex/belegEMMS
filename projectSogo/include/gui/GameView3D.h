@@ -235,6 +235,11 @@ protected:
         // Model matrix : an identity matrix (model will be at the origin)
         Model = glm::mat4(1.0f);
 
+        std::stringstream s;
+
+        s<<up << std::endl;
+
+        Logger::GetLoggerIntance()->LogInfo(s.str());
 
         // Modellierung mit Pfeiltasten
         Model = glm::rotate(Model, up, glm::vec3(1.0f, 0.0f, 0.0f));

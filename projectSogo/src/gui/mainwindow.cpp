@@ -67,7 +67,7 @@ MainWindow::MainWindow(QTranslator *translator, QWidget *parent)
     m_layout->addWidget(m_startMenu);
     QObject::connect(m_startMenu, &StartMenu::switchToNewSession, this, &MainWindow::showNewSessionMenu);
     QObject::connect(m_startMenu, &StartMenu::switchToHighscore, this, &MainWindow::showHighscoreMenu);
-    QObject::connect(m_startMenu, &StartMenu::quitGame, this, &MainWindow::showStartMenu);
+    QObject::connect(m_startMenu, &StartMenu::quitGame, this, &MainWindow::QuitMainWindow);
 
     this->m_newSessionMenu = new NewSessionMenu(workspace);
     m_layout->addWidget(m_newSessionMenu);
