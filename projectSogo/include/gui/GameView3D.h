@@ -122,6 +122,22 @@ public:
 
     explicit GameView3D(QWidget *parent = 0);
 
+    inline ~GameView3D()
+    {
+
+        QOpenGLFunctions_4_5_Core *f = (QOpenGLFunctions_4_5_Core*)(QOpenGLContext::currentContext()->versionFunctions());
+
+        delete(Sphere);
+        delete(Cube);
+        delete(Kanne);
+
+        f->glDeleteTextures(1, &m_tAffe);
+        f->glDeleteTextures(1, &m_tLoewe);
+
+        f->glDeleteProgram(programID);
+    }
+
+
 protected:
 
     void sendMVP(GLuint programID)
@@ -393,13 +409,21 @@ protected:
                 x_achse -= 1;
             break;
         }
-
-        update();
+        this->update();
     }
 
     inline void mousePressEvent(QMouseEvent *event)
     {
-        update();
+        Logger::GetLoggerIntance()->LogInfo("Resize Start");
+    }
+
+    inline void mouseMoveEvent(QMouseEvent *event)
+    {
+        m_currentMousePos = event->pos();
+        std::stringstream s;
+
+        s << (&m_currentMousePos)->x() << " : " << (&m_currentMousePos)->y() << "( current mouse position)" << std::endl;
+        Logger::GetLoggerIntance()->LogInfo(s.str());
     }
 
     inline bool RayIntersection(glm::vec3 ray_origin, glm::vec3 ray_direction, glm::vec3 aabb_min, glm::vec3 aabb_max, float &intersectionDistance)
@@ -454,7 +478,7 @@ private :
     float up = 0;
     float down = 0;
 
-
+    QPoint m_currentMousePos;
 
 
     //KugelRadius

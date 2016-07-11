@@ -29,7 +29,7 @@ public:
 
     inline void UpdateView3D()
     {
-        this->m_view3D->paintGL();
+        this->m_view3D->update();
     }
 
 
