@@ -22,9 +22,14 @@ public:
      virtual ~GameVisualizer();
 
 
-    inline void UpdateView()
+    inline void UpdateView2D()
     {
         this->m_view2D->ViewUpdate();
+    }
+
+    inline void UpdateView3D()
+    {
+        this->m_view3D->paintGL();
     }
 
 
@@ -32,6 +37,8 @@ public:
     {
         this->m_view2D->RecalculateGrid();
     }
+
+
 
 
 private:
