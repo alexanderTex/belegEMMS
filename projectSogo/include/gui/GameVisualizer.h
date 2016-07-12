@@ -21,6 +21,11 @@ public:
      explicit GameVisualizer(GameManager *manager, QWidget *parent = 0);
      virtual ~GameVisualizer();
 
+    inline void UpdateViews()
+    {
+        UpdateView2D();
+        UpdateView3D();
+    }
 
     inline void UpdateView2D()
     {

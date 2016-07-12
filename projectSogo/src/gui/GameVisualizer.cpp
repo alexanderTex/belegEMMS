@@ -7,7 +7,7 @@ GameVisualizer::GameVisualizer(GameManager *manager, QWidget *parent)
 
     this->addTab(m_view2D, tr("2D"));
 
-    this->m_view3D = new GameView3D(this);
+    this->m_view3D = new GameView3D(manager, this);
     this->addTab(m_view3D, tr("3D"));
 }
 

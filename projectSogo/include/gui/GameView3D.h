@@ -25,6 +25,7 @@
 #include <QKeyEvent>
 
 #include "Logger.h"
+#include "GameManagerThread.h"
 
 
 class GameView3D : public QOpenGLWidget
@@ -121,6 +122,7 @@ public:
 
 
     explicit GameView3D(QWidget *parent = 0);
+    GameView3D(GameManager *gm, QWidget *parent = 0);
 
     inline ~GameView3D()
     {
@@ -274,9 +276,11 @@ protected:
 
         int x, y, z;
 
+        int calculatedFieldSize = m_gm->GetGameData()->GetField()->GetFieldSize() - 1;
+
         // World space offset
         // Verschiebungsweite
-        float lookAtPoint = (koord1 * kugelRad * 2) / 2;
+        float lookAtPoint = ( calculatedFieldSize * kugelRad * 2) / 2;
 
         glm::mat4 offsetSaves = glm::translate(Model, glm::vec3(0, kugelRad, 0));
 
@@ -284,9 +288,9 @@ protected:
 
 
 
-        for (x = 0; x <= koord1; x++)
+        for (x = 0; x <= calculatedFieldSize; x++)
         {
-            for (z = 0; z <= koord1; z++)
+            for (z = 0; z <= calculatedFieldSize; z++)
             {
                 Model = Save;
 
@@ -304,17 +308,36 @@ protected:
             }
         }
 
-        for (y = 0; y <= koord1; y++)
+        for (y = 0; y <= calculatedFieldSize; y++)
         {
-            for (x = 0; x <= koord1; x++)
+            for (x = 0; x <= calculatedFieldSize; x++)
             {
-                for (z = 0; z <= koord1; z++)
+                for (z = 0; z <= calculatedFieldSize; z++)
                 {
                     Model = offsetSaves;
 
                     Model = glm::translate(Model, glm::vec3(x * (kugelRad * 2) - lookAtPoint, y * (kugelRad * 2) - lookAtPoint, z * (kugelRad * 2) - lookAtPoint));
 
-                    if (x == 1 && z == 3 && y == 0 )
+                    if (m_gm->GetGameData()->GetField()->GetSlot(x, z, y)->Occupation == PlayingField::BLUE)
+                    {
+
+                        Model = glm::scale(Model, glm::vec3(kugelRad*2, kugelRad*2, kugelRad*2));
+                        //Model = glm::scale(Model, glm::vec3(1.0 / 1000.0, 1.0 / 1000.0, 1.0 / 1000.0));
+
+
+                        // Bind our texture in Texture Unit 0
+                        f->glActiveTexture(GL_TEXTURE0);				// Die Textturen sind durchnummeriert
+                        f->glBindTexture(GL_TEXTURE_2D, m_tAffe);		// Verbindet die Textur
+                                                                    // Set our "myTextureSampler" sampler to user Texture Unit 0
+                        f->glUniform1i(f->glGetUniformLocation(programID, "myTextureSampler"), 0);
+
+                        sendMVP(programID);
+                        f->glBindVertexArray(Sphere->VertexArrayID);
+                        f->glDrawArrays(GL_TRIANGLES, 0, Sphere->vertexCount);
+
+
+                    }
+                    else if (m_gm->GetGameData()->GetField()->GetSlot(x, z, y)->Occupation == PlayingField::RED)
                     {
 
                         Model = glm::scale(Model, glm::vec3(kugelRad*2, kugelRad*2, kugelRad*2));
@@ -363,6 +386,7 @@ protected:
         //QOpenGLContext::currentContext()->swapBuffers(QOpenGLContext::currentContext()->surface());
 
         Logger::GetLoggerIntance()->LogInfo("Paint Loop END");
+        setFocus(Qt::OtherFocusReason);
     }
 
 
@@ -404,7 +428,7 @@ protected:
 
     inline void mousePressEvent(QMouseEvent *event)
     {
-        Logger::GetLoggerIntance()->LogInfo("Resize Start");
+        Logger::GetLoggerIntance()->LogInfo("Mouse Button Pressed");
     }
 
     inline void mouseMoveEvent(QMouseEvent *event)
@@ -453,6 +477,10 @@ public slots:
 
 
 private :
+    GameManager *m_gm;
+
+
+
     glm::mat4 Projection;
     glm::mat4 View;
     glm::mat4 Model;
@@ -475,7 +503,7 @@ private :
     float kugelRad = 1.0f;
 
     // will be playingfield->size
-    int koord1 = 3;
+    int playfieldSize = 3;
 
     /***
      * Ressources

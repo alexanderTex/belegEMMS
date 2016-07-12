@@ -7,3 +7,10 @@ GameView3D::GameView3D(QWidget *parent) : QOpenGLWidget(parent)
     setMouseTracking(true);
     setUpdateBehavior(NoPartialUpdate);
 }
+
+
+GameView3D::GameView3D(GameManager *gm, QWidget *parent)
+    : GameView3D(parent)
+{
+    this->m_gm = gm;
+}
