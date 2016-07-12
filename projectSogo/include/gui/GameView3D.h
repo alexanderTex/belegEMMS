@@ -489,7 +489,7 @@ protected:
         if (tMax < tMin )
             return false;
 
-        intersection_distance = tMin;
+        intersectionDistance = tMin;
         return true;
     }
 
