@@ -8,7 +8,7 @@
 GameManager::GameManager()
 {
     this->m_data = NULL;
-    m_stop = false;
+    m_stopThreadExecution = false;
     m_endGame = false;
     m_paused = true;
     this->m_playerInputConfirmed = false;
@@ -18,7 +18,7 @@ GameManager::GameManager()
 GameManager::GameManager( GameData *data)
 {
     this->m_data = data;
-    m_stop = false;
+    m_stopThreadExecution = false;
     m_endGame = false;
     m_paused = true;
     this->m_playerInputConfirmed = false;
@@ -62,16 +62,11 @@ void GameManager::GameLoop()
 
 
 
-    while(m_stop == false)
+    while(m_stopThreadExecution == false)
     {
         while(m_endGame == false)
         {
             InputRoutine(currentPlayerMoveReady, pos);
-
-            if(this->m_endGame)
-            {
-                break;
-            }
 
             if(currentPlayerMoveReady)
             {
@@ -81,7 +76,7 @@ void GameManager::GameLoop()
                     {
                         TurnFinished();
                         emit PlayerWon();
-                        this->m_stop = true;
+                        this->m_endGame = true;
                     }
                     else
                     {
@@ -93,17 +88,24 @@ void GameManager::GameLoop()
                 catch(PlayingField::FieldExeptions e)
                 {
                     Logger::GetLoggerIntance()->LogError("Input not Valid");
-                    this->m_stop = true;
+                    if(e == PlayingField::NO_SPACE_ANYMORE)
+                    {
+                        this->m_endGame = true;
+                        // send signal to indicate draw
+                    }
                 }
                 catch(std::out_of_range e)
                 {
                     Logger::GetLoggerIntance()->LogError("Input Out of Range");
-                    this->m_stop = true;
+                    this->m_endGame = true;
                 }
 
                 currentPlayerMoveReady = false;
             }
+            Logger::GetLoggerIntance()->LogInfo("GameLoop running...");
         }
+
+        Logger::GetLoggerIntance()->LogInfo("GameManager Loop waiting");
     }
     Logger::GetLoggerIntance()->LogInfo("GameManager Loop stopped");
     delete(pos);

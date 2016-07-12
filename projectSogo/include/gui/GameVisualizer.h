@@ -35,6 +35,7 @@ public:
     inline void UpdateView3D()
     {
         this->m_view3D->update();
+        this->m_view3D->setFocus();
     }
 
 

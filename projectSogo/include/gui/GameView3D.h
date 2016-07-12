@@ -401,7 +401,6 @@ protected:
         //QOpenGLContext::currentContext()->swapBuffers(QOpenGLContext::currentContext()->surface());
 
         Logger::GetLoggerIntance()->LogInfo("Paint Loop END");
-        setFocus(Qt::OtherFocusReason);
     }
 
 

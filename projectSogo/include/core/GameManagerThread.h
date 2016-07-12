@@ -78,11 +78,13 @@ public:
     inline void SetGameData(GameData * data)
     {
         this->m_data = data;
+        m_endGame = false;
     }
 
     inline void StartGame()
     {
         m_paused = false;
+        m_endGame = false;
     }
 
 
@@ -103,7 +105,7 @@ public:
     inline void StopGameManagerThread()
     {
         m_endGame = true;
-        m_stop = true;
+        m_stopThreadExecution = true;
     }
 
     /**
@@ -176,7 +178,7 @@ private:
     /**
      * @brief m_stop
      */
-    bool m_stop;
+    bool m_stopThreadExecution;
     /**
      * @brief m_playerInputConfirmed
      */
