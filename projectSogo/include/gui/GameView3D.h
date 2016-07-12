@@ -135,6 +135,8 @@ public:
         f->glDeleteTextures(1, &m_tLoewe);
 
         f->glDeleteProgram(programID);
+
+
     }
 
 
@@ -172,7 +174,6 @@ protected:
 
             // Punkte die kleiner sind kommen durch.
             f->glDepthFunc(GL_LESS);
-            Logger::GetLoggerIntance()->Log("before shader");
 
             Logger::GetLoggerIntance()->Log(QDir::currentPath().toStdString());
             Logger::GetLoggerIntance()->Log(QCoreApplication::applicationDirPath().toStdString());
@@ -188,8 +189,6 @@ protected:
 
             // Shader auch benutzen !
             f->glUseProgram(programID);
-
-            Logger::GetLoggerIntance()->Log("after shaderload");
 
 
             std::stringstream sphereObjectPath;
@@ -232,7 +231,6 @@ protected:
         QOpenGLFunctions_4_5_Core *f = (QOpenGLFunctions_4_5_Core*)(QOpenGLContext::currentContext()->versionFunctions());
 
 
-
         // Clear the screen
         //glClear(GL_COLOR_BUFFER_BIT);
         f->glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -253,12 +251,6 @@ protected:
 
         // Model matrix : an identity matrix (model will be at the origin)
         Model = glm::mat4(1.0f);
-
-        std::stringstream s;
-
-        s<<up << std::endl;
-
-        Logger::GetLoggerIntance()->LogInfo(s.str());
 
 
         Model = glm::rotate(Model, x_achse, glm::vec3(1.0f, 0.0f, 0.0f));
@@ -365,14 +357,12 @@ protected:
 
 
         // Lichtposition an der Spitze des letzten Segments
-        glm::vec4 lightPos = glm::vec4(8, 3, 0, 1);
+        glm::vec4 lightPos = glm::vec4(0, 0, 0, 1);
         f->glUniform3f(f->glGetUniformLocation(programID, "LightPosition_worldspace"), lightPos.x, lightPos.y, lightPos.z);
 
         //QOpenGLContext::currentContext()->swapBuffers(QOpenGLContext::currentContext()->surface());
 
         Logger::GetLoggerIntance()->LogInfo("Paint Loop END");
-
-
     }
 
 
