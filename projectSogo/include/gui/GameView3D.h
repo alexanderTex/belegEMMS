@@ -280,9 +280,9 @@ protected:
 
         // World space offset
         // Verschiebungsweite
-        float lookAtPoint = ( calculatedFieldSize * kugelRad * 2) / 2;
+        float lookAtPoint = ( calculatedFieldSize * m_kugelRad * 2) / 2;
 
-        glm::mat4 offsetSaves = glm::translate(Model, glm::vec3(0, kugelRad, 0));
+        glm::mat4 offsetSaves = glm::translate(Model, glm::vec3(0, m_kugelRad, 0));
 
 
 
@@ -294,8 +294,8 @@ protected:
             {
                 Model = Save;
 
-                Model = glm::translate(Model, glm::vec3(x * (kugelRad * 2) - lookAtPoint, -lookAtPoint, z * (kugelRad * 2) - lookAtPoint));
-                Model = glm::scale(Model, glm::vec3(kugelRad * 2, kugelRad /4, kugelRad * 2));
+                Model = glm::translate(Model, glm::vec3(x * (m_kugelRad * 2) - lookAtPoint, -lookAtPoint, z * (m_kugelRad * 2) - lookAtPoint));
+                Model = glm::scale(Model, glm::vec3(m_kugelRad * 2, m_kugelRad /4, m_kugelRad * 2));
                 // Bind our texture in Texture Unit 0
                 f->glActiveTexture(GL_TEXTURE0);				// Die Textturen sind durchnummeriert
                 f->glBindTexture(GL_TEXTURE_2D, m_tAffe);		// Verbindet die Textur
@@ -308,6 +308,9 @@ protected:
             }
         }
 
+
+        float closestRayHitDistance = 0;
+
         for (y = 0; y <= calculatedFieldSize; y++)
         {
             for (x = 0; x <= calculatedFieldSize; x++)
@@ -316,12 +319,12 @@ protected:
                 {
                     Model = offsetSaves;
 
-                    Model = glm::translate(Model, glm::vec3(x * (kugelRad * 2) - lookAtPoint, y * (kugelRad * 2) - lookAtPoint, z * (kugelRad * 2) - lookAtPoint));
+                    Model = glm::translate(Model, glm::vec3(x * (m_kugelRad * 2) - lookAtPoint, y * (m_kugelRad * 2) - lookAtPoint, z * (m_kugelRad * 2) - lookAtPoint));
 
                     if (m_gm->GetGameData()->GetField()->GetSlot(x, z, y)->Occupation == PlayingField::BLUE)
                     {
 
-                        Model = glm::scale(Model, glm::vec3(kugelRad*2, kugelRad*2, kugelRad*2));
+                        Model = glm::scale(Model, glm::vec3(m_kugelRad*2, m_kugelRad*2, m_kugelRad*2));
                         //Model = glm::scale(Model, glm::vec3(1.0 / 1000.0, 1.0 / 1000.0, 1.0 / 1000.0));
 
 
@@ -340,7 +343,7 @@ protected:
                     else if (m_gm->GetGameData()->GetField()->GetSlot(x, z, y)->Occupation == PlayingField::RED)
                     {
 
-                        Model = glm::scale(Model, glm::vec3(kugelRad*2, kugelRad*2, kugelRad*2));
+                        Model = glm::scale(Model, glm::vec3(m_kugelRad*2, m_kugelRad*2, m_kugelRad*2));
                         //Model = glm::scale(Model, glm::vec3(1.0 / 1000.0, 1.0 / 1000.0, 1.0 / 1000.0));
 
 
@@ -358,7 +361,7 @@ protected:
                     }
                     else
                     {
-                        Model = glm::scale(Model, glm::vec3(kugelRad / 5, kugelRad * 2, kugelRad / 5));
+                        Model = glm::scale(Model, glm::vec3(m_kugelRad / 5, m_kugelRad * 2, m_kugelRad / 5));
 
 
                         // Bind our texture in Texture Unit 0
@@ -373,9 +376,21 @@ protected:
                         f->glDrawArrays(GL_TRIANGLES, 0, Cube->vertexCount);
                     }
                 }
+                Model = offsetSaves;
+                float OBBHeight = calculatedFieldSize * m_kugelRad;
 
+                float currentRayHitDist = 0;
+
+                if(RayIntersection(glm::vec3(), glm::vec3(), glm::vec3(), glm::vec3(), currentRayHitDist) && currentRayHitDist < closestRayHitDistance)
+                {
+                    m_selectedSlotPosition->X = x;
+                    m_selectedSlotPosition->Y = z;
+                    closestRayHitDistance = currentRayHitDist;
+                    Logger::GetLoggerIntance()->LogInfo("Hit");
+                }
             }
         }
+
         Model = Save;
 
 
@@ -399,12 +414,6 @@ protected:
     }
 
 
-    inline bool RayCast()
-    {
-        float interDistance = 0;
-
-        return false;
-    }
 
     inline void keyPressEvent(QKeyEvent *event)
     {
@@ -440,6 +449,13 @@ protected:
         Logger::GetLoggerIntance()->LogInfo(s.str());
     }
 
+    inline bool RayCast()
+    {
+        float interDistance = 0;
+
+        return false;
+    }
+
     inline bool RayIntersection(glm::vec3 ray_origin, glm::vec3 ray_direction, glm::vec3 aabb_min, glm::vec3 aabb_max, float &intersectionDistance)
     {
         float tMin = 0.0f;
@@ -463,12 +479,18 @@ protected:
         }
 
         // tMax is the nearest "far" intersection (amongst the X,Y and Z planes pairs)
-        if ( t2 < tMax ) tMax = t2;
+        if ( t2 < tMax )
+            tMax = t2;
         // tMin is the farthest "near" intersection (amongst the X,Y and Z planes pairs)
-        if ( t1 > tMin ) tMin = t1;
+        if ( t1 > tMin )
+            tMin = t1;
+
 
         if (tMax < tMin )
             return false;
+
+        intersection_distance = tMin;
+        return true;
     }
 
 signals:
@@ -478,7 +500,6 @@ public slots:
 
 private :
     GameManager *m_gm;
-
 
 
     glm::mat4 Projection;
@@ -498,9 +519,10 @@ private :
 
     QPoint m_currentMousePos;
 
+    Vector2 *m_selectedSlotPosition;
 
     //KugelRadius
-    float kugelRad = 1.0f;
+    float m_kugelRad = 1.0f;
 
     // will be playingfield->size
     int playfieldSize = 3;
