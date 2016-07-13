@@ -9,12 +9,10 @@ int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
 
-
     QSurfaceFormat glFormat;
     glFormat.setVersion(3,3);
     glFormat.setProfile(QSurfaceFormat::CoreProfile);
     QSurfaceFormat::setDefaultFormat(glFormat);
-
 
     QTranslator *translator = new QTranslator();
 

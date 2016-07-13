@@ -9,6 +9,7 @@
 #include <QEvent>
 #include <QPalette>
 #include <QPixmap>
+#include "Logger.h"
 
 class StartMenu : public QWidget
 {

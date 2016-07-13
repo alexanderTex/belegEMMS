@@ -5,6 +5,11 @@
 #include <string>
 #include <sstream>
 
+// replace the first argument by the second
+#define LOGPATH() Logger::GetLoggerIntance()->LogPath(__LINE__, __FILE__)
+#define LOG(msg) Logger::GetLoggerIntance()->LogPath(__LINE__, __FILE__, msg)
+
+
 /**
  * @brief The Logger class
  * Logger singleton class
@@ -77,6 +82,42 @@ public:
         std::stringstream s;
 
         s << "ERROR : " << message << "\n\n" << "File : " << file << "\n" << "Line : " << line;
+
+        Logger::instance->Log(s.str());
+    }
+
+    /**
+     * @brief LogPath
+     * Display the line and the filepath
+     * Example in file:
+     *      LOGPATH();
+     * @param line
+     * @param filepath
+     */
+    inline void LogPath(int line, std::string filepath)
+    {
+        std::stringstream s;
+
+        s << "Line: " << line << " " << "File: " << filepath;
+
+        Logger::instance->Log(s.str());
+    }
+
+
+    /**
+     * @brief LogPath
+     * Display the line, filepath and a message
+     * Example in file:
+     *      LOG("msg");
+     * @param line
+     * @param filepath
+     * @param msg
+     */
+    inline void LogPath(int line, std::string filepath, std::string msg)
+    {
+        std::stringstream s;
+
+        s << "Line: " << line << " File: " << filepath << " >> "  << msg;
 
         Logger::instance->Log(s.str());
     }
