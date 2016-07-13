@@ -285,11 +285,9 @@ protected:
 
         int x, y, z;
 
-        int calculatedFieldSize = m_gm->GetGameData()->GetField()->GetFieldSize() - 1;
-
         // World space offset
         // Verschiebungsweite
-        float lookAtPoint = ( calculatedFieldSize * m_kugelRad * 2) / 2;
+        float lookAtPoint = ( ( m_gm->GetGameData()->GetField()->GetFieldSize() - 1) * m_kugelRad * 2) / 2;
 
         glm::mat4 offsetSaves = glm::translate(Model, glm::vec3(0, m_kugelRad, 0));
 
@@ -297,9 +295,9 @@ protected:
 
 
 
-        for (x = 0; x <= calculatedFieldSize; x++)
+        for (x = 0; x < m_gm->GetGameData()->GetField()->GetFieldSize(); x++)
         {
-            for (z = 0; z <= calculatedFieldSize; z++)
+            for (z = 0; z < m_gm->GetGameData()->GetField()->GetFieldSize(); z++)
             {
                 Model = Save;
 
@@ -320,11 +318,11 @@ protected:
 
         float closestRayHitDistance = 0;
 
-        for (y = 0; y <= calculatedFieldSize; y++)
+        for (y = 0; y < m_gm->GetGameData()->GetField()->GetFieldSize(); y++)
         {
-            for (x = 0; x <= calculatedFieldSize; x++)
+            for (x = 0; x < m_gm->GetGameData()->GetField()->GetFieldSize(); x++)
             {
-                for (z = 0; z <= calculatedFieldSize; z++)
+                for (z = 0; z < m_gm->GetGameData()->GetField()->GetFieldSize(); z++)
                 {
                     Model = offsetSaves;
 
@@ -386,7 +384,7 @@ protected:
                     }
                 }
                 Model = offsetSaves;
-                float OBBHeight = calculatedFieldSize * m_kugelRad;
+                float OBBHeight = m_gm->GetGameData()->GetField()->GetFieldSize() * m_kugelRad;
 
                 float currentRayHitDist = 0;
 
