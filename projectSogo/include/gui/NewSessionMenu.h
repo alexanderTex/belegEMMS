@@ -38,7 +38,6 @@ public:
             m_input1stPlayername->setText(tr(("Player1")));
             m_playfieldGroupBox->setTitle(tr("Playfield"));
             m_input2ndPlayername->setText(tr("Player2"));
-            m_checkBoxNetworkLabel->setText(tr("Network"));
             m_checkBoxPvPnetwork->setText(tr("PvP(network)"));
             m_checkBoxPvPlocal->setText(tr("PvP(local)"));
             m_hostadress->setText(tr("Hostaddress:"));
@@ -48,8 +47,6 @@ public:
             m_connectButtion->setText(tr("Connect"));
             m_playGameButton->setText(tr("Start Game"));
             m_backToMainButtonNS->setText(tr("Back"));
-
-
         } else
             QWidget::changeEvent(event);
     }
@@ -138,9 +135,6 @@ private:
             *m_player2;
 
     HistorySave *m_historySave;
-
-
-
 };
 
 #endif // NEWSESSIONMENU_H

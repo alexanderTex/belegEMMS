@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="de_DE">
+<TS version="2.0" language="de_DE">
 <context>
     <name>GameInputArea</name>
     <message>
@@ -36,7 +36,7 @@
     <name>GameView2D</name>
     <message>
         <source>Layer </source>
-        <translation type="vanished">Ebene</translation>
+        <translation>Ebene</translation>
     </message>
 </context>
 <context>
@@ -68,7 +68,7 @@
     </message>
     <message>
         <source>back</source>
-        <translation type="vanished">Zrück</translation>
+        <translation>Zrück</translation>
     </message>
 </context>
 <context>
@@ -120,22 +120,38 @@
     <message>
         <location filename="../../src/gui/NewSessionMenu.cpp" line="90"/>
         <source>Mode</source>
+<<<<<<< HEAD
         <translation type="unfinished"></translation>
+=======
+        <translation>Modus</translation>
+>>>>>>> b1764dc24cd29e2caeb3bd847e0449ca54ac3e40
     </message>
     <message>
         <location filename="../../src/gui/NewSessionMenu.cpp" line="121"/>
         <source>1</source>
+<<<<<<< HEAD
         <translation type="unfinished">3D {1?}</translation>
+=======
+        <translation></translation>
+>>>>>>> b1764dc24cd29e2caeb3bd847e0449ca54ac3e40
     </message>
     <message>
         <location filename="../../src/gui/NewSessionMenu.cpp" line="122"/>
         <source>2</source>
+<<<<<<< HEAD
         <translation type="unfinished">3D {2?}</translation>
+=======
+        <translation></translation>
+>>>>>>> b1764dc24cd29e2caeb3bd847e0449ca54ac3e40
     </message>
     <message>
         <location filename="../../src/gui/NewSessionMenu.cpp" line="123"/>
         <source>3</source>
+<<<<<<< HEAD
         <translation type="unfinished">3D {3?}</translation>
+=======
+        <translation></translation>
+>>>>>>> b1764dc24cd29e2caeb3bd847e0449ca54ac3e40
     </message>
     <message>
         <location filename="../../include/gui/NewSessionMenu.h" line="40"/>

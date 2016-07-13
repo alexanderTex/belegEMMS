@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="en_US">
+<TS version="2.0" language="en_US">
 <context>
     <name>GameInputArea</name>
     <message>
@@ -101,22 +101,38 @@
     <message>
         <location filename="../../src/gui/NewSessionMenu.cpp" line="90"/>
         <source>Mode</source>
+<<<<<<< HEAD
         <translation type="unfinished"></translation>
+=======
+        <translation>Mode</translation>
+>>>>>>> b1764dc24cd29e2caeb3bd847e0449ca54ac3e40
     </message>
     <message>
         <location filename="../../src/gui/NewSessionMenu.cpp" line="121"/>
         <source>1</source>
+<<<<<<< HEAD
         <translation type="unfinished"></translation>
+=======
+        <translation></translation>
+>>>>>>> b1764dc24cd29e2caeb3bd847e0449ca54ac3e40
     </message>
     <message>
         <location filename="../../src/gui/NewSessionMenu.cpp" line="122"/>
         <source>2</source>
+<<<<<<< HEAD
         <translation type="unfinished"></translation>
+=======
+        <translation></translation>
+>>>>>>> b1764dc24cd29e2caeb3bd847e0449ca54ac3e40
     </message>
     <message>
         <location filename="../../src/gui/NewSessionMenu.cpp" line="123"/>
         <source>3</source>
+<<<<<<< HEAD
         <translation type="unfinished"></translation>
+=======
+        <translation></translation>
+>>>>>>> b1764dc24cd29e2caeb3bd847e0449ca54ac3e40
     </message>
     <message>
         <location filename="../../include/gui/NewSessionMenu.h" line="40"/>
@@ -258,7 +274,7 @@
         <location filename="../../include/gui/StartMenu.h" line="24"/>
         <location filename="../../src/gui/StartMenu.cpp" line="18"/>
         <source>Exit</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 </TS>
