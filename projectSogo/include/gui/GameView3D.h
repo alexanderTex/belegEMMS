@@ -276,7 +276,7 @@ protected:
 
 
         Save = Model;
-        drawCube();
+        //drawCube();
         // =========================================================================
         //
         //	Playfield
@@ -318,17 +318,17 @@ protected:
 
         float closestRayHitDistance = 0;
 
-        for (y = 0; y < m_gm->GetGameData()->GetField()->GetFieldSize(); y++)
+        for (x = 0; x < m_gm->GetGameData()->GetField()->GetFieldSize(); x++)
         {
-            for (x = 0; x < m_gm->GetGameData()->GetField()->GetFieldSize(); x++)
+            for (z = 0; z < m_gm->GetGameData()->GetField()->GetFieldSize(); z++)
             {
-                for (z = 0; z < m_gm->GetGameData()->GetField()->GetFieldSize(); z++)
+                for (y = 0; y < m_gm->GetGameData()->GetField()->GetFieldSize(); y++)
                 {
                     Model = offsetSaves;
 
                     Model = glm::translate(Model, glm::vec3(x * (m_kugelRad * 2) - lookAtPoint, y * (m_kugelRad * 2) - lookAtPoint, z * (m_kugelRad * 2) - lookAtPoint));
 
-                    if (m_gm->GetGameData()->GetField()->GetSlot(x, z, y)->Occupation == PlayingField::BLUE)
+                    if (m_gm->GetGameData()->GetField()->GetSlot(x, y, z)->Occupation == PlayingField::BLUE)
                     {
 
                         Model = glm::scale(Model, glm::vec3(m_kugelRad*2, m_kugelRad*2, m_kugelRad*2));
@@ -347,7 +347,7 @@ protected:
 
 
                     }
-                    else if (m_gm->GetGameData()->GetField()->GetSlot(x, z, y)->Occupation == PlayingField::RED)
+                    else if (m_gm->GetGameData()->GetField()->GetSlot(x, y, z)->Occupation == PlayingField::RED)
                     {
 
                         Model = glm::scale(Model, glm::vec3(m_kugelRad*2, m_kugelRad*2, m_kugelRad*2));
@@ -383,30 +383,27 @@ protected:
                         f->glDrawArrays(GL_TRIANGLES, 0, Cube->vertexCount);
                     }
                 }
-                Model = offsetSaves;
-                float OBBHeight = m_gm->GetGameData()->GetField()->GetFieldSize() * m_kugelRad;
 
-                float currentRayHitDist = 0;
+                Logger::GetLoggerIntance()->LogInfo("Before draw WireCube", __FILE__, __LINE__);
 
-                glm::vec3 rayOrigin;
-                glm::vec3 rayDir;
-
-                ScreenPosToWorldRay((&m_currentMousePos)->x() , (&m_currentMousePos)->y(), this->width(), this->height(), View, Projection, rayOrigin, rayDir);
-
-                glm::vec3 minaabb(-m_kugelRad, -m_kugelRad, -m_kugelRad);
-                glm::vec3 maxaabb(m_kugelRad, m_kugelRad, m_kugelRad);
-
-
-                if(TestRayOBBIntersection(rayOrigin, rayDir, minaabb, maxaabb, Model, currentRayHitDist))
+                if(this->m_castHit)
                 {
-                    m_hoveredSlotPosition->X = x;
-                    m_hoveredSlotPosition->Y = z;
-                    closestRayHitDistance = currentRayHitDist;
-                    Logger::GetLoggerIntance()->LogInfo("Hit");
+                    if(x == m_hoveredSlotPosition.X && z == m_hoveredSlotPosition.Y)
+                    {
+                        Model = offsetSaves;
+
+                        float obbSize = m_gm->GetGameData()->GetField()->GetFieldSize() * m_kugelRad * 2;
+
+                        Model = glm::translate(Model, glm::vec3(x * (m_kugelRad * 2) - lookAtPoint, (obbSize / 2) - lookAtPoint, z * (m_kugelRad * 2) - lookAtPoint));
+                        Model = glm::scale(Model, glm::vec3(m_kugelRad, obbSize / 2, m_kugelRad));
+
+                        sendMVP(programID);
+                        drawWireCube();
+                    }
                 }
+
+                Logger::GetLoggerIntance()->LogInfo("Before draw WireCube", __FILE__, __LINE__);
             }
-
-
         }
 
 
@@ -419,6 +416,8 @@ protected:
         glm::vec4 lightPos = glm::vec4(0, 0, 0, 1);
         f->glUniform3f(f->glGetUniformLocation(programID, "LightPosition_worldspace"), lightPos.x, lightPos.y, lightPos.z);
 
+
+        Model = Save;
         //QOpenGLContext::currentContext()->swapBuffers(QOpenGLContext::currentContext()->surface());
 
         Logger::GetLoggerIntance()->LogInfo("Paint Loop END");
@@ -462,11 +461,74 @@ protected:
 
     inline void mouseMoveEvent(QMouseEvent *event)
     {
-        m_currentMousePos = event->pos();
-        std::stringstream s;
+        if(CastRay(event->pos()))
+        {
+            m_castHit = true;
+            update();
+        }
+        else
+        {
+            m_castHit = false;
+        }
+    }
 
-        s << (&m_currentMousePos)->x() << " : " << (&m_currentMousePos)->y() << "( current mouse position)" << std::endl;
-        Logger::GetLoggerIntance()->LogInfo(s.str());
+    inline bool CastRay(QPoint m_currentMousePos)
+    {
+        float closestRayHitDistance = 0;
+
+        // World space offset
+        // Verschiebungsweite
+        float lookAtPoint = ( ( m_gm->GetGameData()->GetField()->GetFieldSize() - 1) * m_kugelRad * 2) / 2;
+
+        glm::mat4 offsetSaves = glm::translate(Model, glm::vec3(0, m_kugelRad, 0));
+
+        for(int x = 0; x < m_gm->GetGameData()->GetField()->GetFieldSize(); x++)
+        {
+            for(int z = 0; z < m_gm->GetGameData()->GetField()->GetFieldSize(); z++)
+            {
+                Model = offsetSaves;
+
+                float obbSize = m_gm->GetGameData()->GetField()->GetFieldSize() * m_kugelRad * 2;
+
+                Model = glm::translate(Model, glm::vec3(x * (m_kugelRad * 2) - lookAtPoint, (obbSize / 2) - lookAtPoint, z * (m_kugelRad * 2) - lookAtPoint));
+                Model = glm::scale(Model, glm::vec3(m_kugelRad, obbSize / 2, m_kugelRad));
+
+                float currentRayHitDist = 0;
+
+                glm::vec3 rayOrigin;
+                glm::vec3 rayDir;
+
+                ScreenPosToWorldRay((&m_currentMousePos)->x() , (&m_currentMousePos)->y(), this->width(), this->height(), View, Projection, rayOrigin, rayDir);
+
+                glm::vec3 minaabb(-m_kugelRad, -obbSize, -m_kugelRad);
+                glm::vec3 maxaabb(m_kugelRad, obbSize, m_kugelRad);
+
+
+
+
+
+
+
+                Logger::GetLoggerIntance()->LogInfo("Before Ray Cast Intersection check", __FILE__, __LINE__);
+
+                if(TestRayOBBIntersection(rayOrigin, rayDir, minaabb, maxaabb, Model, currentRayHitDist))
+                {
+                    m_hoveredSlotPosition.X = x;
+                    m_hoveredSlotPosition.Y = z;
+                    closestRayHitDistance = currentRayHitDist;
+                    Logger::GetLoggerIntance()->LogInfo("Hit detected", __FILE__, __LINE__);
+                    return true;
+                }
+                else
+                {
+                    Logger::GetLoggerIntance()->LogInfo("No hit detected", __FILE__, __LINE__);
+                }
+
+            }
+
+        }
+        return false;
+
     }
 
 
@@ -667,9 +729,8 @@ private :
     float up = 0;
     float down = 0;
 
-    QPoint m_currentMousePos;
-
-    Vector2 *m_hoveredSlotPosition;
+    Vector2 m_hoveredSlotPosition;
+    bool m_castHit;
 
     //KugelRadius
     float m_kugelRad = 1.0f;

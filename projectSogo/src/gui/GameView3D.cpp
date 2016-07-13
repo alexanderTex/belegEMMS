@@ -6,6 +6,9 @@ GameView3D::GameView3D(QWidget *parent) : QOpenGLWidget(parent)
     setFocusPolicy(Qt::ClickFocus);
     setMouseTracking(true);
     setUpdateBehavior(NoPartialUpdate);
+    m_hoveredSlotPosition.X = -1;
+    m_hoveredSlotPosition.Y = -1;
+    m_castHit = false;
 }
 
 
