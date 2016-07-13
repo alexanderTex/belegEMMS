@@ -186,8 +186,8 @@ protected:
             // Punkte die kleiner sind kommen durch.
             f->glDepthFunc(GL_LESS);
 
-            Logger::GetLoggerIntance()->Log(QDir::currentPath().toStdString());
-            Logger::GetLoggerIntance()->Log(QCoreApplication::applicationDirPath().toStdString());
+            Logger::GetLoggerIntance()->LogInfo(QDir::currentPath().toStdString());
+            Logger::GetLoggerIntance()->LogInfo(QCoreApplication::applicationDirPath().toStdString());
 
             std::stringstream vertexShaderPath;
             vertexShaderPath << QCoreApplication::applicationDirPath().toStdString() << "/Shader/StandardShading.vertexshader";
