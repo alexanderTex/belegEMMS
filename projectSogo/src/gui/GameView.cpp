@@ -8,6 +8,7 @@ GameView::GameView(QWidget *parent)
     this->m_gameLoop = new GameManager();
     this->m_gameLoop->PauseGame();
     QObject::connect(this->m_gameLoop, &GameManager::finished, this->m_gameLoop, &GameManager::deleteLater);
+    QObject::connect(qApp, &QCoreApplication::aboutToQuit, this->m_gameLoop, &GameManager::deleteLater);
 
     m_mainLayout = new QVBoxLayout(this);
 
@@ -66,6 +67,7 @@ GameView::GameView(GameData *data, QWidget *parent)
 
     this->m_gameLoop = new GameManager(this->m_data);
     QObject::connect(this->m_gameLoop, &GameManager::finished, this->m_gameLoop, &GameManager::deleteLater);
+    QObject::connect(qApp, &QCoreApplication::aboutToQuit, this->m_gameLoop, &GameManager::StopGameManagerThread);
 
     m_mainLayout = new QVBoxLayout(this);
 
@@ -147,12 +149,10 @@ void GameView::GameFinished()
 {
     // Play WinSound
 
-    FillInWinner();
-    bottomViewLayout->setCurrentWidget(this->endView);
-
+    ShowWinner();
 }
 
-void GameView::FillInWinner()
+void GameView::ShowWinner()
 {
     stringstream s;
 

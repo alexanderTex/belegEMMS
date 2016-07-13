@@ -124,8 +124,15 @@ public:
     explicit GameView3D(QWidget *parent = 0);
     GameView3D(GameManager *gm, QWidget *parent = 0);
 
-    inline ~GameView3D()
+    virtual inline ~GameView3D()
     {
+
+    }
+
+    inline void CleanUp()
+    {
+        Logger::GetLoggerIntance()->LogInfo("GameView 3D Destuctor");
+        makeCurrent();
 
         QOpenGLFunctions_4_5_Core *f = (QOpenGLFunctions_4_5_Core*)(QOpenGLContext::currentContext()->versionFunctions());
 
@@ -138,7 +145,7 @@ public:
 
         f->glDeleteProgram(programID);
 
-
+        doneCurrent();
     }
 
 
@@ -161,6 +168,8 @@ protected:
     //this is where all the code before the graphics loop goes
     inline virtual void initializeGL()
     {
+
+        QObject::connect(QOpenGLContext::currentContext(), &QOpenGLContext::aboutToBeDestroyed, this, &GameView3D::CleanUp);
 
         QOpenGLFunctions_4_5_Core *f = (QOpenGLFunctions_4_5_Core*)(QOpenGLContext::currentContext()->versionFunctions());
 

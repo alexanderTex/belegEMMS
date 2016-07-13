@@ -57,8 +57,7 @@ void GameManager::GameLoop()
     Logger::GetLoggerIntance()->Log("\n" );
 
     bool currentPlayerMoveReady = false;
-    Vector3 *pos = new Vector3();
-
+    Vector3 pos;
 
 
 
@@ -66,13 +65,14 @@ void GameManager::GameLoop()
     {
         while(m_endGame == false)
         {
-            InputRoutine(currentPlayerMoveReady, pos);
+            Logger::GetLoggerIntance()->LogInfo("GameLoop running...");
+            InputRoutine(currentPlayerMoveReady, &pos);
 
             if(currentPlayerMoveReady)
             {
                 try
                 {
-                    if(this->MakeMove(*pos))
+                    if(this->MakeMove(pos))
                     {
                         TurnFinished();
                         emit PlayerWon();
@@ -102,14 +102,13 @@ void GameManager::GameLoop()
 
                 currentPlayerMoveReady = false;
             }
-            Logger::GetLoggerIntance()->LogInfo("GameLoop running...");
-        }
 
+        }
         Logger::GetLoggerIntance()->LogInfo("GameManager Loop waiting");
     }
     Logger::GetLoggerIntance()->LogInfo("GameManager Loop stopped");
-    delete(pos);
 }
+
 
 void GameManager::InputRoutine(bool &currentPlayerMoveReady, Vector3 *pos) throw(out_of_range, PlayingField::FieldExeptions)
 {

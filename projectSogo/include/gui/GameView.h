@@ -47,6 +47,7 @@ public:
         Logger::GetLoggerIntance()->LogInfo("InitGame");
         *(this->m_data) = *data;
         this->m_gameVis->GameChanged();
+        ShowGameInputView();
     }
 
     void StartGame();
@@ -63,11 +64,13 @@ public:
         QSound::play(":/sounds/Sounds/UI Error Double Note Down (stereo).wav");
     }
 
+    inline void ShowGameInputView()
+    {
+        bottomViewLayout->setCurrentWidget(this->m_inputArea);
+    }
 
-    /**
-     * @brief ShowWinScreen
-     */
-    void FillInWinner();
+
+    void ShowWinner();
 
     /**
      * @brief GameFinished
