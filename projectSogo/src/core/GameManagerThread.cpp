@@ -54,7 +54,6 @@ void GameManager::GameLoop()
 {
 
     Logger::GetLoggerIntance()->LogInfo("GameLoop startet :" );
-    Logger::GetLoggerIntance()->Log("\n" );
 
     bool currentPlayerMoveReady = false;
     Vector3 pos;

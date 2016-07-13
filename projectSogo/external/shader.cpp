@@ -15,14 +15,14 @@ using namespace std;
 #include "Logger.h"
 
 GLuint LoadShaders( const char * vertex_file_path,const char * fragment_file_path){
- Logger::GetLoggerIntance()->Log("loadshader start");
+ Logger::GetLoggerIntance()->LogInfo("loadshader start");
 
     QOpenGLFunctions_4_5_Core *f = (QOpenGLFunctions_4_5_Core*)(QOpenGLContext::currentContext()->versionFunctions());
 	// Create the shaders
     GLuint VertexShaderID = f->glCreateShader(GL_VERTEX_SHADER);
     GLuint FragmentShaderID = f->glCreateShader(GL_FRAGMENT_SHADER);
 
-    Logger::GetLoggerIntance()->Log("created shaders");
+    Logger::GetLoggerIntance()->LogInfo("created shaders");
 
 	// Read the Vertex Shader code from the file
 	std::string VertexShaderCode;
@@ -33,12 +33,12 @@ GLuint LoadShaders( const char * vertex_file_path,const char * fragment_file_pat
 			VertexShaderCode += "\n" + Line;
 		VertexShaderStream.close();
 	}else{
-        Logger::GetLoggerIntance()->Log("Impossible to open %s. Are you in the right directory ? Don't forget to read the FAQ !\n");
+        Logger::GetLoggerIntance()->LogError("Impossible to open %s. Are you in the right directory ? Don't forget to read the FAQ !\n");
 		getchar();
 		return 0;
 	}
 
-    Logger::GetLoggerIntance()->Log("read in  vertexshaders");
+    Logger::GetLoggerIntance()->LogInfo("read in  vertexshaders");
 
 	// Read the Fragment Shader code from the file
 	std::string FragmentShaderCode;
@@ -50,7 +50,7 @@ GLuint LoadShaders( const char * vertex_file_path,const char * fragment_file_pat
 		FragmentShaderStream.close();
 	}
 
-    Logger::GetLoggerIntance()->Log("read in  fragmentshader");
+    Logger::GetLoggerIntance()->LogInfo("read in  fragmentshader");
 
 	GLint Result = GL_FALSE;
 	int InfoLogLength;
@@ -89,7 +89,7 @@ GLuint LoadShaders( const char * vertex_file_path,const char * fragment_file_pat
 		printf("%s\n", &FragmentShaderErrorMessage[0]);
 	}
 
-Logger::GetLoggerIntance()->Log("compiled shaders");
+Logger::GetLoggerIntance()->LogInfo("compiled shaders");
 
 	// Link the program
 	printf("Linking program\n");
@@ -107,12 +107,12 @@ Logger::GetLoggerIntance()->Log("compiled shaders");
 		printf("%s\n", &ProgramErrorMessage[0]);
 	}
 
-    Logger::GetLoggerIntance()->Log("linking done");
+    Logger::GetLoggerIntance()->LogInfo("linking done");
 
     f->glDeleteShader(VertexShaderID);
     f->glDeleteShader(FragmentShaderID);
 
-    Logger::GetLoggerIntance()->Log("loadshader ende");
+    Logger::GetLoggerIntance()->LogInfo("loadshader ende");
 	return ProgramID;
 }
 
