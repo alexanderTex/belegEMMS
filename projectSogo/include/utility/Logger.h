@@ -31,7 +31,7 @@ public:
      */
     inline void LogInfo(std::string message)
     {
-        std::stringstream s;
+       std::stringstream s;
 
         s << "INFO : " << message;
 
