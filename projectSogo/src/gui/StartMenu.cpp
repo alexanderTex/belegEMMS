@@ -2,6 +2,8 @@
 
 StartMenu::StartMenu(QWidget *parent) : QWidget(parent)
 {
+    Logger::GetLoggerIntance()->LogPath(__LINE__, __FILE__);
+
     m_controlLayout = new QVBoxLayout(this);
 
     m_mainMenueLabel = new QLabel(tr("Sogo"));
@@ -22,7 +24,4 @@ StartMenu::StartMenu(QWidget *parent) : QWidget(parent)
     m_controlLayout->addWidget(m_newSessionButton);
     m_controlLayout->addWidget(m_highscoreButton);
     m_controlLayout->addWidget(m_exitButton);
-
-
-   // m_gridLayout->addLayout(m_controlLayout,1,1,1,1,Qt::AlignCenter);
 }

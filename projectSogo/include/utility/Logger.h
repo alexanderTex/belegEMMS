@@ -81,6 +81,20 @@ public:
         Logger::instance->Log(s.str());
     }
 
+    /**
+     * @brief LogPath
+     * Display the line and the filepath
+     * @param line
+     * @param filepath
+     */
+    inline void LogPath(int line, std::string filepath)
+    {
+        std::stringstream s;
+
+        s << "Line: " << line << " " << "File: " << filepath;
+
+        Logger::instance->Log(s.str());
+    }
 
 private:
     /**
