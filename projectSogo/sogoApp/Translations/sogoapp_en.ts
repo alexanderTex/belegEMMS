@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="en_US">
+<TS version="2.0" language="en_US">
 <context>
     <name>GameInputArea</name>
     <message>
@@ -82,90 +82,109 @@
 <context>
     <name>NewSessionMenu</name>
     <message>
-        <location filename="../../include/gui/NewSessionMenu.h" line="32"/>
-        <location filename="../../src/gui/NewSessionMenu.cpp" line="7"/>
+        <location filename="../../include/gui/NewSessionMenu.h" line="37"/>
+        <location filename="../../src/gui/NewSessionMenu.cpp" line="9"/>
         <source>New Session</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../include/gui/NewSessionMenu.h" line="34"/>
-        <location filename="../../src/gui/NewSessionMenu.cpp" line="40"/>
+        <location filename="../../include/gui/NewSessionMenu.h" line="39"/>
+        <location filename="../../src/gui/NewSessionMenu.cpp" line="67"/>
         <source>Playfield</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/gui/NewSessionMenu.cpp" line="13"/>
+        <location filename="../../src/gui/NewSessionMenu.cpp" line="15"/>
         <source>Player1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../include/gui/NewSessionMenu.h" line="35"/>
-        <location filename="../../src/gui/NewSessionMenu.cpp" line="47"/>
-        <source>Player2</source>
+        <location filename="../../src/gui/NewSessionMenu.cpp" line="90"/>
+        <source>Mode</source>
+        <translation>Mode</translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/NewSessionMenu.cpp" line="121"/>
+        <source>1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../include/gui/NewSessionMenu.h" line="36"/>
-        <location filename="../../src/gui/NewSessionMenu.cpp" line="52"/>
-        <source>Network</source>
+        <location filename="../../src/gui/NewSessionMenu.cpp" line="122"/>
+        <source>2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/gui/NewSessionMenu.cpp" line="54"/>
-        <source>PvC</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../include/gui/NewSessionMenu.h" line="37"/>
-        <location filename="../../src/gui/NewSessionMenu.cpp" line="55"/>
-        <source>PvP(network)</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../include/gui/NewSessionMenu.h" line="38"/>
-        <location filename="../../src/gui/NewSessionMenu.cpp" line="56"/>
-        <source>PvP(local)</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../include/gui/NewSessionMenu.h" line="39"/>
-        <location filename="../../src/gui/NewSessionMenu.cpp" line="82"/>
-        <source>Hostaddress:</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../include/gui/NewSessionMenu.h" line="43"/>
-        <location filename="../../src/gui/NewSessionMenu.cpp" line="91"/>
-        <source>Connect</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../include/gui/NewSessionMenu.h" line="44"/>
-        <location filename="../../src/gui/NewSessionMenu.cpp" line="98"/>
-        <source>Start Game</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../include/gui/NewSessionMenu.h" line="45"/>
-        <location filename="../../src/gui/NewSessionMenu.cpp" line="100"/>
-        <source>Back</source>
+        <location filename="../../src/gui/NewSessionMenu.cpp" line="123"/>
+        <source>3</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../../include/gui/NewSessionMenu.h" line="40"/>
-        <location filename="../../src/gui/NewSessionMenu.cpp" line="84"/>
-        <source>Hostaddress</source>
+        <location filename="../../src/gui/NewSessionMenu.cpp" line="113"/>
+        <source>Player2</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../../include/gui/NewSessionMenu.h" line="41"/>
-        <location filename="../../src/gui/NewSessionMenu.cpp" line="87"/>
-        <source>Port:</source>
+        <source>Network</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/NewSessionMenu.cpp" line="94"/>
+        <source>PvC</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../../include/gui/NewSessionMenu.h" line="42"/>
-        <location filename="../../src/gui/NewSessionMenu.cpp" line="89"/>
+        <location filename="../../src/gui/NewSessionMenu.cpp" line="95"/>
+        <source>PvP(network)</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../include/gui/NewSessionMenu.h" line="43"/>
+        <location filename="../../src/gui/NewSessionMenu.cpp" line="96"/>
+        <source>PvP(local)</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../include/gui/NewSessionMenu.h" line="44"/>
+        <location filename="../../src/gui/NewSessionMenu.cpp" line="151"/>
+        <source>Hostaddress:</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../include/gui/NewSessionMenu.h" line="48"/>
+        <location filename="../../src/gui/NewSessionMenu.cpp" line="161"/>
+        <source>Connect</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../include/gui/NewSessionMenu.h" line="49"/>
+        <location filename="../../src/gui/NewSessionMenu.cpp" line="18"/>
+        <source>Start Game</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../include/gui/NewSessionMenu.h" line="50"/>
+        <location filename="../../src/gui/NewSessionMenu.cpp" line="22"/>
+        <source>Back</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../include/gui/NewSessionMenu.h" line="45"/>
+        <location filename="../../src/gui/NewSessionMenu.cpp" line="153"/>
+        <source>Hostaddress</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../include/gui/NewSessionMenu.h" line="46"/>
+        <location filename="../../src/gui/NewSessionMenu.cpp" line="156"/>
+        <source>Port:</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../include/gui/NewSessionMenu.h" line="47"/>
+        <location filename="../../src/gui/NewSessionMenu.cpp" line="158"/>
         <source>Port</source>
         <translation></translation>
     </message>
@@ -239,7 +258,7 @@
         <location filename="../../include/gui/StartMenu.h" line="24"/>
         <location filename="../../src/gui/StartMenu.cpp" line="18"/>
         <source>Exit</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 </TS>
