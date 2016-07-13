@@ -64,7 +64,7 @@ void GameManager::GameLoop()
     {
         while(m_endGame == false)
         {
-            Logger::GetLoggerIntance()->LogInfo("GameLoop running...");
+            //Logger::GetLoggerIntance()->LogInfo("GameLoop running...");
             InputRoutine(currentPlayerMoveReady, &pos);
 
             if(currentPlayerMoveReady)
