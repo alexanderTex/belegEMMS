@@ -2,11 +2,11 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <QOpenGLFunctions_4_5_Core>
+#include <QOpenGLFunctions_3_3_Core>
 
 GLuint loadBMP_custom(const char * imagepath){
 
-    QOpenGLFunctions_4_5_Core *f = (QOpenGLFunctions_4_5_Core*)(QOpenGLContext::currentContext()->versionFunctions());
+    QOpenGLFunctions_3_3_Core *f = (QOpenGLFunctions_3_3_Core*)(QOpenGLContext::currentContext()->versionFunctions());
 
 	printf("Reading image %s\n", imagepath);
 
@@ -117,7 +117,7 @@ GLuint loadTGA_glfw(const char * imagepath){
 
 GLuint loadDDS(const char * imagepath){
 
-    QOpenGLFunctions_4_5_Core *f = (QOpenGLFunctions_4_5_Core*)(QOpenGLContext::currentContext()->versionFunctions());
+    QOpenGLFunctions_3_3_Core *f = (QOpenGLFunctions_3_3_Core*)(QOpenGLContext::currentContext()->versionFunctions());
 
 	unsigned char header[124];
 

@@ -5,7 +5,7 @@
 #include <math.h>
 #include <vector>
 
-#include <QOpenGLFunctions_4_5_Core>
+#include <QOpenGLFunctions_3_3_Core>
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -16,7 +16,7 @@ GLuint VertexArrayIDWireCube = 0;
 
 static void createWireCube()
 {
-    QOpenGLFunctions_4_5_Core *f = (QOpenGLFunctions_4_5_Core*)(QOpenGLContext::currentContext()->versionFunctions());
+    QOpenGLFunctions_3_3_Core *f = (QOpenGLFunctions_3_3_Core*)(QOpenGLContext::currentContext()->versionFunctions());
 	// Vertexarrays kapseln ab OpenGL3 Eckpunkte, Texturen und Normalen
     f->glGenVertexArrays(1, &VertexArrayIDWireCube);
     f->glBindVertexArray(VertexArrayIDWireCube);
@@ -65,7 +65,7 @@ void drawWireCube()
 		createWireCube();
 	}
 
-    QOpenGLFunctions_4_5_Core *f = (QOpenGLFunctions_4_5_Core*)(QOpenGLContext::currentContext()->versionFunctions());
+    QOpenGLFunctions_3_3_Core *f = (QOpenGLFunctions_3_3_Core*)(QOpenGLContext::currentContext()->versionFunctions());
     f->glBindVertexArray(VertexArrayIDWireCube);
     f->glDrawArrays(GL_LINES, 0, 24); // 12 Linien haben 24 Punkte
 }
@@ -81,7 +81,7 @@ static void createCube()
 	GLuint vertexbuffer;
 	GLuint colorbuffer;
 	
-    QOpenGLFunctions_4_5_Core *f = (QOpenGLFunctions_4_5_Core*)(QOpenGLContext::currentContext()->versionFunctions());
+    QOpenGLFunctions_3_3_Core *f = (QOpenGLFunctions_3_3_Core*)(QOpenGLContext::currentContext()->versionFunctions());
 
     f->glGenVertexArrays(1, &VertexArrayIDSolidCube);
     f->glBindVertexArray(VertexArrayIDSolidCube);
@@ -160,7 +160,7 @@ void drawCube()
 		createCube();
 	}
 
-    QOpenGLFunctions_4_5_Core *f = (QOpenGLFunctions_4_5_Core*)(QOpenGLContext::currentContext()->versionFunctions());
+    QOpenGLFunctions_3_3_Core *f = (QOpenGLFunctions_3_3_Core*)(QOpenGLContext::currentContext()->versionFunctions());
 
 	// Draw the triangles !
     f->glBindVertexArray(VertexArrayIDSolidCube);

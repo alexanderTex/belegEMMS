@@ -17,7 +17,7 @@
 #include <QWidget>
 #include <QVector3D>
 #include <QOpenGLWidget>
-#include <QOpenGLFunctions_4_5_Core>
+#include <QOpenGLFunctions_3_3_Core>
 #include <QOpenGLTexture>
 #include <QFile>
 #include <QFileInfo>
@@ -41,7 +41,7 @@ class GameView3D : public QOpenGLWidget
         Mesh(std::string fileName)
         {
             Logger::GetLoggerIntance()->LogInfo("Mesh Const");
-            QOpenGLFunctions_4_5_Core *f = (QOpenGLFunctions_4_5_Core*)(QOpenGLContext::currentContext()->versionFunctions());
+            QOpenGLFunctions_3_3_Core *f = (QOpenGLFunctions_3_3_Core*)(QOpenGLContext::currentContext()->versionFunctions());
             // --- Kannenmodell
             std::vector<glm::vec3> vertices;
             std::vector<glm::vec2> uvs;
@@ -97,7 +97,7 @@ class GameView3D : public QOpenGLWidget
         virtual ~Mesh()
         {
             Logger::GetLoggerIntance()->LogInfo("Mesh destrS");
-            QOpenGLFunctions_4_5_Core *f = (QOpenGLFunctions_4_5_Core*)(QOpenGLContext::currentContext()->versionFunctions());
+            QOpenGLFunctions_3_3_Core *f = (QOpenGLFunctions_3_3_Core*)(QOpenGLContext::currentContext()->versionFunctions());
 
             f->glDeleteBuffers(1, &vertexbuffer);
 
@@ -134,7 +134,7 @@ public:
         Logger::GetLoggerIntance()->LogInfo("GameView 3D Destuctor");
         makeCurrent();
 
-        QOpenGLFunctions_4_5_Core *f = (QOpenGLFunctions_4_5_Core*)(QOpenGLContext::currentContext()->versionFunctions());
+        QOpenGLFunctions_3_3_Core *f = (QOpenGLFunctions_3_3_Core*)(QOpenGLContext::currentContext()->versionFunctions());
 
         delete(Sphere);
         delete(Cube);
@@ -153,7 +153,7 @@ protected:
 
     void sendMVP(GLuint programID)
     {
-        QOpenGLFunctions_4_5_Core *f = (QOpenGLFunctions_4_5_Core*)(QOpenGLContext::currentContext()->versionFunctions());
+        QOpenGLFunctions_3_3_Core *f = (QOpenGLFunctions_3_3_Core*)(QOpenGLContext::currentContext()->versionFunctions());
         // Our ModelViewProjection : multiplication of our 3 matrices
         glm::mat4 MVP = Projection * View * Model;
         // Send our transformation to the currently bound shader,
@@ -171,7 +171,7 @@ protected:
 
         QObject::connect(QOpenGLContext::currentContext(), &QOpenGLContext::aboutToBeDestroyed, this, &GameView3D::CleanUp);
 
-        QOpenGLFunctions_4_5_Core *f = (QOpenGLFunctions_4_5_Core*)(QOpenGLContext::currentContext()->versionFunctions());
+        QOpenGLFunctions_3_3_Core *f = (QOpenGLFunctions_3_3_Core*)(QOpenGLContext::currentContext()->versionFunctions());
 
 
         // Auf Keyboard-Events reagieren
@@ -239,7 +239,7 @@ protected:
 
         Logger::GetLoggerIntance()->LogInfo("Paint Loop Start");
 
-        QOpenGLFunctions_4_5_Core *f = (QOpenGLFunctions_4_5_Core*)(QOpenGLContext::currentContext()->versionFunctions());
+        QOpenGLFunctions_3_3_Core *f = (QOpenGLFunctions_3_3_Core*)(QOpenGLContext::currentContext()->versionFunctions());
 
 
         // Clear the screen
