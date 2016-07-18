@@ -397,11 +397,12 @@ protected:
         {
             Model = offsetSaves;
 
-            float obbSize = m_gm->GetGameData()->GetField()->GetFieldSize() * m_kugelRad * 2;
+            float obbSize = m_gm->GetGameData()->GetField()->GetFieldSize() * m_kugelRad;
 
             Model = glm::translate(Model, glm::vec3(m_hoveredSlotPosition.X * (m_kugelRad * 2) - lookAtPoint, (obbSize / 2) - lookAtPoint,
                                                     m_hoveredSlotPosition.Y * (m_kugelRad * 2) - lookAtPoint));
-            Model = glm::scale(Model, glm::vec3(m_kugelRad, obbSize / 2, m_kugelRad));
+            Model = glm::scale(Model, glm::vec3(m_kugelRad, obbSize, m_kugelRad));
+
 
             sendMVP(programID);
             drawWireCube();
@@ -458,7 +459,14 @@ protected:
 
     inline void mousePressEvent(QMouseEvent *event)
     {
-        Logger::GetLoggerIntance()->LogInfo("Mouse Button Pressed");
+        //Logger::GetLoggerIntance()->LogInfo("Mouse Button Pressed");
+
+        if(m_castHit)
+        {
+            Vector2 v(this->m_hoveredSlotPosition.X, this->m_hoveredSlotPosition.Y);
+            InputSubmit(v);
+        }
+
     }
 
     inline void mouseMoveEvent(QMouseEvent *event)
@@ -467,18 +475,13 @@ protected:
 
         if(CastRay(m_currentMousePos))
         {
-            m_castHit = true;
             update();
-        }
-        else
-        {
-            m_castHit = false;
         }
     }
 
     inline bool CastRay(QPoint m_currentMousePos)
     {
-        float closestRayHitDistance = -1;
+        float closestRayHitDistance = 100000;
 
         // World space offset
         // Verschiebungsweite
@@ -486,56 +489,66 @@ protected:
 
         glm::mat4 offsetSaves = glm::translate(Model, glm::vec3(0, m_kugelRad, 0));
 
+        float currentRayHitDist = -2;
+
+        glm::vec3 rayOrigin;
+        glm::vec3 rayDir;
+
+        ScreenPosToWorldRay((&m_currentMousePos)->x() , (&m_currentMousePos)->y(), this->width(), this->height(), View, Projection, rayOrigin, rayDir);
+
+        float obbSize = m_gm->GetGameData()->GetField()->GetFieldSize() * m_kugelRad;
+
+        glm::vec3 minaabb(-m_kugelRad / 2, -obbSize / 2, -m_kugelRad / 2);
+        glm::vec3 maxaabb(m_kugelRad / 2, obbSize / 2, m_kugelRad / 2);
+
+        bool currentRayHit = false;
+
         for(int x = 0; x < m_gm->GetGameData()->GetField()->GetFieldSize(); x++)
         {
             for(int z = 0; z < m_gm->GetGameData()->GetField()->GetFieldSize(); z++)
             {
                 Model = offsetSaves;
 
-                float obbSize = m_gm->GetGameData()->GetField()->GetFieldSize() * m_kugelRad * 2;
-
                 Model = glm::translate(Model, glm::vec3(x * (m_kugelRad * 2) - lookAtPoint, (obbSize / 2) - lookAtPoint, z * (m_kugelRad * 2) - lookAtPoint));
                 Model = glm::scale(Model, glm::vec3(m_kugelRad, obbSize / 2, m_kugelRad));
 
-                float currentRayHitDist = 0;
-
-                glm::vec3 rayOrigin;
-                glm::vec3 rayDir;
-
-                ScreenPosToWorldRay((&m_currentMousePos)->x() , (&m_currentMousePos)->y(), this->width(), this->height(), View, Projection, rayOrigin, rayDir);
-
-                glm::vec3 minaabb(-m_kugelRad, -obbSize/2, -m_kugelRad);
-                glm::vec3 maxaabb(m_kugelRad, obbSize/2, m_kugelRad);
-
-
-
-                makeCurrent();
-
-                QOpenGLFunctions_3_3_Core *f = ( QOpenGLFunctions_3_3_Core*)QOpenGLContext::currentContext()->versionFunctions();
-
-                DrawLine(rayOrigin, rayDir);
-
-                doneCurrent();
-
-
-
-                //Logger::GetLoggerIntance()->LogInfo("Before Ray Cast Intersection check", __FILE__, __LINE__);
-
-                if(TestRayOBBIntersection(rayOrigin, rayDir, minaabb, maxaabb, Model, currentRayHitDist) && (currentRayHitDist <= closestRayHitDistance || closestRayHitDistance < 0))
+                if(TestRayOBBIntersection(rayOrigin, rayDir, minaabb, maxaabb, Model, currentRayHitDist))
                 {
+                    if((currentRayHitDist < closestRayHitDistance))
+                    {
+                        // don't know why Y is (fieldsize -1) - z but it seems to be :S
+                        // might be even both axis
+                        m_hoveredSlotPosition.X = x;
+                        m_hoveredSlotPosition.Y = z;
 
-                    // don't know why Y is (fieldsize -1) - z but it seems to be :S
-                    // might be even both axis
-                    m_hoveredSlotPosition.X = x;
-                    m_hoveredSlotPosition.Y = (m_gm->GetGameData()->GetField()->GetFieldSize() - 1) - z;
+                        m_castHit = true;
+
+                        std::stringstream s;
+                        s << "Hit detected ( " << x << " , " << z << " )" << "distance: closest:" << closestRayHitDistance << " |to| current : " << currentRayHitDist << std::endl;
+
+                        closestRayHitDistance = currentRayHitDist;
+                        // draws ray in weird direction
+                        makeCurrent();
+
+                        QOpenGLFunctions_3_3_Core *f = ( QOpenGLFunctions_3_3_Core*)QOpenGLContext::currentContext()->versionFunctions();
+
+                        Model = Save;
 
 
-                    std::stringstream s;
-                    s << "Hit detected ( " << x << " , " << z << " )" << "distance: closest:" << closestRayHitDistance << " |to| current : " << currentRayHitDist;
-                    closestRayHitDistance = currentRayHitDist;
+                        DrawLine(rayOrigin, glm::vec3(x * (m_kugelRad * 2) - lookAtPoint, (obbSize / 2) - lookAtPoint, z * (m_kugelRad * 2) - lookAtPoint));
+                        doneCurrent();
 
-                    Logger::GetLoggerIntance()->LogInfo(s.str(), __FILE__, __LINE__);
-                    return true;
+
+                        Logger::GetLoggerIntance()->LogInfo(s.str(), __FILE__, __LINE__);
+
+                    }
+                    else
+                    {
+                        std::stringstream s;
+                        s << "Hit detected ( " << x << " , " << z << " )" << "distance: closest:" << closestRayHitDistance << " |to| current : " << currentRayHitDist << std::endl
+                             << " z: " << z << std::endl;
+                        Logger::GetLoggerIntance()->LogInfo(s.str(), __FILE__, __LINE__);
+                    }
                 }
                 else
                 {
@@ -545,7 +558,8 @@ protected:
             }
 
         }
-        return false;
+
+        return m_castHit;
 
     }
 
@@ -568,8 +582,8 @@ protected:
         f->glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
         f->glBufferData(GL_ARRAY_BUFFER, sizeof(g_vertex_buffer_data), g_vertex_buffer_data, GL_STATIC_DRAW);
 
-        // Erkl�ren wie die Vertex-Daten zu benutzen sind
-        f->glEnableVertexAttribArray(0); // Kein Disable ausf�hren !
+        // Erklaeren wie die Vertex-Daten zu benutzen sind
+        f->glEnableVertexAttribArray(0); // Kein Disable ausfuehren !
         f->glVertexAttribPointer(
                 0,                  // attribute. No particular reason for 0, but must match the layout in the shader.
                 3,                  // size
@@ -771,6 +785,8 @@ protected:
 
     }
 signals:
+
+    void InputSubmit(Vector2 pos);
 
 public slots:
 
