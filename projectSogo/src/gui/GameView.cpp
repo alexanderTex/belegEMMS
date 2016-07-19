@@ -52,7 +52,9 @@ GameView::GameView(QWidget *parent)
 
     QObject::connect(this->m_gameLoop, &GameManager::TurnFinished, this->m_gameVis, &GameVisualizer::UpdateViews);
 
+    // Input
     QObject::connect(this->m_inputArea->GetPlayerInputControls(), &PlayerInput::InputConfirmed, this->m_gameLoop, &GameManager::InputConfirmationDetected);
+    QObject::connect(this->m_gameVis, &GameVisualizer::InputDetected, this->m_gameLoop, &GameManager::InputConfirmationDetected);
 
     // Sound Connects
     QObject::connect(this->m_gameLoop, &GameManager::PlayInputAcceptSound, this, &GameView::PlayAcceptSound);
@@ -113,9 +115,9 @@ GameView::GameView(GameData *data, QWidget *parent)
 
     QObject::connect(this->m_gameLoop, &GameManager::TurnFinished, this->m_gameVis, &GameVisualizer::UpdateViews);
 
+    // Input
     QObject::connect(this->m_inputArea->GetPlayerInputControls(), &PlayerInput::InputConfirmed, this->m_gameLoop, &GameManager::InputConfirmationDetected);
-
-
+    QObject::connect(this->m_gameVis, &GameVisualizer::InputDetected, this->m_gameLoop, &GameManager::InputConfirmationDetected);
 
     // Sound Connects
     QObject::connect(this->m_gameLoop, &GameManager::PlayInputAcceptSound, this, &GameView::PlayAcceptSound);

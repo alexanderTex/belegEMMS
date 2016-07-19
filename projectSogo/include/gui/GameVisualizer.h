@@ -44,7 +44,8 @@ public:
         this->m_view2D->RecalculateGrid();
     }
 
-
+signals:
+    void InputDetected(Vector2 pos);
 
 
 private:
