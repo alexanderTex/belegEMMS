@@ -9,6 +9,9 @@
     </qresource>
     <qresource prefix="/textures">
         <file>Textures/mandrill.bmp</file>
+        <file>Textures/Maserung298rot.bmp</file>
+        <file>Textures/Maserung298braun.bmp</file>
+        <file>Textures/Maserung298blau.bmp</file>
     </qresource>
     <qresource prefix="/objects">
         <file>Objects/cube.obj</file>
