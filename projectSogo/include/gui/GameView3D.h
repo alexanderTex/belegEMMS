@@ -54,6 +54,7 @@ class GameView3D : public QOpenGLWidget
                 Logger::GetLoggerIntance()->LogError("Load OBJ Failed");
             else
                 Logger::GetLoggerIntance()->LogInfo("Obj loaded");
+
             // Jedes Objekt eigenem VAO zuordnen, damit mehrere Objekte moeglich sind
             // VAOs sind Container fuer mehrere Buffer, die zusammen gesetzt werden sollen.
             f->glGenVertexArrays(1, &VertexArrayID);

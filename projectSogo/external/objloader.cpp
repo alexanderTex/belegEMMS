@@ -60,8 +60,9 @@ bool loadOBJ(
 		
 		if ( strcmp( lineHeader, "v" ) == 0 ){
 			glm::vec3 vertex;
+
 			fscanf(file, "%f %f %f\n", &vertex.x, &vertex.y, &vertex.z );
-			temp_vertices.push_back(vertex);
+            temp_vertices.push_back(vertex);
 		}else if ( strcmp( lineHeader, "vt" ) == 0 ){
 			glm::vec2 uv;
 			fscanf(file, "%f %f\n", &uv.x, &uv.y );
