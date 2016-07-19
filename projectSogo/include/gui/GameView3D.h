@@ -230,7 +230,7 @@ protected:
             std::stringstream loeweTexturePath;
             loeweTexturePath << QCoreApplication::applicationDirPath().toStdString() << "/Textures/mandrill.bmp";
 
-            /*
+
             std::stringstream grainRedPath;
             grainRedPath << QCoreApplication::applicationDirPath().toStdString() << "/Textures/Maserung298red.bmp";
 
@@ -239,17 +239,18 @@ protected:
 
             std::stringstream grainBrownPath;
             grainBrownPath << QCoreApplication::applicationDirPath().toStdString() << "/Textures/Maserung298brown.bmp";
-            */
 
             // Load the texture
             m_tAffe = loadBMP_custom(affeTexturePath.str().c_str());
             m_tLoewe = loadBMP_custom(loeweTexturePath.str().c_str());
 
-            /*
+/*
             m_tRed = loadBMP_custom(grainRedPath.str().c_str());
+
             m_tBlue = loadBMP_custom(grainBluePath.str().c_str());
+
             m_tBrown = loadBMP_custom(grainBrownPath.str().c_str());
-            */
+*/
 
             this->setFocus();
             Logger::GetLoggerIntance()->LogInfo("GLInit finishes");
