@@ -223,6 +223,8 @@ protected:
 
             Kanne = new Mesh(teapotObjectPath.str().c_str());
 
+            Logger::GetLoggerIntance()->LogInfo("Meshes loaded", __FILE__, __LINE__);
+
 
             std::stringstream affeTexturePath;
             affeTexturePath << QCoreApplication::applicationDirPath().toStdString() << "/Textures/mandrill.bmp";
@@ -245,8 +247,11 @@ protected:
             m_tAffe = loadBMP_custom(affeTexturePath.str().c_str());
             m_tLoewe = loadBMP_custom(loeweTexturePath.str().c_str());
 
+
+            //Logger::GetLoggerIntance()->LogInfo(grainRedPath.str(), __FILE__, __LINE__);
             /*
             m_tRed = loadBMP_custom(grainRedPath.str().c_str());
+
             m_tBlue = loadBMP_custom(grainBluePath.str().c_str());
             m_tBrown = loadBMP_custom(grainBrownPath.str().c_str());
             */
@@ -294,6 +299,7 @@ protected:
         // Model matrix : an identity matrix (model will be at the origin)
         Model = glm::mat4(1.0f);
 
+        UnrotatedSave = Model;
 
         Model = glm::rotate(Model, x_achse, glm::vec3(1.0f, 0.0f, 0.0f));
         Model = glm::rotate(Model, y_achse, glm::vec3(0.0f, 1.0f, 0.0f));
@@ -318,7 +324,7 @@ protected:
 
         // World space offset
         // Verschiebungsweite
-        float lookAtPoint = ( ( m_gm->GetGameData()->GetField()->GetFieldSize() - 1) * m_kugelRad * 2) / 2;
+        float lookAtPointOffset = ( ( m_gm->GetGameData()->GetField()->GetFieldSize() - 1) * m_kugelRad * 2) / 2;
 
         OffsetSave = glm::translate(Model, glm::vec3(0, m_kugelRad, 0));
 
@@ -332,7 +338,7 @@ protected:
             {
                 Model = Save;
 
-                Model = glm::translate(Model, glm::vec3(x * (m_kugelRad * 2) - lookAtPoint, -lookAtPoint, z * (m_kugelRad * 2) - lookAtPoint));
+                Model = glm::translate(Model, glm::vec3(x * (m_kugelRad * 2) - lookAtPointOffset, -lookAtPointOffset, z * (m_kugelRad * 2) - lookAtPointOffset));
                 Model = glm::scale(Model, glm::vec3(m_kugelRad * 2, m_kugelRad /4, m_kugelRad * 2));
                 // Bind our texture in Texture Unit 0
                 f->glActiveTexture(GL_TEXTURE0);				// Die Textturen sind durchnummeriert
@@ -349,15 +355,19 @@ protected:
 
         float closestRayHitDistance = 0;
 
+        // x hori
+        // y depth
+        // z verti
+
         for (x = 0; x < m_gm->GetGameData()->GetField()->GetFieldSize(); x++)
         {
-            for (z = 0; z < m_gm->GetGameData()->GetField()->GetFieldSize(); z++)
+            for (y = 0; y < m_gm->GetGameData()->GetField()->GetFieldSize(); y++)
             {
-                for (y = 0; y < m_gm->GetGameData()->GetField()->GetFieldSize(); y++)
+                for (z = 0; z < m_gm->GetGameData()->GetField()->GetFieldSize(); z++)
                 {
                     Model = OffsetSave;
 
-                    Model = glm::translate(Model, glm::vec3(x * (m_kugelRad * 2) - lookAtPoint, z * (m_kugelRad * 2) - lookAtPoint, y * (m_kugelRad * 2) - lookAtPoint));
+                    Model = glm::translate(Model, glm::vec3(x * (m_kugelRad * 2) - lookAtPointOffset, z * (m_kugelRad * 2) - lookAtPointOffset, y * (m_kugelRad * 2) - lookAtPointOffset));
 
                     if (m_gm->GetGameData()->GetField()->GetSlot(x, y, z)->Occupation == PlayingField::BLUE)
                     {
@@ -421,27 +431,23 @@ protected:
 
                 //Logger::GetLoggerIntance()->LogInfo("Before draw WireCube", __FILE__, __LINE__);
             }
+            Model = Save;
+
+        }
+
+        Model = Save;
+        if(CastRay(this->m_currentMousePos))
+        {
             Model = OffsetSave;
+            float obbSize = m_gm->GetGameData()->GetField()->GetFieldSize() * m_kugelRad;
 
-            if(CastRay(this->m_currentMousePos))
-            {
-                float obbSize = m_gm->GetGameData()->GetField()->GetFieldSize() * m_kugelRad;
-
-                std::stringstream s;
-
-                s << m_hoveredSlotPosition.X << " : " << m_hoveredSlotPosition.Y;
-
-                Logger::GetLoggerIntance()->LogInfo(s.str(), __FILE__, __LINE__);
-
-                Model = glm::translate(Model, glm::vec3(m_hoveredSlotPosition.X * (m_kugelRad * 2) - lookAtPoint, (obbSize) - lookAtPoint,
-                                                        m_hoveredSlotPosition.Y * (m_kugelRad * 2) - lookAtPoint));
-                Model = glm::scale(Model, glm::vec3(m_kugelRad, obbSize, m_kugelRad));
+            Model = glm::translate(Model, glm::vec3(m_hoveredSlotPosition.X * (m_kugelRad * 2) - lookAtPointOffset, (obbSize) - lookAtPointOffset,
+                                                    m_hoveredSlotPosition.Y * (m_kugelRad * 2) - lookAtPointOffset));
+            Model = glm::scale(Model, glm::vec3(m_kugelRad, obbSize, m_kugelRad));
 
 
-                sendMVP(programID);
-                drawWireCube();
-
-            }
+            sendMVP(programID);
+            drawWireCube();
 
         }
 
@@ -496,6 +502,7 @@ protected:
         if(m_castHit)
         {
             Vector2 v(this->m_hoveredSlotPosition.X, this->m_hoveredSlotPosition.Y);
+
             InputSubmit(v);
             Logger::GetLoggerIntance()->LogInfo("Mouse Button Input go");
         }
@@ -508,9 +515,10 @@ protected:
         this->m_mouseMoved = true;
     }
 
+
+    // works finally
     inline bool CastRay(QPoint m_currentMousePos)
     {
-        Model = Save;
 
         this->m_castHit = false;
         float closestRayHitDistance = 100000;
@@ -519,7 +527,7 @@ protected:
 
         // World space offset
         // Verschiebungsweite
-        float lookAtPoint = ( ( m_gm->GetGameData()->GetField()->GetFieldSize() - 1) * m_kugelRad * 2) / 2;        
+        float lookAtPointOffset = ( ( m_gm->GetGameData()->GetField()->GetFieldSize() - 1) * m_kugelRad * 2) / 2;
 
         float currentRayHitDist = -2;
 
@@ -527,6 +535,8 @@ protected:
         glm::vec3 rayDir;
 
         ScreenPosToWorldRay((&m_currentMousePos)->x() , (&m_currentMousePos)->y(), this->width(), this->height(), View, Projection, rayOrigin, rayDir);
+
+        rayDir = glm::vec3(rayDir.x, -rayDir.y, rayDir.z);
 
         float obbSize = m_gm->GetGameData()->GetField()->GetFieldSize() * m_kugelRad;
 
@@ -536,14 +546,13 @@ protected:
         glm::vec3 minaabb(-m_kugelRad, -obbSize * 5, -m_kugelRad);
         glm::vec3 maxaabb( m_kugelRad, obbSize * 5, m_kugelRad);
 
-
         for(int x = 0; x < m_gm->GetGameData()->GetField()->GetFieldSize(); x++)
         {
             for(int z = 0; z < m_gm->GetGameData()->GetField()->GetFieldSize(); z++)
             {
                 Model = OffsetSave;
 
-                Model = glm::translate(Model, glm::vec3(x * (m_kugelRad * 2) - lookAtPoint, (obbSize) - lookAtPoint, z * (m_kugelRad * 2) - lookAtPoint));
+                Model = glm::translate(Model, glm::vec3(x * (m_kugelRad * 2) - lookAtPointOffset, (obbSize) - lookAtPointOffset, z * (m_kugelRad * 2) - lookAtPointOffset));
                 Model = glm::scale(Model, glm::vec3(m_kugelRad, obbSize, m_kugelRad));
 
                 /*
@@ -553,8 +562,6 @@ protected:
                 drawWireCube();
 
                 */
-
-
 
                 if(TestRayOBBIntersection(rayOrigin, rayDir, minaabb, maxaabb, Model, currentRayHitDist))
                 {
@@ -568,10 +575,11 @@ protected:
                         m_castHit = true;
                         objectHit = true;
 
+                        /*
                         std::stringstream s;
-                        s << m_hoveredSlotPosition.X << " : " << m_hoveredSlotPosition.Y;
+                        s << x << " : " << z;
                         Logger::GetLoggerIntance()->LogInfo(s.str(), __FILE__, __LINE__);
-
+                        */
                         /*
                         std::stringstream s;
                         s << "Hit detected ( " << x << " , " << z << " )" << "distance: closest:" << closestRayHitDistance << " |to| current : " << currentRayHitDist << std::endl;
@@ -843,13 +851,13 @@ public slots:
 private :
     QTimer *m_drawUpdate3D;
 
-
     GameManager *m_gm;
 
 
     glm::mat4 Projection;
     glm::mat4 View;
     glm::mat4 Model;
+    glm::mat4 UnrotatedSave;
     glm::mat4 Save;
     glm::mat4 OffsetSave;
 

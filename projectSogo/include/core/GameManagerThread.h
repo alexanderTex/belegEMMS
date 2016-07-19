@@ -115,6 +115,11 @@ public:
     inline void InputConfirmationDetected(Vector2 pos)
     {
         playerPosChoice = pos;
+
+        std::stringstream s;
+        s << pos.X << " : " << pos.Y;
+        Logger::GetLoggerIntance()->LogInfo(s.str(), __FILE__, __LINE__);
+
         m_playerInputConfirmed = true;
     }
 
