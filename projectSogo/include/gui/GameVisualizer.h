@@ -2,6 +2,7 @@
 #define GAMEVISUALIZER_H
 
 #include <QWidget>
+#include <QTimer>
 
 #include <QTabWidget>
 

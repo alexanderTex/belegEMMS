@@ -23,6 +23,7 @@
 #include <QFileInfo>
 #include <QDir>
 #include <QKeyEvent>
+#include <QTimer>
 
 #include "Logger.h"
 #include "GameManagerThread.h"
@@ -233,12 +234,22 @@ protected:
 
             this->setFocus();
             Logger::GetLoggerIntance()->LogInfo("GLInit finishes");
+
+            m_drawUpdate3D = new QTimer(this);
+            QObject::connect(this->m_drawUpdate3D, SIGNAL(timeout()), this, SLOT(update()));
+            m_drawUpdate3D->setSingleShot(false);
+            m_drawUpdate3D->start(2);
     }
 
     inline virtual void paintGL()
     {
+        if(this->m_gm->GetGameData() == NULL)
+        {
+            Logger::GetLoggerIntance()->LogInfo("GameData Null", __FILE__, __LINE__);
+            return;
+        }
 
-        Logger::GetLoggerIntance()->LogInfo("Paint Loop Start");
+        //Logger::GetLoggerIntance()->LogInfo("Paint Loop Start");
 
         QOpenGLFunctions_3_3_Core *f = (QOpenGLFunctions_3_3_Core*)(QOpenGLContext::currentContext()->versionFunctions());
 
@@ -327,7 +338,7 @@ protected:
                 {
                     Model = offsetSaves;
 
-                    Model = glm::translate(Model, glm::vec3(x * (m_kugelRad * 2) - lookAtPoint, y * (m_kugelRad * 2) - lookAtPoint, z * (m_kugelRad * 2) - lookAtPoint));
+                    Model = glm::translate(Model, glm::vec3(x * (m_kugelRad * 2) - lookAtPoint, z * (m_kugelRad * 2) - lookAtPoint, y * (m_kugelRad * 2) - lookAtPoint));
 
                     if (m_gm->GetGameData()->GetField()->GetSlot(x, y, z)->Occupation == PlayingField::BLUE)
                     {
@@ -394,9 +405,9 @@ protected:
         }
 
 
-        if(this->m_castHit)
+        if(CastRay(this->m_currentMousePos))
         {
-            Model = offsetSaves;
+            Model = Save;
 
             float obbSize = m_gm->GetGameData()->GetField()->GetFieldSize() * m_kugelRad;
 
@@ -414,14 +425,14 @@ protected:
 
 
         // Lichtposition an der Spitze des letzten Segments
-        glm::vec4 lightPos = glm::vec4(0, 0, 0, 1);
+        glm::vec4 lightPos = glm::vec4(0, 2, 0, 1);
         f->glUniform3f(f->glGetUniformLocation(programID, "LightPosition_worldspace"), lightPos.x, lightPos.y, lightPos.z);
 
 
         Model = Save;
         //QOpenGLContext::currentContext()->swapBuffers(QOpenGLContext::currentContext()->surface());
 
-        Logger::GetLoggerIntance()->LogInfo("Paint Loop END");
+        //Logger::GetLoggerIntance()->LogInfo("Paint Loop END");
     }
 
 
@@ -452,10 +463,6 @@ protected:
                 x_achse -= 1;
             break;
         }
-        if(m_castHit)
-            CastRay(m_currentMousePos);
-
-        this->update();
     }
 
     inline void mousePressEvent(QMouseEvent *event)
@@ -468,24 +475,23 @@ protected:
             InputSubmit(v);
             Logger::GetLoggerIntance()->LogInfo("Mouse Button Input go");
         }
-
     }
 
     inline void mouseMoveEvent(QMouseEvent *event)
     {
         m_currentMousePos = event->pos();
 
-        if(CastRay(m_currentMousePos))
-        {
-            update();
-            Logger::GetLoggerIntance()->LogInfo("Mouse Moved");
-        }
+        this->m_mouseMoved = true;
     }
 
     inline bool CastRay(QPoint m_currentMousePos)
     {
+        Model = Save;
+
         this->m_castHit = false;
         float closestRayHitDistance = 100000;
+
+        bool objectHit = false;
 
         // World space offset
         // Verschiebungsweite
@@ -516,18 +522,25 @@ protected:
                 Model = offsetSaves;
 
                 Model = glm::translate(Model, glm::vec3(x * (m_kugelRad * 2) - lookAtPoint, (obbSize / 2) - lookAtPoint, z * (m_kugelRad * 2) - lookAtPoint));
-                Model = glm::scale(Model, glm::vec3(m_kugelRad, obbSize / 2, m_kugelRad));
+                Model = glm::scale(Model, glm::vec3(m_kugelRad, obbSize, m_kugelRad));
+
+/*
+                // Debug Cubes
+                sendMVP(programID);
+                drawWireCube();
+*/
 
                 if(TestRayOBBIntersection(rayOrigin, rayDir, minaabb, maxaabb, Model, currentRayHitDist))
                 {
                     if((currentRayHitDist < closestRayHitDistance))
                     {
-                        // don't know why Y is (fieldsize) - z but it seems to be :S
-
+                        // don't know why Y is (fieldsize - 1) - z but it seems to be :S
+                        // somewhat not coherend / connected in the right way ... :/
                         m_hoveredSlotPosition.X = x;
-                        m_hoveredSlotPosition.Y = m_gm->GetGameData()->GetField()->GetFieldSize() - z;
+                        m_hoveredSlotPosition.Y = (m_gm->GetGameData()->GetField()->GetFieldSize() - 1) - z;
 
                         m_castHit = true;
+                        objectHit = true;
 
                         /*
                         std::stringstream s;
@@ -561,8 +574,8 @@ protected:
             }
 
         }
-
-        return m_castHit;
+        Model = Save;
+        return objectHit;
 
     }
 
@@ -795,6 +808,9 @@ public slots:
 
 
 private :
+    QTimer *m_drawUpdate3D;
+
+
     GameManager *m_gm;
 
 
@@ -815,6 +831,8 @@ private :
 
     Vector2 m_hoveredSlotPosition;
     QPoint m_currentMousePos;
+    bool m_mouseMoved;
+
     bool m_castHit;
 
     //KugelRadius
