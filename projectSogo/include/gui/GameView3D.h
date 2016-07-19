@@ -460,12 +460,13 @@ protected:
 
     inline void mousePressEvent(QMouseEvent *event)
     {
-        //Logger::GetLoggerIntance()->LogInfo("Mouse Button Pressed");
+        Logger::GetLoggerIntance()->LogInfo("Mouse Button Pressed");
 
         if(m_castHit)
         {
             Vector2 v(this->m_hoveredSlotPosition.X, this->m_hoveredSlotPosition.Y);
             InputSubmit(v);
+            Logger::GetLoggerIntance()->LogInfo("Mouse Button Input go");
         }
 
     }
@@ -477,11 +478,13 @@ protected:
         if(CastRay(m_currentMousePos))
         {
             update();
+            Logger::GetLoggerIntance()->LogInfo("Mouse Moved");
         }
     }
 
     inline bool CastRay(QPoint m_currentMousePos)
     {
+        this->m_castHit = false;
         float closestRayHitDistance = 100000;
 
         // World space offset
@@ -499,10 +502,12 @@ protected:
 
         float obbSize = m_gm->GetGameData()->GetField()->GetFieldSize() * m_kugelRad;
 
-        glm::vec3 minaabb(-m_kugelRad / 2, -obbSize / 2, -m_kugelRad / 2);
-        glm::vec3 maxaabb(m_kugelRad / 2, obbSize / 2, m_kugelRad / 2);
+        //glm::vec3 minaabb(-m_kugelRad / 2, -obbSize / 2, -m_kugelRad / 2);
+        //glm::vec3 maxaabb(m_kugelRad / 2, obbSize / 2, m_kugelRad / 2);
 
-        bool currentRayHit = false;
+        glm::vec3 minaabb(-1, -1, -1);
+        glm::vec3 maxaabb( 1, 1, 1);
+
 
         for(int x = 0; x < m_gm->GetGameData()->GetField()->GetFieldSize(); x++)
         {
@@ -517,38 +522,35 @@ protected:
                 {
                     if((currentRayHitDist < closestRayHitDistance))
                     {
-                        // don't know why Y is (fieldsize -1) - z but it seems to be :S
-                        // might be even both axis
+                        // don't know why Y is (fieldsize) - z but it seems to be :S
+
                         m_hoveredSlotPosition.X = x;
-                        m_hoveredSlotPosition.Y = z;
+                        m_hoveredSlotPosition.Y = m_gm->GetGameData()->GetField()->GetFieldSize() - z;
 
                         m_castHit = true;
 
+                        /*
                         std::stringstream s;
                         s << "Hit detected ( " << x << " , " << z << " )" << "distance: closest:" << closestRayHitDistance << " |to| current : " << currentRayHitDist << std::endl;
-
-                        closestRayHitDistance = currentRayHitDist;
-                        // draws ray in weird direction
-                        makeCurrent();
-
-                        QOpenGLFunctions_3_3_Core *f = ( QOpenGLFunctions_3_3_Core*)QOpenGLContext::currentContext()->versionFunctions();
-
-                        Model = Save;
-
-
-                        DrawLine(rayOrigin, glm::vec3(x * (m_kugelRad * 2) - lookAtPoint, (obbSize / 2) - lookAtPoint, z * (m_kugelRad * 2) - lookAtPoint));
-                        doneCurrent();
-
-
                         Logger::GetLoggerIntance()->LogInfo(s.str(), __FILE__, __LINE__);
+                        */
+                        closestRayHitDistance = currentRayHitDist;
+
+                        //cout << currentRayHitDist << endl;
+
+
+
 
                     }
                     else
                     {
+                        /*
                         std::stringstream s;
+                        s << "Hit but not closest";
                         s << "Hit detected ( " << x << " , " << z << " )" << "distance: closest:" << closestRayHitDistance << " |to| current : " << currentRayHitDist << std::endl
                              << " z: " << z << std::endl;
                         Logger::GetLoggerIntance()->LogInfo(s.str(), __FILE__, __LINE__);
+                        */
                     }
                 }
                 else
