@@ -1,4 +1,4 @@
-#ifndef GAMEVIEW3D_H
+﻿#ifndef GAMEVIEW3D_H
 #define GAMEVIEW3D_H
 
 #include <typeinfo>
@@ -145,6 +145,10 @@ public:
         f->glDeleteTextures(1, &m_tAffe);
         f->glDeleteTextures(1, &m_tLoewe);
 
+        f->glDeleteTextures(1, &m_tRed);
+        f->glDeleteTextures(1, &m_tBlue);
+        f->glDeleteTextures(1, &m_tBrown);
+
         f->glDeleteProgram(programID);
 
         doneCurrent();
@@ -226,11 +230,26 @@ protected:
             std::stringstream loeweTexturePath;
             loeweTexturePath << QCoreApplication::applicationDirPath().toStdString() << "/Textures/mandrill.bmp";
 
+            /*
+            std::stringstream grainRedPath;
+            grainRedPath << QCoreApplication::applicationDirPath().toStdString() << "/Textures/Maserung298red.bmp";
+
+            std::stringstream grainBluePath;
+            grainBluePath << QCoreApplication::applicationDirPath().toStdString() << "/Textures/Maserung298blue.bmp";
+
+            std::stringstream grainBrownPath;
+            grainBrownPath << QCoreApplication::applicationDirPath().toStdString() << "/Textures/Maserung298brown.bmp";
+            */
 
             // Load the texture
             m_tAffe = loadBMP_custom(affeTexturePath.str().c_str());
             m_tLoewe = loadBMP_custom(loeweTexturePath.str().c_str());
 
+            /*
+            m_tRed = loadBMP_custom(grainRedPath.str().c_str());
+            m_tBlue = loadBMP_custom(grainBluePath.str().c_str());
+            m_tBrown = loadBMP_custom(grainBrownPath.str().c_str());
+            */
 
             this->setFocus();
             Logger::GetLoggerIntance()->LogInfo("GLInit finishes");
@@ -847,6 +866,9 @@ private :
     GLuint programID;
     GLuint m_tAffe;
     GLuint m_tLoewe;
+    GLuint m_tRed;
+    GLuint m_tBlue;
+    GLuint m_tBrown;
 
     Mesh *Sphere;
     Mesh *Cube;
