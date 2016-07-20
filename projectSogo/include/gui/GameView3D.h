@@ -234,7 +234,7 @@ protected:
 
 
             std::stringstream grainRedPath;
-            grainRedPath << QCoreApplication::applicationDirPath().toStdString() << "/Textures/Maserung298rot.bmp";
+            grainRedPath << QCoreApplication::applicationDirPath().toStdString() << "/Textures/Maserung298rotNilsTry.bmp";
 
             std::stringstream grainBluePath;
             grainBluePath << QCoreApplication::applicationDirPath().toStdString() << "/Textures/Maserung298blau.bmp";
@@ -466,11 +466,13 @@ protected:
 
         Model = glm::translate(Model, glm::vec3(lightPos.x, lightPos.y, lightPos.z));
 
+        /*
         stringstream s;
 
         s << " Lightposition from model : " << Model[0].x << " " << Model[1].y * 10 << " " << Model[2].z << std::endl;
 
         Logger::GetLoggerIntance()->LogInfo(s.str(), __FILE__, __LINE__);
+        */
 
         f->glUniform3f(f->glGetUniformLocation(programID, "LightPosition_worldspace"), Model[0].x, Model[1].y * 9, Model[2].z);
 
