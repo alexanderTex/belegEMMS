@@ -234,21 +234,38 @@ protected:
 
 
             std::stringstream grainRedPath;
-            grainRedPath << QCoreApplication::applicationDirPath().toStdString() << "/Textures/Maserung298red.bmp";
+            grainRedPath << QCoreApplication::applicationDirPath().toStdString() << "/Textures/MaserungRot.bmp";
 
             std::stringstream grainBluePath;
-            grainBluePath << QCoreApplication::applicationDirPath().toStdString() << "/Textures/Maserung298blue.bmp";
+            grainBluePath << QCoreApplication::applicationDirPath().toStdString() << "/Textures/MaserungBlau.bmp";
 
             std::stringstream grainBrownPath;
+
+            grainBrownPath << QCoreApplication::applicationDirPath().toStdString() << "/Textures/MaserungBraun.bmp";
+
+
             grainBrownPath << QCoreApplication::applicationDirPath().toStdString() << "/Textures/Maserung298brown.bmp";
+
 
             // Load the texture
             m_tAffe = loadBMP_custom(affeTexturePath.str().c_str());
             m_tLoewe = loadBMP_custom(loeweTexturePath.str().c_str());
 
 
+<<<<<<< HEAD
 
             //Logger::GetLoggerIntance()->LogInfo(grainRedPath.str(), __FILE__, __LINE__);
+=======
+/*
+
+
+            //Logger::GetLoggerIntance()->LogInfo(grainRedPath.str(), __FILE__, __LINE__);
+
+
+            /*
+
+            m_tRed = loadBMP_custom(grainRedPath.str().c_str());
+>>>>>>> 03c32154529692dd466ffbfb4837d24257261c40
 
             //m_tRed = loadBMP_custom(grainRedPath.str().c_str());
 
@@ -256,6 +273,12 @@ protected:
 
             //m_tBrown = loadBMP_custom(grainBrownPath.str().c_str());
 
+<<<<<<< HEAD
+=======
+            m_tBrown = loadBMP_custom(grainBrownPath.str().c_str());
+
+*/
+>>>>>>> 03c32154529692dd466ffbfb4837d24257261c40
 
             this->setFocus();
             Logger::GetLoggerIntance()->LogInfo("GLInit finishes");
