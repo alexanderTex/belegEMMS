@@ -246,19 +246,16 @@ protected:
             m_tAffe = loadBMP_custom(affeTexturePath.str().c_str());
             m_tLoewe = loadBMP_custom(loeweTexturePath.str().c_str());
 
-<<<<<<< HEAD
-/*
-=======
+
 
             //Logger::GetLoggerIntance()->LogInfo(grainRedPath.str(), __FILE__, __LINE__);
-            /*
->>>>>>> b63ec821027f2b32d6a701dde23d23a2886396e3
-            m_tRed = loadBMP_custom(grainRedPath.str().c_str());
 
-            m_tBlue = loadBMP_custom(grainBluePath.str().c_str());
+            //m_tRed = loadBMP_custom(grainRedPath.str().c_str());
 
-            m_tBrown = loadBMP_custom(grainBrownPath.str().c_str());
-*/
+            //m_tBlue = loadBMP_custom(grainBluePath.str().c_str());
+
+            //m_tBrown = loadBMP_custom(grainBrownPath.str().c_str());
+
 
             this->setFocus();
             Logger::GetLoggerIntance()->LogInfo("GLInit finishes");
