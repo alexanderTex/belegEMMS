@@ -7,4 +7,5 @@
 *.toc
 *#
 *.o
+*/build*
 *.pro.user
