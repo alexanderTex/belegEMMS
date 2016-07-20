@@ -403,7 +403,7 @@ protected:
 
                         // Bind our texture in Texture Unit 0
                         f->glActiveTexture(GL_TEXTURE0);				// Die Textturen sind durchnummeriert
-                        f->glBindTexture(GL_TEXTURE_2D, m_tRed);		// Verbindet die Textur
+                        f->glBindTexture(GL_TEXTURE_2D, m_tAffe);		// Verbindet die Textur
                                                                     // Set our "myTextureSampler" sampler to user Texture Unit 0
                         f->glUniform1i(f->glGetUniformLocation(programID, "myTextureSampler"), 0);
 
@@ -457,16 +457,18 @@ protected:
 
         }
 
-        Model = Save;
+        Model = OffsetSave;
 
+        float obbSize = m_gm->GetGameData()->GetField()->GetFieldSize() * m_kugelRad;
 
         // Lichtposition an der Spitze des letzten Segments
-        glm::vec4 lightPos = glm::vec4(0,6, 0, 1);
-        f->glUniform3f(f->glGetUniformLocation(programID, "LightPosition_worldspace"), lightPos.x, lightPos.y, lightPos.z);
+        glm::vec4 lightPos = glm::vec4(0, obbSize * 2, 0, 1);
 
+        Model = glm::translate(Model, glm::vec3(lightPos.x, lightPos.y, lightPos.z));
+
+        f->glUniform3f(f->glGetUniformLocation(programID, "LightPosition_worldspace"), Model[0].x, Model[1].y, Model[2].z);
 
         Model = Save;
-        //QOpenGLContext::currentContext()->swapBuffers(QOpenGLContext::currentContext()->surface());
 
         //Logger::GetLoggerIntance()->LogInfo("Paint Loop END");
     }
