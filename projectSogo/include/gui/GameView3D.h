@@ -462,11 +462,17 @@ protected:
         float obbSize = m_gm->GetGameData()->GetField()->GetFieldSize() * m_kugelRad;
 
         // Lichtposition an der Spitze des letzten Segments
-        glm::vec4 lightPos = glm::vec4(0, obbSize * 2, 0, 1);
+        glm::vec4 lightPos = glm::vec4(0, 10, 0, 1);
 
         Model = glm::translate(Model, glm::vec3(lightPos.x, lightPos.y, lightPos.z));
 
-        f->glUniform3f(f->glGetUniformLocation(programID, "LightPosition_worldspace"), Model[0].x, Model[1].y, Model[2].z);
+        stringstream s;
+
+        s << " Lightposition from model : " << Model[0].x << " " << Model[1].y * 10 << " " << Model[2].z << std::endl;
+
+        Logger::GetLoggerIntance()->LogInfo(s.str(), __FILE__, __LINE__);
+
+        f->glUniform3f(f->glGetUniformLocation(programID, "LightPosition_worldspace"), Model[0].x, Model[1].y * 9, Model[2].z);
 
         Model = Save;
 
