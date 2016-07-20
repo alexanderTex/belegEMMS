@@ -345,10 +345,10 @@ protected:
                 Model = Save;
 
                 Model = glm::translate(Model, glm::vec3(x * (m_kugelRad * 2) - lookAtPointOffset, -lookAtPointOffset, z * (m_kugelRad * 2) - lookAtPointOffset));
-                Model = glm::scale(Model, glm::vec3(m_kugelRad * 2, m_kugelRad /4, m_kugelRad * 2));
+                Model = glm::scale(Model, glm::vec3(m_kugelRad, m_kugelRad /4, m_kugelRad));
                 // Bind our texture in Texture Unit 0
                 f->glActiveTexture(GL_TEXTURE0);				// Die Textturen sind durchnummeriert
-                f->glBindTexture(GL_TEXTURE_2D, m_tBrown);		// Verbindet die Textur
+                f->glBindTexture(GL_TEXTURE_2D, m_tAffe);		// Verbindet die Textur
                                                                 // Set our "myTextureSampler" sampler to user Texture Unit 0
                 f->glUniform1i(f->glGetUniformLocation(programID, "myTextureSampler"), 0);
 
@@ -403,7 +403,7 @@ protected:
 
                         // Bind our texture in Texture Unit 0
                         f->glActiveTexture(GL_TEXTURE0);				// Die Textturen sind durchnummeriert
-                        f->glBindTexture(GL_TEXTURE_2D, m_tAffe);		// Verbindet die Textur
+                        f->glBindTexture(GL_TEXTURE_2D, m_tRed);		// Verbindet die Textur
                                                                     // Set our "myTextureSampler" sampler to user Texture Unit 0
                         f->glUniform1i(f->glGetUniformLocation(programID, "myTextureSampler"), 0);
 
