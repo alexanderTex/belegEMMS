@@ -348,7 +348,7 @@ protected:
                 Model = glm::scale(Model, glm::vec3(m_kugelRad * 2, m_kugelRad /4, m_kugelRad * 2));
                 // Bind our texture in Texture Unit 0
                 f->glActiveTexture(GL_TEXTURE0);				// Die Textturen sind durchnummeriert
-                f->glBindTexture(GL_TEXTURE_2D, m_tAffe);		// Verbindet die Textur
+                f->glBindTexture(GL_TEXTURE_2D, m_tBrown);		// Verbindet die Textur
                                                                 // Set our "myTextureSampler" sampler to user Texture Unit 0
                 f->glUniform1i(f->glGetUniformLocation(programID, "myTextureSampler"), 0);
 
@@ -384,7 +384,7 @@ protected:
 
                         // Bind our texture in Texture Unit 0
                         f->glActiveTexture(GL_TEXTURE0);				// Die Textturen sind durchnummeriert
-                        f->glBindTexture(GL_TEXTURE_2D, m_tAffe);		// Verbindet die Textur
+                        f->glBindTexture(GL_TEXTURE_2D, m_tBlue);		// Verbindet die Textur
                                                                     // Set our "myTextureSampler" sampler to user Texture Unit 0
                         f->glUniform1i(f->glGetUniformLocation(programID, "myTextureSampler"), 0);
 
@@ -403,7 +403,7 @@ protected:
 
                         // Bind our texture in Texture Unit 0
                         f->glActiveTexture(GL_TEXTURE0);				// Die Textturen sind durchnummeriert
-                        f->glBindTexture(GL_TEXTURE_2D, m_tAffe);		// Verbindet die Textur
+                        f->glBindTexture(GL_TEXTURE_2D, m_tRed);		// Verbindet die Textur
                                                                     // Set our "myTextureSampler" sampler to user Texture Unit 0
                         f->glUniform1i(f->glGetUniformLocation(programID, "myTextureSampler"), 0);
 
@@ -420,7 +420,7 @@ protected:
 
                         // Bind our texture in Texture Unit 0
                         f->glActiveTexture(GL_TEXTURE0);				// Die Textturen sind durchnummeriert
-                        f->glBindTexture(GL_TEXTURE_2D, m_tAffe);		// Verbindet die Textur
+                        f->glBindTexture(GL_TEXTURE_2D, m_tBrown);		// Verbindet die Textur
                                                                         // Set our "myTextureSampler" sampler to user Texture Unit 0
                         f->glUniform1i(f->glGetUniformLocation(programID, "myTextureSampler"), 0);
 
@@ -461,7 +461,7 @@ protected:
 
 
         // Lichtposition an der Spitze des letzten Segments
-        glm::vec4 lightPos = glm::vec4(0, 2, 0, 1);
+        glm::vec4 lightPos = glm::vec4(0,6, 0, 1);
         f->glUniform3f(f->glGetUniformLocation(programID, "LightPosition_worldspace"), lightPos.x, lightPos.y, lightPos.z);
 
 
