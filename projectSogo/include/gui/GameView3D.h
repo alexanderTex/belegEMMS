@@ -234,51 +234,33 @@ protected:
 
 
             std::stringstream grainRedPath;
-            grainRedPath << QCoreApplication::applicationDirPath().toStdString() << "/Textures/MaserungRot.bmp";
+            grainRedPath << QCoreApplication::applicationDirPath().toStdString() << "/Textures/Maserung298rot.bmp";
 
             std::stringstream grainBluePath;
-            grainBluePath << QCoreApplication::applicationDirPath().toStdString() << "/Textures/MaserungBlau.bmp";
+            grainBluePath << QCoreApplication::applicationDirPath().toStdString() << "/Textures/Maserung298blau.bmp";
 
             std::stringstream grainBrownPath;
+            grainBrownPath << QCoreApplication::applicationDirPath().toStdString() << "/Textures/Maserung298braun.bmp";
 
-            grainBrownPath << QCoreApplication::applicationDirPath().toStdString() << "/Textures/MaserungBraun.bmp";
-
-
-            grainBrownPath << QCoreApplication::applicationDirPath().toStdString() << "/Textures/Maserung298brown.bmp";
-
+            Logger::GetLoggerIntance()->LogInfo("Textures loading", __FILE__, __LINE__);
 
             // Load the texture
             m_tAffe = loadBMP_custom(affeTexturePath.str().c_str());
             m_tLoewe = loadBMP_custom(loeweTexturePath.str().c_str());
 
-
-<<<<<<< HEAD
-
+            Logger::GetLoggerIntance()->LogInfo("Mandrill Loaded", __FILE__, __LINE__);
             //Logger::GetLoggerIntance()->LogInfo(grainRedPath.str(), __FILE__, __LINE__);
-=======
-/*
-
 
             //Logger::GetLoggerIntance()->LogInfo(grainRedPath.str(), __FILE__, __LINE__);
 
 
-            /*
+
 
             m_tRed = loadBMP_custom(grainRedPath.str().c_str());
->>>>>>> 03c32154529692dd466ffbfb4837d24257261c40
 
-            //m_tRed = loadBMP_custom(grainRedPath.str().c_str());
+            m_tBlue = loadBMP_custom(grainBluePath.str().c_str());
 
-            //m_tBlue = loadBMP_custom(grainBluePath.str().c_str());
-
-            //m_tBrown = loadBMP_custom(grainBrownPath.str().c_str());
-
-<<<<<<< HEAD
-=======
             m_tBrown = loadBMP_custom(grainBrownPath.str().c_str());
-
-*/
->>>>>>> 03c32154529692dd466ffbfb4837d24257261c40
 
             this->setFocus();
             Logger::GetLoggerIntance()->LogInfo("GLInit finishes");
@@ -560,6 +542,7 @@ protected:
 
         ScreenPosToWorldRay((&m_currentMousePos)->x() , (&m_currentMousePos)->y(), this->width(), this->height(), View, Projection, rayOrigin, rayDir);
 
+        // Dumb tutorial
         rayDir = glm::vec3(rayDir.x, -rayDir.y, rayDir.z);
 
         float obbSize = m_gm->GetGameData()->GetField()->GetFieldSize() * m_kugelRad;

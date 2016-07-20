@@ -1,14 +1,24 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "Logger.h"
 
 #include <QOpenGLFunctions_3_3_Core>
 
 GLuint loadBMP_custom(const char * imagepath){
 
+    std::stringstream s;
+
+    s << "Loading Texture : " << imagepath << std::endl;
+
+    Logger::GetLoggerIntance()->LogInfo(s.str(), __FILE__, __LINE__);
     QOpenGLFunctions_3_3_Core *f = (QOpenGLFunctions_3_3_Core*)(QOpenGLContext::currentContext()->versionFunctions());
 
-	printf("Reading image %s\n", imagepath);
+    s.flush();
+
+    s << "Reading image " << imagepath << std::endl;
+
+    Logger::GetLoggerIntance()->LogInfo(s.str(), __FILE__, __LINE__);
 
 	// Data read from the header of the BMP file
 	unsigned char header[54];
@@ -20,7 +30,16 @@ GLuint loadBMP_custom(const char * imagepath){
 
 	// Open the file
 	FILE * file = fopen(imagepath,"rb");
-	if (!file)							    {printf("%s could not be opened. Are you in the right directory ? Don't forget to read the FAQ !\n", imagepath); getchar(); return 0;}
+    if (!file)
+    {
+        s.flush();
+
+        s << imagepath << " could not be opened. Are you in the right directory ? Don't forget to read the FAQ !\n";
+
+        Logger::GetLoggerIntance()->LogInfo(s.str(), __FILE__, __LINE__);
+
+        //printf("%s could not be opened. Are you in the right directory ? Don't forget to read the FAQ !\n", imagepath); getchar(); return 0;
+    }
 
 	// Read the header, i.e. the 54 first bytes
 

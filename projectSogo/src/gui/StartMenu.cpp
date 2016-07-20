@@ -2,10 +2,6 @@
 
 StartMenu::StartMenu(QWidget *parent) : QWidget(parent)
 {
-    Logger::GetLoggerIntance()->LogPath(__LINE__, __FILE__);
-    LOGPATH();
-    LOG("msg in startmenu");
-
     m_controlLayout = new QVBoxLayout(this);
 
     m_mainMenueLabel = new QLabel(tr("Sogo"));
