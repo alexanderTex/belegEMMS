@@ -1,2 +1,2 @@
 # belegEMMS
-Beinhaltet die kompletten Belegarbeiten zum Fach EMMS.
+Beinhaltet die komplette Belegarbeit zum Fach EMMS und CG.
