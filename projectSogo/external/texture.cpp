@@ -9,15 +9,14 @@ GLuint loadBMP_custom(const char * imagepath){
 
     std::stringstream s;
 
-    s << "Loading Texture : " << imagepath << std::endl;
+    s << "Loading Texture : " << imagepath << std::endl << std::endl;
 
     Logger::GetLoggerIntance()->LogInfo(s.str(), __FILE__, __LINE__);
     QOpenGLFunctions_3_3_Core *f = (QOpenGLFunctions_3_3_Core*)(QOpenGLContext::currentContext()->versionFunctions());
 
     s.flush();
 
-    s << "Reading image " << imagepath << std::endl;
-
+    s << "Reading image " << imagepath << std::endl << std::endl;
     Logger::GetLoggerIntance()->LogInfo(s.str(), __FILE__, __LINE__);
 
 	// Data read from the header of the BMP file
@@ -34,28 +33,53 @@ GLuint loadBMP_custom(const char * imagepath){
     {
         s.flush();
 
-        s << imagepath << " could not be opened. Are you in the right directory ? Don't forget to read the FAQ !\n";
+        s << imagepath << "\n could not be opened. Are you in the right directory ? Don't forget to read the FAQ !\n";
 
         Logger::GetLoggerIntance()->LogInfo(s.str(), __FILE__, __LINE__);
 
-        //printf("%s could not be opened. Are you in the right directory ? Don't forget to read the FAQ !\n", imagepath); getchar(); return 0;
+        //printf("%s could not be opened. Are you in the right directory ? Don't forget to read the FAQ !\n", imagepath); getchar();
+        return 0;
     }
 
 	// Read the header, i.e. the 54 first bytes
 
 	// If less than 54 bytes are read, problem
 	if ( fread(header, 1, 54, file)!=54 ){ 
-		printf("Not a correct BMP file\n");
+        s.flush();
+
+        s << imagepath << " \nNot a correct BMP file";
+
+        Logger::GetLoggerIntance()->LogInfo(s.str(), __FILE__, __LINE__);
 		return 0;
 	}
 	// A BMP files always begins with "BM"
 	if ( header[0]!='B' || header[1]!='M' ){
-        printf("Not a correct BMP file Header Wrong \n");
+        s.flush();
+
+        s << imagepath << "\nNot a correct BMP file Header Wrong";
+
+        Logger::GetLoggerIntance()->LogInfo(s.str(), __FILE__, __LINE__);
 		return 0;
 	}
 	// Make sure this is a 24bpp file
-    if ( *(int*)&(header[0x1E])!=0  )         {printf("Not a correct BMP file  \n");    return 0;}
-    if ( *(int*)&(header[0x1C])!=24 )         {printf("Not a correct BMP file  24 bit problem\n");    return 0;}
+    if ( *(int*)&(header[0x1E])!=0  )
+    {
+        s.flush();
+
+        s << imagepath << "\nNot a correct BMP file \n\n";
+
+        Logger::GetLoggerIntance()->LogInfo(s.str(), __FILE__, __LINE__);
+        return 0;
+    }
+    if ( *(int*)&(header[0x1C])!=24 )
+    {
+        s.flush();
+
+        s << imagepath << "\nNot a correct BMP file  24 bit problem";
+
+        Logger::GetLoggerIntance()->LogInfo(s.str(), __FILE__, __LINE__);
+        return 0;
+    }
 
 	// Read the information about the image
 	dataPos    = *(int*)&(header[0x0A]);

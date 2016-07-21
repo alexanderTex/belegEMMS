@@ -143,7 +143,6 @@ public:
         delete(Kanne);
 
         f->glDeleteTextures(1, &m_tAffe);
-        f->glDeleteTextures(1, &m_tLoewe);
 
         f->glDeleteTextures(1, &m_tRed);
         f->glDeleteTextures(1, &m_tBlue);
@@ -229,12 +228,9 @@ protected:
             std::stringstream affeTexturePath;
             affeTexturePath << QCoreApplication::applicationDirPath().toStdString() << "/Textures/mandrill.bmp";
 
-            std::stringstream loeweTexturePath;
-            loeweTexturePath << QCoreApplication::applicationDirPath().toStdString() << "/Textures/mandrill.bmp";
-
 
             std::stringstream grainRedPath;
-            grainRedPath << QCoreApplication::applicationDirPath().toStdString() << "/Textures/Maserung298rotNilsTry.bmp";
+            grainRedPath << QCoreApplication::applicationDirPath().toStdString() << "/Textures/Maserung298rot.bmp";
 
             std::stringstream grainBluePath;
             grainBluePath << QCoreApplication::applicationDirPath().toStdString() << "/Textures/Maserung298blau.bmp";
@@ -246,7 +242,6 @@ protected:
 
             // Load the texture
             m_tAffe = loadBMP_custom(affeTexturePath.str().c_str());
-            m_tLoewe = loadBMP_custom(loeweTexturePath.str().c_str());
 
             Logger::GetLoggerIntance()->LogInfo("Mandrill Loaded", __FILE__, __LINE__);
             //Logger::GetLoggerIntance()->LogInfo(grainRedPath.str(), __FILE__, __LINE__);
@@ -304,8 +299,6 @@ protected:
 
         // Model matrix : an identity matrix (model will be at the origin)
         Model = glm::mat4(1.0f);
-
-        UnrotatedSave = Model;
 
         Model = glm::rotate(Model, x_achse, glm::vec3(1.0f, 0.0f, 0.0f));
         Model = glm::rotate(Model, y_achse, glm::vec3(0.0f, 1.0f, 0.0f));
@@ -874,7 +867,6 @@ private :
     glm::mat4 Projection;
     glm::mat4 View;
     glm::mat4 Model;
-    glm::mat4 UnrotatedSave;
     glm::mat4 Save;
     glm::mat4 OffsetSave;
 
@@ -905,7 +897,6 @@ private :
      */
     GLuint programID;
     GLuint m_tAffe;
-    GLuint m_tLoewe;
     GLuint m_tRed;
     GLuint m_tBlue;
     GLuint m_tBrown;
