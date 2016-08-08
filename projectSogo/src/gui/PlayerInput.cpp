@@ -95,7 +95,6 @@ void PlayerInput::ApplyInputs()
     }
 }
 
-<<<<<<< HEAD
 void PlayerInput::changeEvent(QEvent *event)
 {
     if (event->type() == QEvent::LanguageChange) {
@@ -105,7 +104,8 @@ void PlayerInput::changeEvent(QEvent *event)
 
     } else
         QWidget::changeEvent(event);
-=======
+}
+
 void PlayerInput::ApplyPlayerChange()
 {
 
@@ -119,5 +119,4 @@ void PlayerInput::ApplyPlayerChange()
     {
         m_currentPlayerColorScene->setBackgroundBrush(Qt::red);
     }
->>>>>>> c25b98166b2574f206e594493d83a8ffdb69af74
 }
