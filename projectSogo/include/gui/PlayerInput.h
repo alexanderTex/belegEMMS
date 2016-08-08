@@ -11,6 +11,8 @@
 #include <QPushButton>
 #include <QLabel>
 #include <QEvent>
+#include <QGraphicsScene>
+#include <QGraphicsView>
 
 #include "GameManagerThread.h"
 #include "Vector2.h"
@@ -28,6 +30,9 @@ public:
 
     virtual ~PlayerInput();
 
+    void ApplyPlayerChange();
+
+
 signals:
     /**
      * @brief InputConfirmed
@@ -37,6 +42,15 @@ signals:
 
 private:
     QVBoxLayout *m_inputLayout;
+
+    QWidget *m_currentPlayerDisplay;
+    QHBoxLayout *m_currentPlayerLayout;
+
+    QLabel *m_currentPlayerLabel;
+    QLabel *m_currentPlayerName;
+    QGraphicsView *m_currentPlayerColorView;
+    QGraphicsScene *m_currentPlayerColorScene;
+
 
     QLabel *m_infoText;
 
@@ -61,6 +75,10 @@ private:
      * @brief ApplyInputs
      */
     void ApplyInputs();
+
+
+
+
 };
 
 /**

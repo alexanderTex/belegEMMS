@@ -129,6 +129,14 @@ GameView::~GameView()
     delete(this->m_mainLayout);
 }
 
+void GameView::InitGame(GameData *data)
+    {
+        Logger::GetLoggerIntance()->LogInfo("InitGame");
+        *(this->m_data) = *data;
+        this->m_gameVis->GameChanged();
+        ShowGameInputView();
+    }
+
 void GameView::StartGame()
 {
     this->m_gameLoop->StartGame();
@@ -165,4 +173,19 @@ void GameView::ShowWinner()
     this->bottomViewLayout->setCurrentWidget(this->endView);
 
     Logger::GetLoggerIntance()->LogInfo(s.str());
+}
+
+void GameView::PlayAcceptSound()
+{
+    QSound::play(":/sounds/Sounds/UI Beep Double Alternative (stereo).wav");
+}
+
+void GameView::PlayErrorSound()
+{
+    QSound::play(":/sounds/Sounds/UI Error Double Note Down (stereo).wav");
+}
+
+void GameView::ShowGameInputView()
+{
+    bottomViewLayout->setCurrentWidget(this->m_inputArea);
 }

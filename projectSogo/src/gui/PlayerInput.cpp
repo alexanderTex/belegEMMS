@@ -8,6 +8,27 @@ PlayerInput::PlayerInput(GameManager *gameManager, QWidget *parent)
 
     this->m_inputLayout = new QVBoxLayout((this));
 
+
+
+    m_currentPlayerDisplay = new QWidget();
+    m_inputLayout->addWidget(m_currentPlayerDisplay);
+
+    m_currentPlayerLayout = new QHBoxLayout(m_currentPlayerDisplay);
+
+    m_currentPlayerLabel = new QLabel("CurrentPlayer : ");
+
+    m_currentPlayerName = new QLabel();
+
+    m_currentPlayerColorScene = new QGraphicsScene();
+
+    m_currentPlayerColorView = new QGraphicsView(m_currentPlayerColorScene, this);
+
+    m_currentPlayerColorScene->setBackgroundBrush(Qt::white);
+
+    m_currentPlayerLayout->addWidget(m_currentPlayerName);
+    m_currentPlayerLayout->addWidget(m_currentPlayerLabel);
+    m_currentPlayerLayout->addWidget(m_currentPlayerColorView);
+
     this->m_infoText = new QLabel(tr("Info : You select a slot on the base layer where you want to drop a setpiece,\n\t which will then be placed at the lowest possible place in that slot."));
     this->m_inputLayout->addWidget(this->m_infoText);
 
@@ -54,6 +75,7 @@ PlayerInput::PlayerInput(GameManager *gameManager, QWidget *parent)
     this->m_inputLayout->addWidget(this->m_inputFields);
     this->m_inputLayout->addWidget(this->m_inputConfirm);
 
+    QObject::connect(this->m_gameManager, &GameManager::TurnFinished, this, &PlayerInput::ApplyPlayerChange);
 }
 
 PlayerInput::~PlayerInput()
@@ -73,6 +95,7 @@ void PlayerInput::ApplyInputs()
     }
 }
 
+<<<<<<< HEAD
 void PlayerInput::changeEvent(QEvent *event)
 {
     if (event->type() == QEvent::LanguageChange) {
@@ -82,4 +105,19 @@ void PlayerInput::changeEvent(QEvent *event)
 
     } else
         QWidget::changeEvent(event);
+=======
+void PlayerInput::ApplyPlayerChange()
+{
+
+    m_currentPlayerName->setText(QString(m_gameManager->GetGameData()->GetCurrentPlayer()->GetName().c_str()));
+
+    if(m_gameManager->GetGameData()->GetCurrentPlayer()->GetColor() == PlayingField::BLUE)
+    {
+        m_currentPlayerColorScene->setBackgroundBrush(Qt::blue);
+    }
+    else if(m_gameManager->GetGameData()->GetCurrentPlayer()->GetColor() == PlayingField::RED)
+    {
+        m_currentPlayerColorScene->setBackgroundBrush(Qt::red);
+    }
+>>>>>>> c25b98166b2574f206e594493d83a8ffdb69af74
 }
