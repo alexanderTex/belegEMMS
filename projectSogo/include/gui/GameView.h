@@ -42,33 +42,17 @@ public:
         return m_data;
     }
 
-    inline void InitGame(GameData *data)
-    {
-        Logger::GetLoggerIntance()->LogInfo("InitGame");
-        *(this->m_data) = *data;
-        this->m_gameVis->GameChanged();
-        ShowGameInputView();
-    }
+    void InitGame(GameData *data);
 
     void StartGame();
 
     void PauseGame();
 
-    inline void PlayAcceptSound()
-    {
-        QSound::play(":/sounds/Sounds/UI Beep Double Alternative (stereo).wav");
-    }
+    void PlayAcceptSound();
 
-    inline void PlayErrorSound()
-    {
-        QSound::play(":/sounds/Sounds/UI Error Double Note Down (stereo).wav");
-    }
+    void PlayErrorSound();
 
-    inline void ShowGameInputView()
-    {
-        bottomViewLayout->setCurrentWidget(this->m_inputArea);
-    }
-
+    void ShowGameInputView();
 
     void ShowWinner();
 
