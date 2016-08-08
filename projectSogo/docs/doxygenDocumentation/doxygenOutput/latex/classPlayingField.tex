@@ -1,0 +1,173 @@
+\hypertarget{classPlayingField}{\section{Playing\-Field Class Reference}
+\label{classPlayingField}\index{Playing\-Field@{Playing\-Field}}
+}
+
+
+Defines the Properties of a Playingfield Which is a 3 dimensional Grid Containing Slots Slots can be occupied by players.  
+
+
+
+
+{\ttfamily \#include $<$Playing\-Field.\-h$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structPlayingField_1_1Slot}{Slot}
+\begin{DoxyCompactList}\small\item\em Defines a Gridspace in a Sogo Playingfield It contains the occupationstate of this position in the grid. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{classPlayingField_a6032d4d7297d628a368cde7db331d7f6}{Field\-Exeptions} \{ {\bfseries O\-C\-C\-U\-P\-I\-E\-D}, 
+{\bfseries P\-O\-S\-I\-T\-I\-O\-N\-\_\-\-N\-O\-T\-\_\-\-A\-V\-A\-I\-L\-A\-B\-L\-E}, 
+{\bfseries N\-O\-\_\-\-S\-P\-A\-C\-E\-\_\-\-A\-N\-Y\-M\-O\-R\-E}
+ \}
+\begin{DoxyCompactList}\small\item\em Is thrown when in an Error in Playingfield Occupied when already occupied by other player Position\-Not\-Available when position is under current fieldstate not valid for occupation. \end{DoxyCompactList}\item 
+enum \hyperlink{classPlayingField_ac6df152a3f820aa04a00ab4df4a9d265}{Occupation\-State} \{ {\bfseries N\-O\-N\-E}, 
+{\bfseries R\-E\-D}, 
+{\bfseries B\-L\-U\-E}
+ \}
+\begin{DoxyCompactList}\small\item\em Defines the States a slot can be in. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classPlayingField_a9cd7d0540bff01b5b83ca9bdf8dfd5d6}{Playing\-Field} (int field\-Size=4)
+\begin{DoxyCompactList}\small\item\em constructor generates a Playingfield with (fieldsize x fieldsize x fieldsize) \end{DoxyCompactList}\item 
+\hypertarget{classPlayingField_a4715051a7ba2b0495b3b56d357563432}{\hyperlink{classPlayingField_a4715051a7ba2b0495b3b56d357563432}{Playing\-Field} (const \hyperlink{classPlayingField}{Playing\-Field} \&field)}\label{classPlayingField_a4715051a7ba2b0495b3b56d357563432}
+
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+\hypertarget{classPlayingField_a7bc092c6433f18e7a07835608e8a4449}{\hyperlink{classPlayingField_a7bc092c6433f18e7a07835608e8a4449}{$\sim$\-Playing\-Field} ()}\label{classPlayingField_a7bc092c6433f18e7a07835608e8a4449}
+
+\begin{DoxyCompactList}\small\item\em Destructor clears the field. \end{DoxyCompactList}\item 
+\hyperlink{structPlayingField_1_1Slot}{Slot} $\ast$ \hyperlink{classPlayingField_a01b5105b49ec72e094411d216df27ffa}{Get\-Slot} (int x, int y, int z) const   throw (out\-\_\-of\-\_\-range)
+\begin{DoxyCompactList}\small\item\em Returns the slot at pos.\-x (horizontally) pos.\-y (Vertically) pos.\-z (\char`\"{}forwardly\char`\"{}) \end{DoxyCompactList}\item 
+int \hyperlink{classPlayingField_abfbecf0f8ba91c9c1167da359e7463dc}{Get\-Field\-Size} () const 
+\begin{DoxyCompactList}\small\item\em Getter for field\-Size. \end{DoxyCompactList}\item 
+void \hyperlink{classPlayingField_a166ff0aaa90a41ce748efd9165a9d578}{Occupy\-Slot} (int x, int y, int z, \hyperlink{classPlayingField_ac6df152a3f820aa04a00ab4df4a9d265}{Occupation\-State} id)  throw (out\-\_\-of\-\_\-range, Field\-Exeptions)
+\begin{DoxyCompactList}\small\item\em Sets the occupation\-State of the \hyperlink{structPlayingField_1_1Slot}{Slot} at pos(x,y,z) to id. \end{DoxyCompactList}\item 
+void \hyperlink{classPlayingField_a6165557999a6cec6c1c1b71b88c2f82e}{Occupy\-Slot} (\hyperlink{structVector3}{Vector3} pos, \hyperlink{classPlayingField_ac6df152a3f820aa04a00ab4df4a9d265}{Playing\-Field\-::\-Occupation\-State} id)  throw (out\-\_\-of\-\_\-range, Field\-Exeptions)
+\begin{DoxyCompactList}\small\item\em Sets the occupation\-State of the \hyperlink{structPlayingField_1_1Slot}{Slot} at pos(x,y,z) to id. \end{DoxyCompactList}\item 
+\hypertarget{classPlayingField_af25e735d1d9f1c561fdf951507b2c1de}{bool {\bfseries Is\-Position\-Available} (int x, int y, int z) const }\label{classPlayingField_af25e735d1d9f1c561fdf951507b2c1de}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Defines the Properties of a Playingfield Which is a 3 dimensional Grid Containing Slots Slots can be occupied by players. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classPlayingField_a9cd7d0540bff01b5b83ca9bdf8dfd5d6}{\index{Playing\-Field@{Playing\-Field}!Playing\-Field@{Playing\-Field}}
+\index{Playing\-Field@{Playing\-Field}!PlayingField@{Playing\-Field}}
+\subsubsection[{Playing\-Field}]{\setlength{\rightskip}{0pt plus 5cm}Playing\-Field\-::\-Playing\-Field (
+\begin{DoxyParamCaption}
+\item[{int}]{field\-Size = {\ttfamily 4}}
+\end{DoxyParamCaption}
+)}}\label{classPlayingField_a9cd7d0540bff01b5b83ca9bdf8dfd5d6}
+
+
+constructor generates a Playingfield with (fieldsize x fieldsize x fieldsize) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em field\-Size} & (default value = 4) \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classPlayingField_abfbecf0f8ba91c9c1167da359e7463dc}{\index{Playing\-Field@{Playing\-Field}!Get\-Field\-Size@{Get\-Field\-Size}}
+\index{Get\-Field\-Size@{Get\-Field\-Size}!PlayingField@{Playing\-Field}}
+\subsubsection[{Get\-Field\-Size}]{\setlength{\rightskip}{0pt plus 5cm}int Playing\-Field\-::\-Get\-Field\-Size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classPlayingField_abfbecf0f8ba91c9c1167da359e7463dc}
+
+
+Getter for field\-Size. 
+
+\begin{DoxyReturn}{Returns}
+returns the fieldsize 
+\end{DoxyReturn}
+\hypertarget{classPlayingField_a01b5105b49ec72e094411d216df27ffa}{\index{Playing\-Field@{Playing\-Field}!Get\-Slot@{Get\-Slot}}
+\index{Get\-Slot@{Get\-Slot}!PlayingField@{Playing\-Field}}
+\subsubsection[{Get\-Slot}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Playing\-Field\-::\-Slot} $\ast$ Playing\-Field\-::\-Get\-Slot (
+\begin{DoxyParamCaption}
+\item[{int}]{x, }
+\item[{int}]{y, }
+\item[{int}]{z}
+\end{DoxyParamCaption}
+) const throw  out\-\_\-of\-\_\-range) }}\label{classPlayingField_a01b5105b49ec72e094411d216df27ffa}
+
+
+Returns the slot at pos.\-x (horizontally) pos.\-y (Vertically) pos.\-z (\char`\"{}forwardly\char`\"{}) 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em out\-\_\-of\-\_\-range} & if value is higher than fieldsize \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{classPlayingField_a166ff0aaa90a41ce748efd9165a9d578}{\index{Playing\-Field@{Playing\-Field}!Occupy\-Slot@{Occupy\-Slot}}
+\index{Occupy\-Slot@{Occupy\-Slot}!PlayingField@{Playing\-Field}}
+\subsubsection[{Occupy\-Slot}]{\setlength{\rightskip}{0pt plus 5cm}void Playing\-Field\-::\-Occupy\-Slot (
+\begin{DoxyParamCaption}
+\item[{int}]{x, }
+\item[{int}]{y, }
+\item[{int}]{z, }
+\item[{{\bf Playing\-Field\-::\-Occupation\-State}}]{id}
+\end{DoxyParamCaption}
+) throw  out\-\_\-of\-\_\-range, {\bf Field\-Exeptions}) }}\label{classPlayingField_a166ff0aaa90a41ce748efd9165a9d578}
+
+
+Sets the occupation\-State of the \hyperlink{structPlayingField_1_1Slot}{Slot} at pos(x,y,z) to id. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & horizontal value \\
+\hline
+{\em y} & depth value \\
+\hline
+{\em z} & vertical value \\
+\hline
+{\em id} & occupationstate for assignment \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em out\-\_\-of\-\_\-range} & if value is higher than fieldsize \\
+\hline
+{\em Field\-Exception} & if \hyperlink{structPlayingField_1_1Slot}{Slot} is already occupied by other player \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{classPlayingField_a6165557999a6cec6c1c1b71b88c2f82e}{\index{Playing\-Field@{Playing\-Field}!Occupy\-Slot@{Occupy\-Slot}}
+\index{Occupy\-Slot@{Occupy\-Slot}!PlayingField@{Playing\-Field}}
+\subsubsection[{Occupy\-Slot}]{\setlength{\rightskip}{0pt plus 5cm}void Playing\-Field\-::\-Occupy\-Slot (
+\begin{DoxyParamCaption}
+\item[{{\bf Vector3}}]{pos, }
+\item[{{\bf Playing\-Field\-::\-Occupation\-State}}]{id}
+\end{DoxyParamCaption}
+) throw  out\-\_\-of\-\_\-range, {\bf Field\-Exeptions}) }}\label{classPlayingField_a6165557999a6cec6c1c1b71b88c2f82e}
+
+
+Sets the occupation\-State of the \hyperlink{structPlayingField_1_1Slot}{Slot} at pos(x,y,z) to id. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & \\
+\hline
+{\em id} & occupationstate for assignment \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em out\-\_\-of\-\_\-range} & if value is higher than fieldsize \\
+\hline
+{\em Field\-Exception} & if \hyperlink{structPlayingField_1_1Slot}{Slot} is already occupied by other player \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/alex/source\-Code/git\-Project/beleg\-Arbeit\-E\-M\-M\-S/project\-Sogo/include/core/Playing\-Field.\-h\item 
+/home/alex/source\-Code/git\-Project/beleg\-Arbeit\-E\-M\-M\-S/project\-Sogo/src/core/Playing\-Field.\-cpp\end{DoxyCompactItemize}

@@ -1,0 +1,218 @@
+\hypertarget{group__core__func__exponential}{\section{Exponential functions}
+\label{group__core__func__exponential}\index{Exponential functions@{Exponential functions}}
+}
+
+
+These all operate component-\/wise.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type \hyperlink{group__core__func__exponential_gac93ea301c287d87a63fa14a4c44b719b}{glm\-::pow} (gen\-Type const \&x, gen\-Type const \&y)
+\begin{DoxyCompactList}\small\item\em Returns x raised to the y power. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type \hyperlink{group__core__func__exponential_ga03903bb9395a13d554a5fbecdf67792b}{glm\-::exp} (gen\-Type const \&x)
+\begin{DoxyCompactList}\small\item\em Returns the natural exponentiation of x, i.\-e., e$^\wedge$x. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type \hyperlink{group__core__func__exponential_ga46a307f466090551e328eec42abf61bc}{glm\-::log} (gen\-Type const \&x)
+\begin{DoxyCompactList}\small\item\em Returns the natural logarithm of x, i.\-e., returns the value y which satisfies the equation x = e$^\wedge$y. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type \hyperlink{group__core__func__exponential_ga18385688b951da01cdc3a22c232e4e28}{glm\-::exp2} (gen\-Type const \&x)
+\begin{DoxyCompactList}\small\item\em Returns 2 raised to the x power. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type \hyperlink{group__core__func__exponential_gae19ff18661b33a0fe1b8edee61382f40}{glm\-::log2} (gen\-Type const \&x)
+\begin{DoxyCompactList}\small\item\em Returns the base 2 log of x, i.\-e., returns the value y, which satisfies the equation x = 2 $^\wedge$ y. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type \hyperlink{group__core__func__exponential_ga9b2fd4f39c29e3d55c4b4087ab873f9f}{glm\-::sqrt} (gen\-Type const \&x)
+\begin{DoxyCompactList}\small\item\em Returns the positive square root of x. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type \hyperlink{group__core__func__exponential_ga3fd19e045e3943b96e0cdad22fbda111}{glm\-::inversesqrt} (gen\-Type const \&x)
+\begin{DoxyCompactList}\small\item\em Returns the reciprocal of the positive square root of x. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+These all operate component-\/wise. The description is per component. 
+
+\subsection{Function Documentation}
+\hypertarget{group__core__func__exponential_ga03903bb9395a13d554a5fbecdf67792b}{\index{Exponential functions@{Exponential functions}!exp@{exp}}
+\index{exp@{exp}!Exponential functions@{Exponential functions}}
+\subsubsection[{exp}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ gen\-Type glm\-::exp (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{x}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__exponential_ga03903bb9395a13d554a5fbecdf67792b}
+
+
+Returns the natural exponentiation of x, i.\-e., e$^\wedge$x. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & exp function is defined for input values of x defined in the range (inf-\/, inf+) in the limit of the type precision. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Floating-\/point scalar or vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/exp.xml}{\tt G\-L\-S\-L exp man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-2 Exponential Functions} 
+\end{DoxySeeAlso}
+\hypertarget{group__core__func__exponential_ga18385688b951da01cdc3a22c232e4e28}{\index{Exponential functions@{Exponential functions}!exp2@{exp2}}
+\index{exp2@{exp2}!Exponential functions@{Exponential functions}}
+\subsubsection[{exp2}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ gen\-Type glm\-::exp2 (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{x}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__exponential_ga18385688b951da01cdc3a22c232e4e28}
+
+
+Returns 2 raised to the x power. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & exp2 function is defined for input values of x defined in the range (inf-\/, inf+) in the limit of the type precision. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Floating-\/point scalar or vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/exp2.xml}{\tt G\-L\-S\-L exp2 man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-2 Exponential Functions} 
+\end{DoxySeeAlso}
+\hypertarget{group__core__func__exponential_ga3fd19e045e3943b96e0cdad22fbda111}{\index{Exponential functions@{Exponential functions}!inversesqrt@{inversesqrt}}
+\index{inversesqrt@{inversesqrt}!Exponential functions@{Exponential functions}}
+\subsubsection[{inversesqrt}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ gen\-Type glm\-::inversesqrt (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{x}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__exponential_ga3fd19e045e3943b96e0cdad22fbda111}
+
+
+Returns the reciprocal of the positive square root of x. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & inversesqrt function is defined for input values of x defined in the range \mbox{[}0, inf+) in the limit of the type precision. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Floating-\/point scalar or vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/inversesqrt.xml}{\tt G\-L\-S\-L inversesqrt man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-2 Exponential Functions} 
+\end{DoxySeeAlso}
+\hypertarget{group__core__func__exponential_ga46a307f466090551e328eec42abf61bc}{\index{Exponential functions@{Exponential functions}!log@{log}}
+\index{log@{log}!Exponential functions@{Exponential functions}}
+\subsubsection[{log}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ gen\-Type glm\-::log (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{x}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__exponential_ga46a307f466090551e328eec42abf61bc}
+
+
+Returns the natural logarithm of x, i.\-e., returns the value y which satisfies the equation x = e$^\wedge$y. 
+
+Results are undefined if x $<$= 0.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & log function is defined for input values of x defined in the range (0, inf+) in the limit of the type precision. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Floating-\/point scalar or vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/log.xml}{\tt G\-L\-S\-L log man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-2 Exponential Functions} 
+\end{DoxySeeAlso}
+\hypertarget{group__core__func__exponential_gae19ff18661b33a0fe1b8edee61382f40}{\index{Exponential functions@{Exponential functions}!log2@{log2}}
+\index{log2@{log2}!Exponential functions@{Exponential functions}}
+\subsubsection[{log2}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ gen\-Type glm\-::log2 (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{x}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__exponential_gae19ff18661b33a0fe1b8edee61382f40}
+
+
+Returns the base 2 log of x, i.\-e., returns the value y, which satisfies the equation x = 2 $^\wedge$ y. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & log2 function is defined for input values of x defined in the range (0, inf+) in the limit of the type precision. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Floating-\/point scalar or vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/log2.xml}{\tt G\-L\-S\-L log2 man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-2 Exponential Functions} 
+\end{DoxySeeAlso}
+\hypertarget{group__core__func__exponential_gac93ea301c287d87a63fa14a4c44b719b}{\index{Exponential functions@{Exponential functions}!pow@{pow}}
+\index{pow@{pow}!Exponential functions@{Exponential functions}}
+\subsubsection[{pow}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ gen\-Type glm\-::pow (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{x, }
+\item[{gen\-Type const \&}]{y}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__exponential_gac93ea301c287d87a63fa14a4c44b719b}
+
+
+Returns x raised to the y power. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & pow function is defined for input values of x defined in the range (inf-\/, inf+) in the limit of the type precision. \\
+\hline
+{\em y} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Floating-\/point scalar or vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/pow.xml}{\tt G\-L\-S\-L pow man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-2 Exponential Functions} 
+\end{DoxySeeAlso}
+\hypertarget{group__core__func__exponential_ga9b2fd4f39c29e3d55c4b4087ab873f9f}{\index{Exponential functions@{Exponential functions}!sqrt@{sqrt}}
+\index{sqrt@{sqrt}!Exponential functions@{Exponential functions}}
+\subsubsection[{sqrt}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ gen\-Type glm\-::sqrt (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{x}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__exponential_ga9b2fd4f39c29e3d55c4b4087ab873f9f}
+
+
+Returns the positive square root of x. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & sqrt function is defined for input values of x defined in the range \mbox{[}0, inf+) in the limit of the type precision. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Floating-\/point scalar or vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/sqrt.xml}{\tt G\-L\-S\-L sqrt man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-2 Exponential Functions} 
+\end{DoxySeeAlso}

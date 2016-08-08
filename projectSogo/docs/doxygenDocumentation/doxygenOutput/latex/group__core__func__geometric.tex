@@ -1,0 +1,204 @@
+\hypertarget{group__core__func__geometric}{\section{Geometric functions}
+\label{group__core__func__geometric}\index{Geometric functions@{Geometric functions}}
+}
+
+
+These operate on vectors as vectors, not component-\/wise.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type\-::value\-\_\-type \hyperlink{group__core__func__geometric_ga282360c8bb80b80d3c7f5bc00766d873}{glm\-::length} (gen\-Type const \&x)
+\begin{DoxyCompactList}\small\item\em Returns the length of x, i.\-e., sqrt(x $\ast$ x). \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type\-::value\-\_\-type \hyperlink{group__core__func__geometric_ga3fac0e61144f60184d961dd156709dd3}{glm\-::distance} (gen\-Type const \&p0, gen\-Type const \&p1)
+\begin{DoxyCompactList}\small\item\em Returns the distance betwwen p0 and p1, i.\-e., length(p0 -\/ p1). \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type\-::value\-\_\-type \hyperlink{group__core__func__geometric_ga7a31d2864eccfe665409e3b44f5e6e8d}{glm\-::dot} (gen\-Type const \&x, gen\-Type const \&y)
+\begin{DoxyCompactList}\small\item\em Returns the dot product of x and y, i.\-e., result = x $\ast$ y. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename val\-Type $>$ }\\detail\-::tvec3$<$ val\-Type $>$ \hyperlink{group__core__func__geometric_gaa127ddc9d38f715125f91742d399eb6f}{glm\-::cross} (detail\-::tvec3$<$ val\-Type $>$ const \&x, detail\-::tvec3$<$ val\-Type $>$ const \&y)
+\begin{DoxyCompactList}\small\item\em Returns the cross product of x and y. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type \hyperlink{group__core__func__geometric_ga68b931c228750eeba844c273c54ca43d}{glm\-::normalize} (gen\-Type const \&x)
+\begin{DoxyCompactList}\small\item\em Returns a vector in the same direction as x but with length of 1. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type \hyperlink{group__core__func__geometric_ga855fc5fd7779df1683482564956c6764}{glm\-::faceforward} (gen\-Type const \&N, gen\-Type const \&I, gen\-Type const \&Nref)
+\begin{DoxyCompactList}\small\item\em If dot(\-Nref, I) $<$ 0.\-0, return N, otherwise, return -\/\-N. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type \hyperlink{group__core__func__geometric_gabe1fa0bef5f854242eb70ce56e5a7d03}{glm\-::reflect} (gen\-Type const \&I, gen\-Type const \&N)
+\begin{DoxyCompactList}\small\item\em For the incident vector I and surface orientation N, returns the reflection direction \-: result = I -\/ 2.\-0 $\ast$ dot(\-N, I) $\ast$ N. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type \hyperlink{group__core__func__geometric_gabbb4909d3e99a7a2411cc63252afbbd8}{glm\-::refract} (gen\-Type const \&I, gen\-Type const \&N, typename gen\-Type\-::value\-\_\-type const \&eta)
+\begin{DoxyCompactList}\small\item\em For the incident vector I and surface normal N, and the ratio of indices of refraction eta, return the refraction vector. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+These operate on vectors as vectors, not component-\/wise. 
+
+\subsection{Function Documentation}
+\hypertarget{group__core__func__geometric_gaa127ddc9d38f715125f91742d399eb6f}{\index{Geometric functions@{Geometric functions}!cross@{cross}}
+\index{cross@{cross}!Geometric functions@{Geometric functions}}
+\subsubsection[{cross}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename val\-Type $>$ detail\-::tvec3$<$val\-Type$>$ glm\-::cross (
+\begin{DoxyParamCaption}
+\item[{detail\-::tvec3$<$ val\-Type $>$ const \&}]{x, }
+\item[{detail\-::tvec3$<$ val\-Type $>$ const \&}]{y}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__geometric_gaa127ddc9d38f715125f91742d399eb6f}
+
+
+Returns the cross product of x and y. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em val\-Type} & Floating-\/point scalar types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/cross.xml}{\tt G\-L\-S\-L cross man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-5 Geometric Functions} 
+\end{DoxySeeAlso}
+\hypertarget{group__core__func__geometric_ga3fac0e61144f60184d961dd156709dd3}{\index{Geometric functions@{Geometric functions}!distance@{distance}}
+\index{distance@{distance}!Geometric functions@{Geometric functions}}
+\subsubsection[{distance}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ gen\-Type\-::value\-\_\-type glm\-::distance (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{p0, }
+\item[{gen\-Type const \&}]{p1}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__geometric_ga3fac0e61144f60184d961dd156709dd3}
+
+
+Returns the distance betwwen p0 and p1, i.\-e., length(p0 -\/ p1). 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Floating-\/point vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/distance.xml}{\tt G\-L\-S\-L distance man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-5 Geometric Functions} 
+\end{DoxySeeAlso}
+\hypertarget{group__core__func__geometric_ga7a31d2864eccfe665409e3b44f5e6e8d}{\index{Geometric functions@{Geometric functions}!dot@{dot}}
+\index{dot@{dot}!Geometric functions@{Geometric functions}}
+\subsubsection[{dot}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ gen\-Type\-::value\-\_\-type glm\-::dot (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{x, }
+\item[{gen\-Type const \&}]{y}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__geometric_ga7a31d2864eccfe665409e3b44f5e6e8d}
+
+
+Returns the dot product of x and y, i.\-e., result = x $\ast$ y. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Floating-\/point vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/dot.xml}{\tt G\-L\-S\-L dot man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-5 Geometric Functions} 
+\end{DoxySeeAlso}
+\hypertarget{group__core__func__geometric_ga855fc5fd7779df1683482564956c6764}{\index{Geometric functions@{Geometric functions}!faceforward@{faceforward}}
+\index{faceforward@{faceforward}!Geometric functions@{Geometric functions}}
+\subsubsection[{faceforward}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ gen\-Type glm\-::faceforward (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{N, }
+\item[{gen\-Type const \&}]{I, }
+\item[{gen\-Type const \&}]{Nref}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__geometric_ga855fc5fd7779df1683482564956c6764}
+
+
+If dot(\-Nref, I) $<$ 0.\-0, return N, otherwise, return -\/\-N. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Floating-\/point vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/faceforward.xml}{\tt G\-L\-S\-L faceforward man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-5 Geometric Functions} 
+\end{DoxySeeAlso}
+\hypertarget{group__core__func__geometric_ga282360c8bb80b80d3c7f5bc00766d873}{\index{Geometric functions@{Geometric functions}!length@{length}}
+\index{length@{length}!Geometric functions@{Geometric functions}}
+\subsubsection[{length}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ gen\-Type\-::value\-\_\-type glm\-::length (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{x}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__geometric_ga282360c8bb80b80d3c7f5bc00766d873}
+
+
+Returns the length of x, i.\-e., sqrt(x $\ast$ x). 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Floating-\/point vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/length.xml}{\tt G\-L\-S\-L length man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-5 Geometric Functions} 
+\end{DoxySeeAlso}
+\hypertarget{group__core__func__geometric_ga68b931c228750eeba844c273c54ca43d}{\index{Geometric functions@{Geometric functions}!normalize@{normalize}}
+\index{normalize@{normalize}!Geometric functions@{Geometric functions}}
+\subsubsection[{normalize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ gen\-Type glm\-::normalize (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{x}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__geometric_ga68b931c228750eeba844c273c54ca43d}
+
+
+Returns a vector in the same direction as x but with length of 1. 
+
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/normalize.xml}{\tt G\-L\-S\-L normalize man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-5 Geometric Functions} 
+\end{DoxySeeAlso}
+\hypertarget{group__core__func__geometric_gabe1fa0bef5f854242eb70ce56e5a7d03}{\index{Geometric functions@{Geometric functions}!reflect@{reflect}}
+\index{reflect@{reflect}!Geometric functions@{Geometric functions}}
+\subsubsection[{reflect}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ gen\-Type glm\-::reflect (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{I, }
+\item[{gen\-Type const \&}]{N}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__geometric_gabe1fa0bef5f854242eb70ce56e5a7d03}
+
+
+For the incident vector I and surface orientation N, returns the reflection direction \-: result = I -\/ 2.\-0 $\ast$ dot(\-N, I) $\ast$ N. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Floating-\/point vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/reflect.xml}{\tt G\-L\-S\-L reflect man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-5 Geometric Functions} 
+\end{DoxySeeAlso}
+\hypertarget{group__core__func__geometric_gabbb4909d3e99a7a2411cc63252afbbd8}{\index{Geometric functions@{Geometric functions}!refract@{refract}}
+\index{refract@{refract}!Geometric functions@{Geometric functions}}
+\subsubsection[{refract}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ gen\-Type glm\-::refract (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{I, }
+\item[{gen\-Type const \&}]{N, }
+\item[{typename gen\-Type\-::value\-\_\-type const \&}]{eta}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__geometric_gabbb4909d3e99a7a2411cc63252afbbd8}
+
+
+For the incident vector I and surface normal N, and the ratio of indices of refraction eta, return the refraction vector. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Floating-\/point vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/refract.xml}{\tt G\-L\-S\-L refract man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-5 Geometric Functions} 
+\end{DoxySeeAlso}

@@ -1,0 +1,154 @@
+\hypertarget{classLogger}{\section{Logger Class Reference}
+\label{classLogger}\index{Logger@{Logger}}
+}
+
+
+The \hyperlink{classLogger}{Logger} class \hyperlink{classLogger}{Logger} singleton class use to log errors and info texts.  
+
+
+
+
+{\ttfamily \#include $<$Logger.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classLogger_a827cabc79ba0d1b654ad3f03058dfba2}{Log\-Info} (std\-::string message)
+\begin{DoxyCompactList}\small\item\em Log\-Info Marks the message by adding \char`\"{}\-I\-N\-F\-O\char`\"{} in the beginning and logs it. \end{DoxyCompactList}\item 
+void \hyperlink{classLogger_aa9c4ebaf5082990fa24afc105522a5a5}{Log\-Info} (std\-::string message, std\-::string file, int line)
+\begin{DoxyCompactList}\small\item\em Log\-Info Marks the message by adding \char`\"{}\-I\-N\-F\-O\char`\"{} in the beginning and logs it. \end{DoxyCompactList}\item 
+void \hyperlink{classLogger_abb89d37b3a3cbdef1f59273e498f9775}{Log\-Error} (std\-::string message)
+\begin{DoxyCompactList}\small\item\em Log\-Error Marks the message by adding \char`\"{}\-E\-R\-R\-O\-R\char`\"{} in the beginning and logs it. \end{DoxyCompactList}\item 
+void \hyperlink{classLogger_afc03fb34e6b57f2ec3955da71a6f1fe7}{Log\-Error} (std\-::string message, std\-::string file, int line)
+\begin{DoxyCompactList}\small\item\em Log\-Error Marks the message by adding \char`\"{}\-E\-R\-R\-O\-R\char`\"{} in the beginning and logs it. \end{DoxyCompactList}\item 
+void \hyperlink{classLogger_a022af6a50c02c7cd77f39b6a10a80dc4}{Log\-Path} (int line, std\-::string filepath)
+\begin{DoxyCompactList}\small\item\em Log\-Path Display the line and the filepath Example in file\-: L\-O\-G\-P\-A\-T\-H();. \end{DoxyCompactList}\item 
+void \hyperlink{classLogger_af421b39d03b598ff3fe257d7859a1edd}{Log\-Path} (int line, std\-::string filepath, std\-::string msg)
+\begin{DoxyCompactList}\small\item\em Log\-Path Display the line, filepath and a message Example in file\-: L\-O\-G(\char`\"{}msg\char`\"{});. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLogger_aae8c9845cd162c68a389ad3221ab7341}{static \hyperlink{classLogger}{Logger} $\ast$ {\bfseries Get\-Logger\-Intance} ()}\label{classLogger_aae8c9845cd162c68a389ad3221ab7341}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classLogger}{Logger} class \hyperlink{classLogger}{Logger} singleton class use to log errors and info texts. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classLogger_abb89d37b3a3cbdef1f59273e498f9775}{\index{Logger@{Logger}!Log\-Error@{Log\-Error}}
+\index{Log\-Error@{Log\-Error}!Logger@{Logger}}
+\subsubsection[{Log\-Error}]{\setlength{\rightskip}{0pt plus 5cm}void Logger\-::\-Log\-Error (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{message}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLogger_abb89d37b3a3cbdef1f59273e498f9775}
+
+
+Log\-Error Marks the message by adding \char`\"{}\-E\-R\-R\-O\-R\char`\"{} in the beginning and logs it. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classLogger_afc03fb34e6b57f2ec3955da71a6f1fe7}{\index{Logger@{Logger}!Log\-Error@{Log\-Error}}
+\index{Log\-Error@{Log\-Error}!Logger@{Logger}}
+\subsubsection[{Log\-Error}]{\setlength{\rightskip}{0pt plus 5cm}void Logger\-::\-Log\-Error (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{message, }
+\item[{std\-::string}]{file, }
+\item[{int}]{line}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLogger_afc03fb34e6b57f2ec3955da71a6f1fe7}
+
+
+Log\-Error Marks the message by adding \char`\"{}\-E\-R\-R\-O\-R\char`\"{} in the beginning and logs it. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classLogger_a827cabc79ba0d1b654ad3f03058dfba2}{\index{Logger@{Logger}!Log\-Info@{Log\-Info}}
+\index{Log\-Info@{Log\-Info}!Logger@{Logger}}
+\subsubsection[{Log\-Info}]{\setlength{\rightskip}{0pt plus 5cm}void Logger\-::\-Log\-Info (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{message}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLogger_a827cabc79ba0d1b654ad3f03058dfba2}
+
+
+Log\-Info Marks the message by adding \char`\"{}\-I\-N\-F\-O\char`\"{} in the beginning and logs it. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classLogger_aa9c4ebaf5082990fa24afc105522a5a5}{\index{Logger@{Logger}!Log\-Info@{Log\-Info}}
+\index{Log\-Info@{Log\-Info}!Logger@{Logger}}
+\subsubsection[{Log\-Info}]{\setlength{\rightskip}{0pt plus 5cm}void Logger\-::\-Log\-Info (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{message, }
+\item[{std\-::string}]{file, }
+\item[{int}]{line}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLogger_aa9c4ebaf5082990fa24afc105522a5a5}
+
+
+Log\-Info Marks the message by adding \char`\"{}\-I\-N\-F\-O\char`\"{} in the beginning and logs it. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classLogger_a022af6a50c02c7cd77f39b6a10a80dc4}{\index{Logger@{Logger}!Log\-Path@{Log\-Path}}
+\index{Log\-Path@{Log\-Path}!Logger@{Logger}}
+\subsubsection[{Log\-Path}]{\setlength{\rightskip}{0pt plus 5cm}void Logger\-::\-Log\-Path (
+\begin{DoxyParamCaption}
+\item[{int}]{line, }
+\item[{std\-::string}]{filepath}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLogger_a022af6a50c02c7cd77f39b6a10a80dc4}
+
+
+Log\-Path Display the line and the filepath Example in file\-: L\-O\-G\-P\-A\-T\-H();. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em line} & \\
+\hline
+{\em filepath} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classLogger_af421b39d03b598ff3fe257d7859a1edd}{\index{Logger@{Logger}!Log\-Path@{Log\-Path}}
+\index{Log\-Path@{Log\-Path}!Logger@{Logger}}
+\subsubsection[{Log\-Path}]{\setlength{\rightskip}{0pt plus 5cm}void Logger\-::\-Log\-Path (
+\begin{DoxyParamCaption}
+\item[{int}]{line, }
+\item[{std\-::string}]{filepath, }
+\item[{std\-::string}]{msg}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLogger_af421b39d03b598ff3fe257d7859a1edd}
+
+
+Log\-Path Display the line, filepath and a message Example in file\-: L\-O\-G(\char`\"{}msg\char`\"{});. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em line} & \\
+\hline
+{\em filepath} & \\
+\hline
+{\em msg} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/alex/source\-Code/git\-Project/beleg\-Arbeit\-E\-M\-M\-S/project\-Sogo/include/utility/Logger.\-h\item 
+/home/alex/source\-Code/git\-Project/beleg\-Arbeit\-E\-M\-M\-S/project\-Sogo/src/utility/Logger.\-cpp\end{DoxyCompactItemize}

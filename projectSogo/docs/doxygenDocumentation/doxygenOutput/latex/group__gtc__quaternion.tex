@@ -1,0 +1,402 @@
+\hypertarget{group__gtc__quaternion}{\section{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion}
+\label{group__gtc__quaternion}\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion}}
+}
+
+
+Defines a templated quaternion type and several quaternion operations.  
+
+
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef detail\-::tquat$<$ float $>$ \hyperlink{group__gtc__quaternion_gae334c5746195639da0ed726b747aeee3}{glm\-::quat}
+\begin{DoxyCompactList}\small\item\em Quaternion of floating-\/point numbers. \end{DoxyCompactList}\item 
+typedef detail\-::tquat\\*
+$<$ detail\-::half $>$ \hyperlink{group__gtc__quaternion_ga9601a7ab2375426d8f302f0be9507586}{glm\-::hquat}
+\begin{DoxyCompactList}\small\item\em Quaternion of half-\/precision floating-\/point numbers. \end{DoxyCompactList}\item 
+typedef detail\-::tquat$<$ float $>$ \hyperlink{group__gtc__quaternion_ga026fc67b7357f270b8226f9bcd1ac2c1}{glm\-::fquat}
+\begin{DoxyCompactList}\small\item\em Quaternion of single-\/precision floating-\/point numbers. \end{DoxyCompactList}\item 
+typedef detail\-::tquat$<$ double $>$ \hyperlink{group__gtc__quaternion_ga80d5f590dba4e894218e1263233b02bb}{glm\-::dquat}
+\begin{DoxyCompactList}\small\item\em Quaternion of double-\/precision floating-\/point numbers. \end{DoxyCompactList}\item 
+typedef detail\-::tquat$<$ lowp\-\_\-float $>$ \hyperlink{group__gtc__quaternion_ga0754d8cacc7c48dd300ea7cd2846d1d8}{glm\-::lowp\-\_\-quat}
+\begin{DoxyCompactList}\small\item\em Quaternion of low precision floating-\/point numbers. \end{DoxyCompactList}\item 
+typedef detail\-::tquat\\*
+$<$ mediump\-\_\-float $>$ \hyperlink{group__gtc__quaternion_gaf4523725b36d8d422f44ea28fd37d407}{glm\-::mediump\-\_\-quat}
+\begin{DoxyCompactList}\small\item\em Quaternion of medium precision floating-\/point numbers. \end{DoxyCompactList}\item 
+typedef detail\-::tquat\\*
+$<$ highp\-\_\-float $>$ \hyperlink{group__gtc__quaternion_ga86a81668075e0896b7d6cd395d1d01ec}{glm\-::highp\-\_\-quat}
+\begin{DoxyCompactList}\small\item\em Quaternion of high precision floating-\/point numbers. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \hyperlink{group__gtc__quaternion_ga60d5647f87c2c423497d0f3bf8c407b8}{glm\-::length} (detail\-::tquat$<$ T $>$ const \&q)
+\begin{DoxyCompactList}\small\item\em Returns the length of the quaternion. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\detail\-::tquat$<$ T $>$ \hyperlink{group__gtc__quaternion_gabd269bb967469a6f1df5963455fee6be}{glm\-::normalize} (detail\-::tquat$<$ T $>$ const \&q)
+\begin{DoxyCompactList}\small\item\em Returns the normalized quaternion. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\T \hyperlink{group__gtc__quaternion_gab9101d7f5b27ca682fc84e32b8fd70ad}{glm\-::dot} (detail\-::tquat$<$ T $>$ const \&q1, detail\-::tquat$<$ T $>$ const \&q2)
+\begin{DoxyCompactList}\small\item\em Returns dot product of q1 and q2, i.\-e., q1\mbox{[}0\mbox{]} $\ast$ q2\mbox{[}0\mbox{]} + q1\mbox{[}1\mbox{]} $\ast$ q2\mbox{[}1\mbox{]} + ... \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\detail\-::tquat$<$ T $>$ \hyperlink{group__gtc__quaternion_gaaea9592fd53952b636d680321edcdb31}{glm\-::mix} (detail\-::tquat$<$ T $>$ const \&x, detail\-::tquat$<$ T $>$ const \&y, T const \&a)
+\begin{DoxyCompactList}\small\item\em Returns a S\-L\-E\-R\-P interpolated quaternion of x and y according a. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\detail\-::tquat$<$ T $>$ \hyperlink{group__gtc__quaternion_ga8b6594dffb8bf455d848ffa2169ba41d}{glm\-::conjugate} (detail\-::tquat$<$ T $>$ const \&q)
+\begin{DoxyCompactList}\small\item\em Returns the q conjugate. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\detail\-::tquat$<$ T $>$ \hyperlink{group__gtc__quaternion_ga78b87a5e7152108e0dff0855d81b3bc1}{glm\-::inverse} (detail\-::tquat$<$ T $>$ const \&q)
+\begin{DoxyCompactList}\small\item\em Returns the q inverse. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\detail\-::tquat$<$ T $>$ \hyperlink{group__gtc__quaternion_ga297d6a9635153c76d7c011efa716b5da}{glm\-::rotate} (detail\-::tquat$<$ T $>$ const \&q, typename detail\-::tquat$<$ T $>$\-::value\-\_\-type const \&angle, detail\-::tvec3$<$ T $>$ const \&axis)
+\begin{DoxyCompactList}\small\item\em Rotates a quaternion from an vector of 3 components axis and an angle. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\detail\-::tvec3$<$ T $>$ \hyperlink{group__gtc__quaternion_gaa53e0e8933e176c6207720433fb8dd2b}{glm\-::euler\-Angles} (detail\-::tquat$<$ T $>$ const \&x)
+\begin{DoxyCompactList}\small\item\em Returns euler angles, yitch as x, yaw as y, roll as z. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\detail\-::tmat3x3$<$ T $>$ \hyperlink{group__gtc__quaternion_gae04ce320008c9bec0037b4ba21853cb5}{glm\-::mat3\-\_\-cast} (detail\-::tquat$<$ T $>$ const \&x)
+\begin{DoxyCompactList}\small\item\em Converts a quaternion to a 3 $\ast$ 3 matrix. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\detail\-::tmat4x4$<$ T $>$ \hyperlink{group__gtc__quaternion_ga8c376eb15971eb52d85df5ee26825627}{glm\-::mat4\-\_\-cast} (detail\-::tquat$<$ T $>$ const \&x)
+\begin{DoxyCompactList}\small\item\em Converts a quaternion to a 4 $\ast$ 4 matrix. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\detail\-::tquat$<$ T $>$ \hyperlink{group__gtc__quaternion_ga4d37447d81ceade1d10d68c995a4d881}{glm\-::quat\-\_\-cast} (detail\-::tmat3x3$<$ T $>$ const \&x)
+\begin{DoxyCompactList}\small\item\em Converts a 3 $\ast$ 3 matrix to a quaternion. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\detail\-::tquat$<$ T $>$ \hyperlink{group__gtc__quaternion_ga24adafe33b0bcad906c8724a762e5299}{glm\-::quat\-\_\-cast} (detail\-::tmat4x4$<$ T $>$ const \&x)
+\begin{DoxyCompactList}\small\item\em Converts a 4 $\ast$ 4 matrix to a quaternion. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename val\-Type $>$ }\\val\-Type \hyperlink{group__gtc__quaternion_ga69041d18bd8539fe82d6170932d28362}{glm\-::angle} (detail\-::tquat$<$ val\-Type $>$ const \&x)
+\begin{DoxyCompactList}\small\item\em Returns the quaternion rotation angle. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename val\-Type $>$ }\\detail\-::tvec3$<$ val\-Type $>$ \hyperlink{group__gtc__quaternion_ga72457604550d0414e522dbec0d98f276}{glm\-::axis} (detail\-::tquat$<$ val\-Type $>$ const \&x)
+\begin{DoxyCompactList}\small\item\em Returns the q rotation axis. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename val\-Type $>$ }\\detail\-::tquat$<$ val\-Type $>$ \hyperlink{group__gtc__quaternion_gaafc03953867e42a39dc08575ad4532ad}{glm\-::angle\-Axis} (val\-Type const \&angle, val\-Type const \&x, val\-Type const \&y, val\-Type const \&z)
+\begin{DoxyCompactList}\small\item\em Build a quaternion from an angle and a normalized axis. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename val\-Type $>$ }\\detail\-::tquat$<$ val\-Type $>$ \hyperlink{group__gtc__quaternion_ga30071b5b9773087b7212a5ce67d0d90a}{glm\-::angle\-Axis} (val\-Type const \&angle, detail\-::tvec3$<$ val\-Type $>$ const \&axis)
+\begin{DoxyCompactList}\small\item\em Build a quaternion from an angle and a normalized axis. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Defines a templated quaternion type and several quaternion operations. $<$\hyperlink{quaternion_8hpp}{glm/gtc/quaternion.\-hpp}$>$ need to be included to use these functionalities. 
+
+\subsection{Typedef Documentation}
+\hypertarget{group__gtc__quaternion_ga80d5f590dba4e894218e1263233b02bb}{\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion}!dquat@{dquat}}
+\index{dquat@{dquat}!GLM_GTC_quaternion@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion}}
+\subsubsection[{dquat}]{\setlength{\rightskip}{0pt plus 5cm}typedef detail\-::tquat$<$double$>$ {\bf glm\-::dquat}}}\label{group__gtc__quaternion_ga80d5f590dba4e894218e1263233b02bb}
+
+
+Quaternion of double-\/precision floating-\/point numbers. 
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtc__quaternion}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion} 
+\end{DoxySeeAlso}
+\hypertarget{group__gtc__quaternion_ga026fc67b7357f270b8226f9bcd1ac2c1}{\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion}!fquat@{fquat}}
+\index{fquat@{fquat}!GLM_GTC_quaternion@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion}}
+\subsubsection[{fquat}]{\setlength{\rightskip}{0pt plus 5cm}typedef detail\-::tquat$<$float$>$ {\bf glm\-::fquat}}}\label{group__gtc__quaternion_ga026fc67b7357f270b8226f9bcd1ac2c1}
+
+
+Quaternion of single-\/precision floating-\/point numbers. 
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtc__quaternion}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion} 
+\end{DoxySeeAlso}
+\hypertarget{group__gtc__quaternion_ga86a81668075e0896b7d6cd395d1d01ec}{\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion}!highp\-\_\-quat@{highp\-\_\-quat}}
+\index{highp\-\_\-quat@{highp\-\_\-quat}!GLM_GTC_quaternion@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion}}
+\subsubsection[{highp\-\_\-quat}]{\setlength{\rightskip}{0pt plus 5cm}typedef detail\-::tquat$<$highp\-\_\-float$>$ {\bf glm\-::highp\-\_\-quat}}}\label{group__gtc__quaternion_ga86a81668075e0896b7d6cd395d1d01ec}
+
+
+Quaternion of high precision floating-\/point numbers. 
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtc__quaternion}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion} 
+\end{DoxySeeAlso}
+\hypertarget{group__gtc__quaternion_ga9601a7ab2375426d8f302f0be9507586}{\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion}!hquat@{hquat}}
+\index{hquat@{hquat}!GLM_GTC_quaternion@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion}}
+\subsubsection[{hquat}]{\setlength{\rightskip}{0pt plus 5cm}typedef detail\-::tquat$<$detail\-::half$>$ {\bf glm\-::hquat}}}\label{group__gtc__quaternion_ga9601a7ab2375426d8f302f0be9507586}
+
+
+Quaternion of half-\/precision floating-\/point numbers. 
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtc__quaternion}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion} 
+\end{DoxySeeAlso}
+\hypertarget{group__gtc__quaternion_ga0754d8cacc7c48dd300ea7cd2846d1d8}{\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion}!lowp\-\_\-quat@{lowp\-\_\-quat}}
+\index{lowp\-\_\-quat@{lowp\-\_\-quat}!GLM_GTC_quaternion@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion}}
+\subsubsection[{lowp\-\_\-quat}]{\setlength{\rightskip}{0pt plus 5cm}typedef detail\-::tquat$<$lowp\-\_\-float$>$ {\bf glm\-::lowp\-\_\-quat}}}\label{group__gtc__quaternion_ga0754d8cacc7c48dd300ea7cd2846d1d8}
+
+
+Quaternion of low precision floating-\/point numbers. 
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtc__quaternion}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion} 
+\end{DoxySeeAlso}
+\hypertarget{group__gtc__quaternion_gaf4523725b36d8d422f44ea28fd37d407}{\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion}!mediump\-\_\-quat@{mediump\-\_\-quat}}
+\index{mediump\-\_\-quat@{mediump\-\_\-quat}!GLM_GTC_quaternion@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion}}
+\subsubsection[{mediump\-\_\-quat}]{\setlength{\rightskip}{0pt plus 5cm}typedef detail\-::tquat$<$mediump\-\_\-float$>$ {\bf glm\-::mediump\-\_\-quat}}}\label{group__gtc__quaternion_gaf4523725b36d8d422f44ea28fd37d407}
+
+
+Quaternion of medium precision floating-\/point numbers. 
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtc__quaternion}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion} 
+\end{DoxySeeAlso}
+\hypertarget{group__gtc__quaternion_gae334c5746195639da0ed726b747aeee3}{\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion}!quat@{quat}}
+\index{quat@{quat}!GLM_GTC_quaternion@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion}}
+\subsubsection[{quat}]{\setlength{\rightskip}{0pt plus 5cm}typedef detail\-::tquat$<$float$>$ {\bf glm\-::quat}}}\label{group__gtc__quaternion_gae334c5746195639da0ed726b747aeee3}
+
+
+Quaternion of floating-\/point numbers. 
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtc__quaternion}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion} 
+\end{DoxySeeAlso}
+
+
+\subsection{Function Documentation}
+\hypertarget{group__gtc__quaternion_ga69041d18bd8539fe82d6170932d28362}{\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion}!angle@{angle}}
+\index{angle@{angle}!GLM_GTC_quaternion@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion}}
+\subsubsection[{angle}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename val\-Type $>$ val\-Type glm\-::angle (
+\begin{DoxyParamCaption}
+\item[{detail\-::tquat$<$ val\-Type $>$ const \&}]{x}
+\end{DoxyParamCaption}
+)}}\label{group__gtc__quaternion_ga69041d18bd8539fe82d6170932d28362}
+
+
+Returns the quaternion rotation angle. 
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtc__quaternion}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion} 
+\end{DoxySeeAlso}
+\hypertarget{group__gtc__quaternion_gaafc03953867e42a39dc08575ad4532ad}{\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion}!angle\-Axis@{angle\-Axis}}
+\index{angle\-Axis@{angle\-Axis}!GLM_GTC_quaternion@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion}}
+\subsubsection[{angle\-Axis}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename val\-Type $>$ detail\-::tquat$<$val\-Type$>$ glm\-::angle\-Axis (
+\begin{DoxyParamCaption}
+\item[{val\-Type const \&}]{angle, }
+\item[{val\-Type const \&}]{x, }
+\item[{val\-Type const \&}]{y, }
+\item[{val\-Type const \&}]{z}
+\end{DoxyParamCaption}
+)}}\label{group__gtc__quaternion_gaafc03953867e42a39dc08575ad4532ad}
+
+
+Build a quaternion from an angle and a normalized axis. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em angle} & Angle expressed in radians if G\-L\-M\-\_\-\-F\-O\-R\-C\-E\-\_\-\-R\-A\-D\-I\-A\-N\-S is define or degrees otherwise. \\
+\hline
+{\em x} & x component of the x-\/axis, x, y, z must be a normalized axis \\
+\hline
+{\em y} & y component of the y-\/axis, x, y, z must be a normalized axis \\
+\hline
+{\em z} & z component of the z-\/axis, x, y, z must be a normalized axis\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtc__quaternion}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion} 
+\end{DoxySeeAlso}
+\hypertarget{group__gtc__quaternion_ga30071b5b9773087b7212a5ce67d0d90a}{\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion}!angle\-Axis@{angle\-Axis}}
+\index{angle\-Axis@{angle\-Axis}!GLM_GTC_quaternion@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion}}
+\subsubsection[{angle\-Axis}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename val\-Type $>$ detail\-::tquat$<$val\-Type$>$ glm\-::angle\-Axis (
+\begin{DoxyParamCaption}
+\item[{val\-Type const \&}]{angle, }
+\item[{detail\-::tvec3$<$ val\-Type $>$ const \&}]{axis}
+\end{DoxyParamCaption}
+)}}\label{group__gtc__quaternion_ga30071b5b9773087b7212a5ce67d0d90a}
+
+
+Build a quaternion from an angle and a normalized axis. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em angle} & Angle expressed in radians if G\-L\-M\-\_\-\-F\-O\-R\-C\-E\-\_\-\-R\-A\-D\-I\-A\-N\-S is define or degrees otherwise. \\
+\hline
+{\em axis} & Axis of the quaternion, must be normalized.\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtc__quaternion}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion} 
+\end{DoxySeeAlso}
+\hypertarget{group__gtc__quaternion_ga72457604550d0414e522dbec0d98f276}{\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion}!axis@{axis}}
+\index{axis@{axis}!GLM_GTC_quaternion@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion}}
+\subsubsection[{axis}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename val\-Type $>$ detail\-::tvec3$<$val\-Type$>$ glm\-::axis (
+\begin{DoxyParamCaption}
+\item[{detail\-::tquat$<$ val\-Type $>$ const \&}]{x}
+\end{DoxyParamCaption}
+)}}\label{group__gtc__quaternion_ga72457604550d0414e522dbec0d98f276}
+
+
+Returns the q rotation axis. 
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtc__quaternion}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion} 
+\end{DoxySeeAlso}
+\hypertarget{group__gtc__quaternion_ga8b6594dffb8bf455d848ffa2169ba41d}{\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion}!conjugate@{conjugate}}
+\index{conjugate@{conjugate}!GLM_GTC_quaternion@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion}}
+\subsubsection[{conjugate}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ detail\-::tquat$<$T$>$ glm\-::conjugate (
+\begin{DoxyParamCaption}
+\item[{detail\-::tquat$<$ T $>$ const \&}]{q}
+\end{DoxyParamCaption}
+)}}\label{group__gtc__quaternion_ga8b6594dffb8bf455d848ffa2169ba41d}
+
+
+Returns the q conjugate. 
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtc__quaternion}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion} 
+\end{DoxySeeAlso}
+\hypertarget{group__gtc__quaternion_gab9101d7f5b27ca682fc84e32b8fd70ad}{\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion}!dot@{dot}}
+\index{dot@{dot}!GLM_GTC_quaternion@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion}}
+\subsubsection[{dot}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ T glm\-::dot (
+\begin{DoxyParamCaption}
+\item[{detail\-::tquat$<$ T $>$ const \&}]{q1, }
+\item[{detail\-::tquat$<$ T $>$ const \&}]{q2}
+\end{DoxyParamCaption}
+)}}\label{group__gtc__quaternion_gab9101d7f5b27ca682fc84e32b8fd70ad}
+
+
+Returns dot product of q1 and q2, i.\-e., q1\mbox{[}0\mbox{]} $\ast$ q2\mbox{[}0\mbox{]} + q1\mbox{[}1\mbox{]} $\ast$ q2\mbox{[}1\mbox{]} + ... 
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtc__quaternion}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion} 
+\end{DoxySeeAlso}
+\hypertarget{group__gtc__quaternion_gaa53e0e8933e176c6207720433fb8dd2b}{\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion}!euler\-Angles@{euler\-Angles}}
+\index{euler\-Angles@{euler\-Angles}!GLM_GTC_quaternion@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion}}
+\subsubsection[{euler\-Angles}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ detail\-::tvec3$<$T$>$ glm\-::euler\-Angles (
+\begin{DoxyParamCaption}
+\item[{detail\-::tquat$<$ T $>$ const \&}]{x}
+\end{DoxyParamCaption}
+)}}\label{group__gtc__quaternion_gaa53e0e8933e176c6207720433fb8dd2b}
+
+
+Returns euler angles, yitch as x, yaw as y, roll as z. 
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtc__quaternion}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion} 
+\end{DoxySeeAlso}
+\hypertarget{group__gtc__quaternion_ga78b87a5e7152108e0dff0855d81b3bc1}{\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion}!inverse@{inverse}}
+\index{inverse@{inverse}!GLM_GTC_quaternion@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion}}
+\subsubsection[{inverse}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ detail\-::tquat$<$T$>$ glm\-::inverse (
+\begin{DoxyParamCaption}
+\item[{detail\-::tquat$<$ T $>$ const \&}]{q}
+\end{DoxyParamCaption}
+)}}\label{group__gtc__quaternion_ga78b87a5e7152108e0dff0855d81b3bc1}
+
+
+Returns the q inverse. 
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtc__quaternion}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion} 
+\end{DoxySeeAlso}
+\hypertarget{group__gtc__quaternion_ga60d5647f87c2c423497d0f3bf8c407b8}{\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion}!length@{length}}
+\index{length@{length}!GLM_GTC_quaternion@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion}}
+\subsubsection[{length}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ T glm\-::length (
+\begin{DoxyParamCaption}
+\item[{detail\-::tquat$<$ T $>$ const \&}]{q}
+\end{DoxyParamCaption}
+)}}\label{group__gtc__quaternion_ga60d5647f87c2c423497d0f3bf8c407b8}
+
+
+Returns the length of the quaternion. 
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtc__quaternion}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion} 
+\end{DoxySeeAlso}
+\hypertarget{group__gtc__quaternion_gae04ce320008c9bec0037b4ba21853cb5}{\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion}!mat3\-\_\-cast@{mat3\-\_\-cast}}
+\index{mat3\-\_\-cast@{mat3\-\_\-cast}!GLM_GTC_quaternion@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion}}
+\subsubsection[{mat3\-\_\-cast}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ detail\-::tmat3x3$<$T$>$ glm\-::mat3\-\_\-cast (
+\begin{DoxyParamCaption}
+\item[{detail\-::tquat$<$ T $>$ const \&}]{x}
+\end{DoxyParamCaption}
+)}}\label{group__gtc__quaternion_gae04ce320008c9bec0037b4ba21853cb5}
+
+
+Converts a quaternion to a 3 $\ast$ 3 matrix. 
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtc__quaternion}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion} 
+\end{DoxySeeAlso}
+\hypertarget{group__gtc__quaternion_ga8c376eb15971eb52d85df5ee26825627}{\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion}!mat4\-\_\-cast@{mat4\-\_\-cast}}
+\index{mat4\-\_\-cast@{mat4\-\_\-cast}!GLM_GTC_quaternion@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion}}
+\subsubsection[{mat4\-\_\-cast}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ detail\-::tmat4x4$<$T$>$ glm\-::mat4\-\_\-cast (
+\begin{DoxyParamCaption}
+\item[{detail\-::tquat$<$ T $>$ const \&}]{x}
+\end{DoxyParamCaption}
+)}}\label{group__gtc__quaternion_ga8c376eb15971eb52d85df5ee26825627}
+
+
+Converts a quaternion to a 4 $\ast$ 4 matrix. 
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtc__quaternion}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion} 
+\end{DoxySeeAlso}
+\hypertarget{group__gtc__quaternion_gaaea9592fd53952b636d680321edcdb31}{\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion}!mix@{mix}}
+\index{mix@{mix}!GLM_GTC_quaternion@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion}}
+\subsubsection[{mix}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ detail\-::tquat$<$T$>$ glm\-::mix (
+\begin{DoxyParamCaption}
+\item[{detail\-::tquat$<$ T $>$ const \&}]{x, }
+\item[{detail\-::tquat$<$ T $>$ const \&}]{y, }
+\item[{T const \&}]{a}
+\end{DoxyParamCaption}
+)}}\label{group__gtc__quaternion_gaaea9592fd53952b636d680321edcdb31}
+
+
+Returns a S\-L\-E\-R\-P interpolated quaternion of x and y according a. 
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtc__quaternion}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion} 
+\end{DoxySeeAlso}
+\hypertarget{group__gtc__quaternion_gabd269bb967469a6f1df5963455fee6be}{\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion}!normalize@{normalize}}
+\index{normalize@{normalize}!GLM_GTC_quaternion@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion}}
+\subsubsection[{normalize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ detail\-::tquat$<$T$>$ glm\-::normalize (
+\begin{DoxyParamCaption}
+\item[{detail\-::tquat$<$ T $>$ const \&}]{q}
+\end{DoxyParamCaption}
+)}}\label{group__gtc__quaternion_gabd269bb967469a6f1df5963455fee6be}
+
+
+Returns the normalized quaternion. 
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtc__quaternion}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion} 
+\end{DoxySeeAlso}
+\hypertarget{group__gtc__quaternion_ga4d37447d81ceade1d10d68c995a4d881}{\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion}!quat\-\_\-cast@{quat\-\_\-cast}}
+\index{quat\-\_\-cast@{quat\-\_\-cast}!GLM_GTC_quaternion@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion}}
+\subsubsection[{quat\-\_\-cast}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ detail\-::tquat$<$T$>$ glm\-::quat\-\_\-cast (
+\begin{DoxyParamCaption}
+\item[{detail\-::tmat3x3$<$ T $>$ const \&}]{x}
+\end{DoxyParamCaption}
+)}}\label{group__gtc__quaternion_ga4d37447d81ceade1d10d68c995a4d881}
+
+
+Converts a 3 $\ast$ 3 matrix to a quaternion. 
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtc__quaternion}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion} 
+\end{DoxySeeAlso}
+\hypertarget{group__gtc__quaternion_ga24adafe33b0bcad906c8724a762e5299}{\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion}!quat\-\_\-cast@{quat\-\_\-cast}}
+\index{quat\-\_\-cast@{quat\-\_\-cast}!GLM_GTC_quaternion@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion}}
+\subsubsection[{quat\-\_\-cast}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ detail\-::tquat$<$T$>$ glm\-::quat\-\_\-cast (
+\begin{DoxyParamCaption}
+\item[{detail\-::tmat4x4$<$ T $>$ const \&}]{x}
+\end{DoxyParamCaption}
+)}}\label{group__gtc__quaternion_ga24adafe33b0bcad906c8724a762e5299}
+
+
+Converts a 4 $\ast$ 4 matrix to a quaternion. 
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtc__quaternion}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion} 
+\end{DoxySeeAlso}
+\hypertarget{group__gtc__quaternion_ga297d6a9635153c76d7c011efa716b5da}{\index{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion}!rotate@{rotate}}
+\index{rotate@{rotate}!GLM_GTC_quaternion@{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion}}
+\subsubsection[{rotate}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ detail\-::tquat$<$T$>$ glm\-::rotate (
+\begin{DoxyParamCaption}
+\item[{detail\-::tquat$<$ T $>$ const \&}]{q, }
+\item[{typename detail\-::tquat$<$ T $>$\-::value\-\_\-type const \&}]{angle, }
+\item[{detail\-::tvec3$<$ T $>$ const \&}]{axis}
+\end{DoxyParamCaption}
+)}}\label{group__gtc__quaternion_ga297d6a9635153c76d7c011efa716b5da}
+
+
+Rotates a quaternion from an vector of 3 components axis and an angle. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em q} & Source orientation \\
+\hline
+{\em angle} & Angle expressed in radians if G\-L\-M\-\_\-\-F\-O\-R\-C\-E\-\_\-\-R\-A\-D\-I\-A\-N\-S is define or degrees otherwise. \\
+\hline
+{\em axis} & Axis of the rotation, must be normalized.\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{group__gtc__quaternion}{G\-L\-M\-\_\-\-G\-T\-C\-\_\-quaternion} 
+\end{DoxySeeAlso}

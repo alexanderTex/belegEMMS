@@ -1,0 +1,381 @@
+\hypertarget{group__core__func__trigonometric}{\section{Angle and Trigonometry Functions}
+\label{group__core__func__trigonometric}\index{Angle and Trigonometry Functions@{Angle and Trigonometry Functions}}
+}
+
+
+Function parameters specified as angle are assumed to be in units of radians.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type \hyperlink{group__core__func__trigonometric_ga4fb76e28851c9ff6653532566084e091}{glm\-::radians} (gen\-Type const \&degrees)
+\begin{DoxyCompactList}\small\item\em Converts degrees to radians and returns the result. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type \hyperlink{group__core__func__trigonometric_ga034bdb53d458242c506e4d830c7df3aa}{glm\-::degrees} (gen\-Type const \&radians)
+\begin{DoxyCompactList}\small\item\em Converts radians to degrees and returns the result. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type \hyperlink{group__core__func__trigonometric_ga4fcd05daafb008f20e121e727c0196c7}{glm\-::sin} (gen\-Type const \&angle)
+\begin{DoxyCompactList}\small\item\em The standard trigonometric sine function. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type \hyperlink{group__core__func__trigonometric_gace62d5d164def52455aeff19e1bccd88}{glm\-::cos} (gen\-Type const \&angle)
+\begin{DoxyCompactList}\small\item\em The standard trigonometric cosine function. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type \hyperlink{group__core__func__trigonometric_ga43860bed05c85587e2d931b26d765640}{glm\-::tan} (gen\-Type const \&angle)
+\begin{DoxyCompactList}\small\item\em The standard trigonometric tangent function. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type \hyperlink{group__core__func__trigonometric_ga76b6422e62c99fa0849abdf21fcef5cf}{glm\-::asin} (gen\-Type const \&x)
+\begin{DoxyCompactList}\small\item\em Arc sine. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type \hyperlink{group__core__func__trigonometric_gafef7954b5fa3228f4aaabde8dfa862a1}{glm\-::acos} (gen\-Type const \&x)
+\begin{DoxyCompactList}\small\item\em Arc cosine. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type \hyperlink{group__core__func__trigonometric_ga2394d11075a74869cd88473c76722bc8}{glm\-::atan} (gen\-Type const \&y, gen\-Type const \&x)
+\begin{DoxyCompactList}\small\item\em Arc tangent. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type \hyperlink{group__core__func__trigonometric_ga5db83034488156692939acb4f4e46fa6}{glm\-::atan} (gen\-Type const \&y\-\_\-over\-\_\-x)
+\begin{DoxyCompactList}\small\item\em Arc tangent. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type \hyperlink{group__core__func__trigonometric_ga6f38bb1a343b5d73ac71ddd53baa3375}{glm\-::sinh} (gen\-Type const \&angle)
+\begin{DoxyCompactList}\small\item\em Returns the hyperbolic sine function, (exp(x) -\/ exp(-\/x)) / 2. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type \hyperlink{group__core__func__trigonometric_gaf1b20113fe439fa48524e8c35ea2c1d0}{glm\-::cosh} (gen\-Type const \&angle)
+\begin{DoxyCompactList}\small\item\em Returns the hyperbolic cosine function, (exp(x) + exp(-\/x)) / 2. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type \hyperlink{group__core__func__trigonometric_ga5315f571fd52f30d368abc056c4aea13}{glm\-::tanh} (gen\-Type const \&angle)
+\begin{DoxyCompactList}\small\item\em Returns the hyperbolic tangent function, sinh(angle) / cosh(angle) \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type \hyperlink{group__core__func__trigonometric_ga615d386dcfb41cdbbca2609c53113aac}{glm\-::asinh} (gen\-Type const \&x)
+\begin{DoxyCompactList}\small\item\em Arc hyperbolic sine; returns the inverse of sinh. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type \hyperlink{group__core__func__trigonometric_ga0f37ff6b6878a0169cd41249e5377e09}{glm\-::acosh} (gen\-Type const \&x)
+\begin{DoxyCompactList}\small\item\em Arc hyperbolic cosine; returns the non-\/negative inverse of cosh. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type \hyperlink{group__core__func__trigonometric_gadeda850d5dff43d4d069854b1b6a623c}{glm\-::atanh} (gen\-Type const \&x)
+\begin{DoxyCompactList}\small\item\em Arc hyperbolic tangent; returns the inverse of tanh. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Function parameters specified as angle are assumed to be in units of radians. In no case will any of these functions result in a divide by zero error. If the divisor of a ratio is 0, then results will be undefined.
+
+These all operate component-\/wise. The description is per component. 
+
+\subsection{Function Documentation}
+\hypertarget{group__core__func__trigonometric_gafef7954b5fa3228f4aaabde8dfa862a1}{\index{Angle and Trigonometry Functions@{Angle and Trigonometry Functions}!acos@{acos}}
+\index{acos@{acos}!Angle and Trigonometry Functions@{Angle and Trigonometry Functions}}
+\subsubsection[{acos}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ gen\-Type glm\-::acos (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{x}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__trigonometric_gafef7954b5fa3228f4aaabde8dfa862a1}
+
+
+Arc cosine. 
+
+Returns an angle whose sine is x. The range of values returned by this function is \mbox{[}0, P\-I\mbox{]}. Results are undefined if $\vert$x$\vert$ $>$ 1.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Floating-\/point scalar or vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/acos.xml}{\tt G\-L\-S\-L acos man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-1 Angle and Trigonometry Functions} 
+\end{DoxySeeAlso}
+\hypertarget{group__core__func__trigonometric_ga0f37ff6b6878a0169cd41249e5377e09}{\index{Angle and Trigonometry Functions@{Angle and Trigonometry Functions}!acosh@{acosh}}
+\index{acosh@{acosh}!Angle and Trigonometry Functions@{Angle and Trigonometry Functions}}
+\subsubsection[{acosh}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ gen\-Type glm\-::acosh (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{x}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__trigonometric_ga0f37ff6b6878a0169cd41249e5377e09}
+
+
+Arc hyperbolic cosine; returns the non-\/negative inverse of cosh. 
+
+Results are undefined if x $<$ 1.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Floating-\/point scalar or vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/acosh.xml}{\tt G\-L\-S\-L acosh man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-1 Angle and Trigonometry Functions} 
+\end{DoxySeeAlso}
+\hypertarget{group__core__func__trigonometric_ga76b6422e62c99fa0849abdf21fcef5cf}{\index{Angle and Trigonometry Functions@{Angle and Trigonometry Functions}!asin@{asin}}
+\index{asin@{asin}!Angle and Trigonometry Functions@{Angle and Trigonometry Functions}}
+\subsubsection[{asin}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ gen\-Type glm\-::asin (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{x}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__trigonometric_ga76b6422e62c99fa0849abdf21fcef5cf}
+
+
+Arc sine. 
+
+Returns an angle whose sine is x. The range of values returned by this function is \mbox{[}-\/\-P\-I/2, P\-I/2\mbox{]}. Results are undefined if $\vert$x$\vert$ $>$ 1.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Floating-\/point scalar or vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/asin.xml}{\tt G\-L\-S\-L asin man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-1 Angle and Trigonometry Functions} 
+\end{DoxySeeAlso}
+\hypertarget{group__core__func__trigonometric_ga615d386dcfb41cdbbca2609c53113aac}{\index{Angle and Trigonometry Functions@{Angle and Trigonometry Functions}!asinh@{asinh}}
+\index{asinh@{asinh}!Angle and Trigonometry Functions@{Angle and Trigonometry Functions}}
+\subsubsection[{asinh}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ gen\-Type glm\-::asinh (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{x}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__trigonometric_ga615d386dcfb41cdbbca2609c53113aac}
+
+
+Arc hyperbolic sine; returns the inverse of sinh. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Floating-\/point scalar or vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/asinh.xml}{\tt G\-L\-S\-L asinh man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-1 Angle and Trigonometry Functions} 
+\end{DoxySeeAlso}
+\hypertarget{group__core__func__trigonometric_ga2394d11075a74869cd88473c76722bc8}{\index{Angle and Trigonometry Functions@{Angle and Trigonometry Functions}!atan@{atan}}
+\index{atan@{atan}!Angle and Trigonometry Functions@{Angle and Trigonometry Functions}}
+\subsubsection[{atan}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ gen\-Type glm\-::atan (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{y, }
+\item[{gen\-Type const \&}]{x}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__trigonometric_ga2394d11075a74869cd88473c76722bc8}
+
+
+Arc tangent. 
+
+Returns an angle whose tangent is y/x. The signs of x and y are used to determine what quadrant the angle is in. The range of values returned by this function is \mbox{[}-\/\-P\-I, P\-I\mbox{]}. Results are undefined if x and y are both 0.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Floating-\/point scalar or vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/atan.xml}{\tt G\-L\-S\-L atan man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-1 Angle and Trigonometry Functions} 
+\end{DoxySeeAlso}
+\hypertarget{group__core__func__trigonometric_ga5db83034488156692939acb4f4e46fa6}{\index{Angle and Trigonometry Functions@{Angle and Trigonometry Functions}!atan@{atan}}
+\index{atan@{atan}!Angle and Trigonometry Functions@{Angle and Trigonometry Functions}}
+\subsubsection[{atan}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ gen\-Type glm\-::atan (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{y\-\_\-over\-\_\-x}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__trigonometric_ga5db83034488156692939acb4f4e46fa6}
+
+
+Arc tangent. 
+
+Returns an angle whose tangent is y\-\_\-over\-\_\-x. The range of values returned by this function is \mbox{[}-\/\-P\-I/2, P\-I/2\mbox{]}.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Floating-\/point scalar or vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/atan.xml}{\tt G\-L\-S\-L atan man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-1 Angle and Trigonometry Functions} 
+\end{DoxySeeAlso}
+\hypertarget{group__core__func__trigonometric_gadeda850d5dff43d4d069854b1b6a623c}{\index{Angle and Trigonometry Functions@{Angle and Trigonometry Functions}!atanh@{atanh}}
+\index{atanh@{atanh}!Angle and Trigonometry Functions@{Angle and Trigonometry Functions}}
+\subsubsection[{atanh}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ gen\-Type glm\-::atanh (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{x}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__trigonometric_gadeda850d5dff43d4d069854b1b6a623c}
+
+
+Arc hyperbolic tangent; returns the inverse of tanh. 
+
+Results are undefined if abs(x) $>$= 1.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Floating-\/point scalar or vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/atanh.xml}{\tt G\-L\-S\-L atanh man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-1 Angle and Trigonometry Functions} 
+\end{DoxySeeAlso}
+\hypertarget{group__core__func__trigonometric_gace62d5d164def52455aeff19e1bccd88}{\index{Angle and Trigonometry Functions@{Angle and Trigonometry Functions}!cos@{cos}}
+\index{cos@{cos}!Angle and Trigonometry Functions@{Angle and Trigonometry Functions}}
+\subsubsection[{cos}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ gen\-Type glm\-::cos (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{angle}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__trigonometric_gace62d5d164def52455aeff19e1bccd88}
+
+
+The standard trigonometric cosine function. 
+
+The values returned by this function will range from \mbox{[}-\/1, 1\mbox{]}.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Floating-\/point scalar or vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/cos.xml}{\tt G\-L\-S\-L cos man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-1 Angle and Trigonometry Functions} 
+\end{DoxySeeAlso}
+\hypertarget{group__core__func__trigonometric_gaf1b20113fe439fa48524e8c35ea2c1d0}{\index{Angle and Trigonometry Functions@{Angle and Trigonometry Functions}!cosh@{cosh}}
+\index{cosh@{cosh}!Angle and Trigonometry Functions@{Angle and Trigonometry Functions}}
+\subsubsection[{cosh}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ gen\-Type glm\-::cosh (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{angle}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__trigonometric_gaf1b20113fe439fa48524e8c35ea2c1d0}
+
+
+Returns the hyperbolic cosine function, (exp(x) + exp(-\/x)) / 2. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Floating-\/point scalar or vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/cosh.xml}{\tt G\-L\-S\-L cosh man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-1 Angle and Trigonometry Functions} 
+\end{DoxySeeAlso}
+\hypertarget{group__core__func__trigonometric_ga034bdb53d458242c506e4d830c7df3aa}{\index{Angle and Trigonometry Functions@{Angle and Trigonometry Functions}!degrees@{degrees}}
+\index{degrees@{degrees}!Angle and Trigonometry Functions@{Angle and Trigonometry Functions}}
+\subsubsection[{degrees}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ gen\-Type glm\-::degrees (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{radians}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__trigonometric_ga034bdb53d458242c506e4d830c7df3aa}
+
+
+Converts radians to degrees and returns the result. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Floating-\/point scalar or vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/degrees.xml}{\tt G\-L\-S\-L degrees man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-1 Angle and Trigonometry Functions} 
+\end{DoxySeeAlso}
+\hypertarget{group__core__func__trigonometric_ga4fb76e28851c9ff6653532566084e091}{\index{Angle and Trigonometry Functions@{Angle and Trigonometry Functions}!radians@{radians}}
+\index{radians@{radians}!Angle and Trigonometry Functions@{Angle and Trigonometry Functions}}
+\subsubsection[{radians}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ gen\-Type glm\-::radians (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{degrees}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__trigonometric_ga4fb76e28851c9ff6653532566084e091}
+
+
+Converts degrees to radians and returns the result. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Floating-\/point scalar or vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/radians.xml}{\tt G\-L\-S\-L radians man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-1 Angle and Trigonometry Functions} 
+\end{DoxySeeAlso}
+\hypertarget{group__core__func__trigonometric_ga4fcd05daafb008f20e121e727c0196c7}{\index{Angle and Trigonometry Functions@{Angle and Trigonometry Functions}!sin@{sin}}
+\index{sin@{sin}!Angle and Trigonometry Functions@{Angle and Trigonometry Functions}}
+\subsubsection[{sin}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ gen\-Type glm\-::sin (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{angle}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__trigonometric_ga4fcd05daafb008f20e121e727c0196c7}
+
+
+The standard trigonometric sine function. 
+
+The values returned by this function will range from \mbox{[}-\/1, 1\mbox{]}.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Floating-\/point scalar or vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/sin.xml}{\tt G\-L\-S\-L sin man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-1 Angle and Trigonometry Functions} 
+\end{DoxySeeAlso}
+\hypertarget{group__core__func__trigonometric_ga6f38bb1a343b5d73ac71ddd53baa3375}{\index{Angle and Trigonometry Functions@{Angle and Trigonometry Functions}!sinh@{sinh}}
+\index{sinh@{sinh}!Angle and Trigonometry Functions@{Angle and Trigonometry Functions}}
+\subsubsection[{sinh}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ gen\-Type glm\-::sinh (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{angle}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__trigonometric_ga6f38bb1a343b5d73ac71ddd53baa3375}
+
+
+Returns the hyperbolic sine function, (exp(x) -\/ exp(-\/x)) / 2. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Floating-\/point scalar or vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/sinh.xml}{\tt G\-L\-S\-L sinh man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-1 Angle and Trigonometry Functions} 
+\end{DoxySeeAlso}
+\hypertarget{group__core__func__trigonometric_ga43860bed05c85587e2d931b26d765640}{\index{Angle and Trigonometry Functions@{Angle and Trigonometry Functions}!tan@{tan}}
+\index{tan@{tan}!Angle and Trigonometry Functions@{Angle and Trigonometry Functions}}
+\subsubsection[{tan}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ gen\-Type glm\-::tan (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{angle}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__trigonometric_ga43860bed05c85587e2d931b26d765640}
+
+
+The standard trigonometric tangent function. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Floating-\/point scalar or vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/tan.xml}{\tt G\-L\-S\-L tan man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-1 Angle and Trigonometry Functions} 
+\end{DoxySeeAlso}
+\hypertarget{group__core__func__trigonometric_ga5315f571fd52f30d368abc056c4aea13}{\index{Angle and Trigonometry Functions@{Angle and Trigonometry Functions}!tanh@{tanh}}
+\index{tanh@{tanh}!Angle and Trigonometry Functions@{Angle and Trigonometry Functions}}
+\subsubsection[{tanh}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ gen\-Type glm\-::tanh (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{angle}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__trigonometric_ga5315f571fd52f30d368abc056c4aea13}
+
+
+Returns the hyperbolic tangent function, sinh(angle) / cosh(angle) 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Floating-\/point scalar or vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/tanh.xml}{\tt G\-L\-S\-L tanh man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-1 Angle and Trigonometry Functions} 
+\end{DoxySeeAlso}

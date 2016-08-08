@@ -59,57 +59,37 @@ public:
      * @brief GetField
      * @return
      */
-    inline const PlayingField *GetField() const
-    {
-        return m_field;
-    }
+    const PlayingField *GetField() const;
 
     /**
      * @brief GetPlayers
      * @return
      */
-    inline std::vector<const Player*> *GetPlayers() const
-    {
-        std::vector<const Player*> *ret = new std::vector<const Player*>();
-        ret->push_back(m_player1);
-        ret->push_back(m_player2);
-        return ret;
-    }
+    std::vector<const Player*> *GetPlayers() const;
+
     /**
      * @brief GetPlayer1
      * @return
      */
-    inline Player *GetPlayer1() const
-    {
-        return m_player1;
-    }
+    Player *GetPlayer1() const;
 
     /**
      * @brief GetPlayer2
      * @return
      */
-    inline Player *GetPlayer2() const
-    {
-        return m_player2;
-    }
+    Player *GetPlayer2() const;
 
     /**
      * @brief GetCurrentPlayer
      * @return
      */
-    inline Player *GetCurrentPlayer() const
-    {
-        return m_currentPlayer;
-    }
+    Player *GetCurrentPlayer() const;
 
     /**
      * @brief GetLastMove
      * @return
      */
-    inline Vector3 GetLastMove() const
-    {
-        return *(m_history->GetLastMove()->position);
-    }
+    Vector3 GetLastMove() const;
 
     /**
      * @brief GetOpponent
@@ -117,30 +97,13 @@ public:
      * @return
      * throws GamedataException if the given player p is not part of the game
      */
-    inline const Player *GetOpponent(const Player *p) const throw(GameDataException)
-    {
-        if(p == m_player1)
-        {
-            return m_player2;
-        }
-        else if(p == m_player2)
-        {
-            return m_player1;
-        }
-        else
-        {
-            throw(PlayerNotInTheGame);
-        }
-    }
+    const Player *GetOpponent(const Player *p) const throw(GameDataException);
 
     /**
      * @brief GetHistory
      * @return
      */
-    inline const HistorySave *GetHistory() const
-    {
-        return m_history;
-    }
+    const HistorySave *GetHistory() const;
 
     /**
      * @brief OccupySlot
@@ -152,24 +115,13 @@ public:
      * throws out_of_range if the x,y or z is out of the range of the playingfield
      * throws FieldException if occupying the slot in Playingfield failed
      */
-    inline void OccupySlot(int x, int y, int z, PlayingField::OccupationState playerColor) throw(out_of_range, PlayingField::FieldExeptions)
-    {
-        this->m_field->OccupySlot(x, y, z, playerColor);
-        Vector3 pos(x,y,z);
-        this->m_history->AddMove(pos, *(this->GetCurrentPlayer()));
-    }
+    void OccupySlot(int x, int y, int z, PlayingField::OccupationState playerColor) throw(out_of_range, PlayingField::FieldExeptions);
 
     /**
      * @brief SwitchPlayer
      * switch currentplayer to other player
      */
-    inline void SwitchPlayer()
-    {
-        m_currentPlayer = m_currentPlayer == m_player1 ? m_player2 : m_player1;        
-    }
-
-
-
+    void SwitchPlayer();
 
 private:
     /**

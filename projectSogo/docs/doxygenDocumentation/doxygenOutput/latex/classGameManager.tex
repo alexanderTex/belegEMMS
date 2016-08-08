@@ -1,0 +1,154 @@
+\hypertarget{classGameManager}{\section{Game\-Manager Class Reference}
+\label{classGameManager}\index{Game\-Manager@{Game\-Manager}}
+}
+
+
+The \hyperlink{classGameManager}{Game\-Manager} class Handles the game loop logic in a thread.  
+
+
+
+
+{\ttfamily \#include $<$Game\-Manager\-Thread.\-h$>$}
+
+Inheritance diagram for Game\-Manager\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classGameManager}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structGameManager_1_1AIPlayer}{A\-I\-Player}
+\begin{DoxyCompactList}\small\item\em The \hyperlink{classAI}{A\-I} struct Contains a reference to a player which is of type ai and if the ai player has calculated its next move. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classGameManager_a441d3c2600884f3c315a9c5d3db9066d}{void {\bfseries Play\-Input\-Error\-Sound} ()}\label{classGameManager_a441d3c2600884f3c315a9c5d3db9066d}
+
+\item 
+\hypertarget{classGameManager_aa6b2e8ebbbeee51512e865d73342cdce}{void {\bfseries Play\-Input\-Accept\-Sound} ()}\label{classGameManager_aa6b2e8ebbbeee51512e865d73342cdce}
+
+\item 
+\hypertarget{classGameManager_aba92c2301c45b00826365149ae8c4844}{void \hyperlink{classGameManager_aba92c2301c45b00826365149ae8c4844}{Turn\-Finished} ()}\label{classGameManager_aba92c2301c45b00826365149ae8c4844}
+
+\begin{DoxyCompactList}\small\item\em Turn\-Finished emitted when players turn finishes. \end{DoxyCompactList}\item 
+\hypertarget{classGameManager_a46ecd98b835abec58ea2b716b600c453}{void \hyperlink{classGameManager_a46ecd98b835abec58ea2b716b600c453}{Player\-Won} ()}\label{classGameManager_a46ecd98b835abec58ea2b716b600c453}
+
+\begin{DoxyCompactList}\small\item\em Player\-Won emitted when a player won. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classGameManager_aa0e2424dc1a39d380e5b6605b179bf05}{\hyperlink{classGameManager_aa0e2424dc1a39d380e5b6605b179bf05}{Game\-Manager} ()}\label{classGameManager_aa0e2424dc1a39d380e5b6605b179bf05}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{classGameManager}{Game\-Manager}. \end{DoxyCompactList}\item 
+\hyperlink{classGameManager_a80046eb2f443289f0ba1b3fa1272470a}{Game\-Manager} (\hyperlink{classGameData}{Game\-Data} $\ast$data)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classGameManager}{Game\-Manager}. \end{DoxyCompactList}\item 
+\hypertarget{classGameManager_aaae63e38e358379c1fe507c5197a8435}{virtual \hyperlink{classGameManager_aaae63e38e358379c1fe507c5197a8435}{$\sim$\-Game\-Manager} ()}\label{classGameManager_aaae63e38e358379c1fe507c5197a8435}
+
+\begin{DoxyCompactList}\small\item\em $\sim$\-Game\-Manager \end{DoxyCompactList}\item 
+\hypertarget{classGameManager_abbde8090c24ca199815ba1e85059c96f}{virtual void \hyperlink{classGameManager_abbde8090c24ca199815ba1e85059c96f}{run} ()}\label{classGameManager_abbde8090c24ca199815ba1e85059c96f}
+
+\begin{DoxyCompactList}\small\item\em run override of the Q\-Thread run \end{DoxyCompactList}\item 
+const \hyperlink{classGameData}{Game\-Data} $\ast$ \hyperlink{classGameManager_a51bd111f72c164d392db25e1b9bab86e}{Get\-Game\-Data} () const 
+\begin{DoxyCompactList}\small\item\em Get\-Game\-Data. \end{DoxyCompactList}\item 
+\hypertarget{classGameManager_a760b12229d3d010a81507a07760a4315}{void \hyperlink{classGameManager_a760b12229d3d010a81507a07760a4315}{Set\-Game\-Data} (\hyperlink{classGameData}{Game\-Data} $\ast$data)}\label{classGameManager_a760b12229d3d010a81507a07760a4315}
+
+\begin{DoxyCompactList}\small\item\em Set\-Game\-Data. \end{DoxyCompactList}\item 
+\hypertarget{classGameManager_a3af49a72977052275a1217c5018c737f}{void {\bfseries Start\-Game} ()}\label{classGameManager_a3af49a72977052275a1217c5018c737f}
+
+\item 
+\hypertarget{classGameManager_a6f108cd9cdd0cf101d19a151e5e76a26}{void {\bfseries Pause\-Game} ()}\label{classGameManager_a6f108cd9cdd0cf101d19a151e5e76a26}
+
+\item 
+\hypertarget{classGameManager_ac756f69d83f34849ed763c7de6b2d47f}{void {\bfseries Suspend\-Processing\-Loop} ()}\label{classGameManager_ac756f69d83f34849ed763c7de6b2d47f}
+
+\item 
+\hypertarget{classGameManager_a4e3d2ab486b782641640fb82b77963f2}{void \hyperlink{classGameManager_a4e3d2ab486b782641640fb82b77963f2}{Stop\-Game\-Manager\-Thread} ()}\label{classGameManager_a4e3d2ab486b782641640fb82b77963f2}
+
+\begin{DoxyCompactList}\small\item\em Stop sets the boolean to end the Main processing thread when the user quits the game. \end{DoxyCompactList}\item 
+void \hyperlink{classGameManager_ade855b10bc61465dfdfb458cf624cf97}{Input\-Confirmation\-Detected} (\hyperlink{structVector2}{Vector2} pos)
+\begin{DoxyCompactList}\small\item\em Input\-Confirmation\-Detected. \end{DoxyCompactList}\item 
+bool \hyperlink{classGameManager_ab5e866fc01d4d612cd1f84de0df4653f}{Make\-Move} (\hyperlink{structVector3}{Vector3} pos)  throw (\-Playing\-Field\-::\-Field\-Exeptions, std\-::out\-\_\-of\-\_\-range)
+\begin{DoxyCompactList}\small\item\em Tries to Occupy the given position , adds the move to the history, checks if the player won ( return true if won), switches currentplayer, and sends out event that a move is done. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classGameManager}{Game\-Manager} class Handles the game loop logic in a thread. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classGameManager_a80046eb2f443289f0ba1b3fa1272470a}{\index{Game\-Manager@{Game\-Manager}!Game\-Manager@{Game\-Manager}}
+\index{Game\-Manager@{Game\-Manager}!GameManager@{Game\-Manager}}
+\subsubsection[{Game\-Manager}]{\setlength{\rightskip}{0pt plus 5cm}Game\-Manager\-::\-Game\-Manager (
+\begin{DoxyParamCaption}
+\item[{{\bf Game\-Data} $\ast$}]{data}
+\end{DoxyParamCaption}
+)}}\label{classGameManager_a80046eb2f443289f0ba1b3fa1272470a}
+
+
+\hyperlink{classGameManager}{Game\-Manager}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classGameManager_a51bd111f72c164d392db25e1b9bab86e}{\index{Game\-Manager@{Game\-Manager}!Get\-Game\-Data@{Get\-Game\-Data}}
+\index{Get\-Game\-Data@{Get\-Game\-Data}!GameManager@{Game\-Manager}}
+\subsubsection[{Get\-Game\-Data}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Game\-Data}$\ast$ Game\-Manager\-::\-Get\-Game\-Data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classGameManager_a51bd111f72c164d392db25e1b9bab86e}
+
+
+Get\-Game\-Data. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{classGameManager_ade855b10bc61465dfdfb458cf624cf97}{\index{Game\-Manager@{Game\-Manager}!Input\-Confirmation\-Detected@{Input\-Confirmation\-Detected}}
+\index{Input\-Confirmation\-Detected@{Input\-Confirmation\-Detected}!GameManager@{Game\-Manager}}
+\subsubsection[{Input\-Confirmation\-Detected}]{\setlength{\rightskip}{0pt plus 5cm}void Game\-Manager\-::\-Input\-Confirmation\-Detected (
+\begin{DoxyParamCaption}
+\item[{{\bf Vector2}}]{pos}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classGameManager_ade855b10bc61465dfdfb458cf624cf97}
+
+
+Input\-Confirmation\-Detected. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classGameManager_ab5e866fc01d4d612cd1f84de0df4653f}{\index{Game\-Manager@{Game\-Manager}!Make\-Move@{Make\-Move}}
+\index{Make\-Move@{Make\-Move}!GameManager@{Game\-Manager}}
+\subsubsection[{Make\-Move}]{\setlength{\rightskip}{0pt plus 5cm}bool Game\-Manager\-::\-Make\-Move (
+\begin{DoxyParamCaption}
+\item[{{\bf Vector3}}]{pos}
+\end{DoxyParamCaption}
+) throw  {\bf Playing\-Field\-::\-Field\-Exeptions}, std\-::out\-\_\-of\-\_\-range) }}\label{classGameManager_ab5e866fc01d4d612cd1f84de0df4653f}
+
+
+Tries to Occupy the given position , adds the move to the history, checks if the player won ( return true if won), switches currentplayer, and sends out event that a move is done. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the player just won the game 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/alex/source\-Code/git\-Project/beleg\-Arbeit\-E\-M\-M\-S/project\-Sogo/include/core/Game\-Manager\-Thread.\-h\item 
+/home/alex/source\-Code/git\-Project/beleg\-Arbeit\-E\-M\-M\-S/project\-Sogo/build-\/sogo\-App-\/\-Desktop\-\_\-\-Qt\-\_\-5\-\_\-6\-\_\-0\-\_\-\-G\-C\-C\-\_\-64bit-\/\-Debug/moc\-\_\-\-Game\-Manager\-Thread.\-cpp\item 
+/home/alex/source\-Code/git\-Project/beleg\-Arbeit\-E\-M\-M\-S/project\-Sogo/src/core/Game\-Manager\-Thread.\-cpp\end{DoxyCompactItemize}
