@@ -43,43 +43,7 @@ public:
      */
     void ShowPauseMenu();
 
-    inline void ChangeLanguage()
-    {
-        qApp->removeTranslator(m_translator);
-
-        delete(m_translator);
-
-        m_translator = new QTranslator();
-
-        if(m_languageEnglish)
-        {
-            if(m_translator->load(":/sprache/Translations/sogoapp_de.qm"))
-            {
-                std::cout << "translator loaded" << std::endl;
-            }
-            else
-            {
-                std::cout << "translator did not load...whyever!!!" << std::endl;
-            }
-            m_languageEnglish = false;
-        }
-        else
-        {
-            if(m_translator->load(":/sprache/Translations/sogoapp_en.qm"))
-            {
-                std::cout << "translator loaded" << std::endl;
-            }
-            else
-            {
-                std::cout << "translator did not load...whyever!!!" << std::endl;
-            }
-            m_languageEnglish = true;
-        }
-        // qm datei muss in Ressource ordner sein um geladen werden
-
-        qApp->installTranslator(m_translator);
-
-    }
+    void ChangeLanguage();
 
     inline void changeEvent(QEvent *event)
     {
