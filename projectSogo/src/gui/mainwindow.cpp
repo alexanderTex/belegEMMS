@@ -12,6 +12,8 @@ MainWindow::MainWindow(QWidget *parent)
     QObject::connect(m_changeLanguageButton, &QPushButton::clicked, this, &MainWindow::ChangeLanguage);
     m_allAroundLayout->addWidget(m_changeLanguageButton);
 
+    this->m_fullscreenButton = new QPushButton(tr("Fullscreen"), main);
+    m_allAroundLayout->addWidget(m_fullscreenButton);
 
     QWidget *workspace = new QWidget();
     m_allAroundLayout->addWidget(workspace);
@@ -33,6 +35,10 @@ MainWindow::MainWindow(QWidget *parent)
     m_layout->addWidget(this->m_pauseMenu);
     QObject::connect(this->m_pauseMenu, &PauseMenu::ResumeButtonPressed, this, &MainWindow::ShowGameView);
 
+    QObject::connect(this->m_fullscreenButton, &QPushButton::pressed, this, &MainWindow::FullscreenSwitch);
+
+    m_isFullscreen = false;
+
     setCentralWidget(main);
     show();
 }
@@ -48,6 +54,9 @@ MainWindow::MainWindow(QTranslator *translator, QWidget *parent)
     m_changeLanguageButton = new QPushButton(tr("changeButton"), main);
     QObject::connect(m_changeLanguageButton , &QPushButton::clicked, this, &MainWindow::ChangeLanguage);
     m_allAroundLayout->addWidget(m_changeLanguageButton);
+
+    this->m_fullscreenButton = new QPushButton(tr("Fullscreen"), main);
+    m_allAroundLayout->addWidget(m_fullscreenButton);
 
 
     QWidget *workspace = new QWidget();
@@ -91,6 +100,10 @@ MainWindow::MainWindow(QTranslator *translator, QWidget *parent)
     // catch startGame from NewSession to start a new Game
     QObject::connect(this->m_newSessionMenu, &NewSessionMenu::startGame, this, &MainWindow::startNewGame);
     //QObject::connect(this->m_newSessionMenu, &NewSessionMenu::startGame, this, &MainWindow::ShowGameView);
+
+    QObject::connect(this->m_fullscreenButton, &QPushButton::pressed, this, &MainWindow::FullscreenSwitch);
+
+    m_isFullscreen = false;
 
     setCentralWidget(main);
     show();
@@ -173,5 +186,21 @@ void MainWindow::ChangeLanguage()
     // qm datei muss in Ressource ordner sein um geladen werden
 
     qApp->installTranslator(m_translator);
+
+}
+
+
+void MainWindow::FullscreenSwitch()
+{
+    if(m_isFullscreen)
+    {
+        this->showNormal();
+        m_isFullscreen = false;
+    }
+    else
+    {
+        this->showFullScreen();
+        m_isFullscreen = true;
+    }
 
 }

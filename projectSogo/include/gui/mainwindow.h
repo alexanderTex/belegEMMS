@@ -67,9 +67,12 @@ signals:
 
 private:
     bool m_languageEnglish = false;
+    bool m_isFullscreen = false;
 
     QPushButton *m_changeLanguageButton;
     QTranslator *m_translator;
+
+    QPushButton *m_fullscreenButton;
 
     QVBoxLayout *m_allAroundLayout;
 
@@ -81,6 +84,9 @@ private:
     StartMenu *m_startMenu;
     HighscoreMenu * m_highscoreMenu;
     NewSessionMenu *m_newSessionMenu;
+
+
+    void FullscreenSwitch();
 
 };
 
