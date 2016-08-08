@@ -25,3 +25,9 @@ bool Vector3::operator==(const Vector3 &v2)
 {
     return this->X == v2.X && this->Y == v2.Y && this->Z == v2.Z;
 }
+
+std::ostream &operator<< (std::ostream &out, const Vector3 &vec)
+{
+    out << "x = " << vec.X << ", y = " << vec.Y << ", z = " << vec.Z;
+    return out;
+}

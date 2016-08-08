@@ -13,16 +13,7 @@ class PauseMenu : public QWidget
 public:
     explicit PauseMenu(QWidget *parent = 0);
 
-    inline void changeEvent(QEvent *event)
-    {
-        if (event->type() == QEvent::LanguageChange) {
-            m_resumeButton->setText(tr("Resume"));
-            m_saveButton->setText(tr(("Save")));
-            m_quitGameButton->setText(tr("Quit"));
-
-        } else
-            QWidget::changeEvent(event);
-    }
+    void changeEvent(QEvent *event);
 
 signals:
     void ResumeButtonPressed();

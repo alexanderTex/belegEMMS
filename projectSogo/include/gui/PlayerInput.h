@@ -24,16 +24,7 @@ class PlayerInput : public QWidget
 public:
     explicit PlayerInput(GameManager *gameManager, QWidget *parent = 0);
 
-    inline void changeEvent(QEvent *event)
-    {
-        if (event->type() == QEvent::LanguageChange) {
-            xInputLabel->setText(tr("X-Input : "));
-            yInputLabel->setText(tr("Y-Input : "));
-            m_inputConfirm->setText(tr("Confirm"));
-
-        } else
-            QWidget::changeEvent(event);
-    }
+    void changeEvent(QEvent *event);
 
     virtual ~PlayerInput();
 

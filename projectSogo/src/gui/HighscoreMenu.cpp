@@ -13,3 +13,12 @@ HighscoreMenu::HighscoreMenu(QWidget *parent) : QWidget(parent)
     QObject::connect(m_backToMainButtonHS, &QPushButton::clicked, this, &HighscoreMenu::showStartMenu);
     this->m_controlLayout->addWidget(m_backToMainButtonHS);
 }
+
+void HighscoreMenu::changeEvent(QEvent *event)
+{
+    if (event->type() == QEvent::LanguageChange) {
+        m_mainMenueLabel->setText(tr("Highscore"));
+        m_backToMainButtonHS->setText(tr("Back"));
+    } else
+        QWidget::changeEvent(event);
+}

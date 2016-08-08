@@ -20,3 +20,14 @@ PauseMenu::PauseMenu(QWidget *parent) : QWidget(parent)
     this->m_pauseMenuLayout->addWidget(this->m_quitGameButton);
 
 }
+
+void PauseMenu::changeEvent(QEvent *event)
+    {
+        if (event->type() == QEvent::LanguageChange) {
+            m_resumeButton->setText(tr("Resume"));
+            m_saveButton->setText(tr(("Save")));
+            m_quitGameButton->setText(tr("Quit"));
+
+        } else
+            QWidget::changeEvent(event);
+    }

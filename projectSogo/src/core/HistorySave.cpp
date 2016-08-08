@@ -47,3 +47,31 @@ void HistorySave::RevertLast()
 {
     this->m_pastMoves->erase(this->m_pastMoves->end());
 }
+
+/**
+ * @brief GetMoveCount
+ * @return
+ */
+int HistorySave::GetMoveCount() const
+{
+    return this->m_pastMoves->size();
+}
+
+/**
+ * @brief GetMove
+ * @param number
+ * @return
+ */
+const HistorySave::Move *HistorySave::GetMove(int number) const throw(out_of_range)
+{
+    return m_pastMoves->at(number);
+}
+
+/**
+ * @brief GetLastMove
+ * @return
+ */
+const HistorySave::Move *HistorySave::GetLastMove() const throw(out_of_range)
+{
+    return m_pastMoves->at(m_pastMoves->size() - 1);
+}

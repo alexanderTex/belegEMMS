@@ -89,6 +89,15 @@ PlayingField::Slot* PlayingField::GetSlot( int x, int y, int z) const throw(out_
     return this->m_slots->at(x)->at(y)->at(z);
 }
 
+/**
+* Getter for fieldSize
+* @return returns the fieldsize
+*/
+int PlayingField::GetFieldSize() const
+{
+    return m_fieldSize;
+}
+
  void PlayingField::OccupySlot(int x, int y, int z, PlayingField::OccupationState id) throw(out_of_range, FieldExeptions)
  {
      if(this->IsPositionAvailable(x,y,z))

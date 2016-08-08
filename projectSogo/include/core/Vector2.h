@@ -38,10 +38,6 @@ struct Vector2
 
 };
 
-inline std::ostream &operator<< (std::ostream &out, const Vector2 &vec)
-{
-    out << "x = " << vec.X << ", y = " << vec.Y;
-    return out;
-}
+std::ostream &operator<< (std::ostream &out, const Vector2 &vec);
 
 #endif // VECTOR2_H

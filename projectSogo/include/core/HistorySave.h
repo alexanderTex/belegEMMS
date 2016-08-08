@@ -75,29 +75,20 @@ public:
      * @brief GetMoveCount
      * @return
      */
-    inline int GetMoveCount() const
-    {
-        return this->m_pastMoves->size();
-    }
+    int GetMoveCount() const;
 
     /**
      * @brief GetMove
      * @param number
      * @return
      */
-    inline const Move *GetMove(int number) const throw(out_of_range)
-    {
-        return m_pastMoves->at(number);
-    }
+    const Move *GetMove(int number) const throw(out_of_range);
 
     /**
      * @brief GetLastMove
      * @return
      */
-    inline const Move *GetLastMove() const throw(out_of_range)
-    {
-        return m_pastMoves->at(m_pastMoves->size() - 1);
-    }
+    const Move *GetLastMove() const throw(out_of_range);
 
 private:
     /**
