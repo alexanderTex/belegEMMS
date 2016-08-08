@@ -99,10 +99,7 @@ class PlayingField
         * Getter for fieldSize
         * @return returns the fieldsize
         */
-        inline int GetFieldSize() const
-        {
-            return m_fieldSize;
-        }
+        int GetFieldSize() const;
 
         /**
         * Sets the occupationState of the Slot at pos(x,y,z) to id

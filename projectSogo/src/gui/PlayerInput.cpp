@@ -95,6 +95,17 @@ void PlayerInput::ApplyInputs()
     }
 }
 
+void PlayerInput::changeEvent(QEvent *event)
+{
+    if (event->type() == QEvent::LanguageChange) {
+        xInputLabel->setText(tr("X-Input : "));
+        yInputLabel->setText(tr("Y-Input : "));
+        m_inputConfirm->setText(tr("Confirm"));
+
+    } else
+        QWidget::changeEvent(event);
+}
+
 void PlayerInput::ApplyPlayerChange()
 {
 

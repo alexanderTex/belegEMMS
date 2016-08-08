@@ -1,0 +1,100 @@
+\hypertarget{classGameView}{\section{Game\-View Class Reference}
+\label{classGameView}\index{Game\-View@{Game\-View}}
+}
+
+
+The \hyperlink{classGameView}{Game\-View} class.  
+
+
+
+
+{\ttfamily \#include $<$Game\-View.\-h$>$}
+
+Inheritance diagram for Game\-View\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classGameView}
+\end{center}
+\end{figure}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classGameView_a5901d54c9767a75549860cc5b511fcd5}{Game\-Ended} (\hyperlink{classGameData}{Game\-Data} $\ast$data)
+\begin{DoxyCompactList}\small\item\em Game\-Ended Called when leave button pressed to go back to menu screen. \end{DoxyCompactList}\item 
+\hypertarget{classGameView_a2d1aa868abc05055e5be27040660f7f0}{void \hyperlink{classGameView_a2d1aa868abc05055e5be27040660f7f0}{Pause\-Menu} ()}\label{classGameView_a2d1aa868abc05055e5be27040660f7f0}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{classPauseMenu}{Pause\-Menu}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classGameView_a6f41d09f51d2abd6abb3b99e5da8ef6f}{{\bfseries Game\-View} (Q\-Widget $\ast$parent=0)}\label{classGameView_a6f41d09f51d2abd6abb3b99e5da8ef6f}
+
+\item 
+\hypertarget{classGameView_ae2f4618068a746a97c33859a7550640e}{{\bfseries Game\-View} (\hyperlink{classGameData}{Game\-Data} $\ast$data, Q\-Widget $\ast$parent=0)}\label{classGameView_ae2f4618068a746a97c33859a7550640e}
+
+\item 
+\hypertarget{classGameView_aef16847b30bf78a6ecc0888ab1157c8b}{\hyperlink{classGameVisualizer}{Game\-Visualizer} $\ast$ {\bfseries Get\-Visualizer} () const }\label{classGameView_aef16847b30bf78a6ecc0888ab1157c8b}
+
+\item 
+\hypertarget{classGameView_a7372d6130ea98db65d8dffc0c4c6989e}{\hyperlink{classGameData}{Game\-Data} $\ast$ {\bfseries Get\-Game\-Data} () const }\label{classGameView_a7372d6130ea98db65d8dffc0c4c6989e}
+
+\item 
+\hypertarget{classGameView_a6ecf68723625fae0f3f6301040b166fe}{void {\bfseries Init\-Game} (\hyperlink{classGameData}{Game\-Data} $\ast$data)}\label{classGameView_a6ecf68723625fae0f3f6301040b166fe}
+
+\item 
+\hypertarget{classGameView_abd2ab0306c7ce339f7d2d994f21f9f7d}{void {\bfseries Start\-Game} ()}\label{classGameView_abd2ab0306c7ce339f7d2d994f21f9f7d}
+
+\item 
+\hypertarget{classGameView_a2b977bd2bd50b851438230f7c4a4ac93}{void {\bfseries Pause\-Game} ()}\label{classGameView_a2b977bd2bd50b851438230f7c4a4ac93}
+
+\item 
+\hypertarget{classGameView_a2a1634628f3c981462f54c6c1f18ec6d}{void {\bfseries Play\-Accept\-Sound} ()}\label{classGameView_a2a1634628f3c981462f54c6c1f18ec6d}
+
+\item 
+\hypertarget{classGameView_a0bc73aeff44e7e52bd1d73a21dd6a7f2}{void {\bfseries Play\-Error\-Sound} ()}\label{classGameView_a0bc73aeff44e7e52bd1d73a21dd6a7f2}
+
+\item 
+\hypertarget{classGameView_a92b306e86ed8fe682763050be4edf254}{void {\bfseries Show\-Game\-Input\-View} ()}\label{classGameView_a92b306e86ed8fe682763050be4edf254}
+
+\item 
+\hypertarget{classGameView_a29cba4e6e6963b659f3cb2acbdfc3fe1}{void {\bfseries Show\-Winner} ()}\label{classGameView_a29cba4e6e6963b659f3cb2acbdfc3fe1}
+
+\item 
+\hypertarget{classGameView_a3e06ec8f766005c4aac0d572559fc9ed}{void \hyperlink{classGameView_a3e06ec8f766005c4aac0d572559fc9ed}{Game\-Finished} ()}\label{classGameView_a3e06ec8f766005c4aac0d572559fc9ed}
+
+\begin{DoxyCompactList}\small\item\em Game\-Finished Called if a player won to stop the gamelogic thread and show leave button. \end{DoxyCompactList}\item 
+\hypertarget{classGameView_a157ac747504394587761ac30a79b9597}{void \hyperlink{classGameView_a157ac747504394587761ac30a79b9597}{End\-Game} ()}\label{classGameView_a157ac747504394587761ac30a79b9597}
+
+\begin{DoxyCompactList}\small\item\em End\-Game called from leave button calls Game\-Ended. \end{DoxyCompactList}\item 
+\hypertarget{classGameView_a5d6aac6e502ec51285f03ba51da00886}{void {\bfseries change\-Event} (Q\-Event $\ast$event)}\label{classGameView_a5d6aac6e502ec51285f03ba51da00886}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classGameView}{Game\-View} class. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classGameView_a5901d54c9767a75549860cc5b511fcd5}{\index{Game\-View@{Game\-View}!Game\-Ended@{Game\-Ended}}
+\index{Game\-Ended@{Game\-Ended}!GameView@{Game\-View}}
+\subsubsection[{Game\-Ended}]{\setlength{\rightskip}{0pt plus 5cm}void Game\-View\-::\-Game\-Ended (
+\begin{DoxyParamCaption}
+\item[{{\bf Game\-Data} $\ast$}]{data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}}\label{classGameView_a5901d54c9767a75549860cc5b511fcd5}
+
+
+Game\-Ended Called when leave button pressed to go back to menu screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & gamedata after game ended \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/alex/source\-Code/git\-Project/beleg\-Arbeit\-E\-M\-M\-S/project\-Sogo/include/gui/Game\-View.\-h\item 
+/home/alex/source\-Code/git\-Project/beleg\-Arbeit\-E\-M\-M\-S/project\-Sogo/build-\/sogo\-App-\/\-Desktop\-\_\-\-Qt\-\_\-5\-\_\-6\-\_\-0\-\_\-\-G\-C\-C\-\_\-64bit-\/\-Debug/moc\-\_\-\-Game\-View.\-cpp\item 
+/home/alex/source\-Code/git\-Project/beleg\-Arbeit\-E\-M\-M\-S/project\-Sogo/src/gui/Game\-View.\-cpp\end{DoxyCompactItemize}

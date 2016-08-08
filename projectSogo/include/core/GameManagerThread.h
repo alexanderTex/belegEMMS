@@ -67,61 +67,30 @@ public:
      * @brief GetGameData
      * @return
      */
-    inline const GameData* GetGameData() const
-    {
-        return this->m_data;
-    }
+    const GameData* GetGameData() const;
 
     /**
      * @brief SetGameData
      */
-    inline void SetGameData(GameData * data)
-    {
-        this->m_data = data;
-        m_endGame = false;
-    }
+    void SetGameData(GameData * data);
 
-    inline void StartGame()
-    {
-        m_paused = false;
-        m_endGame = false;
-    }
+    void StartGame();
 
+    void PauseGame();
 
-    inline void PauseGame()
-    {
-        m_paused = true;
-    }
-
-    inline void SuspendProcessingLoop()
-    {
-        m_endGame = true;
-    }
+    void SuspendProcessingLoop();
 
     /**
      * @brief Stop
      * sets the boolean to end the Main processing thread when the user quits the game
      */
-    inline void StopGameManagerThread()
-    {
-        m_endGame = true;
-        m_stopThreadExecution = true;
-    }
+    void StopGameManagerThread();
 
     /**
      * @brief InputConfirmationDetected
      * @param pos
      */
-    inline void InputConfirmationDetected(Vector2 pos)
-    {
-        playerPosChoice = pos;
-
-        std::stringstream s;
-        s << pos.X << " : " << pos.Y;
-        Logger::GetLoggerIntance()->LogInfo(s.str(), __FILE__, __LINE__);
-
-        m_playerInputConfirmed = true;
-    }
+    void InputConfirmationDetected(Vector2 pos);
 
     /**
      * @brief Tries to Occupy the given position , adds the move to the history, checks if the player won ( return true if won),

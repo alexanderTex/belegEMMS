@@ -14,14 +14,7 @@ class HighscoreMenu : public QWidget
 public:
     explicit HighscoreMenu(QWidget *parent = 0);
 
-    inline void changeEvent(QEvent *event)
-    {
-        if (event->type() == QEvent::LanguageChange) {
-            m_mainMenueLabel->setText(tr("Highscore"));
-            m_backToMainButtonHS->setText(tr("Back"));
-        } else
-            QWidget::changeEvent(event);
-    }
+    void changeEvent(QEvent *event);
 
 signals:
     void showStartMenu();

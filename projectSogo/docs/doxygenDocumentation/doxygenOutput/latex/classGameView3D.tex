@@ -1,0 +1,73 @@
+\hypertarget{classGameView3D}{\section{Game\-View3\-D Class Reference}
+\label{classGameView3D}\index{Game\-View3\-D@{Game\-View3\-D}}
+}
+Inheritance diagram for Game\-View3\-D\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classGameView3D}
+\end{center}
+\end{figure}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classGameView3D_ada434861732fe261a9a7958de4fb5f2e}{void {\bfseries Input\-Submit} (\hyperlink{structVector2}{Vector2} pos)}\label{classGameView3D_ada434861732fe261a9a7958de4fb5f2e}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classGameView3D_aa2a60cd38325c7a4ec92909d2efe7a80}{{\bfseries Game\-View3\-D} (Q\-Widget $\ast$parent=0)}\label{classGameView3D_aa2a60cd38325c7a4ec92909d2efe7a80}
+
+\item 
+\hypertarget{classGameView3D_a447292a1846348584fea8cbd2392d1dd}{{\bfseries Game\-View3\-D} (\hyperlink{classGameManager}{Game\-Manager} $\ast$gm, Q\-Widget $\ast$parent=0)}\label{classGameView3D_a447292a1846348584fea8cbd2392d1dd}
+
+\item 
+\hypertarget{classGameView3D_a9662a858540b5fcc1a80d78cd0a0aa2a}{void {\bfseries Clean\-Up} ()}\label{classGameView3D_a9662a858540b5fcc1a80d78cd0a0aa2a}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classGameView3D_ae077404d42f477162b3540da397a8ad4}{void {\bfseries send\-M\-V\-P} (G\-Luint program\-I\-D)}\label{classGameView3D_ae077404d42f477162b3540da397a8ad4}
+
+\item 
+\hypertarget{classGameView3D_a9a9ed01ef943bd24cbf41cb7de1993cc}{virtual void {\bfseries initialize\-G\-L} ()}\label{classGameView3D_a9a9ed01ef943bd24cbf41cb7de1993cc}
+
+\item 
+\hypertarget{classGameView3D_aa3422302bf8c9e9b30da86a916aec0aa}{virtual void {\bfseries paint\-G\-L} ()}\label{classGameView3D_aa3422302bf8c9e9b30da86a916aec0aa}
+
+\item 
+\hypertarget{classGameView3D_ac8cde08a41504dce4e95f08158bae4e2}{virtual void {\bfseries resize\-G\-L} (int w, int h)}\label{classGameView3D_ac8cde08a41504dce4e95f08158bae4e2}
+
+\item 
+\hypertarget{classGameView3D_abeb74e91cd820d7af1e62c714fc1864f}{void {\bfseries key\-Press\-Event} (Q\-Key\-Event $\ast$event)}\label{classGameView3D_abeb74e91cd820d7af1e62c714fc1864f}
+
+\item 
+\hypertarget{classGameView3D_a2a66712712d355039299efb5513fbeb2}{void {\bfseries mouse\-Press\-Event} (Q\-Mouse\-Event $\ast$event)}\label{classGameView3D_a2a66712712d355039299efb5513fbeb2}
+
+\item 
+\hypertarget{classGameView3D_a16eb2fd0448d2f50b1c5287f86ac9437}{void {\bfseries mouse\-Move\-Event} (Q\-Mouse\-Event $\ast$event)}\label{classGameView3D_a16eb2fd0448d2f50b1c5287f86ac9437}
+
+\item 
+\hypertarget{classGameView3D_aa4d6e119510fc03c95d52282579ca8ed}{bool {\bfseries Cast\-Ray} (Q\-Point m\-\_\-current\-Mouse\-Pos)}\label{classGameView3D_aa4d6e119510fc03c95d52282579ca8ed}
+
+\item 
+\hypertarget{classGameView3D_a31d588b55fd79e52732a28ccd196733c}{void {\bfseries Create\-Line} (\hyperlink{group__core__types_gad45787527c6ff2bd6680867204eb0354}{glm\-::vec3} start, \hyperlink{group__core__types_gad45787527c6ff2bd6680867204eb0354}{glm\-::vec3} end, G\-Luint \&Vertex\-Array\-I\-D\-Line)}\label{classGameView3D_a31d588b55fd79e52732a28ccd196733c}
+
+\item 
+\hypertarget{classGameView3D_a5e9b5ac73aaa4fedf3bbbec02544c184}{void {\bfseries Draw\-Line} (\hyperlink{group__core__types_gad45787527c6ff2bd6680867204eb0354}{glm\-::vec3} start, \hyperlink{group__core__types_gad45787527c6ff2bd6680867204eb0354}{glm\-::vec3} end)}\label{classGameView3D_a5e9b5ac73aaa4fedf3bbbec02544c184}
+
+\item 
+\hypertarget{classGameView3D_aa96228c70d0a93420abef7687518f809}{void {\bfseries Screen\-Pos\-To\-World\-Ray} (int mouse\-X, int mouse\-Y, int screen\-Width, int screen\-Height, \hyperlink{group__core__types_ga7dcd2365c2e368e6af5b7adeb6a9c8df}{glm\-::mat4} View\-Matrix, \hyperlink{group__core__types_ga7dcd2365c2e368e6af5b7adeb6a9c8df}{glm\-::mat4} Projection\-Matrix, \hyperlink{group__core__types_gad45787527c6ff2bd6680867204eb0354}{glm\-::vec3} \&out\-\_\-origin, \hyperlink{group__core__types_gad45787527c6ff2bd6680867204eb0354}{glm\-::vec3} \&out\-\_\-direction)}\label{classGameView3D_aa96228c70d0a93420abef7687518f809}
+
+\item 
+\hypertarget{classGameView3D_a301575899b1763b95a99e4c386f9356d}{bool {\bfseries Test\-Ray\-O\-B\-B\-Intersection} (\hyperlink{group__core__types_gad45787527c6ff2bd6680867204eb0354}{glm\-::vec3} ray\-\_\-origin, \hyperlink{group__core__types_gad45787527c6ff2bd6680867204eb0354}{glm\-::vec3} ray\-\_\-direction, \hyperlink{group__core__types_gad45787527c6ff2bd6680867204eb0354}{glm\-::vec3} aabb\-\_\-min, \hyperlink{group__core__types_gad45787527c6ff2bd6680867204eb0354}{glm\-::vec3} aabb\-\_\-max, \hyperlink{group__core__types_ga7dcd2365c2e368e6af5b7adeb6a9c8df}{glm\-::mat4} Model\-Matrix, float \&intersection\-\_\-distance)}\label{classGameView3D_a301575899b1763b95a99e4c386f9356d}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/alex/source\-Code/git\-Project/beleg\-Arbeit\-E\-M\-M\-S/project\-Sogo/include/gui/Game\-View3\-D.\-h\item 
+/home/alex/source\-Code/git\-Project/beleg\-Arbeit\-E\-M\-M\-S/project\-Sogo/build-\/sogo\-App-\/\-Desktop\-\_\-\-Qt\-\_\-5\-\_\-6\-\_\-0\-\_\-\-G\-C\-C\-\_\-64bit-\/\-Debug/moc\-\_\-\-Game\-View3\-D.\-cpp\item 
+/home/alex/source\-Code/git\-Project/beleg\-Arbeit\-E\-M\-M\-S/project\-Sogo/src/gui/Game\-View3\-D.\-cpp\end{DoxyCompactItemize}

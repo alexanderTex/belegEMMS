@@ -47,10 +47,6 @@ struct Vector3
 
 };
 
-inline std::ostream &operator<< (std::ostream &out, const Vector3 &vec)
-{
-    out << "x = " << vec.X << ", y = " << vec.Y << ", z = " << vec.Z;
-    return out;
-}
+std::ostream &operator<< (std::ostream &out, const Vector3 &vec);
 
 #endif // SLOTVECTOR_H

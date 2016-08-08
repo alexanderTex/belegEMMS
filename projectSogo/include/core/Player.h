@@ -46,55 +46,37 @@ public:
      * @brief GetType
      * @return
      */
-    inline PlayerType GetType() const
-    {
-        return m_playerType;
-    }
+    PlayerType GetType() const;
 
     /**
      * @brief GetName
      * @return
      */
-    inline std::string GetName() const
-    {
-        return m_playerName;
-    }
+    std::string GetName() const;
 
     /**
      * @brief GetColor
      * @return
      */
-    inline PlayingField::OccupationState GetColor() const
-    {
-        return m_playerColor;
-    }
+    PlayingField::OccupationState GetColor() const;
 
     /**
      * @brief SetName
      * @param name
      */
-    inline void SetName(std::string name)
-    {
-        m_playerName = name;
-    }
+    void SetName(std::string name);
 
     /**
      * @brief GetSkill
      * @return
      */
-    inline int GetSkill() const
-    {
-        return m_playerSkill;
-    }
+    int GetSkill() const;
 
     /**
      * @brief SetSkill
      * @param skill
      */
-    inline void SetSkill(int skill)
-    {
-        m_playerSkill = skill;
-    }
+    void SetSkill(int skill);
 
 private:
     /**

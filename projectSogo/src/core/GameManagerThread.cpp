@@ -35,6 +35,67 @@ void GameManager::run()
     this->GameLoop();
 }
 
+/**
+ * @brief GetGameData
+ * @return
+ */
+const GameData *GameManager::GetGameData() const
+{
+    return this->m_data;
+}
+
+/**
+ * @brief SetGameData
+ */
+void GameManager::SetGameData(GameData * data)
+{
+    this->m_data = data;
+    m_endGame = false;
+}
+
+void GameManager::StartGame()
+{
+    m_paused = false;
+    m_endGame = false;
+}
+
+
+void GameManager::PauseGame()
+{
+    m_paused = true;
+}
+
+void GameManager::SuspendProcessingLoop()
+{
+    m_endGame = true;
+}
+
+/**
+ * @brief Stop
+ * sets the boolean to end the Main processing thread when the user quits the game
+ */
+void GameManager::StopGameManagerThread()
+{
+    m_endGame = true;
+    m_stopThreadExecution = true;
+}
+
+/**
+ * @brief InputConfirmationDetected
+ * @param pos
+ */
+void GameManager::InputConfirmationDetected(Vector2 pos)
+{
+    playerPosChoice = pos;
+
+    std::stringstream s;
+    s << pos.X << " : " << pos.Y;
+    Logger::GetLoggerIntance()->LogInfo(s.str(), __FILE__, __LINE__);
+
+    m_playerInputConfirmed = true;
+}
+
+
 bool GameManager::MakeMove(Vector3 pos) throw(PlayingField::FieldExeptions, std::out_of_range)
 {
     this->m_data->OccupySlot(pos.X, pos.Y, pos.Z, this->m_data->GetCurrentPlayer()->GetColor());

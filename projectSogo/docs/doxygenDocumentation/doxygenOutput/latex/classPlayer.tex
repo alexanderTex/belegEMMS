@@ -1,0 +1,182 @@
+\hypertarget{classPlayer}{\section{Player Class Reference}
+\label{classPlayer}\index{Player@{Player}}
+}
+
+
+The \hyperlink{classPlayer}{Player} class Defines a \hyperlink{classPlayer}{Player} that is defined by the type, which the player belongs to ( human or ai player ) a name a Color ( Currently Occupationstate ) skill ( currently only effectively used by ai)  
+
+
+
+
+{\ttfamily \#include $<$Player.\-h$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{classPlayer_a97dc3c423902370176605121e8f68415}{Player\-Type} \{ {\bfseries H\-U\-M\-A\-N}, 
+{\bfseries A\-I}
+ \}
+\begin{DoxyCompactList}\small\item\em The Player\-Type enum defines which type the player can be of who is playing the game. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classPlayer_a66f0cbcaa9de5f81fcbb4ee72d0f110e}{Player} (\hyperlink{classPlayer_a97dc3c423902370176605121e8f68415}{Player\-Type} type, std\-::string name, \hyperlink{classPlayingField_ac6df152a3f820aa04a00ab4df4a9d265}{Playing\-Field\-::\-Occupation\-State} color, unsigned int skill=0)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classPlayer}{Player}. \end{DoxyCompactList}\item 
+\hyperlink{classPlayer_a6d2881f060b07eb48077cad6044fcd8f}{Player} (const \hyperlink{classPlayer}{Player} \&src)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classPlayer}{Player}. \end{DoxyCompactList}\item 
+\hyperlink{classPlayer_a97dc3c423902370176605121e8f68415}{Player\-Type} \hyperlink{classPlayer_a4dbe0b63aab9abaeaa75612d1daf0fb4}{Get\-Type} () const 
+\begin{DoxyCompactList}\small\item\em Get\-Type. \end{DoxyCompactList}\item 
+std\-::string \hyperlink{classPlayer_aa5030908379dbc95594e4a9856758fef}{Get\-Name} () const 
+\begin{DoxyCompactList}\small\item\em Get\-Name. \end{DoxyCompactList}\item 
+\hyperlink{classPlayingField_ac6df152a3f820aa04a00ab4df4a9d265}{Playing\-Field\-::\-Occupation\-State} \hyperlink{classPlayer_a49f420e5204c895b9a94f07f6aaf639f}{Get\-Color} () const 
+\begin{DoxyCompactList}\small\item\em Get\-Color. \end{DoxyCompactList}\item 
+void \hyperlink{classPlayer_ac6727206628d233b9094c8e80f777c1d}{Set\-Name} (std\-::string name)
+\begin{DoxyCompactList}\small\item\em Set\-Name. \end{DoxyCompactList}\item 
+int \hyperlink{classPlayer_a9d8cedd46573b958fe6febbf89d07322}{Get\-Skill} () const 
+\begin{DoxyCompactList}\small\item\em Get\-Skill. \end{DoxyCompactList}\item 
+void \hyperlink{classPlayer_a432304cacd50b399038ea787d65464cc}{Set\-Skill} (int skill)
+\begin{DoxyCompactList}\small\item\em Set\-Skill. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classPlayer}{Player} class Defines a \hyperlink{classPlayer}{Player} that is defined by the type, which the player belongs to ( human or ai player ) a name a Color ( Currently Occupationstate ) skill ( currently only effectively used by ai) 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classPlayer_a66f0cbcaa9de5f81fcbb4ee72d0f110e}{\index{Player@{Player}!Player@{Player}}
+\index{Player@{Player}!Player@{Player}}
+\subsubsection[{Player}]{\setlength{\rightskip}{0pt plus 5cm}Player\-::\-Player (
+\begin{DoxyParamCaption}
+\item[{{\bf Player\-Type}}]{type, }
+\item[{std\-::string}]{name, }
+\item[{{\bf Playing\-Field\-::\-Occupation\-State}}]{color, }
+\item[{unsigned int}]{skill = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}}\label{classPlayer_a66f0cbcaa9de5f81fcbb4ee72d0f110e}
+
+
+\hyperlink{classPlayer}{Player}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & \\
+\hline
+{\em name} & \\
+\hline
+{\em color} & \\
+\hline
+{\em skill} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classPlayer_a6d2881f060b07eb48077cad6044fcd8f}{\index{Player@{Player}!Player@{Player}}
+\index{Player@{Player}!Player@{Player}}
+\subsubsection[{Player}]{\setlength{\rightskip}{0pt plus 5cm}Player\-::\-Player (
+\begin{DoxyParamCaption}
+\item[{const {\bf Player} \&}]{src}
+\end{DoxyParamCaption}
+)}}\label{classPlayer_a6d2881f060b07eb48077cad6044fcd8f}
+
+
+\hyperlink{classPlayer}{Player}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em src} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classPlayer_a49f420e5204c895b9a94f07f6aaf639f}{\index{Player@{Player}!Get\-Color@{Get\-Color}}
+\index{Get\-Color@{Get\-Color}!Player@{Player}}
+\subsubsection[{Get\-Color}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Playing\-Field\-::\-Occupation\-State} Player\-::\-Get\-Color (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classPlayer_a49f420e5204c895b9a94f07f6aaf639f}
+
+
+Get\-Color. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{classPlayer_aa5030908379dbc95594e4a9856758fef}{\index{Player@{Player}!Get\-Name@{Get\-Name}}
+\index{Get\-Name@{Get\-Name}!Player@{Player}}
+\subsubsection[{Get\-Name}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string Player\-::\-Get\-Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classPlayer_aa5030908379dbc95594e4a9856758fef}
+
+
+Get\-Name. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{classPlayer_a9d8cedd46573b958fe6febbf89d07322}{\index{Player@{Player}!Get\-Skill@{Get\-Skill}}
+\index{Get\-Skill@{Get\-Skill}!Player@{Player}}
+\subsubsection[{Get\-Skill}]{\setlength{\rightskip}{0pt plus 5cm}int Player\-::\-Get\-Skill (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classPlayer_a9d8cedd46573b958fe6febbf89d07322}
+
+
+Get\-Skill. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{classPlayer_a4dbe0b63aab9abaeaa75612d1daf0fb4}{\index{Player@{Player}!Get\-Type@{Get\-Type}}
+\index{Get\-Type@{Get\-Type}!Player@{Player}}
+\subsubsection[{Get\-Type}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Player\-Type} Player\-::\-Get\-Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classPlayer_a4dbe0b63aab9abaeaa75612d1daf0fb4}
+
+
+Get\-Type. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{classPlayer_ac6727206628d233b9094c8e80f777c1d}{\index{Player@{Player}!Set\-Name@{Set\-Name}}
+\index{Set\-Name@{Set\-Name}!Player@{Player}}
+\subsubsection[{Set\-Name}]{\setlength{\rightskip}{0pt plus 5cm}void Player\-::\-Set\-Name (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classPlayer_ac6727206628d233b9094c8e80f777c1d}
+
+
+Set\-Name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classPlayer_a432304cacd50b399038ea787d65464cc}{\index{Player@{Player}!Set\-Skill@{Set\-Skill}}
+\index{Set\-Skill@{Set\-Skill}!Player@{Player}}
+\subsubsection[{Set\-Skill}]{\setlength{\rightskip}{0pt plus 5cm}void Player\-::\-Set\-Skill (
+\begin{DoxyParamCaption}
+\item[{int}]{skill}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classPlayer_a432304cacd50b399038ea787d65464cc}
+
+
+Set\-Skill. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em skill} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/alex/source\-Code/git\-Project/beleg\-Arbeit\-E\-M\-M\-S/project\-Sogo/include/core/Player.\-h\item 
+/home/alex/source\-Code/git\-Project/beleg\-Arbeit\-E\-M\-M\-S/project\-Sogo/src/core/Player.\-cpp\end{DoxyCompactItemize}

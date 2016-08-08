@@ -1,0 +1,715 @@
+\hypertarget{group__core__func__common}{\section{Common functions}
+\label{group__core__func__common}\index{Common functions@{Common functions}}
+}
+
+
+These all operate component-\/wise.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type \hyperlink{group__core__func__common_gaeca8e195d482248f677e3905d00f11ae}{glm\-::abs} (gen\-Type const \&x)
+\begin{DoxyCompactList}\small\item\em Returns x if x $>$= 0; otherwise, it returns -\/x. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type \hyperlink{group__core__func__common_ga79f412e6d33cb4be13497056c2298d14}{glm\-::sign} (gen\-Type const \&x)
+\begin{DoxyCompactList}\small\item\em Returns 1.\-0 if x $>$ 0, 0.\-0 if x == 0, or -\/1.\-0 if x $<$ 0. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type \hyperlink{group__core__func__common_gac3458e950a8a716468866f841a833c77}{glm\-::floor} (gen\-Type const \&x)
+\begin{DoxyCompactList}\small\item\em Returns a value equal to the nearest integer that is less then or equal to x. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type \hyperlink{group__core__func__common_gae1268fe85d913d9e4054de0e046abaef}{glm\-::trunc} (gen\-Type const \&x)
+\begin{DoxyCompactList}\small\item\em Returns a value equal to the nearest integer to x whose absolute value is not larger than the absolute value of x. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type \hyperlink{group__core__func__common_ga32125c5451799e80b886ef665b947d0c}{glm\-::round} (gen\-Type const \&x)
+\begin{DoxyCompactList}\small\item\em Returns a value equal to the nearest integer to x. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type \hyperlink{group__core__func__common_gab46fe1ce5fdd08f904be811a53364968}{glm\-::round\-Even} (gen\-Type const \&x)
+\begin{DoxyCompactList}\small\item\em Returns a value equal to the nearest integer to x. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type \hyperlink{group__core__func__common_ga1ce130f2934cf1d7aca83a7027422f3c}{glm\-::ceil} (gen\-Type const \&x)
+\begin{DoxyCompactList}\small\item\em Returns a value equal to the nearest integer that is greater than or equal to x. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type \hyperlink{group__core__func__common_gad5e3814491ff6baa4f0d16aebcabff9b}{glm\-::fract} (gen\-Type const \&x)
+\begin{DoxyCompactList}\small\item\em Return x -\/ floor(x). \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type \hyperlink{group__core__func__common_ga3bdf136bc96f670965cd2f48d14356b4}{glm\-::mod} (gen\-Type const \&x, gen\-Type const \&y)
+\begin{DoxyCompactList}\small\item\em Modulus. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type \hyperlink{group__core__func__common_gaafffb265a1455c56d85594032ded2dc3}{glm\-::mod} (gen\-Type const \&x, typename gen\-Type\-::value\-\_\-type const \&y)
+\begin{DoxyCompactList}\small\item\em Modulus. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type \hyperlink{group__core__func__common_ga34ff69d5efb2fafa3156ad2b87bd49ec}{glm\-::modf} (gen\-Type const \&x, gen\-Type \&i)
+\begin{DoxyCompactList}\small\item\em Returns the fractional part of x and sets i to the integer part (as a whole number floating point value). \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type \hyperlink{group__core__func__common_ga0d2bb6c2caad4acf992e6dcd41a626fe}{glm\-::min} (gen\-Type const \&x, gen\-Type const \&y)
+\begin{DoxyCompactList}\small\item\em Returns y if y $<$ x; otherwise, it returns x. \end{DoxyCompactList}\item 
+\hypertarget{group__core__func__common_gabf95170186e1211d954356eebc929172}{{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type {\bfseries glm\-::min} (gen\-Type const \&x, typename gen\-Type\-::value\-\_\-type const \&y)}\label{group__core__func__common_gabf95170186e1211d954356eebc929172}
+
+\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type \hyperlink{group__core__func__common_ga3f6af26fbb056e0fc8a04ddc8871add2}{glm\-::max} (gen\-Type const \&x, gen\-Type const \&y)
+\begin{DoxyCompactList}\small\item\em Returns y if x $<$ y; otherwise, it returns x. \end{DoxyCompactList}\item 
+\hypertarget{group__core__func__common_gaa1caf0544cc0756a6ce1289b7cc537a5}{{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type {\bfseries glm\-::max} (gen\-Type const \&x, typename gen\-Type\-::value\-\_\-type const \&y)}\label{group__core__func__common_gaa1caf0544cc0756a6ce1289b7cc537a5}
+
+\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type \hyperlink{group__core__func__common_ga99b1ce602a02833646e5077345858da4}{glm\-::clamp} (gen\-Type const \&x, gen\-Type const \&min\-Val, gen\-Type const \&max\-Val)
+\begin{DoxyCompactList}\small\item\em Returns min(max(x, min\-Val), max\-Val) for each component in x using the floating-\/point values min\-Val and max\-Val. \end{DoxyCompactList}\item 
+\hypertarget{group__core__func__common_ga316c764f29216750e0f064b1d4f9dad1}{{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type {\bfseries glm\-::clamp} (gen\-Type const \&x, typename gen\-Type\-::value\-\_\-type const \&min\-Val, typename gen\-Type\-::value\-\_\-type const \&max\-Val)}\label{group__core__func__common_ga316c764f29216750e0f064b1d4f9dad1}
+
+\item 
+{\footnotesize template$<$typename gen\-Type\-T , typename gen\-Type\-U $>$ }\\gen\-Type\-T \hyperlink{group__core__func__common_ga3f64b3986efe205cf30300700667e761}{glm\-::mix} (gen\-Type\-T const \&x, gen\-Type\-T const \&y, gen\-Type\-U const \&a)
+\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type \hyperlink{group__core__func__common_ga3d3199dcbbb0ac8e0d9664d538702a40}{glm\-::step} (gen\-Type const \&edge, gen\-Type const \&x)
+\begin{DoxyCompactList}\small\item\em Returns 0.\-0 if x $<$ edge, otherwise it returns 1.\-0. \end{DoxyCompactList}\item 
+\hypertarget{group__core__func__common_ga4e72355ecc7fe6cf49084ff3f364953a}{{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type {\bfseries glm\-::step} (typename gen\-Type\-::value\-\_\-type const \&edge, gen\-Type const \&x)}\label{group__core__func__common_ga4e72355ecc7fe6cf49084ff3f364953a}
+
+\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type \hyperlink{group__core__func__common_gabdfe71a62ef69b5ec834601e87588667}{glm\-::smoothstep} (gen\-Type const \&edge0, gen\-Type const \&edge1, gen\-Type const \&x)
+\begin{DoxyCompactList}\small\item\em Returns 0.\-0 if x $<$= edge0 and 1.\-0 if x $>$= edge1 and performs smooth Hermite interpolation between 0 and 1 when edge0 $<$ x $<$ edge1. \end{DoxyCompactList}\item 
+\hypertarget{group__core__func__common_ga55cbc12e4124b5410bfc6ee97d251b31}{{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type {\bfseries glm\-::smoothstep} (typename gen\-Type\-::value\-\_\-type const \&edge0, typename gen\-Type\-::value\-\_\-type const \&edge1, gen\-Type const \&x)}\label{group__core__func__common_ga55cbc12e4124b5410bfc6ee97d251b31}
+
+\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type\-::bool\-\_\-type \hyperlink{group__core__func__common_ga5efda4205aed487be515b5f2921303f8}{glm\-::isnan} (gen\-Type const \&x)
+\begin{DoxyCompactList}\small\item\em Returns true if x holds a Na\-N (not a number) representation in the underlying implementation's set of floating point representations. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type\-::bool\-\_\-type \hyperlink{group__core__func__common_ga69fcbd40e0ce359f832329c0c93d5912}{glm\-::isinf} (gen\-Type const \&x)
+\begin{DoxyCompactList}\small\item\em Returns true if x holds a positive infinity or negative infinity representation in the underlying implementation's set of floating point representations. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename gen\-Type , typename gen\-I\-Type $>$ }\\gen\-I\-Type \hyperlink{group__core__func__common_ga0ac6c59156dcdc12fa8fd861925ddb4c}{glm\-::float\-Bits\-To\-Int} (gen\-Type const \&value)
+\begin{DoxyCompactList}\small\item\em Returns a signed integer value representing the encoding of a floating-\/point value. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename gen\-Type , typename gen\-U\-Type $>$ }\\gen\-U\-Type \hyperlink{group__core__func__common_gaccd4fbc2c30848eb85370e2e5b4e4eec}{glm\-::float\-Bits\-To\-Uint} (gen\-Type const \&value)
+\begin{DoxyCompactList}\small\item\em Returns a unsigned integer value representing the encoding of a floating-\/point value. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename gen\-Type , typename gen\-I\-Type $>$ }\\gen\-Type \hyperlink{group__core__func__common_ga15f7f0f93ebb026338cb3d7d5876e1b7}{glm\-::int\-Bits\-To\-Float} (gen\-I\-Type const \&value)
+\begin{DoxyCompactList}\small\item\em Returns a floating-\/point value corresponding to a signed integer encoding of a floating-\/point value. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename gen\-Type , typename gen\-U\-Type $>$ }\\gen\-Type \hyperlink{group__core__func__common_ga3e4a94c90cffac713c287d1fb7b51c08}{glm\-::uint\-Bits\-To\-Float} (gen\-U\-Type const \&value)
+\begin{DoxyCompactList}\small\item\em Returns a floating-\/point value corresponding to a unsigned integer encoding of a floating-\/point value. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename gen\-Type $>$ }\\gen\-Type \hyperlink{group__core__func__common_gae88b926eebc4d610ecdd148bf8c7bdac}{glm\-::fma} (gen\-Type const \&a, gen\-Type const \&b, gen\-Type const \&c)
+\begin{DoxyCompactList}\small\item\em Computes and returns a $\ast$ b + c. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename gen\-Type , typename gen\-I\-Type $>$ }\\gen\-Type \hyperlink{group__core__func__common_ga459a98ee7601031e99bf0e99978ff13f}{glm\-::frexp} (gen\-Type const \&x, gen\-I\-Type \&exp)
+\begin{DoxyCompactList}\small\item\em Splits x into a floating-\/point significand in the range \mbox{[}0.\-5, 1.\-0) and an integral exponent of two, such that\-: x = significand $\ast$ exp(2, exponent) \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename gen\-Type , typename gen\-I\-Type $>$ }\\gen\-Type \hyperlink{group__core__func__common_gaf210cb4f21bbfde6ace0849e960a4b3a}{glm\-::ldexp} (gen\-Type const \&x, gen\-I\-Type const \&exp)
+\begin{DoxyCompactList}\small\item\em Builds a floating-\/point number from x and the corresponding integral exponent of two in exp, returning\-: significand $\ast$ exp(2, exponent) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+These all operate component-\/wise. The description is per component. 
+
+\subsection{Function Documentation}
+\hypertarget{group__core__func__common_gaeca8e195d482248f677e3905d00f11ae}{\index{Common functions@{Common functions}!abs@{abs}}
+\index{abs@{abs}!Common functions@{Common functions}}
+\subsubsection[{abs}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ gen\-Type glm\-::abs (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{x}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__common_gaeca8e195d482248f677e3905d00f11ae}
+
+
+Returns x if x $>$= 0; otherwise, it returns -\/x. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & floating-\/point or signed integer; scalar or vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/abs.xml}{\tt G\-L\-S\-L abs man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-3 Common Functions} 
+\end{DoxySeeAlso}
+\hypertarget{group__core__func__common_ga1ce130f2934cf1d7aca83a7027422f3c}{\index{Common functions@{Common functions}!ceil@{ceil}}
+\index{ceil@{ceil}!Common functions@{Common functions}}
+\subsubsection[{ceil}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ gen\-Type glm\-::ceil (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{x}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__common_ga1ce130f2934cf1d7aca83a7027422f3c}
+
+
+Returns a value equal to the nearest integer that is greater than or equal to x. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Floating-\/point scalar or vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/ceil.xml}{\tt G\-L\-S\-L ceil man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-3 Common Functions} 
+\end{DoxySeeAlso}
+\hypertarget{group__core__func__common_ga99b1ce602a02833646e5077345858da4}{\index{Common functions@{Common functions}!clamp@{clamp}}
+\index{clamp@{clamp}!Common functions@{Common functions}}
+\subsubsection[{clamp}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ gen\-Type glm\-::clamp (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{x, }
+\item[{gen\-Type const \&}]{min\-Val, }
+\item[{gen\-Type const \&}]{max\-Val}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__common_ga99b1ce602a02833646e5077345858da4}
+
+
+Returns min(max(x, min\-Val), max\-Val) for each component in x using the floating-\/point values min\-Val and max\-Val. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Floating-\/point or integer; scalar or vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/clamp.xml}{\tt G\-L\-S\-L clamp man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-3 Common Functions} 
+\end{DoxySeeAlso}
+\hypertarget{group__core__func__common_ga0ac6c59156dcdc12fa8fd861925ddb4c}{\index{Common functions@{Common functions}!float\-Bits\-To\-Int@{float\-Bits\-To\-Int}}
+\index{float\-Bits\-To\-Int@{float\-Bits\-To\-Int}!Common functions@{Common functions}}
+\subsubsection[{float\-Bits\-To\-Int}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type , typename gen\-I\-Type $>$ gen\-I\-Type glm\-::float\-Bits\-To\-Int (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{value}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__common_ga0ac6c59156dcdc12fa8fd861925ddb4c}
+
+
+Returns a signed integer value representing the encoding of a floating-\/point value. 
+
+The floatingpoint value's bit-\/level representation is preserved.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Single-\/precision floating-\/point scalar or vector types. \\
+\hline
+{\em gen\-I\-Type} & Signed integer scalar or vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/floatBitsToInt.xml}{\tt G\-L\-S\-L float\-Bits\-To\-Int man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-3 Common Functions} 
+\end{DoxySeeAlso}
+\hypertarget{group__core__func__common_gaccd4fbc2c30848eb85370e2e5b4e4eec}{\index{Common functions@{Common functions}!float\-Bits\-To\-Uint@{float\-Bits\-To\-Uint}}
+\index{float\-Bits\-To\-Uint@{float\-Bits\-To\-Uint}!Common functions@{Common functions}}
+\subsubsection[{float\-Bits\-To\-Uint}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type , typename gen\-U\-Type $>$ gen\-U\-Type glm\-::float\-Bits\-To\-Uint (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{value}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__common_gaccd4fbc2c30848eb85370e2e5b4e4eec}
+
+
+Returns a unsigned integer value representing the encoding of a floating-\/point value. 
+
+The floatingpoint value's bit-\/level representation is preserved.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Single-\/precision floating-\/point scalar or vector types. \\
+\hline
+{\em gen\-U\-Type} & Unsigned integer scalar or vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/floatBitsToUint.xml}{\tt G\-L\-S\-L float\-Bits\-To\-Uint man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-3 Common Functions} 
+\end{DoxySeeAlso}
+\hypertarget{group__core__func__common_gac3458e950a8a716468866f841a833c77}{\index{Common functions@{Common functions}!floor@{floor}}
+\index{floor@{floor}!Common functions@{Common functions}}
+\subsubsection[{floor}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ gen\-Type glm\-::floor (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{x}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__common_gac3458e950a8a716468866f841a833c77}
+
+
+Returns a value equal to the nearest integer that is less then or equal to x. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Floating-\/point scalar or vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/floor.xml}{\tt G\-L\-S\-L floor man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-3 Common Functions} 
+\end{DoxySeeAlso}
+\hypertarget{group__core__func__common_gae88b926eebc4d610ecdd148bf8c7bdac}{\index{Common functions@{Common functions}!fma@{fma}}
+\index{fma@{fma}!Common functions@{Common functions}}
+\subsubsection[{fma}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ gen\-Type glm\-::fma (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{a, }
+\item[{gen\-Type const \&}]{b, }
+\item[{gen\-Type const \&}]{c}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__common_gae88b926eebc4d610ecdd148bf8c7bdac}
+
+
+Computes and returns a $\ast$ b + c. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Floating-\/point scalar or vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/fma.xml}{\tt G\-L\-S\-L fma man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-3 Common Functions} 
+\end{DoxySeeAlso}
+\hypertarget{group__core__func__common_gad5e3814491ff6baa4f0d16aebcabff9b}{\index{Common functions@{Common functions}!fract@{fract}}
+\index{fract@{fract}!Common functions@{Common functions}}
+\subsubsection[{fract}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ gen\-Type glm\-::fract (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{x}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__common_gad5e3814491ff6baa4f0d16aebcabff9b}
+
+
+Return x -\/ floor(x). 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Floating-\/point scalar or vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/fract.xml}{\tt G\-L\-S\-L fract man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-3 Common Functions} 
+\end{DoxySeeAlso}
+\hypertarget{group__core__func__common_ga459a98ee7601031e99bf0e99978ff13f}{\index{Common functions@{Common functions}!frexp@{frexp}}
+\index{frexp@{frexp}!Common functions@{Common functions}}
+\subsubsection[{frexp}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type , typename gen\-I\-Type $>$ gen\-Type glm\-::frexp (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{x, }
+\item[{gen\-I\-Type \&}]{exp}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__common_ga459a98ee7601031e99bf0e99978ff13f}
+
+
+Splits x into a floating-\/point significand in the range \mbox{[}0.\-5, 1.\-0) and an integral exponent of two, such that\-: x = significand $\ast$ exp(2, exponent) 
+
+The significand is returned by the function and the exponent is returned in the parameter exp. For a floating-\/point value of zero, the significant and exponent are both zero. For a floating-\/point value that is an infinity or is not a number, the results are undefined.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Floating-\/point scalar or vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/frexp.xml}{\tt G\-L\-S\-L frexp man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-3 Common Functions} 
+\end{DoxySeeAlso}
+\hypertarget{group__core__func__common_ga15f7f0f93ebb026338cb3d7d5876e1b7}{\index{Common functions@{Common functions}!int\-Bits\-To\-Float@{int\-Bits\-To\-Float}}
+\index{int\-Bits\-To\-Float@{int\-Bits\-To\-Float}!Common functions@{Common functions}}
+\subsubsection[{int\-Bits\-To\-Float}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type , typename gen\-I\-Type $>$ gen\-Type glm\-::int\-Bits\-To\-Float (
+\begin{DoxyParamCaption}
+\item[{gen\-I\-Type const \&}]{value}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__common_ga15f7f0f93ebb026338cb3d7d5876e1b7}
+
+
+Returns a floating-\/point value corresponding to a signed integer encoding of a floating-\/point value. 
+
+If an inf or Na\-N is passed in, it will not signal, and the resulting floating point value is unspecified. Otherwise, the bit-\/level representation is preserved.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Single-\/precision floating-\/point scalar or vector types. \\
+\hline
+{\em gen\-I\-Type} & Signed integer scalar or vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/intBitsToFloat.xml}{\tt G\-L\-S\-L int\-Bits\-To\-Float man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-3 Common Functions}
+\end{DoxySeeAlso}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000001}{Todo}]Clarify this declaration, we don't need to actually specify the return type \end{DoxyRefDesc}
+\hypertarget{group__core__func__common_ga69fcbd40e0ce359f832329c0c93d5912}{\index{Common functions@{Common functions}!isinf@{isinf}}
+\index{isinf@{isinf}!Common functions@{Common functions}}
+\subsubsection[{isinf}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ gen\-Type\-::bool\-\_\-type glm\-::isinf (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{x}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__common_ga69fcbd40e0ce359f832329c0c93d5912}
+
+
+Returns true if x holds a positive infinity or negative infinity representation in the underlying implementation's set of floating point representations. 
+
+Returns false otherwise, including for implementations with no infinity representations.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Floating-\/point scalar or vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/isinf.xml}{\tt G\-L\-S\-L isinf man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-3 Common Functions} 
+\end{DoxySeeAlso}
+\hypertarget{group__core__func__common_ga5efda4205aed487be515b5f2921303f8}{\index{Common functions@{Common functions}!isnan@{isnan}}
+\index{isnan@{isnan}!Common functions@{Common functions}}
+\subsubsection[{isnan}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ gen\-Type\-::bool\-\_\-type glm\-::isnan (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{x}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__common_ga5efda4205aed487be515b5f2921303f8}
+
+
+Returns true if x holds a Na\-N (not a number) representation in the underlying implementation's set of floating point representations. 
+
+Returns false otherwise, including for implementations with no Na\-N representations.
+
+/!\textbackslash{} When using compiler fast math, this function may fail.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Floating-\/point scalar or vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/isnan.xml}{\tt G\-L\-S\-L isnan man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-3 Common Functions} 
+\end{DoxySeeAlso}
+\hypertarget{group__core__func__common_gaf210cb4f21bbfde6ace0849e960a4b3a}{\index{Common functions@{Common functions}!ldexp@{ldexp}}
+\index{ldexp@{ldexp}!Common functions@{Common functions}}
+\subsubsection[{ldexp}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type , typename gen\-I\-Type $>$ gen\-Type glm\-::ldexp (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{x, }
+\item[{gen\-I\-Type const \&}]{exp}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__common_gaf210cb4f21bbfde6ace0849e960a4b3a}
+
+
+Builds a floating-\/point number from x and the corresponding integral exponent of two in exp, returning\-: significand $\ast$ exp(2, exponent) 
+
+If this product is too large to be represented in the floating-\/point type, the result is undefined.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Floating-\/point scalar or vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/ldexp.xml}{\tt G\-L\-S\-L ldexp man page}; 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-3 Common Functions} 
+\end{DoxySeeAlso}
+\hypertarget{group__core__func__common_ga3f6af26fbb056e0fc8a04ddc8871add2}{\index{Common functions@{Common functions}!max@{max}}
+\index{max@{max}!Common functions@{Common functions}}
+\subsubsection[{max}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ gen\-Type glm\-::max (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{x, }
+\item[{gen\-Type const \&}]{y}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__common_ga3f6af26fbb056e0fc8a04ddc8871add2}
+
+
+Returns y if x $<$ y; otherwise, it returns x. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Floating-\/point or integer; scalar or vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/max.xml}{\tt G\-L\-S\-L max man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-3 Common Functions} 
+\end{DoxySeeAlso}
+\hypertarget{group__core__func__common_ga0d2bb6c2caad4acf992e6dcd41a626fe}{\index{Common functions@{Common functions}!min@{min}}
+\index{min@{min}!Common functions@{Common functions}}
+\subsubsection[{min}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ gen\-Type glm\-::min (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{x, }
+\item[{gen\-Type const \&}]{y}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__common_ga0d2bb6c2caad4acf992e6dcd41a626fe}
+
+
+Returns y if y $<$ x; otherwise, it returns x. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Floating-\/point or integer; scalar or vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/min.xml}{\tt G\-L\-S\-L min man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-3 Common Functions} 
+\end{DoxySeeAlso}
+\hypertarget{group__core__func__common_ga3f64b3986efe205cf30300700667e761}{\index{Common functions@{Common functions}!mix@{mix}}
+\index{mix@{mix}!Common functions@{Common functions}}
+\subsubsection[{mix}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type\-T , typename gen\-Type\-U $>$ gen\-Type\-T glm\-::mix (
+\begin{DoxyParamCaption}
+\item[{gen\-Type\-T const \&}]{x, }
+\item[{gen\-Type\-T const \&}]{y, }
+\item[{gen\-Type\-U const \&}]{a}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__common_ga3f64b3986efe205cf30300700667e761}
+\begin{DoxyReturn}{Returns}
+If gen\-Type\-U is a floating scalar or vector\-: Returns x $\ast$ (1.\-0 -\/ a) + y $\ast$ a, i.\-e., the linear blend of x and y using the floating-\/point value a. The value for a is not restricted to the range \mbox{[}0, 1\mbox{]}.
+
+If gen\-Type\-U is a boolean scalar or vector\-: Selects which vector each returned component comes from. For a component of a that is false, the corresponding component of x is returned. For a component of a that is true, the corresponding component of y is returned. Components of x and y that are not selected are allowed to be invalid floating point values and will have no effect on the results. Thus, this provides different functionality than gen\-Type mix(gen\-Type x, gen\-Type y, gen\-Type(a)) where a is a Boolean vector.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/mix.xml}{\tt G\-L\-S\-L mix man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-3 Common Functions}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em x} & Value to interpolate. \\
+\hline
+\mbox{\tt in}  & {\em y} & Value to interpolate. \\
+\hline
+\mbox{\tt in}  & {\em a} & Interpolant.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type\-T} & Floating point scalar or vector. \\
+\hline
+{\em gen\-Type\-U} & Floating point or boolean scalar or vector. It can't be a vector if it is the length of gen\-Type\-T.\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyCode}
+\textcolor{preprocessor}{#include <\hyperlink{glm_8hpp}{glm/glm.hpp}>}
+...
+float a;
+\textcolor{keywordtype}{bool} b;
+\hyperlink{structglm_1_1detail_1_1tvec3}{glm::dvec3} \hyperlink{group__gtc__constants_ga1cebaa574cc7c9018ccefbde3f174db5}{e};
+\hyperlink{structglm_1_1detail_1_1tvec3}{glm::dvec3} f;
+\hyperlink{structglm_1_1detail_1_1tvec4}{glm::vec4} g;
+\hyperlink{structglm_1_1detail_1_1tvec4}{glm::vec4} h;
+...
+glm::vec4 r = \hyperlink{group__core__func__common_ga3f64b3986efe205cf30300700667e761}{glm::mix}(g, h, a); \textcolor{comment}{// Interpolate with a floating-point scalar two vectors. }
+\hyperlink{structglm_1_1detail_1_1tvec4}{glm::vec4} s = \hyperlink{group__core__func__common_ga3f64b3986efe205cf30300700667e761}{glm::mix}(g, h, b); \textcolor{comment}{// Teturns g or h;}
+\hyperlink{structglm_1_1detail_1_1tvec3}{glm::dvec3} t = \hyperlink{group__core__func__common_ga3f64b3986efe205cf30300700667e761}{glm::mix}(e, f, a); \textcolor{comment}{// Types of the third parameter is not required to
+       match with the first and the second.}
+\hyperlink{structglm_1_1detail_1_1tvec4}{glm::vec4} u = \hyperlink{group__core__func__common_ga3f64b3986efe205cf30300700667e761}{glm::mix}(g, h, r); \textcolor{comment}{// Interpolations can be perform per component with a
+       vector for the last parameter.}
+\end{DoxyCode}
+ \hypertarget{group__core__func__common_ga3bdf136bc96f670965cd2f48d14356b4}{\index{Common functions@{Common functions}!mod@{mod}}
+\index{mod@{mod}!Common functions@{Common functions}}
+\subsubsection[{mod}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ gen\-Type glm\-::mod (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{x, }
+\item[{gen\-Type const \&}]{y}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__common_ga3bdf136bc96f670965cd2f48d14356b4}
+
+
+Modulus. 
+
+Returns x -\/ y $\ast$ floor(x / y) for each component in x using the floating point value y.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Floating-\/point scalar or vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/mod.xml}{\tt G\-L\-S\-L mod man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-3 Common Functions} 
+\end{DoxySeeAlso}
+\hypertarget{group__core__func__common_gaafffb265a1455c56d85594032ded2dc3}{\index{Common functions@{Common functions}!mod@{mod}}
+\index{mod@{mod}!Common functions@{Common functions}}
+\subsubsection[{mod}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ gen\-Type glm\-::mod (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{x, }
+\item[{typename gen\-Type\-::value\-\_\-type const \&}]{y}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__common_gaafffb265a1455c56d85594032ded2dc3}
+
+
+Modulus. 
+
+Returns x -\/ y $\ast$ floor(x / y) for each component in x using the floating point value y.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Floating-\/point scalar or vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/mod.xml}{\tt G\-L\-S\-L mod man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-3 Common Functions} 
+\end{DoxySeeAlso}
+\hypertarget{group__core__func__common_ga34ff69d5efb2fafa3156ad2b87bd49ec}{\index{Common functions@{Common functions}!modf@{modf}}
+\index{modf@{modf}!Common functions@{Common functions}}
+\subsubsection[{modf}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ gen\-Type glm\-::modf (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{x, }
+\item[{gen\-Type \&}]{i}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__common_ga34ff69d5efb2fafa3156ad2b87bd49ec}
+
+
+Returns the fractional part of x and sets i to the integer part (as a whole number floating point value). 
+
+Both the return value and the output parameter will have the same sign as x.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Floating-\/point scalar or vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/modf.xml}{\tt G\-L\-S\-L modf man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-3 Common Functions} 
+\end{DoxySeeAlso}
+\hypertarget{group__core__func__common_ga32125c5451799e80b886ef665b947d0c}{\index{Common functions@{Common functions}!round@{round}}
+\index{round@{round}!Common functions@{Common functions}}
+\subsubsection[{round}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ gen\-Type glm\-::round (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{x}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__common_ga32125c5451799e80b886ef665b947d0c}
+
+
+Returns a value equal to the nearest integer to x. 
+
+The fraction 0.\-5 will round in a direction chosen by the implementation, presumably the direction that is fastest. This includes the possibility that round(x) returns the same value as round\-Even(x) for all values of x.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Floating-\/point scalar or vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/round.xml}{\tt G\-L\-S\-L round man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-3 Common Functions} 
+\end{DoxySeeAlso}
+\hypertarget{group__core__func__common_gab46fe1ce5fdd08f904be811a53364968}{\index{Common functions@{Common functions}!round\-Even@{round\-Even}}
+\index{round\-Even@{round\-Even}!Common functions@{Common functions}}
+\subsubsection[{round\-Even}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ gen\-Type glm\-::round\-Even (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{x}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__common_gab46fe1ce5fdd08f904be811a53364968}
+
+
+Returns a value equal to the nearest integer to x. 
+
+A fractional part of 0.\-5 will round toward the nearest even integer. (Both 3.\-5 and 4.\-5 for x will return 4.\-0.)
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Floating-\/point scalar or vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/roundEven.xml}{\tt G\-L\-S\-L round\-Even man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-3 Common Functions} 
+
+\href{http://developer.amd.com/documentation/articles/pages/New-Round-to-Even-Technique.aspx}{\tt New round to even technique} 
+\end{DoxySeeAlso}
+\hypertarget{group__core__func__common_ga79f412e6d33cb4be13497056c2298d14}{\index{Common functions@{Common functions}!sign@{sign}}
+\index{sign@{sign}!Common functions@{Common functions}}
+\subsubsection[{sign}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ gen\-Type glm\-::sign (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{x}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__common_ga79f412e6d33cb4be13497056c2298d14}
+
+
+Returns 1.\-0 if x $>$ 0, 0.\-0 if x == 0, or -\/1.\-0 if x $<$ 0. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Floating-\/point or signed integer; scalar or vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/sign.xml}{\tt G\-L\-S\-L sign man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-3 Common Functions} 
+\end{DoxySeeAlso}
+\hypertarget{group__core__func__common_gabdfe71a62ef69b5ec834601e87588667}{\index{Common functions@{Common functions}!smoothstep@{smoothstep}}
+\index{smoothstep@{smoothstep}!Common functions@{Common functions}}
+\subsubsection[{smoothstep}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ gen\-Type glm\-::smoothstep (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{edge0, }
+\item[{gen\-Type const \&}]{edge1, }
+\item[{gen\-Type const \&}]{x}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__common_gabdfe71a62ef69b5ec834601e87588667}
+
+
+Returns 0.\-0 if x $<$= edge0 and 1.\-0 if x $>$= edge1 and performs smooth Hermite interpolation between 0 and 1 when edge0 $<$ x $<$ edge1. 
+
+This is useful in cases where you would want a threshold function with a smooth transition. This is equivalent to\-: gen\-Type t; t = clamp ((x – edge0) / (edge1 – edge0), 0, 1); return t $\ast$ t $\ast$ (3 – 2 $\ast$ t); Results are undefined if edge0 $>$= edge1.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Floating-\/point scalar or vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/smoothstep.xml}{\tt G\-L\-S\-L smoothstep man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-3 Common Functions} 
+\end{DoxySeeAlso}
+\hypertarget{group__core__func__common_ga3d3199dcbbb0ac8e0d9664d538702a40}{\index{Common functions@{Common functions}!step@{step}}
+\index{step@{step}!Common functions@{Common functions}}
+\subsubsection[{step}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ gen\-Type glm\-::step (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{edge, }
+\item[{gen\-Type const \&}]{x}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__common_ga3d3199dcbbb0ac8e0d9664d538702a40}
+
+
+Returns 0.\-0 if x $<$ edge, otherwise it returns 1.\-0. 
+
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/step.xml}{\tt G\-L\-S\-L step man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-3 Common Functions} 
+\end{DoxySeeAlso}
+\hypertarget{group__core__func__common_gae1268fe85d913d9e4054de0e046abaef}{\index{Common functions@{Common functions}!trunc@{trunc}}
+\index{trunc@{trunc}!Common functions@{Common functions}}
+\subsubsection[{trunc}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type $>$ gen\-Type glm\-::trunc (
+\begin{DoxyParamCaption}
+\item[{gen\-Type const \&}]{x}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__common_gae1268fe85d913d9e4054de0e046abaef}
+
+
+Returns a value equal to the nearest integer to x whose absolute value is not larger than the absolute value of x. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Floating-\/point scalar or vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/trunc.xml}{\tt G\-L\-S\-L trunc man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-3 Common Functions} 
+\end{DoxySeeAlso}
+\hypertarget{group__core__func__common_ga3e4a94c90cffac713c287d1fb7b51c08}{\index{Common functions@{Common functions}!uint\-Bits\-To\-Float@{uint\-Bits\-To\-Float}}
+\index{uint\-Bits\-To\-Float@{uint\-Bits\-To\-Float}!Common functions@{Common functions}}
+\subsubsection[{uint\-Bits\-To\-Float}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename gen\-Type , typename gen\-U\-Type $>$ gen\-Type glm\-::uint\-Bits\-To\-Float (
+\begin{DoxyParamCaption}
+\item[{gen\-U\-Type const \&}]{value}
+\end{DoxyParamCaption}
+)}}\label{group__core__func__common_ga3e4a94c90cffac713c287d1fb7b51c08}
+
+
+Returns a floating-\/point value corresponding to a unsigned integer encoding of a floating-\/point value. 
+
+If an inf or Na\-N is passed in, it will not signal, and the resulting floating point value is unspecified. Otherwise, the bit-\/level representation is preserved.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em gen\-Type} & Single-\/precision floating-\/point scalar or vector types. \\
+\hline
+{\em gen\-U\-Type} & Unsigned integer scalar or vector types.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/uintBitsToFloat.xml}{\tt G\-L\-S\-L uint\-Bits\-To\-Float man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt G\-L\-S\-L 4.\-20.\-8 specification, section 8.\-3 Common Functions}
+\end{DoxySeeAlso}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000002}{Todo}]Clarify this declaration, we don't need to actually specify the return type \end{DoxyRefDesc}

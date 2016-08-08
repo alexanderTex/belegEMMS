@@ -34,57 +34,28 @@ public:
      * Marks the message by adding "INFO" in the beginning and logs it
      * @param message
      */
-    inline void LogInfo(std::string message)
-    {
-       std::stringstream s;
-
-        s << "INFO : " << message;
-
-        Logger::instance->Log(s.str());
-    }
+    void LogInfo(std::string message);
 
     /**
      * @brief LogInfo
      * Marks the message by adding "INFO" in the beginning and logs it
      * @param message
      */
-    inline void LogInfo(std::string message, std::string file, int line)
-    {
-        std::stringstream s;
-
-        s << "INFO : " << message << "\n\n" << "File : " << file << "\n" << "Line : " << line;
-
-        Logger::instance->Log(s.str());
-    }
-
+    void LogInfo(std::string message, std::string file, int line);
 
     /**
      * @brief LogError
      * Marks the message by adding "ERROR" in the beginning and logs it
      * @param message
      */
-    inline void LogError(std::string message)
-    {
-        std::stringstream s;
-
-        s << "ERROR : " << message;
-
-        Logger::instance->Log(s.str());
-    }
+    void LogError(std::string message);
 
     /**
      * @brief LogError
      * Marks the message by adding "ERROR" in the beginning and logs it
      * @param message
      */
-    inline void LogError(std::string message, std::string file, int line)
-    {
-        std::stringstream s;
-
-        s << "ERROR : " << message << "\n\n" << "File : " << file << "\n" << "Line : " << line;
-
-        Logger::instance->Log(s.str());
-    }
+    void LogError(std::string message, std::string file, int line);
 
     /**
      * @brief LogPath
@@ -94,15 +65,7 @@ public:
      * @param line
      * @param filepath
      */
-    inline void LogPath(int line, std::string filepath)
-    {
-        std::stringstream s;
-
-        s << "Line: " << line << " " << "File: " << filepath;
-
-        Logger::instance->Log(s.str());
-    }
-
+    void LogPath(int line, std::string filepath);
 
     /**
      * @brief LogPath
@@ -113,15 +76,7 @@ public:
      * @param filepath
      * @param msg
      */
-    inline void LogPath(int line, std::string filepath, std::string msg)
-    {
-        std::stringstream s;
-
-        s << "Line: " << line << " File: " << filepath << " >> "  << msg;
-
-        Logger::instance->Log(s.str());
-    }
-
+    void LogPath(int line, std::string filepath, std::string msg);
 
 private:
     /**
@@ -129,10 +84,7 @@ private:
      * Logs the message
      * @param message
      */
-    inline virtual void Log(std::string message)
-    {
-        std::cout << message << std::endl;
-    }
+    virtual void Log(std::string message);
 
 private:
     static Logger *instance;

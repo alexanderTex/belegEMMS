@@ -23,3 +23,53 @@ Player::Player(const Player &src)
     this->m_playerColor = src.GetColor();
     this->m_playerSkill = src.GetSkill();
 }
+
+Player::PlayerType Player::GetType() const
+{
+    return m_playerType;
+}
+
+/**
+ * @brief GetName
+ * @return
+ */
+std::string Player::GetName() const
+{
+    return m_playerName;
+}
+
+/**
+ * @brief GetColor
+ * @return
+ */
+PlayingField::OccupationState Player::GetColor() const
+{
+    return m_playerColor;
+}
+
+/**
+ * @brief SetName
+ * @param name
+ */
+void Player::SetName(std::string name)
+{
+    m_playerName = name;
+}
+
+/**
+ * @brief GetSkill
+ * @return
+ */
+int Player::GetSkill() const
+{
+    return m_playerSkill;
+}
+
+/**
+ * @brief SetSkill
+ * @param skill
+ */
+void Player::SetSkill(int skill)
+{
+    m_playerSkill = skill;
+}

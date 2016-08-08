@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['gamedata',['GameData',['../classGameData.html#a67ab18c5a35df618e99983275c7552ab',1,'GameData::GameData()'],['../classGameData.html#aea94874f6fb34c81daf86ab294a3e094',1,'GameData::GameData(PlayingField *field, Player *p1, Player *p2, Player *startingPlayer)'],['../classGameData.html#ae0f631bbb4bf25dd4e3888a5ef9a4eb6',1,'GameData::GameData(const GameData &amp;src)']]],
+  ['gameended',['GameEnded',['../classGameView.html#a5901d54c9767a75549860cc5b511fcd5',1,'GameView']]],
+  ['gamefinished',['GameFinished',['../classGameView.html#a3e06ec8f766005c4aac0d572559fc9ed',1,'GameView']]],
+  ['gamemanager',['GameManager',['../classGameManager.html#aa0e2424dc1a39d380e5b6605b179bf05',1,'GameManager::GameManager()'],['../classGameManager.html#a80046eb2f443289f0ba1b3fa1272470a',1,'GameManager::GameManager(GameData *data)']]],
+  ['gaussrand',['gaussRand',['../group__gtc__random.html#ga8cf40a2f2268b91103f763b6ea2c44d8',1,'glm::gaussRand(genType const &amp;Mean, genType const &amp;Deviation)'],['../group__gtc__random.html#ga8cf40a2f2268b91103f763b6ea2c44d8',1,'glm::gaussRand(genType const &amp;Mean, genType const &amp;Deviation)']]],
+  ['getcolor',['GetColor',['../classPlayer.html#a49f420e5204c895b9a94f07f6aaf639f',1,'Player']]],
+  ['getcurrentplayer',['GetCurrentPlayer',['../classGameData.html#a43e9d7b67d8f421809a7f3635a9021b3',1,'GameData']]],
+  ['getfield',['GetField',['../classGameData.html#a329cd2c493f221145b4edb0ade09e4ff',1,'GameData']]],
+  ['getfieldsize',['GetFieldSize',['../classPlayingField.html#abfbecf0f8ba91c9c1167da359e7463dc',1,'PlayingField']]],
+  ['getgamedata',['GetGameData',['../classGameManager.html#a51bd111f72c164d392db25e1b9bab86e',1,'GameManager']]],
+  ['gethistory',['GetHistory',['../classGameData.html#a05cb9224475efb01fa67018559c8fcce',1,'GameData']]],
+  ['getlastmove',['GetLastMove',['../classGameData.html#a5c754d78e1521b2b32b53a083d5cf7f5',1,'GameData::GetLastMove()'],['../classHistorySave.html#ab8c21fe924b58510b9e240b5b5852be2',1,'HistorySave::GetLastMove()']]],
+  ['getmove',['GetMove',['../classHistorySave.html#ae04d28f2fa9c879beb2631f318526f3a',1,'HistorySave']]],
+  ['getmovecount',['GetMoveCount',['../classHistorySave.html#af1f736a6ee2b72f56ac6985e788013a9',1,'HistorySave']]],
+  ['getname',['GetName',['../classPlayer.html#aa5030908379dbc95594e4a9856758fef',1,'Player']]],
+  ['getopponent',['GetOpponent',['../classGameData.html#a7237b89655e73601a90762ea9ccbd3ac',1,'GameData']]],
+  ['getplayer1',['GetPlayer1',['../classGameData.html#aa540b341a37637f84d4e4790e52a1f31',1,'GameData']]],
+  ['getplayer2',['GetPlayer2',['../classGameData.html#af1ad732b7f7706c36044113111b0834f',1,'GameData']]],
+  ['getplayers',['GetPlayers',['../classGameData.html#ad74e6fd23e5784414d35731dc33ff44a',1,'GameData']]],
+  ['getskill',['GetSkill',['../classPlayer.html#a9d8cedd46573b958fe6febbf89d07322',1,'Player']]],
+  ['getslot',['GetSlot',['../classPlayingField.html#a01b5105b49ec72e094411d216df27ffa',1,'PlayingField']]],
+  ['gettype',['GetType',['../classPlayer.html#a4dbe0b63aab9abaeaa75612d1daf0fb4',1,'Player']]],
+  ['golden_5fratio',['golden_ratio',['../group__gtc__constants.html#ga14e6ecb0a19dbbfcf6cd48cb536cbd61',1,'glm::golden_ratio()'],['../group__gtc__constants.html#ga14e6ecb0a19dbbfcf6cd48cb536cbd61',1,'glm::golden_ratio()']]],
+  ['greaterthan',['greaterThan',['../group__core__func__vector__relational.html#gabd72ae0dc35908eaa143568fb42c3830',1,'glm']]],
+  ['greaterthanequal',['greaterThanEqual',['../group__core__func__vector__relational.html#gac9b3c898e70adc1e573300b1a8e66e9f',1,'glm']]]
+];

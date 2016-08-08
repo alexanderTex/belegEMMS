@@ -9,6 +9,10 @@ QT      += core gui \
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
+QMAKE_EXTRA_TARGETS += valgrind-check
+valgrind-check.depends = check
+valgrind-check.commands = valgrind ./$$TARGET
+
 TARGET = sogoApp
 TEMPLATE = app
 TRANSLATIONS += ./Translations/sogoapp_de.ts \
