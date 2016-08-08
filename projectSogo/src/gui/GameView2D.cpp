@@ -125,7 +125,7 @@ void GameView2D::ViewUpdate()
             {
                 if(m_manager->GetGameData()->GetField()->GetSlot(k,j,i)->Occupation == PlayingField::BLUE)
                 {
-                    this->m_sceneItems->at(i)->at(j)->at(k)->SetColor(Qt::cyan);
+                    this->m_sceneItems->at(i)->at(j)->at(k)->SetColor(Qt::blue);
                 }
                 else if(m_manager->GetGameData()->GetField()->GetSlot(k,j,i)->Occupation == PlayingField::RED)
                 {
