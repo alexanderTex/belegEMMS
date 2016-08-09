@@ -1,0 +1,90 @@
+\hypertarget{AI_8h}{\section{/home/alex/source\-Code/git\-Project/beleg\-Arbeit\-E\-M\-M\-S/project\-Sogo/include/core/\-A\-I.h File Reference}
+\label{AI_8h}\index{/home/alex/source\-Code/git\-Project/beleg\-Arbeit\-E\-M\-M\-S/project\-Sogo/include/core/\-A\-I.\-h@{/home/alex/source\-Code/git\-Project/beleg\-Arbeit\-E\-M\-M\-S/project\-Sogo/include/core/\-A\-I.\-h}}
+}
+{\ttfamily \#include \char`\"{}../include/core/\-Playing\-Field.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../include/core/\-Vector3.\-h\char`\"{}}\\*
+{\ttfamily \#include $<$stdexcept$>$}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classAI}{A\-I}
+\begin{DoxyCompactList}\small\item\em Defines an A\-I-\/\-Player Future content strenght etc. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{AI_8h_a3ecc9484aaf790eb989b5ef6e91fff38}{Mini\-Max} (const \hyperlink{classPlayingField}{Playing\-Field} $\ast$field, \hyperlink{classPlayingField_ac6df152a3f820aa04a00ab4df4a9d265}{Playing\-Field\-::\-Occupation\-State} max\-\_\-\-Player, \hyperlink{classPlayingField_ac6df152a3f820aa04a00ab4df4a9d265}{Playing\-Field\-::\-Occupation\-State} current\-\_\-player, \hyperlink{structVector3}{Vector3} $\ast$choice)  throw (out\-\_\-of\-\_\-range)
+\begin{DoxyCompactList}\small\item\em Calculates the best move for the next turn. \end{DoxyCompactList}\item 
+int \hyperlink{AI_8h_a1f0584fdc5ffabeb01d27dc903404f87}{Mini\-Max} (const \hyperlink{classPlayingField}{Playing\-Field} $\ast$field, \hyperlink{classPlayingField_ac6df152a3f820aa04a00ab4df4a9d265}{Playing\-Field\-::\-Occupation\-State} max\-\_\-\-Player, \hyperlink{classPlayingField_ac6df152a3f820aa04a00ab4df4a9d265}{Playing\-Field\-::\-Occupation\-State} current\-\_\-player, int depth, \hyperlink{structVector3}{Vector3} $\ast$choice)  throw (out\-\_\-of\-\_\-range)
+\begin{DoxyCompactList}\small\item\em Calculates the best next for the next turn. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{AI_8h_a3ecc9484aaf790eb989b5ef6e91fff38}{\index{A\-I.\-h@{A\-I.\-h}!Mini\-Max@{Mini\-Max}}
+\index{Mini\-Max@{Mini\-Max}!AI.h@{A\-I.\-h}}
+\subsubsection[{Mini\-Max}]{\setlength{\rightskip}{0pt plus 5cm}int Mini\-Max (
+\begin{DoxyParamCaption}
+\item[{const {\bf Playing\-Field} $\ast$}]{field, }
+\item[{{\bf Playing\-Field\-::\-Occupation\-State}}]{max\-\_\-\-Player, }
+\item[{{\bf Playing\-Field\-::\-Occupation\-State}}]{current\-\_\-player, }
+\item[{{\bf Vector3} $\ast$}]{choice}
+\end{DoxyParamCaption}
+) throw  out\-\_\-of\-\_\-range) }}\label{AI_8h_a3ecc9484aaf790eb989b5ef6e91fff38}
+
+
+Calculates the best move for the next turn. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em field} & current state of the field \\
+\hline
+ & {\em max\-\_\-\-Player} & the player for who the algorithm searches a good move \\
+\hline
+ & {\em current\-\_\-\-Player} & the player who is currently making a move \\
+\hline
+\mbox{\tt out}  & {\em choice} & the best move for max player \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em out\-\_\-of\-\_\-range} & \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyReturn}{Returns}
+returns the score of the move selected ( 1 \-: best case, 0 \-: draw, -\/1 \-: worst case ) 
+\end{DoxyReturn}
+\hypertarget{AI_8h_a1f0584fdc5ffabeb01d27dc903404f87}{\index{A\-I.\-h@{A\-I.\-h}!Mini\-Max@{Mini\-Max}}
+\index{Mini\-Max@{Mini\-Max}!AI.h@{A\-I.\-h}}
+\subsubsection[{Mini\-Max}]{\setlength{\rightskip}{0pt plus 5cm}int Mini\-Max (
+\begin{DoxyParamCaption}
+\item[{const {\bf Playing\-Field} $\ast$}]{field, }
+\item[{{\bf Playing\-Field\-::\-Occupation\-State}}]{max\-\_\-\-Player, }
+\item[{{\bf Playing\-Field\-::\-Occupation\-State}}]{current\-\_\-player, }
+\item[{int}]{depth, }
+\item[{{\bf Vector3} $\ast$}]{choice}
+\end{DoxyParamCaption}
+) throw  out\-\_\-of\-\_\-range) }}\label{AI_8h_a1f0584fdc5ffabeb01d27dc903404f87}
+
+
+Calculates the best next for the next turn. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em field} & current state of the field \\
+\hline
+ & {\em max\-\_\-\-Player} & the player for who the algorithm searches a good move \\
+\hline
+ & {\em current\-\_\-\-Player} & the player who is currently making a move \\
+\hline
+ & {\em depth} & how many moves in advance will be checked \\
+\hline
+\mbox{\tt out}  & {\em choice} & the best move for max player \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em out\-\_\-of\-\_\-range} & \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyReturn}{Returns}
+returns the score of the move selected ( 1 \-: best case, 0 \-: draw, -\/1 \-: worst case ) 
+\end{DoxyReturn}

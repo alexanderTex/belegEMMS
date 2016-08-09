@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['compute_5flinearrand',['compute_linearRand',['../structglm_1_1detail_1_1compute__linearRand.html',1,'glm::detail']]]
+  ['highscoremenu',['HighscoreMenu',['../classHighscoreMenu.html',1,'']]],
+  ['historydisplay',['HistoryDisplay',['../classHistoryDisplay.html',1,'']]],
+  ['historysave',['HistorySave',['../classHistorySave.html',1,'']]]
 ];

@@ -38,8 +38,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="modules.html"><span>Modules</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -73,7 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -95,22 +93,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <tr><td class="entry"><a class="el" href="classGameData.html#aea94874f6fb34c81daf86ab294a3e094">GameData</a>(PlayingField *field, Player *p1, Player *p2, Player *startingPlayer)</td><td class="entry"><a class="el" href="classGameData.html">GameData</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classGameData.html#ae0f631bbb4bf25dd4e3888a5ef9a4eb6">GameData</a>(const GameData &amp;src)</td><td class="entry"><a class="el" href="classGameData.html">GameData</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="classGameData.html#a2cbc881e9ac218f14694fed595c3c128">GameDataException</a> enum name</td><td class="entry"><a class="el" href="classGameData.html">GameData</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classGameData.html#a43e9d7b67d8f421809a7f3635a9021b3">GetCurrentPlayer</a>() const </td><td class="entry"><a class="el" href="classGameData.html">GameData</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr><td class="entry"><a class="el" href="classGameData.html#a329cd2c493f221145b4edb0ade09e4ff">GetField</a>() const </td><td class="entry"><a class="el" href="classGameData.html">GameData</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classGameData.html#a05cb9224475efb01fa67018559c8fcce">GetHistory</a>() const </td><td class="entry"><a class="el" href="classGameData.html">GameData</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr><td class="entry"><a class="el" href="classGameData.html#a5c754d78e1521b2b32b53a083d5cf7f5">GetLastMove</a>() const </td><td class="entry"><a class="el" href="classGameData.html">GameData</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classGameData.html#a7237b89655e73601a90762ea9ccbd3ac">GetOpponent</a>(const Player *p) const </td><td class="entry"><a class="el" href="classGameData.html">GameData</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr><td class="entry"><a class="el" href="classGameData.html#aa540b341a37637f84d4e4790e52a1f31">GetPlayer1</a>() const </td><td class="entry"><a class="el" href="classGameData.html">GameData</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classGameData.html#af1ad732b7f7706c36044113111b0834f">GetPlayer2</a>() const </td><td class="entry"><a class="el" href="classGameData.html">GameData</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr><td class="entry"><a class="el" href="classGameData.html#ad74e6fd23e5784414d35731dc33ff44a">GetPlayers</a>() const </td><td class="entry"><a class="el" href="classGameData.html">GameData</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classGameData.html#a5e1d9b00d89fea74a17e653057b47541">OccupySlot</a>(int x, int y, int z, PlayingField::OccupationState playerColor)</td><td class="entry"><a class="el" href="classGameData.html">GameData</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGameData.html#a5e07bca98788c169c82e0e0f393755a7">GetCurrentPlayer</a>() const </td><td class="entry"><a class="el" href="classGameData.html">GameData</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classGameData.html#af932f66030087c333f2d5746f9fd555c">GetField</a>() const </td><td class="entry"><a class="el" href="classGameData.html">GameData</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGameData.html#ad0e34ba7f1106ff9b5fdd8e99f327ec1">GetHistory</a>() const </td><td class="entry"><a class="el" href="classGameData.html">GameData</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classGameData.html#a5c754d78e1521b2b32b53a083d5cf7f5">GetLastMove</a>() const </td><td class="entry"><a class="el" href="classGameData.html">GameData</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGameData.html#a7cf443182a19f49bac785f7224d57d81">GetOpponent</a>(const Player *p) const </td><td class="entry"><a class="el" href="classGameData.html">GameData</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classGameData.html#a1642c300ee35687a67b807cedee9e55d">GetPlayer1</a>() const </td><td class="entry"><a class="el" href="classGameData.html">GameData</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGameData.html#aa9012da90297a55f563a20f0b927b051">GetPlayer2</a>() const </td><td class="entry"><a class="el" href="classGameData.html">GameData</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classGameData.html#a423674f3ce9e6283b7262a9187ee0449">GetPlayers</a>() const </td><td class="entry"><a class="el" href="classGameData.html">GameData</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGameData.html#a5e1d9b00d89fea74a17e653057b47541">OccupySlot</a>(int x, int y, int z, PlayingField::OccupationState playerColor)</td><td class="entry"><a class="el" href="classGameData.html">GameData</a></td><td class="entry"></td></tr>
   <tr bgcolor="#f0f0f0"><td class="entry"><b>PlayerNotInTheGame</b> enum value (defined in <a class="el" href="classGameData.html">GameData</a>)</td><td class="entry"><a class="el" href="classGameData.html">GameData</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classGameData.html#a18924e62415d38e1651ef1ab7d488996">SwitchPlayer</a>()</td><td class="entry"><a class="el" href="classGameData.html">GameData</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGameData.html#a18924e62415d38e1651ef1ab7d488996">SwitchPlayer</a>()</td><td class="entry"><a class="el" href="classGameData.html">GameData</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="classGameData.html#abd51e710bc262e278a8895f2e0b35a9f">~GameData</a>()</td><td class="entry"><a class="el" href="classGameData.html">GameData</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
 </table></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Aug 8 2016 11:48:40 for Sogo by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Aug 9 2016 13:27:35 for Sogo by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

@@ -38,8 +38,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="modules.html"><span>Modules</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -73,7 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -93,6 +91,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">NewSessionMenu Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>The <a class="el" href="classNewSessionMenu.html" title="The NewSessionMenu class. ">NewSessionMenu</a> class.  
+ <a href="classNewSessionMenu.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="NewSessionMenu_8h_source.html">NewSessionMenu.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for NewSessionMenu:</div>
 <div class="dyncontent">
@@ -105,60 +108,194 @@ Inheritance diagram for NewSessionMenu:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="signals"></a>
 Signals</h2></td></tr>
 <tr class="memitem:aec46b3d790d583bd0c0fb35a7cc89d58"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aec46b3d790d583bd0c0fb35a7cc89d58"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>showStartMenu</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNewSessionMenu.html#aec46b3d790d583bd0c0fb35a7cc89d58">showStartMenu</a> ()</td></tr>
+<tr class="memdesc:aec46b3d790d583bd0c0fb35a7cc89d58"><td class="mdescLeft">&#160;</td><td class="mdescRight">The signal for QStackedWidget to show the startmenu. <br/></td></tr>
 <tr class="separator:aec46b3d790d583bd0c0fb35a7cc89d58"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add9c9c91b8f92fde390187463b1f40ba"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="add9c9c91b8f92fde390187463b1f40ba"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>createGameData</b> (<a class="el" href="classGameData.html">GameData</a> gameData)</td></tr>
+<tr class="memitem:add9c9c91b8f92fde390187463b1f40ba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNewSessionMenu.html#add9c9c91b8f92fde390187463b1f40ba">createGameData</a> (<a class="el" href="classGameData.html">GameData</a> gameData)</td></tr>
+<tr class="memdesc:add9c9c91b8f92fde390187463b1f40ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">The signal to create a gamedata object.  <a href="#add9c9c91b8f92fde390187463b1f40ba">More...</a><br/></td></tr>
 <tr class="separator:add9c9c91b8f92fde390187463b1f40ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa1a5423cfcb5af562e30d1f66040ce5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afa1a5423cfcb5af562e30d1f66040ce5"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>startGame</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNewSessionMenu.html#afa1a5423cfcb5af562e30d1f66040ce5">startGame</a> ()</td></tr>
+<tr class="memdesc:afa1a5423cfcb5af562e30d1f66040ce5"><td class="mdescLeft">&#160;</td><td class="mdescRight">The signal to start the game. <br/></td></tr>
 <tr class="separator:afa1a5423cfcb5af562e30d1f66040ce5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a4742167534b8efad3a8163ac3d243b1b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4742167534b8efad3a8163ac3d243b1b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setPlayfield</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNewSessionMenu.html#a4742167534b8efad3a8163ac3d243b1b">setPlayfield</a> ()</td></tr>
+<tr class="memdesc:a4742167534b8efad3a8163ac3d243b1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The area for the size of the playfield. <br/></td></tr>
 <tr class="separator:a4742167534b8efad3a8163ac3d243b1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afae85196d39cd5b68e445659faf3f901"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afae85196d39cd5b68e445659faf3f901"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setMode</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNewSessionMenu.html#afae85196d39cd5b68e445659faf3f901">setMode</a> ()</td></tr>
+<tr class="memdesc:afae85196d39cd5b68e445659faf3f901"><td class="mdescLeft">&#160;</td><td class="mdescRight">The area to set the severity. <br/></td></tr>
 <tr class="separator:afae85196d39cd5b68e445659faf3f901"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe4916445e5ce3edfe78adb89533f230"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abe4916445e5ce3edfe78adb89533f230"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>changeEvent</b> (QEvent *event)</td></tr>
+<tr class="memitem:abe4916445e5ce3edfe78adb89533f230"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNewSessionMenu.html#abe4916445e5ce3edfe78adb89533f230">changeEvent</a> (QEvent *event)</td></tr>
+<tr class="memdesc:abe4916445e5ce3edfe78adb89533f230"><td class="mdescLeft">&#160;</td><td class="mdescRight">To handle the translator.  <a href="#abe4916445e5ce3edfe78adb89533f230">More...</a><br/></td></tr>
 <tr class="separator:abe4916445e5ce3edfe78adb89533f230"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae1038e3894d95dd28e7e9bde54fdc5eb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae1038e3894d95dd28e7e9bde54fdc5eb"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>NewSessionMenu</b> (QWidget *parent=0)</td></tr>
+<tr class="memitem:ae1038e3894d95dd28e7e9bde54fdc5eb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNewSessionMenu.html#ae1038e3894d95dd28e7e9bde54fdc5eb">NewSessionMenu</a> (QWidget *parent=0)</td></tr>
+<tr class="memdesc:ae1038e3894d95dd28e7e9bde54fdc5eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">The constructor.  <a href="#ae1038e3894d95dd28e7e9bde54fdc5eb">More...</a><br/></td></tr>
 <tr class="separator:ae1038e3894d95dd28e7e9bde54fdc5eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3a5d3b6d5f3039c7ff2e4933bde10a70"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3a5d3b6d5f3039c7ff2e4933bde10a70"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>mergeGameData</b> ()</td></tr>
+<tr class="memitem:a3a5d3b6d5f3039c7ff2e4933bde10a70"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNewSessionMenu.html#a3a5d3b6d5f3039c7ff2e4933bde10a70">mergeGameData</a> ()</td></tr>
+<tr class="memdesc:a3a5d3b6d5f3039c7ff2e4933bde10a70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the gamedata object.  <a href="#a3a5d3b6d5f3039c7ff2e4933bde10a70">More...</a><br/></td></tr>
 <tr class="separator:a3a5d3b6d5f3039c7ff2e4933bde10a70"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a51512ad474fdb0eb6b880d17a5ce4d11"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a51512ad474fdb0eb6b880d17a5ce4d11"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>checkPlayfieldSize</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNewSessionMenu.html#a51512ad474fdb0eb6b880d17a5ce4d11">checkPlayfieldSize</a> ()</td></tr>
+<tr class="memdesc:a51512ad474fdb0eb6b880d17a5ce4d11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the playfieldsize. <br/></td></tr>
 <tr class="separator:a51512ad474fdb0eb6b880d17a5ce4d11"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac13a0674e7492b42279b60e8b73fb561"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac13a0674e7492b42279b60e8b73fb561"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setPlayer</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNewSessionMenu.html#ac13a0674e7492b42279b60e8b73fb561">setPlayer</a> ()</td></tr>
+<tr class="memdesc:ac13a0674e7492b42279b60e8b73fb561"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check and set the type of player. <br/></td></tr>
 <tr class="separator:ac13a0674e7492b42279b60e8b73fb561"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0985b4cc0908c662788f68dd55b38472"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0985b4cc0908c662788f68dd55b38472"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>checkSkill</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNewSessionMenu.html#a0985b4cc0908c662788f68dd55b38472">checkSkill</a> ()</td></tr>
+<tr class="memdesc:a0985b4cc0908c662788f68dd55b38472"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check and set the severity. <br/></td></tr>
 <tr class="separator:a0985b4cc0908c662788f68dd55b38472"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a30076610330be4a709eb9c72b3ec9c30"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a30076610330be4a709eb9c72b3ec9c30"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setGameEnviorment</b> ()</td></tr>
-<tr class="separator:a30076610330be4a709eb9c72b3ec9c30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a1e5fc5bfe12c63b0f99df1dc3ffec0ba"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1e5fc5bfe12c63b0f99df1dc3ffec0ba"></a>
-<a class="el" href="classGameData.html">GameData</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>m_gameData</b></td></tr>
+<tr class="memitem:a1e5fc5bfe12c63b0f99df1dc3ffec0ba"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classGameData.html">GameData</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNewSessionMenu.html#a1e5fc5bfe12c63b0f99df1dc3ffec0ba">m_gameData</a></td></tr>
+<tr class="memdesc:a1e5fc5bfe12c63b0f99df1dc3ffec0ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Holds a reference to the <a class="el" href="classPlayingField.html" title="Defines the Properties of a Playingfield. ">PlayingField</a> to both players and which one is the currentplayer.  <a href="#a1e5fc5bfe12c63b0f99df1dc3ffec0ba">More...</a><br/></td></tr>
 <tr class="separator:a1e5fc5bfe12c63b0f99df1dc3ffec0ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following files:<ul>
-<li>/home/alex/sourceCode/gitProject/belegArbeitEMMS/projectSogo/include/gui/<a class="el" href="NewSessionMenu_8h_source.html">NewSessionMenu.h</a></li>
-<li>/home/alex/sourceCode/gitProject/belegArbeitEMMS/projectSogo/build-sogoApp-Desktop_Qt_5_6_0_GCC_64bit-Debug/moc_NewSessionMenu.cpp</li>
-<li>/home/alex/sourceCode/gitProject/belegArbeitEMMS/projectSogo/src/gui/NewSessionMenu.cpp</li>
-</ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>The <a class="el" href="classNewSessionMenu.html" title="The NewSessionMenu class. ">NewSessionMenu</a> class. </p>
+<p>To set additional options for a new Game.</p>
+<dl class="section author"><dt>Author</dt><dd>Nils Brandt </dd>
+<dd>
+Alexander Luedke</dd></dl>
+<dl class="section date"><dt>Date</dt><dd>08. August 2016</dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0 Add Documentation </dd></dl>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="ae1038e3894d95dd28e7e9bde54fdc5eb"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">NewSessionMenu::NewSessionMenu </td>
+          <td>(</td>
+          <td class="paramtype">QWidget *&#160;</td>
+          <td class="paramname"><em>parent</em> = <code>0</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parent</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="abe4916445e5ce3edfe78adb89533f230"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NewSessionMenu::changeEvent </td>
+          <td>(</td>
+          <td class="paramtype">QEvent *&#160;</td>
+          <td class="paramname"><em>event</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>To handle the translator. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">event</td><td>The "change language" event. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="add9c9c91b8f92fde390187463b1f40ba"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NewSessionMenu::createGameData </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classGameData.html">GameData</a>&#160;</td>
+          <td class="paramname"><em>gameData</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The signal to create a gamedata object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">gameData</td><td>Holds a reference to the <a class="el" href="classPlayingField.html" title="Defines the Properties of a Playingfield. ">PlayingField</a> to both players and which one is the currentplayer. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a3a5d3b6d5f3039c7ff2e4933bde10a70"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NewSessionMenu::mergeGameData </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the gamedata object. </p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classNewSessionMenu.html#a51512ad474fdb0eb6b880d17a5ce4d11" title="Set the playfieldsize. ">checkPlayfieldSize()</a> </dd>
+<dd>
+<a class="el" href="classNewSessionMenu.html#ac13a0674e7492b42279b60e8b73fb561" title="Check and set the type of player. ">setPlayer()</a> </dd>
+<dd>
+<a class="el" href="classNewSessionMenu.html#a0985b4cc0908c662788f68dd55b38472" title="Check and set the severity. ">checkSkill()</a> </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a1e5fc5bfe12c63b0f99df1dc3ffec0ba"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classGameData.html">GameData</a>* NewSessionMenu::m_gameData</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Holds a reference to the <a class="el" href="classPlayingField.html" title="Defines the Properties of a Playingfield. ">PlayingField</a> to both players and which one is the currentplayer. </p>
+
+</div>
+</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Aug 8 2016 11:48:41 for Sogo by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Aug 9 2016 13:27:36 for Sogo by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

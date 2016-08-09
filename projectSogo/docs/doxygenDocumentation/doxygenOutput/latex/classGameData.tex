@@ -29,21 +29,21 @@ enum \hyperlink{classGameData_a2cbc881e9ac218f14694fed595c3c128}{Game\-Data\-Exc
 \hypertarget{classGameData_abd51e710bc262e278a8895f2e0b35a9f}{virtual \hyperlink{classGameData_abd51e710bc262e278a8895f2e0b35a9f}{$\sim$\-Game\-Data} ()}\label{classGameData_abd51e710bc262e278a8895f2e0b35a9f}
 
 \begin{DoxyCompactList}\small\item\em $\sim$\-Game\-Data \end{DoxyCompactList}\item 
-const \hyperlink{classPlayingField}{Playing\-Field} $\ast$ \hyperlink{classGameData_a329cd2c493f221145b4edb0ade09e4ff}{Get\-Field} () const 
+const \hyperlink{classPlayingField}{Playing\-Field} $\ast$ \hyperlink{classGameData_af932f66030087c333f2d5746f9fd555c}{Get\-Field} () const 
 \begin{DoxyCompactList}\small\item\em Get\-Field. \end{DoxyCompactList}\item 
-std\-::vector$<$ const \hyperlink{classPlayer}{Player} $\ast$ $>$ $\ast$ \hyperlink{classGameData_ad74e6fd23e5784414d35731dc33ff44a}{Get\-Players} () const 
+std\-::vector$<$ const \hyperlink{classPlayer}{Player} $\ast$ $>$ $\ast$ \hyperlink{classGameData_a423674f3ce9e6283b7262a9187ee0449}{Get\-Players} () const 
 \begin{DoxyCompactList}\small\item\em Get\-Players. \end{DoxyCompactList}\item 
-\hyperlink{classPlayer}{Player} $\ast$ \hyperlink{classGameData_aa540b341a37637f84d4e4790e52a1f31}{Get\-Player1} () const 
+\hyperlink{classPlayer}{Player} $\ast$ \hyperlink{classGameData_a1642c300ee35687a67b807cedee9e55d}{Get\-Player1} () const 
 \begin{DoxyCompactList}\small\item\em Get\-Player1. \end{DoxyCompactList}\item 
-\hyperlink{classPlayer}{Player} $\ast$ \hyperlink{classGameData_af1ad732b7f7706c36044113111b0834f}{Get\-Player2} () const 
+\hyperlink{classPlayer}{Player} $\ast$ \hyperlink{classGameData_aa9012da90297a55f563a20f0b927b051}{Get\-Player2} () const 
 \begin{DoxyCompactList}\small\item\em Get\-Player2. \end{DoxyCompactList}\item 
-\hyperlink{classPlayer}{Player} $\ast$ \hyperlink{classGameData_a43e9d7b67d8f421809a7f3635a9021b3}{Get\-Current\-Player} () const 
+\hyperlink{classPlayer}{Player} $\ast$ \hyperlink{classGameData_a5e07bca98788c169c82e0e0f393755a7}{Get\-Current\-Player} () const 
 \begin{DoxyCompactList}\small\item\em Get\-Current\-Player. \end{DoxyCompactList}\item 
 \hyperlink{structVector3}{Vector3} \hyperlink{classGameData_a5c754d78e1521b2b32b53a083d5cf7f5}{Get\-Last\-Move} () const 
 \begin{DoxyCompactList}\small\item\em Get\-Last\-Move. \end{DoxyCompactList}\item 
-const \hyperlink{classPlayer}{Player} $\ast$ \hyperlink{classGameData_a7237b89655e73601a90762ea9ccbd3ac}{Get\-Opponent} (const \hyperlink{classPlayer}{Player} $\ast$p) const   throw (\-Game\-Data\-Exception)
+const \hyperlink{classPlayer}{Player} $\ast$ \hyperlink{classGameData_a7cf443182a19f49bac785f7224d57d81}{Get\-Opponent} (const \hyperlink{classPlayer}{Player} $\ast$p) const   throw (\-Game\-Data\-Exception)
 \begin{DoxyCompactList}\small\item\em Get\-Opponent. \end{DoxyCompactList}\item 
-const \hyperlink{classHistorySave}{History\-Save} $\ast$ \hyperlink{classGameData_a05cb9224475efb01fa67018559c8fcce}{Get\-History} () const 
+const \hyperlink{classHistorySave}{History\-Save} $\ast$ \hyperlink{classGameData_ad0e34ba7f1106ff9b5fdd8e99f327ec1}{Get\-History} () const 
 \begin{DoxyCompactList}\small\item\em Get\-History. \end{DoxyCompactList}\item 
 void \hyperlink{classGameData_a5e1d9b00d89fea74a17e653057b47541}{Occupy\-Slot} (int x, int y, int z, \hyperlink{classPlayingField_ac6df152a3f820aa04a00ab4df4a9d265}{Playing\-Field\-::\-Occupation\-State} player\-Color)  throw (out\-\_\-of\-\_\-range, Playing\-Field\-::\-Field\-Exeptions)
 \begin{DoxyCompactList}\small\item\em Occupy\-Slot occupies slotint playingfield and adds the move to the move history. \end{DoxyCompactList}\item 
@@ -54,6 +54,19 @@ void \hyperlink{classGameData_a5e1d9b00d89fea74a17e653057b47541}{Occupy\-Slot} (
 
 \subsection{Detailed Description}
 The \hyperlink{classGameData}{Game\-Data} class Holds a reference to the \hyperlink{classPlayingField}{Playing\-Field} to both players and which one is the currentplayer. 
+
+\begin{DoxyAuthor}{Author}
+Nils Brandt 
+
+Alexander Luedke
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+08. August 2016
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\-0 Add Documentation 
+\end{DoxyVersion}
+
 
 \subsection{Constructor \& Destructor Documentation}
 \hypertarget{classGameData_aea94874f6fb34c81daf86ab294a3e094}{\index{Game\-Data@{Game\-Data}!Game\-Data@{Game\-Data}}
@@ -100,13 +113,13 @@ The \hyperlink{classGameData}{Game\-Data} class Holds a reference to the \hyperl
 
 
 \subsection{Member Function Documentation}
-\hypertarget{classGameData_a43e9d7b67d8f421809a7f3635a9021b3}{\index{Game\-Data@{Game\-Data}!Get\-Current\-Player@{Get\-Current\-Player}}
+\hypertarget{classGameData_a5e07bca98788c169c82e0e0f393755a7}{\index{Game\-Data@{Game\-Data}!Get\-Current\-Player@{Get\-Current\-Player}}
 \index{Get\-Current\-Player@{Get\-Current\-Player}!GameData@{Game\-Data}}
-\subsubsection[{Get\-Current\-Player}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Player}$\ast$ Game\-Data\-::\-Get\-Current\-Player (
+\subsubsection[{Get\-Current\-Player}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Player} $\ast$ Game\-Data\-::\-Get\-Current\-Player (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classGameData_a43e9d7b67d8f421809a7f3635a9021b3}
+) const}}\label{classGameData_a5e07bca98788c169c82e0e0f393755a7}
 
 
 Get\-Current\-Player. 
@@ -114,13 +127,13 @@ Get\-Current\-Player.
 \begin{DoxyReturn}{Returns}
 
 \end{DoxyReturn}
-\hypertarget{classGameData_a329cd2c493f221145b4edb0ade09e4ff}{\index{Game\-Data@{Game\-Data}!Get\-Field@{Get\-Field}}
+\hypertarget{classGameData_af932f66030087c333f2d5746f9fd555c}{\index{Game\-Data@{Game\-Data}!Get\-Field@{Get\-Field}}
 \index{Get\-Field@{Get\-Field}!GameData@{Game\-Data}}
-\subsubsection[{Get\-Field}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Playing\-Field}$\ast$ Game\-Data\-::\-Get\-Field (
+\subsubsection[{Get\-Field}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Playing\-Field} $\ast$ Game\-Data\-::\-Get\-Field (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classGameData_a329cd2c493f221145b4edb0ade09e4ff}
+) const}}\label{classGameData_af932f66030087c333f2d5746f9fd555c}
 
 
 Get\-Field. 
@@ -128,13 +141,13 @@ Get\-Field.
 \begin{DoxyReturn}{Returns}
 
 \end{DoxyReturn}
-\hypertarget{classGameData_a05cb9224475efb01fa67018559c8fcce}{\index{Game\-Data@{Game\-Data}!Get\-History@{Get\-History}}
+\hypertarget{classGameData_ad0e34ba7f1106ff9b5fdd8e99f327ec1}{\index{Game\-Data@{Game\-Data}!Get\-History@{Get\-History}}
 \index{Get\-History@{Get\-History}!GameData@{Game\-Data}}
-\subsubsection[{Get\-History}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf History\-Save}$\ast$ Game\-Data\-::\-Get\-History (
+\subsubsection[{Get\-History}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf History\-Save} $\ast$ Game\-Data\-::\-Get\-History (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classGameData_a05cb9224475efb01fa67018559c8fcce}
+) const}}\label{classGameData_ad0e34ba7f1106ff9b5fdd8e99f327ec1}
 
 
 Get\-History. 
@@ -148,7 +161,7 @@ Get\-History.
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classGameData_a5c754d78e1521b2b32b53a083d5cf7f5}
+) const}}\label{classGameData_a5c754d78e1521b2b32b53a083d5cf7f5}
 
 
 Get\-Last\-Move. 
@@ -156,13 +169,13 @@ Get\-Last\-Move.
 \begin{DoxyReturn}{Returns}
 
 \end{DoxyReturn}
-\hypertarget{classGameData_a7237b89655e73601a90762ea9ccbd3ac}{\index{Game\-Data@{Game\-Data}!Get\-Opponent@{Get\-Opponent}}
+\hypertarget{classGameData_a7cf443182a19f49bac785f7224d57d81}{\index{Game\-Data@{Game\-Data}!Get\-Opponent@{Get\-Opponent}}
 \index{Get\-Opponent@{Get\-Opponent}!GameData@{Game\-Data}}
-\subsubsection[{Get\-Opponent}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Player}$\ast$ Game\-Data\-::\-Get\-Opponent (
+\subsubsection[{Get\-Opponent}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Player} $\ast$ Game\-Data\-::\-Get\-Opponent (
 \begin{DoxyParamCaption}
 \item[{const {\bf Player} $\ast$}]{p}
 \end{DoxyParamCaption}
-) const throw  {\bf Game\-Data\-Exception}) \hspace{0.3cm}{\ttfamily [inline]}}}\label{classGameData_a7237b89655e73601a90762ea9ccbd3ac}
+) const throw  {\bf Game\-Data\-Exception}) }}\label{classGameData_a7cf443182a19f49bac785f7224d57d81}
 
 
 Get\-Opponent. 
@@ -175,13 +188,13 @@ Get\-Opponent.
 \begin{DoxyReturn}{Returns}
 throws Gamedata\-Exception if the given player p is not part of the game 
 \end{DoxyReturn}
-\hypertarget{classGameData_aa540b341a37637f84d4e4790e52a1f31}{\index{Game\-Data@{Game\-Data}!Get\-Player1@{Get\-Player1}}
+\hypertarget{classGameData_a1642c300ee35687a67b807cedee9e55d}{\index{Game\-Data@{Game\-Data}!Get\-Player1@{Get\-Player1}}
 \index{Get\-Player1@{Get\-Player1}!GameData@{Game\-Data}}
-\subsubsection[{Get\-Player1}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Player}$\ast$ Game\-Data\-::\-Get\-Player1 (
+\subsubsection[{Get\-Player1}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Player} $\ast$ Game\-Data\-::\-Get\-Player1 (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classGameData_aa540b341a37637f84d4e4790e52a1f31}
+) const}}\label{classGameData_a1642c300ee35687a67b807cedee9e55d}
 
 
 Get\-Player1. 
@@ -189,13 +202,13 @@ Get\-Player1.
 \begin{DoxyReturn}{Returns}
 
 \end{DoxyReturn}
-\hypertarget{classGameData_af1ad732b7f7706c36044113111b0834f}{\index{Game\-Data@{Game\-Data}!Get\-Player2@{Get\-Player2}}
+\hypertarget{classGameData_aa9012da90297a55f563a20f0b927b051}{\index{Game\-Data@{Game\-Data}!Get\-Player2@{Get\-Player2}}
 \index{Get\-Player2@{Get\-Player2}!GameData@{Game\-Data}}
-\subsubsection[{Get\-Player2}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Player}$\ast$ Game\-Data\-::\-Get\-Player2 (
+\subsubsection[{Get\-Player2}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Player} $\ast$ Game\-Data\-::\-Get\-Player2 (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classGameData_af1ad732b7f7706c36044113111b0834f}
+) const}}\label{classGameData_aa9012da90297a55f563a20f0b927b051}
 
 
 Get\-Player2. 
@@ -203,13 +216,13 @@ Get\-Player2.
 \begin{DoxyReturn}{Returns}
 
 \end{DoxyReturn}
-\hypertarget{classGameData_ad74e6fd23e5784414d35731dc33ff44a}{\index{Game\-Data@{Game\-Data}!Get\-Players@{Get\-Players}}
+\hypertarget{classGameData_a423674f3ce9e6283b7262a9187ee0449}{\index{Game\-Data@{Game\-Data}!Get\-Players@{Get\-Players}}
 \index{Get\-Players@{Get\-Players}!GameData@{Game\-Data}}
-\subsubsection[{Get\-Players}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$const {\bf Player}$\ast$$>$$\ast$ Game\-Data\-::\-Get\-Players (
+\subsubsection[{Get\-Players}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ const {\bf Player} $\ast$ $>$ $\ast$ Game\-Data\-::\-Get\-Players (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classGameData_ad74e6fd23e5784414d35731dc33ff44a}
+) const}}\label{classGameData_a423674f3ce9e6283b7262a9187ee0449}
 
 
 Get\-Players. 
@@ -226,7 +239,7 @@ Get\-Players.
 \item[{int}]{z, }
 \item[{{\bf Playing\-Field\-::\-Occupation\-State}}]{player\-Color}
 \end{DoxyParamCaption}
-) throw  out\-\_\-of\-\_\-range, {\bf Playing\-Field\-::\-Field\-Exeptions}) \hspace{0.3cm}{\ttfamily [inline]}}}\label{classGameData_a5e1d9b00d89fea74a17e653057b47541}
+) throw  out\-\_\-of\-\_\-range, {\bf Playing\-Field\-::\-Field\-Exeptions}) }}\label{classGameData_a5e1d9b00d89fea74a17e653057b47541}
 
 
 Occupy\-Slot occupies slotint playingfield and adds the move to the move history. 
@@ -242,9 +255,3 @@ Occupy\-Slot occupies slotint playingfield and adds the move to the move history
 {\em player\-Color} & throws out\-\_\-of\-\_\-range if the x,y or z is out of the range of the playingfield throws Field\-Exception if occupying the slot in Playingfield failed \\
 \hline
 \end{DoxyParams}
-
-
-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
-\item 
-/home/alex/source\-Code/git\-Project/beleg\-Arbeit\-E\-M\-M\-S/project\-Sogo/include/core/Game\-Data.\-h\item 
-/home/alex/source\-Code/git\-Project/beleg\-Arbeit\-E\-M\-M\-S/project\-Sogo/src/core/Gamedata.\-cpp\end{DoxyCompactItemize}

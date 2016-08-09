@@ -38,8 +38,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="modules.html"><span>Modules</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -73,7 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -117,15 +115,20 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:af1f736a6ee2b72f56ac6985e788013a9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHistorySave.html#af1f736a6ee2b72f56ac6985e788013a9">GetMoveCount</a> () const </td></tr>
 <tr class="memdesc:af1f736a6ee2b72f56ac6985e788013a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">GetMoveCount.  <a href="#af1f736a6ee2b72f56ac6985e788013a9">More...</a><br/></td></tr>
 <tr class="separator:af1f736a6ee2b72f56ac6985e788013a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae04d28f2fa9c879beb2631f318526f3a"><td class="memItemLeft" align="right" valign="top">const Move *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHistorySave.html#ae04d28f2fa9c879beb2631f318526f3a">GetMove</a> (int number) const   throw (out_of_range)</td></tr>
-<tr class="memdesc:ae04d28f2fa9c879beb2631f318526f3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">GetMove.  <a href="#ae04d28f2fa9c879beb2631f318526f3a">More...</a><br/></td></tr>
-<tr class="separator:ae04d28f2fa9c879beb2631f318526f3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab8c21fe924b58510b9e240b5b5852be2"><td class="memItemLeft" align="right" valign="top">const Move *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHistorySave.html#ab8c21fe924b58510b9e240b5b5852be2">GetLastMove</a> () const   throw (out_of_range)</td></tr>
-<tr class="memdesc:ab8c21fe924b58510b9e240b5b5852be2"><td class="mdescLeft">&#160;</td><td class="mdescRight">GetLastMove.  <a href="#ab8c21fe924b58510b9e240b5b5852be2">More...</a><br/></td></tr>
-<tr class="separator:ab8c21fe924b58510b9e240b5b5852be2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57b50e201ba2df976727bb07c449f244"><td class="memItemLeft" align="right" valign="top">const Move *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHistorySave.html#a57b50e201ba2df976727bb07c449f244">GetMove</a> (int number) const   throw (out_of_range)</td></tr>
+<tr class="memdesc:a57b50e201ba2df976727bb07c449f244"><td class="mdescLeft">&#160;</td><td class="mdescRight">GetMove.  <a href="#a57b50e201ba2df976727bb07c449f244">More...</a><br/></td></tr>
+<tr class="separator:a57b50e201ba2df976727bb07c449f244"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35b8a35a1673f21ea7f53558d4ec198a"><td class="memItemLeft" align="right" valign="top">const Move *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHistorySave.html#a35b8a35a1673f21ea7f53558d4ec198a">GetLastMove</a> () const   throw (out_of_range)</td></tr>
+<tr class="memdesc:a35b8a35a1673f21ea7f53558d4ec198a"><td class="mdescLeft">&#160;</td><td class="mdescRight">GetLastMove.  <a href="#a35b8a35a1673f21ea7f53558d4ec198a">More...</a><br/></td></tr>
+<tr class="separator:a35b8a35a1673f21ea7f53558d4ec198a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <a class="el" href="classHistorySave.html" title="The HistorySave class. ">HistorySave</a> class. </p>
+<dl class="section author"><dt>Author</dt><dd>Nils Brandt </dd>
+<dd>
+Alexander Luedke</dd></dl>
+<dl class="section date"><dt>Date</dt><dd>08. August 2016</dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0 Add Documentation </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="ac0766707b25e837d00e6e4b48bf2860c"></a>
 <div class="memitem">
@@ -187,15 +190,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 
 </div>
 </div>
-<a class="anchor" id="ab8c21fe924b58510b9e240b5b5852be2"></a>
+<a class="anchor" id="a35b8a35a1673f21ea7f53558d4ec198a"></a>
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const Move* HistorySave::GetLastMove </td>
+          <td class="memname">const HistorySave::Move * HistorySave::GetLastMove </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -207,11 +207,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
           <td align="right"></td><td>)</td><td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>GetLastMove. </p>
@@ -219,15 +214,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 
 </div>
 </div>
-<a class="anchor" id="ae04d28f2fa9c879beb2631f318526f3a"></a>
+<a class="anchor" id="a57b50e201ba2df976727bb07c449f244"></a>
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const Move* HistorySave::GetMove </td>
+          <td class="memname">const HistorySave::Move * HistorySave::GetMove </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>number</em></td><td>)</td>
@@ -240,11 +232,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
           <td align="right"></td><td>)</td><td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>GetMove. </p>
@@ -261,9 +248,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <a class="anchor" id="af1f736a6ee2b72f56ac6985e788013a9"></a>
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">int HistorySave::GetMoveCount </td>
@@ -272,11 +256,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
           <td> const</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>GetMoveCount. </p>
@@ -284,14 +263,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following files:<ul>
-<li>/home/alex/sourceCode/gitProject/belegArbeitEMMS/projectSogo/include/core/<a class="el" href="HistorySave_8h_source.html">HistorySave.h</a></li>
-<li>/home/alex/sourceCode/gitProject/belegArbeitEMMS/projectSogo/src/core/HistorySave.cpp</li>
-</ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Aug 8 2016 11:48:41 for Sogo by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Aug 9 2016 13:27:36 for Sogo by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
