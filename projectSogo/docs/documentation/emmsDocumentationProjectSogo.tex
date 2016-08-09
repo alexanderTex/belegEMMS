@@ -12,17 +12,12 @@
 \usepackage{listings}
 \usepackage{color}
 \usepackage[svgnames]{xcolor}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{amstext}
-\usepackage{amsfonts}
-\usepackage{mathrsfs}
 \usepackage{listings}		% Quelltext verwenden
 \usepackage{color}
 \usepackage{fancybox}  	% Box um Formel
 \usepackage{varwidth}
 \usepackage{lscape}
-
+\usepackage{verbatim}	% mehrzeiliger Kommentar
 % /===========================================================================\
 %
 %   Anfang vom Dokument
@@ -30,14 +25,13 @@
 % \===========================================================================/
 
 \begin{document}
-\thispagestyle{empty}
-
 % /===========================================================================\
 %
 %   Titelseite
 %
 % \===========================================================================/
 \thispagestyle{empty}
+
 \begin{center}
 \Large{Hochschule für Technik und Wirtschaft Berlin (HTW)}\\
 \end{center}
@@ -69,7 +63,7 @@
 & & \\
 & & \\
 \textbf{Thema:} & & Sogo\\
-\textbf{Bschreibung:}& & Viergewinnt in 3D \\
+\textbf{Bschreibung:}& & Viergewinnt im dreidimensionalen Raum (3D) \\
 & & \\
 & & \\
 \textbf{eingereicht von:} & & Nils Brandt, 549906 \\
@@ -93,7 +87,6 @@
 \thispagestyle{empty}
 
 \tableofcontents
-%\maketitle
 
 \newpage
 
@@ -109,13 +102,35 @@
 %   Einleitung
 % \===========================================================================/
 \section{Einleitung}
-
+Die Applikation Sogo stellt den Komplettbeleg für das Fach Entwicklung von Multimediaanwendungen dar. Hierbei lag der Fokus sowohl auf der Funktionalität der Applikation als auch auf das Erarbeiten, Planen und Implementieren des Softwareprojektes. Dieses Projekt stellt zum gegenwärtigen Zeitpunkt, im vierten Semester des Studienfachs AI, das größte Softwareprojekt dar, welches als Beleg abzugeben ist.
+\\
+Die Grenzen der Realisierung sind weit gefasst, da sie zum Einen durch die Team-Mitglieder und zum Anderen durch die Dozenten mittels Anforderungen festgelegt wurden. Die Hauptimplementierung soll mit der Klassen-Bibliothek Qt, auf Basis von C++ erfolgen.
 
 % /===========================================================================\
 %   Grundlagen
 % \===========================================================================/
 \section{Grundlagen}
 % Beschreibung des Spiels
+Für unser Projekt haben wir uns für das Spiel Sogo entschieden, welches auch unter dem Namen Raummühle, 3D-Mühle oder Vier gewinnt Professional bekannt ist. Dabei gilt es wie auch im zweidimentsionalen Raum, seine Spielsteine direkt nebeneinander in der Horizontalen sowie in der Vertikalen zu platzieren und damit, je nach Spielfeldgröße, eine durchgehende Linie zu besetzten. In Sogo muss zusätzlich die dritte Dimension beachtet werden, in der es möglich ist, seine Seine diagonal und horizontal im Raum zu platzieren, was die Komplexität und damit den Schwierigkeitsgrad erhöht.
+\\
+Die Spielfeldgröße ist im Grundaufbau ein 4x4x4 Würfel, welchen wir für unsere Applikation auf 5x5x5 und 3x3x3 erweitert haben. 
+Jeder Spieler verfügt im Raster
+	\begin{itemize}
+		\item 3x3x3 über 13 Spielsteine
+		\item 4x4x4 über 32 Spielsteine		
+		\item 5x5x5 über 62 Spielsteine
+	\end{itemize}
+Um sich innerhalb des Spielbrettes zu orientieren wird für die jeweilige Spielfeldgröße ein Raster festgelegt, welches sich wie folgt zusammensetzt. 
+Für das Spielfeld
+\begin{itemize}
+		\item 3x3x3 wird die Grundfläche von ein bis neun und die Ebenen von 		eins bis drei durchnummeriert. Daraus folgt die Notation \\ $\mathcal{M}=\{(1,1),(1,2),(1,3),...(9,3)\}$.
+		\item 4x4x4 gibt es die Möglichkeit die Grundfläche in Hexadezimal-Notation und die Ebenen von eins bis vier aufzuteilen. Daraus folgt die Notation \\
+$\mathcal{M}=\{(1,1),(2,1),(3,1),...(F,4)\}$.
+		\item 5x5x5 wird das bekannte Schachraster verwendet welches die Grundfläche von A-E und eins bis fünf sowie die die Ebenen von eins bis fünf festlegt. Daraus folgt die Notation \\
+$\mathcal{M}=\{(A,1,1),(A,2,1),(A,3,1),...(E,5,5)\}$.
+	\end{itemize}
+	
+Der grundlegende Spielverlauf ergibt sich wie folgt. Zuerst wird festgelegt, wer welche Spielsteinfarbe erhält und wer das Spiel beginnen darf. Anschließend stecken/setzen beide Spieler ihre Spielsteine auf den Stab der jeweiligen Position. Gewonnen hat der Spieler, der seine Spielsteine in einer Linie senkrecht, waagerecht, diagonal in einer Ebene oder diagonal nach oben bzw. unten gesetzt hat. Insgesamt sind 76 Möglichkeiten gegeben zu gewinnen, wobei auch ein unentschieden möglich ist. Dies geschieht, wenn alle Spielsteine von beiden Spielern gesetzt sind und keiner eine Linie mit seinen Spielsteinen besetzen konnte.
 
 % /===========================================================================\
 %   Analyse
@@ -134,12 +149,44 @@
 %   Implementation
 % \===========================================================================/
 \section{Implementation}
-% App-Elemente in Sub-Kapiteln
+% Das Raster der jeweiligen Spielfelder wurde vereinfacht auf Grund einfacher Physik, die Schwekraft. Daher ergibt sich für jedes Spiel feld eine Notation von (1,1)... (n,m).
 
+% Verwendung von Code-Snipets
+
+% core/
+\subsection{Vector2}
+\subsection{Vector3}
+\subsection{Artificial Intelligence(AI)}
+\subsection{PlayingField}
+\subsection{GameData}
+\subsection{Player}
+
+% gui/
+\subsection{Spielmenüs}
+\subsubsection{StartMenu}
+\subsubsection{NewSessionMenu}
+\subsubsection{HighscoreMenu}
+\subsubsection{PauseMenu}
+
+\subsection{Mainwindow}
+\subsection{GameView}
+\subsubsection{GameView2D}
+\subsubsection{GameView3D}
+\subsection{GameVisualizer}
+\subsection{Playerinput}
+\subsection{HistoryDisplay}
+
+%utility
+\subsubsection{Logger - Der hauseigene Debugger}
+
+%external
+\subsection{3D Umsetzung}
 % /===========================================================================\
 %   Test
 % \===========================================================================/
 \section{Test}
+\subsection{Unit-Test}
+\subsection{Valgrind}
 
 % /===========================================================================\
 %   Ergebnis
