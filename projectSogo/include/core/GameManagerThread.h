@@ -1,7 +1,14 @@
 #ifndef GAMEMANAGERTHREAD_H
 #define GAMEMANAGERTHREAD_H
 
+#include <stdio.h>
+#include <iostream>
+#include <fstream>
+
+
 #include <QThread>
+
+
 #include "GameData.h"
 #include "AI.h"
 #include "Player.h"
@@ -99,6 +106,12 @@ public:
      * @return true if the player just won the game
      */
     bool MakeMove(Vector3 pos) throw(PlayingField::FieldExeptions, std::out_of_range);   
+
+
+
+
+
+
 
 signals:
     void PlayInputErrorSound();

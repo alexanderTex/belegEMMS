@@ -43,6 +43,11 @@ void HistorySave::AddMove(Vector3 pos, Player player)
     this->m_pastMoves->push_back(new HistorySave::Move(new Vector3(pos), new Player(player)));
 }
 
+void HistorySave::AddMove(Move *move)
+{
+    this->m_pastMoves->push_back(move);
+}
+
 void HistorySave::RevertLast()
 {
     this->m_pastMoves->erase(this->m_pastMoves->end());
@@ -74,4 +79,58 @@ const HistorySave::Move *HistorySave::GetMove(int number) const throw(out_of_ran
 const HistorySave::Move *HistorySave::GetLastMove() const throw(out_of_range)
 {
     return m_pastMoves->at(m_pastMoves->size() - 1);
+}
+
+
+string HistorySave::Serialize(const HistorySave& save)
+{
+    stringstream s;
+
+
+    //trenner #
+
+    for(int i = 0; i < save.GetMoveCount(); i++)
+    {
+        s << Move::Serialize(save.GetMove(i)) << "#";
+    }
+
+    return s.str();
+}
+
+bool HistorySave::Deserialize(string str, HistorySave *save)
+{
+    std::vector<string> elems;
+
+    split(str, delimiter, elems);
+
+    bool worked = true;
+
+    std::vector< Move * > m_pastMoves;
+
+    Move *tempMove;
+
+    for(int i = 0; i < elems.size(); i++)
+    {
+        if(!Move::Deserialize(elems.at(i), tempMove) || tempMove == NULL)
+        {
+            worked = false;
+            break;
+        }
+
+        m_pastMoves.push_back(tempMove);
+
+    }
+
+
+    if(worked)
+    {
+        save = new HistorySave();
+
+        for(int i = 0; i < elems.size(); i++)
+        {
+            save->AddMove(m_pastMoves.at(i));
+        }
+    }
+
+    return worked;
 }

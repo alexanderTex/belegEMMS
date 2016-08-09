@@ -1,5 +1,8 @@
 #include "./GameView.h"
 
+const string GameView::SAVEFILENAME = "SaveGame.txt";
+
+
 GameView::GameView(QWidget *parent)
     : QWidget(parent)
 {
@@ -135,6 +138,9 @@ void GameView::InitGame(GameData *data)
         *(this->m_data) = *data;
         this->m_gameVis->GameChanged();
         ShowGameInputView();
+        m_gameFinished = false;
+
+        SaveGame();
     }
 
 void GameView::StartGame()
@@ -150,6 +156,11 @@ void GameView::PauseGame()
 
 void GameView::EndGame()
 {
+    if(!m_gameFinished)
+    {
+        SaveGame();
+    }
+
     this->m_gameLoop->SuspendProcessingLoop();
     emit GameEnded(this->m_data);
 }
@@ -158,6 +169,8 @@ void GameView::EndGame()
 void GameView::GameFinished()
 {
     // Play WinSound
+
+    m_gameFinished = true;
 
     QSound::play(":/sounds/Sounds/MUSIC EFFECT Solo Harp Positive 01 (stereo).wav");
 
@@ -190,4 +203,39 @@ void GameView::PlayErrorSound()
 void GameView::ShowGameInputView()
 {
     bottomViewLayout->setCurrentWidget(this->m_inputArea);
+}
+
+
+void GameView::SaveGame()
+{
+    ofstream saveFileOutput;
+    saveFileOutput.open (SAVEFILENAME);
+
+    stringstream s;
+
+    s << GameData::Serialize(*this->m_data);
+
+    saveFileOutput << s.str();
+
+    saveFileOutput.close();
+}
+
+bool GameView::LoadGame()
+{
+    ifstream saveFile;
+    saveFile.open (SAVEFILENAME);
+
+    string s;
+    getline (saveFile,s);
+
+    GameData *data;
+
+    if(GameData::Deserialize(s, data) || data == NULL)
+    {
+        return false;
+    }
+
+    this->m_data = data;
+
+    return true;
 }

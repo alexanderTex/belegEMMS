@@ -66,6 +66,67 @@ class PlayingField
             *
             */
             Slot(PlayingField::OccupationState occupation);
+
+            inline static string Serialize(PlayingField::Slot &slot)
+            {
+                stringstream s;
+
+                s << slot.Occupation;
+
+                return s.str();
+            }
+
+            inline static bool Deserialize(std::string s, PlayingField::Slot *slot)
+            {
+                bool worked = true;
+
+                int e = -1;
+
+                try
+                {
+                    e = stoi(s);
+                }
+                catch(std::invalid_argument)
+                {
+                    worked = false;
+                }
+
+                if(e < 0 || e > 2)
+                {
+                    worked = false;
+                }
+
+                if(worked)
+                {
+
+                    PlayingField::OccupationState os = PlayingField::NONE;
+
+                    switch(e)
+                    {
+                        case 0:
+                            os = PlayingField::NONE;
+                        break;
+
+                        case 1:
+                            os = PlayingField::RED;
+                        break;
+
+                        case 2:
+                            os = PlayingField::BLUE;
+                        break;
+                    }
+
+
+                    PlayingField::Slot *tempSlot = new PlayingField::Slot(os);
+
+                    slot = tempSlot;
+                    delete(tempSlot);
+                }
+
+                return worked;
+            }
+
+
         };
 
 
@@ -122,8 +183,17 @@ class PlayingField
         void OccupySlot(Vector3 pos, PlayingField::OccupationState id) throw(out_of_range, FieldExeptions);
 
         bool IsPositionAvailable(int x, int y, int z) const;
+
+
+        static std::string Serialize( const PlayingField &pF);
+
+        static bool Deserialize(string str, PlayingField *field);
+
     protected:
     private:
+        const static char delimiter;
+
+
         /**
          * @brief m_fieldSize
          */
@@ -139,7 +209,6 @@ class PlayingField
         vector<vector<vector<Slot*> *> *> *m_slots;
 
 };
-
 
 
 /**

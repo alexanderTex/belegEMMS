@@ -1,5 +1,7 @@
 #include "../../include/core/GameData.h"
 
+const char GameData::delimiter = '|';
+
 GameData::GameData()
 {
     this->m_field = NULL;
@@ -25,6 +27,12 @@ GameData::GameData(const GameData &src)
     this->m_player1 = new Player(*(src.GetPlayer1()));
     this->m_player2 = new Player(*(src.GetPlayer2()));
     this->m_currentPlayer = src.GetCurrentPlayer()->GetColor() == this->m_player1->GetColor() ? this->m_player1 : this->m_player2;
+}
+
+GameData::GameData(PlayingField *field, Player *p1, Player *p2, Player *startingPlayer, HistorySave *historySave)
+    :   GameData(field, p1, p2, startingPlayer)
+{
+    this->m_history = historySave;
 }
 
 GameData::~GameData()
@@ -148,3 +156,92 @@ void GameData::SwitchPlayer()
 {
     m_currentPlayer = m_currentPlayer == m_player1 ? m_player2 : m_player1;
 }
+
+string GameData::Serialize(const GameData& data)
+{
+    stringstream s;
+
+    int current = 0;
+    if(data.GetCurrentPlayer() == data.GetPlayer1())
+    {
+        current = 1;
+    }
+    else
+    {
+        current = 2;
+    }
+
+    s << PlayingField::Serialize(*data.GetField()) << delimiter << Player::Serialize(*data.GetPlayer1()) << delimiter << Player::Serialize(*data.GetPlayer2())
+      << delimiter << current << delimiter << HistorySave::Serialize(*data.GetHistory());
+
+
+    return s.str();
+}
+
+bool GameData::Deserialize(std::string str, GameData *data)
+{
+    std::vector<string> elems;
+
+    split(str, delimiter, elems);
+
+    bool worked = true;
+
+    // 1. PlayingField
+    PlayingField *field;
+    if(!PlayingField::Deserialize(elems.at(0), field) || field == NULL)
+    {
+        worked = false;
+    }
+
+    // 2. Player 1
+    Player *p1;
+
+    if(!Player::Deserialize(elems.at(1), p1) || p1 == NULL)
+    {
+        worked = false;
+    }
+    // 3. Player 2
+    Player *p2;
+    if(!Player::Deserialize(elems.at(2), p2) || p2 == NULL)
+    {
+        worked = false;
+    }
+    // 4. integer currentPlayer
+    int current = 0;
+    try
+    {
+        current = stoi(elems.at(3));
+    }
+    catch(std::invalid_argument)
+    {
+        worked = false;
+    }
+
+    // 5. History
+    HistorySave *history;
+    if(!HistorySave::Deserialize(elems.at(3), history) || history == NULL)
+    {
+        worked = false;
+    }
+
+    Player *currentPlayer;
+    if(current == 1)
+    {
+        currentPlayer = p1;
+    }
+    else if(current == 2)
+    {
+        currentPlayer = p2;
+    }
+    else
+    {
+        worked = false;
+    }
+
+    if(worked)
+        data = new GameData(field, p1, p2, currentPlayer, history);
+
+    return worked;
+
+}
+

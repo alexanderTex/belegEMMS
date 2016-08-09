@@ -1,7 +1,11 @@
 #ifndef SLOTVECTOR_H
 #define SLOTVECTOR_H
 
+#include <sstream>
 #include <ostream>
+#include <vector>
+#include <string>
+#include "stringutlities.h"
 
 /**
 * @brief Defines a structures that encapsulates a position in 3D space
@@ -30,6 +34,13 @@ struct Vector3
      */
     Vector3(const Vector3 &src);
 
+
+    static std::string Serialize(Vector3 &vec);
+
+    static bool Deserialize(std::string s, Vector3 *vec);
+
+
+
     /**
      * @brief X
      */
@@ -45,7 +56,12 @@ struct Vector3
 
     bool operator==(const Vector3 &v2);
 
+private:
+    const static char delimiter;
+
 };
+
+
 
 std::ostream &operator<< (std::ostream &out, const Vector3 &vec);
 

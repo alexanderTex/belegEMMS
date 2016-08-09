@@ -4,7 +4,6 @@
 #include <iostream>
 #include "PlayingField.h"
 
-
 GameManager::GameManager()
 {
     this->m_data = NULL;

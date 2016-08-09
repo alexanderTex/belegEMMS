@@ -1,5 +1,7 @@
 #include "Player.h"
 
+const char Player::delimiter = ';';
+
 Player::Player(PlayerType type, std::string name, PlayingField::OccupationState color, unsigned int skill)
 {
     this->m_playerType = type;
@@ -73,3 +75,39 @@ void Player::SetSkill(int skill)
 {
     m_playerSkill = skill;
 }
+
+
+string Player::Serialize(const Player p)
+{
+    stringstream s;
+
+    s << p.GetType() << delimiter << p.GetName() << delimiter << p.GetColor() << delimiter << p.GetSkill();
+
+    return s.str();
+}
+
+bool Player::Deserialize(std::string str, Player *p)
+{
+    std::vector<string> elems;
+
+    split(str, delimiter, elems);
+
+    bool worked = true;
+
+    try
+    {
+        PlayerType pT = (PlayerType)stoi(elems.at(0));
+
+        PlayingField::OccupationState pO = (PlayingField::OccupationState)stoi(elems.at(2));
+        p = new Player(pT, elems.at(1), pO, stoi(elems.at(3)));
+    }
+    catch(std::invalid_argument)
+    {
+        worked = false;
+    }
+
+
+
+    return worked;
+}
+

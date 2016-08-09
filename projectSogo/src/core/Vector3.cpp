@@ -1,5 +1,6 @@
 #include "../include/core/Vector3.h"
 
+const char Vector3::delimiter = '*';
 Vector3::Vector3()
 {
     //ctor
@@ -20,6 +21,43 @@ Vector3::Vector3(const Vector3 &src)
     this->Y = src.Y;
     this->Z = src.Z;
 }
+
+
+std::string Vector3::Serialize(Vector3 &vec)
+{
+    std::stringstream s;
+
+    s << vec.X << delimiter << vec.Y << delimiter << vec.Z;
+
+    return s.str();
+}
+
+bool Vector3::Deserialize(std::string s, Vector3 *vec)
+{
+    std::vector<std::string> elems;
+
+    for(int i = 0; i < 3; i++)
+    {
+       split(s, delimiter, elems);
+    }
+
+    bool worked = false;
+
+    try
+    {
+        vec->X = std::stoi( elems[0] );
+        vec->Y = std::stoi( elems[1] );
+        vec->Z =std::stoi( elems[2] );
+        worked = true;
+    }
+    catch(std::invalid_argument)
+    {
+        worked = false;
+    }
+
+    return worked;
+}
+
 
 bool Vector3::operator==(const Vector3 &v2)
 {

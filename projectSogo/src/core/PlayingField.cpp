@@ -2,6 +2,8 @@
 
 #include <iostream>
 
+const char PlayingField::delimiter = ';';
+
 PlayingField::Slot::Slot()
 {
     //ctor
@@ -145,6 +147,88 @@ void PlayingField::OccupySlot(Vector3 pos, PlayingField::OccupationState id) thr
 
      return b;
  }
+
+
+
+ std::string PlayingField::Serialize( const PlayingField &pF)
+ {
+     std::stringstream s;
+
+     s << pF.GetFieldSize() << delimiter;
+
+     // i = x ( horizontal ; layer 0 )
+     // j = y ( depth ; layer 1 )
+     // k = z ( vertical ; layer 2 )
+     for(int i = 0; i < pF.GetFieldSize(); i++)
+     {
+         for(int j = 0; j < pF.GetFieldSize(); j++)
+         {
+             for(int k = 0; k < pF.GetFieldSize(); k++)
+             {
+                 s << Slot::Serialize(*pF.GetSlot(i, j, k));
+             }
+         }
+     }
+
+     s << delimiter << std::endl;
+
+     return s.str();
+
+ }
+
+ bool PlayingField::Deserialize(string str, PlayingField *field)
+ {
+     std::vector<string> elems;
+
+     split(str, delimiter, elems);
+
+     int fieldSize = stoi(elems.at(0));
+
+     PlayingField *newPlayingField = new PlayingField(fieldSize);
+
+     Slot *slot;
+
+     bool worked = true;
+
+     for(int k = 0; k < newPlayingField->GetFieldSize(); k++)
+     {
+         for(int j = 0; j < newPlayingField->GetFieldSize(); j++)
+         {
+             for(int i = 0; i < newPlayingField->GetFieldSize(); i++)
+             {
+                 int sum = (i + j + k);
+
+                 if(!Slot::Deserialize(elems.at(1).substr(sum -1, sum), slot) || slot == NULL)
+                 {
+                     worked = false;
+                     break;
+                 }
+
+
+                 if(slot->Occupation == RED || slot->Occupation == BLUE)
+                 {
+                     newPlayingField->OccupySlot(i,j,k, slot->Occupation);
+                 }
+             }
+         }
+     }
+     if(worked)
+     {
+         field = newPlayingField;
+     }
+
+     delete(newPlayingField);
+
+     return worked;
+ }
+
+
+
+
+ // _________________
+
+
+
 
  std::vector<Vector3> *GetAvailablePositions(const PlayingField *field) throw(out_of_range)
  {
