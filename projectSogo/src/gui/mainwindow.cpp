@@ -8,9 +8,17 @@ MainWindow::MainWindow(QWidget *parent)
 
     m_allAroundLayout = new QVBoxLayout(main);
 
+    m_topBar = new QWidget();
+    m_allAroundLayout->addWidget(m_topBar);
+
+    m_topLayout = new QHBoxLayout(m_topBar);
+
     m_changeLanguageButton = new QPushButton(tr("changeButton"), main);
     QObject::connect(m_changeLanguageButton, &QPushButton::clicked, this, &MainWindow::ChangeLanguage);
-    m_allAroundLayout->addWidget(m_changeLanguageButton);
+    m_topLayout->addWidget(m_changeLanguageButton);
+
+    this->m_fullscreenButton = new QPushButton(tr("Fullscreen"), main);
+    m_topLayout->addWidget(m_fullscreenButton);
 
 
     QWidget *workspace = new QWidget();
@@ -33,6 +41,10 @@ MainWindow::MainWindow(QWidget *parent)
     m_layout->addWidget(this->m_pauseMenu);
     QObject::connect(this->m_pauseMenu, &PauseMenu::ResumeButtonPressed, this, &MainWindow::ShowGameView);
 
+    QObject::connect(this->m_fullscreenButton, &QPushButton::pressed, this, &MainWindow::FullscreenSwitch);
+
+    m_isFullscreen = false;
+
     setCentralWidget(main);
     show();
 }
@@ -45,9 +57,17 @@ MainWindow::MainWindow(QTranslator *translator, QWidget *parent)
 
     m_allAroundLayout = new QVBoxLayout(main);
 
+    m_topBar = new QWidget();
+    m_allAroundLayout->addWidget(m_topBar);
+
+    m_topLayout = new QHBoxLayout(m_topBar);
+
     m_changeLanguageButton = new QPushButton(tr("changeButton"), main);
-    QObject::connect(m_changeLanguageButton , &QPushButton::clicked, this, &MainWindow::ChangeLanguage);
-    m_allAroundLayout->addWidget(m_changeLanguageButton);
+    QObject::connect(m_changeLanguageButton, &QPushButton::clicked, this, &MainWindow::ChangeLanguage);
+    m_topLayout->addWidget(m_changeLanguageButton);
+
+    this->m_fullscreenButton = new QPushButton(tr("Fullscreen"), main);
+    m_topLayout->addWidget(m_fullscreenButton);
 
 
     QWidget *workspace = new QWidget();
@@ -91,6 +111,10 @@ MainWindow::MainWindow(QTranslator *translator, QWidget *parent)
     // catch startGame from NewSession to start a new Game
     QObject::connect(this->m_newSessionMenu, &NewSessionMenu::startGame, this, &MainWindow::startNewGame);
     //QObject::connect(this->m_newSessionMenu, &NewSessionMenu::startGame, this, &MainWindow::ShowGameView);
+
+    QObject::connect(this->m_fullscreenButton, &QPushButton::pressed, this, &MainWindow::FullscreenSwitch);
+
+    m_isFullscreen = false;
 
     setCentralWidget(main);
     show();
@@ -136,4 +160,58 @@ void MainWindow::showStartMenu()
 void MainWindow::ShowPauseMenu()
 {
     m_layout->setCurrentWidget(this->m_pauseMenu);
+}
+
+void MainWindow::ChangeLanguage()
+{
+    qApp->removeTranslator(m_translator);
+
+    delete(m_translator);
+
+    m_translator = new QTranslator();
+
+    if(m_languageEnglish)
+    {
+        if(m_translator->load(":/sprache/Translations/sogoapp_de.qm"))
+        {
+            std::cout << "translator loaded" << std::endl;
+        }
+        else
+        {
+            std::cout << "translator did not load...whyever!!!" << std::endl;
+        }
+        m_languageEnglish = false;
+    }
+    else
+    {
+        if(m_translator->load(":/sprache/Translations/sogoapp_en.qm"))
+        {
+            std::cout << "translator loaded" << std::endl;
+        }
+        else
+        {
+            std::cout << "translator did not load...whyever!!!" << std::endl;
+        }
+        m_languageEnglish = true;
+    }
+    // qm datei muss in Ressource ordner sein um geladen werden
+
+    qApp->installTranslator(m_translator);
+
+}
+
+
+void MainWindow::FullscreenSwitch()
+{
+    if(m_isFullscreen)
+    {
+        this->showNormal();
+        m_isFullscreen = false;
+    }
+    else
+    {
+        this->showFullScreen();
+        m_isFullscreen = true;
+    }
+
 }

@@ -56,7 +56,7 @@ private:
 
     HistoryDisplay *m_historyDisplay;   /**< Using object to documentation and display the history. */
 
-    PlayerInput *m_playerInput;         /**< Get the playerinput. /*
+    PlayerInput *m_playerInput;         /**< Get the playerinput. */
 
 
 };

@@ -21,5 +21,6 @@
     <qresource prefix="/sounds">
         <file>Sounds/UI Error Double Note Down (stereo).wav</file>
         <file>Sounds/UI Beep Double Alternative (stereo).wav</file>
+        <file>Sounds/MUSIC EFFECT Solo Harp Positive 01 (stereo).wav</file>
     </qresource>
 </RCC>

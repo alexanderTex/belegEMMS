@@ -159,6 +159,8 @@ void GameView::GameFinished()
 {
     // Play WinSound
 
+    QSound::play(":/sounds/Sounds/MUSIC EFFECT Solo Harp Positive 01 (stereo).wav");
+
     ShowWinner();
 }
 
