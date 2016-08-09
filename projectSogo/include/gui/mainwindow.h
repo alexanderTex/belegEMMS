@@ -17,7 +17,15 @@
 #include <QEvent>
 
 /**
- * @brief The MainWindow class
+ * @brief The MainWindow class. The content of the Sogo-App.
+ *
+ * @author Nils Brandt
+ * @author Alexander Luedke
+ *
+ * @date 08. August 2016
+ *
+ * @version 1.0
+ * Add Documentation
  */
 class MainWindow : public QMainWindow
 {
@@ -104,10 +112,10 @@ signals:
 private:
     bool m_languageEnglish = false;
 
-    QPushButton *m_changeLanguageButton;
-    QTranslator *m_translator;
+    QPushButton *m_changeLanguageButton;    /**< To change the language. */
+    QTranslator *m_translator;              /**< The maintranslator. */
 
-    QVBoxLayout *m_allAroundLayout;
+    QVBoxLayout *m_allAroundLayout;         /**< The main layout. */
 
     QStackedLayout *m_layout;
 

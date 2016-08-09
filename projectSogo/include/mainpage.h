@@ -1,59 +1,87 @@
 #ifndef MAINPAGE_H
 #define MAINPAGE_H
 
-/** @mainpage package templates
+// Content for the mainpage in doxygenDocu
+
+/** @mainpage Sogo Documentation
 *
-* @authors Documentation Task Force
+* @authors Nils Brandt
+* @authors Alexander Luedke
 *
-* @section intro Introduction
-* This package provides code templates for use by GLAST developers.
-* All header files for external access are located in the templates directory,
-* as it is customary to put external public header files in the packageName
-* directory. Header files that are not meant for external access reside in
-* the src directory. Source files are located in the src directory. Files
-* related to loading sharable libraries are located in the src/Dll directory.
-* There are 3 examples:
+* @date 08. August 2016
 *
-* - User-Defined generic C++ class
-* -# templates/ClassTemplate.h
-* -# src/ClassTemplate.cxx
-* - User-Defined Gaudi Algorithm
-* -# src/ExampleAlg.cxx
-* -# src/Dll/templates_dll.cxx
-* -# src/Dll/templates_load.cxx
-* - User-Defined Gaudi Service
-* -# templates/IExampleSvc.h
-* -# templates/ExampleSvc.h
-* -# src/ExampleSvc.cxx
-* -# src/Dll/templates_dll.cxx
-* -# src/Dll/templates_load.cxx
-*
-*
-* Also note the existence of the following directories:
-* - cmt
-* -# Contains the requirements file
-* - doc
-* -# Contains the release.notes file
-*
-*
-* As you prepare to develop code for GLAST SAS, please be sure you are aware
-* of our current
-* <A HREF="http://www-glast.slac.stanford.edu/software/CodeHowTo/codeStandards.html"> Coding Standards </A>
-*
-*
-* If using the code in this package as an example - please modify the comments
-* as appropriate for your own specific code.
+* @section Introduction
+* This documentation shows the header files of the project sogo wich was develeped<br>
+* for the education "essensials fo the mobile applications".
+* <p>
+* The complete sourcecode and documentation is located in the
+* <A HREF="https://github.com/alexanderTex/belegEMMS"> repository on Github</A>. <br>
+* It can download direct via <br>
+* git clone https://github.com/alexanderTex/belegEMMS.git
 *
 * <hr>
-* @section notes release.notes
-* release.notes
-* <hr>
-* @section requirements requirements
-* @verbinclude requirements
-* <hr>
-* @todo [optionally include text about more work to be done]
-* @todo Give each todo item its own line
 *
+* <h1>file locations</h1>
+*
+* <h3>src/core</h3>
+* - AI.cpp
+* - Gamedata.cpp
+* - GameManagerThread.cpp
+* - HistorySave.cpp
+* - Player.cpp
+* - PlayField.cpp
+* - Vector2.cpp
+* - Vector3.cpp
+*
+* <h3>src/gui</h3>
+* - GameInputArea.cpp
+* - GameView.cpp
+* - GameView2D.cpp
+* - GameView3D.cpp
+* - GameVisualizer.cpp
+* - GraphicsSlot2d.cpp
+* - HighscoreMenu.cpp
+* - HistoryDisplay.cpp
+* - mainwindow.cpp
+* - NewSessionMenu.cpp
+* - PauseMenu.cpp
+* - PlayerInput.cpp
+* - StartMenu.cpp
+*
+* <h3>src/utility</h3>
+* - Logger.cpp
+*
+* <h3>include/core</h3>
+* - AI.h
+* - GameData.h
+* - GameManagerThread.h
+* - HistorySave.h
+* - Player.h
+* - PlayingField.h
+* - Vector2.h
+* - Vector3.h
+*
+* <h3>include/gui</h3>
+* - GameInputArea.h
+* - GameView.h
+* - GameView2D.h
+* - GameView3D.h
+* - GameVisualizer.h
+* - GraphicsSlot2d.h
+* - HighscoreMenu.h
+* - HistoryDisplay.h
+* - mainwindow.h
+* - NewSessionMenu.h
+* - PauseMenu.h
+* - PlayerInput.h
+* - StartMenu.h
+*
+* <h3>include/utility</h3>
+* - Logger.h
+*
+* <h3>external</h3>
+* There are also openGL files for using the 3D component, which is an "merge-project" with the education "computer graphic". <br>
+* These files are not included in this documentation.
 */
 
 #endif // MAINPAGE_H

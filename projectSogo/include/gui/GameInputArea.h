@@ -10,7 +10,15 @@
 #include "HistoryDisplay.h"
 
 /**
- * @brief The GameInputArea class
+ * @brief The GameInputArea class.
+ *
+ * @author Nils Brandt
+ * @author Alexander Luedke
+ *
+ * @date 08. August 2016
+ *
+ * @version 1.0
+ * Add Documentation
  */
 class GameInputArea : public QTabWidget
 {
@@ -18,6 +26,10 @@ class GameInputArea : public QTabWidget
 public:
     explicit GameInputArea(GameManager *gameManager, QWidget *parent = 0);
 
+    /**
+     * @brief Change the language
+     * @param event which change
+     */
     inline void changeEvent(QEvent *event)
     {
         if (event->type() == QEvent::LanguageChange) {
@@ -29,7 +41,6 @@ public:
     }
 
     virtual ~GameInputArea();
-
 
     inline HistoryDisplay *GetHistoryDisplay() const
     {
@@ -43,9 +54,9 @@ public:
 
 private:
 
-    HistoryDisplay *m_historyDisplay;
+    HistoryDisplay *m_historyDisplay;   /**< Using object to documentation and display the history. */
 
-    PlayerInput *m_playerInput;
+    PlayerInput *m_playerInput;         /**< Get the playerinput. /*
 
 
 };

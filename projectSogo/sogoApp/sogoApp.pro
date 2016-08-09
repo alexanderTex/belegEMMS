@@ -94,7 +94,8 @@ HEADERS +=      ../include/core/* \
     ../external/glm-0.9.4.0/glm/glm.hpp \
     ../external/shader.hpp \
     ../external/objects.hpp \
-    ../external/texture.hpp
+    ../external/texture.hpp \
+    ../include/mainpage.h
 
 
 SOURCES +=      main.cpp \

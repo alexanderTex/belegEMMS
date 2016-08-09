@@ -11,9 +11,16 @@
 
 
 /**
- * @brief The Logger class
+ * @brief The Logger class.
  * Logger singleton class
  * use to log errors and info texts
+ *
+ * @author Nils Brandt
+ *
+ * @date 08. August 2016
+ *
+ * @version 1.0
+ * Add Documentation
  */
 class Logger
 {

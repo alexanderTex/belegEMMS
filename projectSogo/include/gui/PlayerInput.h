@@ -18,7 +18,15 @@
 #include "Vector2.h"
 
 /**
- * @brief The PlayerInput class
+ * @brief The PlayerInput class.
+ *
+ * @author Nils Brandt
+ * @author Alexander Luedke
+ *
+ * @date 08. August 2016
+ *
+ * @version 1.0
+ * Add Documentation
  */
 class PlayerInput : public QWidget
 {
@@ -35,8 +43,8 @@ public:
 
 signals:
     /**
-     * @brief InputConfirmed
-     * @param pos
+     * @brief To confirm the playerinput.
+     * @param pos The position the player wants to set.
      */
     void InputConfirmed(Vector2 pos);
 
@@ -72,12 +80,9 @@ private:
     GameManager *m_gameManager;
 
     /**
-     * @brief ApplyInputs
+     * @brief Apply the playerinput
      */
     void ApplyInputs();
-
-
-
 
 };
 
@@ -85,4 +90,5 @@ private:
  * @brief InputConfirmed
  */
 void InputConfirmed();
+
 #endif // PLAYERINPUT_H

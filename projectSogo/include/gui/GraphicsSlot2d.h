@@ -7,7 +7,15 @@
 
 
 /**
- * @brief The GraphicsSlot2D class
+ * @brief The GraphicsSlot2D class.
+ *
+ * @author Nils Brandt
+ * @author Alexander Luedke
+ *
+ * @date 08. August 2016
+ *
+ * @version 1.0
+ * Add Documentation
  */
 class GraphicsSlot2D : public QGraphicsObject
 {
@@ -18,7 +26,6 @@ public:
     {
 
     }
-
 
     virtual QRectF boundingRect() const Q_DECL_OVERRIDE
     {

@@ -231,4 +231,22 @@ void NewSessionMenu::mergeGameData()
     m_gameData = new GameData(m_playingField, m_player1, m_player2, m_player2);
 }
 
-
+void NewSessionMenu::changeEvent(QEvent *event)
+{
+    if (event->type() == QEvent::LanguageChange) {
+        m_mainMenueLabel->setText(tr("New Session"));
+        m_input1stPlayername->setText(tr(("Player1")));
+        m_playfieldGroupBox->setTitle(tr("Playfield"));
+        m_input2ndPlayername->setText(tr("Player2"));
+        m_checkBoxPvPnetwork->setText(tr("PvP(network)"));
+        m_checkBoxPvPlocal->setText(tr("PvP(local)"));
+        m_hostadress->setText(tr("Hostaddress:"));
+        m_inputHostaddress->setText(tr("Hostaddress"));
+        m_hostport->setText(tr("Port:"));
+        m_inputHostport->setText(tr("Port"));
+        m_connectButtion->setText(tr("Connect"));
+        m_playGameButton->setText(tr("Start Game"));
+        m_backToMainButtonNS->setText(tr("Back"));
+    } else
+        QWidget::changeEvent(event);
+}
