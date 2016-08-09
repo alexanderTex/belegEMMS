@@ -69,6 +69,9 @@ private:
     bool m_languageEnglish = false;
     bool m_isFullscreen = false;
 
+    QWidget *m_topBar;
+    QHBoxLayout *m_topLayout;
+
     QPushButton *m_changeLanguageButton;
     QTranslator *m_translator;
 

@@ -8,12 +8,18 @@ MainWindow::MainWindow(QWidget *parent)
 
     m_allAroundLayout = new QVBoxLayout(main);
 
+    m_topBar = new QWidget();
+    m_allAroundLayout->addWidget(m_topBar);
+
+    m_topLayout = new QHBoxLayout(m_topBar);
+
     m_changeLanguageButton = new QPushButton(tr("changeButton"), main);
     QObject::connect(m_changeLanguageButton, &QPushButton::clicked, this, &MainWindow::ChangeLanguage);
-    m_allAroundLayout->addWidget(m_changeLanguageButton);
+    m_topLayout->addWidget(m_changeLanguageButton);
 
     this->m_fullscreenButton = new QPushButton(tr("Fullscreen"), main);
-    m_allAroundLayout->addWidget(m_fullscreenButton);
+    m_topLayout->addWidget(m_fullscreenButton);
+
 
     QWidget *workspace = new QWidget();
     m_allAroundLayout->addWidget(workspace);
@@ -51,12 +57,17 @@ MainWindow::MainWindow(QTranslator *translator, QWidget *parent)
 
     m_allAroundLayout = new QVBoxLayout(main);
 
+    m_topBar = new QWidget();
+    m_allAroundLayout->addWidget(m_topBar);
+
+    m_topLayout = new QHBoxLayout(m_topBar);
+
     m_changeLanguageButton = new QPushButton(tr("changeButton"), main);
-    QObject::connect(m_changeLanguageButton , &QPushButton::clicked, this, &MainWindow::ChangeLanguage);
-    m_allAroundLayout->addWidget(m_changeLanguageButton);
+    QObject::connect(m_changeLanguageButton, &QPushButton::clicked, this, &MainWindow::ChangeLanguage);
+    m_topLayout->addWidget(m_changeLanguageButton);
 
     this->m_fullscreenButton = new QPushButton(tr("Fullscreen"), main);
-    m_allAroundLayout->addWidget(m_fullscreenButton);
+    m_topLayout->addWidget(m_fullscreenButton);
 
 
     QWidget *workspace = new QWidget();
