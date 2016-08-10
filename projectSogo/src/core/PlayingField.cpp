@@ -184,7 +184,7 @@ void PlayingField::OccupySlot(Vector3 pos, PlayingField::OccupationState id) thr
 
      int fieldSize = stoi(elems.at(0));
 
-     PlayingField *newPlayingField = new PlayingField(fieldSize);
+     PlayingField newPlayingField(fieldSize);
 
 
 
@@ -194,17 +194,17 @@ void PlayingField::OccupySlot(Vector3 pos, PlayingField::OccupationState id) thr
 
      int sum = 0;
 
-     for(int i = 0; i < newPlayingField->GetFieldSize(); i++)
+     for(int i = 0; i < newPlayingField.GetFieldSize(); i++)
      {
-         for(int j = 0; j < newPlayingField->GetFieldSize(); j++)
+         for(int j = 0; j < newPlayingField.GetFieldSize(); j++)
          {
              bool skipping = false;
-             for(int k = 0; k < newPlayingField->GetFieldSize(); k++)
+             for(int k = 0; k < newPlayingField.GetFieldSize(); k++)
              {
                 if(!skipping)
                 {
 
-                    if(!Slot::Deserialize(elems.at(1).substr(sum, 1), &slot) || &slot == NULL)
+                    if(!Slot::Deserialize(elems.at(1).substr(sum, 1), &slot))
                     {
                         Logger::GetLoggerIntance()->LogInfo("Slot Deserialization failed(PlayingField)", __FILE__, __LINE__);
                         worked = false;
@@ -219,7 +219,7 @@ void PlayingField::OccupySlot(Vector3 pos, PlayingField::OccupationState id) thr
 
                     try
                     {
-                        newPlayingField->OccupySlot(i,j,k, slot.Occupation);
+                        newPlayingField.OccupySlot(i,j,k, slot.Occupation);
                     }
                     catch(out_of_range e)
                     {
@@ -282,10 +282,13 @@ void PlayingField::OccupySlot(Vector3 pos, PlayingField::OccupationState id) thr
      {
          Logger::GetLoggerIntance()->LogInfo("Field Assigned(PlayingField)", __FILE__, __LINE__);
 
-         field = newPlayingField;
-
+         *field = newPlayingField;
      }
 
+     if(field == NULL)
+     {
+         Logger::GetLoggerIntance()->LogInfo("FUCK THIS FUCKING FUCK CRAP", __FILE__, __LINE__);
+     }
 
      return worked;
  }

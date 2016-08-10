@@ -2,6 +2,14 @@
 
 const char Player::delimiter = ';';
 
+Player::Player()
+{
+    this->m_playerType = HUMAN;
+    this->m_playerName = "NAME";
+    this->m_playerColor = PlayingField::NONE;
+    this->m_playerSkill = -1;
+}
+
 Player::Player(PlayerType type, std::string name, PlayingField::OccupationState color, unsigned int skill)
 {
     this->m_playerType = type;
@@ -88,8 +96,7 @@ string Player::Serialize(const Player p)
 
 bool Player::Deserialize(std::string str, Player *p)
 {
-    std::vector<string> elems;
-    Logger::GetLoggerIntance()->LogInfo(" Player::Deserialize before split (Player)", __FILE__, __LINE__);
+    std::vector<string> elems;    
     split(str, delimiter, elems);
 
     bool worked = true;
@@ -97,11 +104,11 @@ bool Player::Deserialize(std::string str, Player *p)
     try
     {
         PlayerType pT = (PlayerType)stoi(elems.at(0));
-        Logger::GetLoggerIntance()->LogInfo(" Player::Deserialize PlayerType Loaded (Player)", __FILE__, __LINE__);
         PlayingField::OccupationState pO = (PlayingField::OccupationState)stoi(elems.at(2));
-        Logger::GetLoggerIntance()->LogInfo(" Player::Deserialize PlayerOccupationState Loaded (Player)", __FILE__, __LINE__);
-        p = new Player(pT, elems.at(1), pO, stoi(elems.at(3)));
-        Logger::GetLoggerIntance()->LogInfo(" Player::Deserialize Player created (Player)", __FILE__, __LINE__);
+        Player pl(pT, elems.at(1), pO, stoi(elems.at(3)));
+
+
+        *p = pl;
     }
     catch(std::invalid_argument)
     {

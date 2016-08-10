@@ -25,6 +25,13 @@ class HistorySave
      */
     struct Move
     {
+        Move()
+        {
+            this->position = new Vector3();
+            this->player = new Player();
+        }
+
+
         /**
          * @brief Move
          * @param pos
@@ -62,16 +69,14 @@ class HistorySave
 
             bool worked = true;
 
-            Logger::GetLoggerIntance()->LogInfo(str, __FILE__, __LINE__);
-
-            Vector3 *vec;
+            Vector3 *vec = new Vector3();
             if(!Vector3::Deserialize(elems.at(0), vec))
             {
                 worked = false;
             }
 
 
-            Player *player;
+            Player *player = new Player();
             if(!Player::Deserialize(elems.at(1), player))
             {
                 Logger::GetLoggerIntance()->LogInfo("Move deserialize Player Failed", __FILE__, __LINE__);

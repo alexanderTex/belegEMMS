@@ -37,6 +37,11 @@ public:
 
     /**
      * @brief Player
+     */
+    Player();
+
+    /**
+     * @brief Player
      * @param type
      * @param name
      * @param color

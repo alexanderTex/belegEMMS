@@ -38,9 +38,7 @@ std::string Vector3::Serialize(Vector3 &vec)
 
 bool Vector3::Deserialize(std::string s, Vector3 *vec)
 {
-    vec = new Vector3();
-
-    Logger::GetLoggerIntance()->LogInfo(s, __FILE__, __LINE__);
+    vec = new Vector3();   
 
     std::vector<std::string> elems;
 
