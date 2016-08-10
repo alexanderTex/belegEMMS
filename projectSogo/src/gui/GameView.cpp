@@ -134,8 +134,11 @@ GameView::~GameView()
 
 void GameView::InitGame(GameData *data)
 {
-    Logger::GetLoggerIntance()->LogInfo("PlayField:", __FILE__, __LINE__);
-    Logger::GetLoggerIntance()->LogInfo(DrawPlayingField(data->GetField()), __FILE__, __LINE__);
+    std::stringstream s;
+    s << (data->GetField() == NULL);
+
+    Logger::GetLoggerIntance()->LogInfo(s.str(), __FILE__, __LINE__);
+    //Logger::GetLoggerIntance()->LogInfo(DrawPlayingField(data->GetField()), __FILE__, __LINE__);
 
     *(this->m_data) = *data;
 
@@ -231,15 +234,12 @@ void GameView::SaveGame()
 
 bool GameView::LoadGame()
 {
-    Logger::GetLoggerIntance()->LogInfo("start of load (GameView)", __FILE__, __LINE__);
     ifstream saveFile;
     saveFile.open (SAVEFILENAME);
 
-    Logger::GetLoggerIntance()->LogInfo(" load after file open(GameView)", __FILE__, __LINE__);
 
     if(saveFile.is_open())
     {
-        Logger::GetLoggerIntance()->LogInfo(" file is open (GameView)", __FILE__, __LINE__);
         string s;
         getline (saveFile,s);
         saveFile.close();
@@ -247,18 +247,23 @@ bool GameView::LoadGame()
         if(s.size() > 0)
         {
 
-            Logger::GetLoggerIntance()->LogInfo(" After read (GameView)", __FILE__, __LINE__);
+            GameData *data = new GameData();
 
-            GameData *data;
+            Logger::GetLoggerIntance()->LogInfo("Before GameData Deserialization (GameView)", __FILE__, __LINE__);
 
-            if(!GameData::Deserialize(s, data))
+            GameData::Deserialize(s, data);
+/*
+            if(!)
             {
+                Logger::GetLoggerIntance()->LogInfo("currentDebugFuck failed(GameView)", __FILE__, __LINE__);
                 return false;
             }
 
+*/
+
+            Logger::GetLoggerIntance()->LogInfo("After GameData Deserialization failed (GameView)", __FILE__, __LINE__);
+
             InitGame(data);
-
-
 
             return true;
         }

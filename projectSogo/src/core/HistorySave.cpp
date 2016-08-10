@@ -99,22 +99,19 @@ string HistorySave::Serialize(const HistorySave& save)
 
 bool HistorySave::Deserialize(string str, HistorySave *save)
 {
-    std::vector<string> elems;
-
-    Logger::GetLoggerIntance()->LogInfo(str, __FILE__, __LINE__);
+    std::vector<string> elems;    
 
     split(str, delimiter, elems);
 
     bool worked = true;
 
-    Move *tempMove;
 
-    HistorySave *tempSave = new HistorySave();
+
+    HistorySave tempSave;
 
     for(int i = 0; i < elems.size(); i++)
     {
-
-
+        Move *tempMove = new Move();
         if(!Move::Deserialize(elems.at(i), tempMove))
         {
             Logger::GetLoggerIntance()->LogInfo("HistorySave Deserializierung Move Failed", __FILE__, __LINE__);
@@ -122,19 +119,12 @@ bool HistorySave::Deserialize(string str, HistorySave *save)
             break;
         }
 
-        tempSave->AddMove(tempMove);
-
+        tempSave.AddMove(tempMove);
     }
 
 
-    if(worked)
-    {
-        save = tempSave;
-    }
-    else
-    {
-        delete(tempSave);
-    }
+    *save = tempSave;
+
 
     return worked;
 }
