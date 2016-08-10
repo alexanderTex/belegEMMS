@@ -180,8 +180,6 @@ string GameData::Serialize(const GameData& data)
 
 bool GameData::Deserialize(std::string str, GameData *data)
 {
-    Logger::GetLoggerIntance()->LogInfo(" GameData::Deserialize (GameData)", __FILE__, __LINE__);
-
     std::vector<string> elems;
 
     split(str, delimiter, elems);
@@ -199,6 +197,22 @@ bool GameData::Deserialize(std::string str, GameData *data)
     }
 
     Logger::GetLoggerIntance()->LogInfo(" GameData::Deserialize After Field (GameData)", __FILE__, __LINE__);
+
+    std::stringstream s;
+
+    if(field == NULL)
+    {
+        Logger::GetLoggerIntance()->LogInfo("FUCK THIS FUCKING FUCK CRAP");
+    }
+
+    s << field->GetFieldSize();
+
+    Logger::GetLoggerIntance()->LogInfo(s.str(), __FILE__, __LINE__);
+
+
+
+
+
 
     // 2. Player 1
     Player *p1;
