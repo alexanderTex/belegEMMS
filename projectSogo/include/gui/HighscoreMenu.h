@@ -8,6 +8,17 @@
 #include <QEvent>
 #include <QWidget>
 
+/**
+ * @brief The HighscoreMenu class.
+ *
+ * @author Nils Brandt
+ * @author Alexander Luedke
+ *
+ * @date 08. August 2016
+ *
+ * @version 1.0
+ * Add Documentation
+ */
 class HighscoreMenu : public QWidget
 {
     Q_OBJECT

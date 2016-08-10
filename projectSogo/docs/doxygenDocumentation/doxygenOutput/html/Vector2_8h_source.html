@@ -38,8 +38,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -70,7 +68,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -94,36 +92,32 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;ostream&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="structVector2.html">   11</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structVector2.html">Vector2</a></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="structVector2.html#a22104d1809be26a419ef1f959e3761bf">Vector2</a>();</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="structVector2.html#a22104d1809be26a419ef1f959e3761bf">Vector2</a>(<span class="keyword">const</span> <a class="code" href="structVector2.html">Vector2</a> &amp;src);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="structVector2.html#a22104d1809be26a419ef1f959e3761bf">Vector2</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="structVector2.html#ad6b5d552715f067d87fa504f6b2e8949">   31</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structVector2.html#ad6b5d552715f067d87fa504f6b2e8949">X</a>;</div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="structVector2.html#a9d99db052f3994a4f54b35cf291c44f7">   35</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structVector2.html#a9d99db052f3994a4f54b35cf291c44f7">Y</a>;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">bool</span> operator==(<span class="keyword">const</span> <a class="code" href="structVector2.html">Vector2</a> &amp;v);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;};</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">inline</span> std::ostream &amp;operator&lt;&lt; (std::ostream &amp;out, <span class="keyword">const</span> <a class="code" href="structVector2.html">Vector2</a> &amp;vec)</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;{</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    out &lt;&lt; <span class="stringliteral">&quot;x = &quot;</span> &lt;&lt; vec.<a class="code" href="structVector2.html#ad6b5d552715f067d87fa504f6b2e8949">X</a> &lt;&lt; <span class="stringliteral">&quot;, y = &quot;</span> &lt;&lt; vec.<a class="code" href="structVector2.html#a9d99db052f3994a4f54b35cf291c44f7">Y</a>;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordflow">return</span> out;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="structVector2.html">   19</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structVector2.html">Vector2</a></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="structVector2.html#a22104d1809be26a419ef1f959e3761bf">Vector2</a>();</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="structVector2.html#a22104d1809be26a419ef1f959e3761bf">Vector2</a>(<span class="keyword">const</span> <a class="code" href="structVector2.html">Vector2</a> &amp;src);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="structVector2.html#a22104d1809be26a419ef1f959e3761bf">Vector2</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="structVector2.html#ad6b5d552715f067d87fa504f6b2e8949">   39</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structVector2.html#ad6b5d552715f067d87fa504f6b2e8949">X</a>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="structVector2.html#a9d99db052f3994a4f54b35cf291c44f7">   43</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structVector2.html#a9d99db052f3994a4f54b35cf291c44f7">Y</a>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">bool</span> operator==(<span class="keyword">const</span> <a class="code" href="structVector2.html">Vector2</a> &amp;v);</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#endif // VECTOR2_H</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;};</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;std::ostream &amp;operator&lt;&lt; (std::ostream &amp;out, <span class="keyword">const</span> <a class="code" href="structVector2.html">Vector2</a> &amp;vec);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#endif // VECTOR2_H</span></div>
 <div class="ttc" id="structVector2_html_a22104d1809be26a419ef1f959e3761bf"><div class="ttname"><a href="structVector2.html#a22104d1809be26a419ef1f959e3761bf">Vector2::Vector2</a></div><div class="ttdeci">Vector2()</div><div class="ttdoc">Default constructor Initializes X,Y to zero. </div><div class="ttdef"><b>Definition:</b> Vector2.cpp:3</div></div>
-<div class="ttc" id="structVector2_html"><div class="ttname"><a href="structVector2.html">Vector2</a></div><div class="ttdoc">Defines a structures that encapsulates a position in 2D space X is the horizontal value Y is the dept...</div><div class="ttdef"><b>Definition:</b> Vector2.h:11</div></div>
-<div class="ttc" id="structVector2_html_a9d99db052f3994a4f54b35cf291c44f7"><div class="ttname"><a href="structVector2.html#a9d99db052f3994a4f54b35cf291c44f7">Vector2::Y</a></div><div class="ttdeci">int Y</div><div class="ttdoc">Y y value. </div><div class="ttdef"><b>Definition:</b> Vector2.h:35</div></div>
-<div class="ttc" id="structVector2_html_ad6b5d552715f067d87fa504f6b2e8949"><div class="ttname"><a href="structVector2.html#ad6b5d552715f067d87fa504f6b2e8949">Vector2::X</a></div><div class="ttdeci">int X</div><div class="ttdoc">X x value. </div><div class="ttdef"><b>Definition:</b> Vector2.h:31</div></div>
+<div class="ttc" id="structVector2_html"><div class="ttname"><a href="structVector2.html">Vector2</a></div><div class="ttdoc">Defines a structures that encapsulates a position in 2D space. </div><div class="ttdef"><b>Definition:</b> Vector2.h:19</div></div>
+<div class="ttc" id="structVector2_html_a9d99db052f3994a4f54b35cf291c44f7"><div class="ttname"><a href="structVector2.html#a9d99db052f3994a4f54b35cf291c44f7">Vector2::Y</a></div><div class="ttdeci">int Y</div><div class="ttdoc">Y y value. </div><div class="ttdef"><b>Definition:</b> Vector2.h:43</div></div>
+<div class="ttc" id="structVector2_html_ad6b5d552715f067d87fa504f6b2e8949"><div class="ttname"><a href="structVector2.html#ad6b5d552715f067d87fa504f6b2e8949">Vector2::X</a></div><div class="ttdeci">int X</div><div class="ttdoc">X x value. </div><div class="ttdef"><b>Definition:</b> Vector2.h:39</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Aug 8 2016 11:48:39 for Sogo by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Aug 9 2016 13:27:35 for Sogo by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

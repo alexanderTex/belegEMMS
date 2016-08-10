@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['player',['player',['../structGameManager_1_1AIPlayer.html#a96450dd315805b21d243f80787a53d6e',1,'GameManager::AIPlayer']]]
+  ['occupation',['Occupation',['../structPlayingField_1_1Slot.html#a1c4ada065c877c9dd33950a9f9eb7d4f',1,'PlayingField::Slot']]]
 ];

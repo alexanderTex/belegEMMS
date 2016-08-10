@@ -5,9 +5,17 @@
 #include <sstream>
 
 /**
-* @brief Defines a structures that encapsulates a position in 2D space
-* X is the horizontal value
-* Y is the depth value
+ * @brief Defines a structures that encapsulates a position in 2D space.
+ * X is the horizontal value
+ * Y is the depth value
+ *
+ *  @author Nils Brandt
+ * @author Alexander Luedke
+ *
+ * @date 08. August 2016
+ *
+ * @version 1.0
+ * Add Documentation
 */
 struct Vector2
 {

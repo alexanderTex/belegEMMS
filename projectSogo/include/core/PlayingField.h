@@ -12,12 +12,19 @@
 
 using namespace std;
 
-
 /**
-* @brief Defines the Properties of a Playingfield
+* @brief Defines the Properties of a Playingfield.
 * Which is a 3 dimensional Grid
 * Containing Slots
 * Slots can be occupied by players
+*
+*  @author Nils Brandt
+ * @author Alexander Luedke
+ *
+ * @date 08. August 2016
+ *
+ * @version 1.0
+ * Add Documentation
 */
 class PlayingField
 {

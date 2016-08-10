@@ -28,6 +28,14 @@
 // maybe as a Graphicsscene overload
 /**
  * @brief The GameView2D class
+ *
+ * @author Nils Brandt
+ * @author Alexander Luedke
+ *
+ * @date 08. August 2016
+ *
+ * @version 1.0
+ * Add Documentation
  */
 class GameView2D : public QWidget
 {
@@ -41,6 +49,9 @@ class GameView2D : public QWidget
             return m_sceneItems->at(vec.X)->at(vec.Y)->at(vec.Z);
         }
 
+        /**
+         * @brief To clear the grid.
+         */
         void ClearGrid();
 
         void RecalculateGrid();

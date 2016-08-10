@@ -6,12 +6,20 @@
 #include "PlayingField.h"
 
 /**
- * @brief The Player class
+ * @brief The Player class.
  * Defines a Player that is defined by
  * the type, which the player belongs to ( human or ai player )
  * a name
  * a Color ( Currently Occupationstate )
  * skill ( currently only effectively used by ai)
+ *
+ * @author Nils Brandt
+ * @author Alexander Luedke
+ *
+ * @date 08. August 2016
+ *
+ * @version 1.0
+ * Add Documentation
  */
 class Player
 {

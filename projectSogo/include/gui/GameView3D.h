@@ -28,7 +28,17 @@
 #include "Logger.h"
 #include "GameManagerThread.h"
 
-
+/**
+ * @brief The GameView3D class.
+ *
+ * @author Nils Brandt
+ * @author Alexander Luedke
+ *
+ * @date 08. August 2016
+ *
+ * @version 1.0
+ * Add Documentation
+ */
 class GameView3D : public QOpenGLWidget
 {
     /*

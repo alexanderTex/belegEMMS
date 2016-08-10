@@ -8,10 +8,18 @@
 #include "stringutlities.h"
 
 /**
-* @brief Defines a structures that encapsulates a position in 3D space
-* X is the horizontal value
-* Y is the depth value
-* Z is the vertical value
+ * @brief Defines a structures that encapsulates a position in 3D space.
+ * X is the horizontal value
+ * Y is the depth value
+ * Z is the vertical value
+ *
+ * @author Nils Brandt
+ * @author Alexander Luedke
+ *
+ * @date 08. August 2016
+ *
+ * @version 1.0
+ * Add Documentation
 */
 struct Vector3
 {

@@ -13,9 +13,19 @@
 #include "AI.h"
 #include "Player.h"
 
+
+
 /**
  * @brief The GameManager class
  * Handles the game loop logic in a thread
+ *
+ * @author Nils Brandt
+ * @author Alexander Luedke
+ *
+ * @date 08. August 2016
+ *
+ * @version 1.0
+ * Add Documentation
  */
 class GameManager : public QThread
 {

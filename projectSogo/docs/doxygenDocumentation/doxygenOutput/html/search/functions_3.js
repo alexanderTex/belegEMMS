@@ -1,8 +1,24 @@
 var searchData=
 [
-  ['degrees',['degrees',['../group__core__func__trigonometric.html#ga034bdb53d458242c506e4d830c7df3aa',1,'glm::degrees(genType const &amp;radians)'],['../group__core__func__trigonometric.html#ga034bdb53d458242c506e4d830c7df3aa',1,'glm::degrees(genType const &amp;radians)']]],
-  ['determinant',['determinant',['../group__core__func__matrix.html#gad3bfb2098e1572d2131a261c1fb76dd4',1,'glm::determinant(detail::tmat2x2&lt; valType &gt; const &amp;m)'],['../group__core__func__matrix.html#ga2f26bb474e077cf03b9db23f813e8450',1,'glm::determinant(detail::tmat3x3&lt; valType &gt; const &amp;m)'],['../group__core__func__matrix.html#ga1daa306eecf6e8b379626d761b8c222f',1,'glm::determinant(detail::tmat4x4&lt; valType &gt; const &amp;m)']]],
-  ['diskrand',['diskRand',['../group__gtc__random.html#gaacf5ed0c8f984b4ca3004019c573dc51',1,'glm::diskRand(T const &amp;Radius)'],['../group__gtc__random.html#gaacf5ed0c8f984b4ca3004019c573dc51',1,'glm::diskRand(T const &amp;Radius)']]],
-  ['distance',['distance',['../group__core__func__geometric.html#ga3fac0e61144f60184d961dd156709dd3',1,'glm::distance(genType const &amp;p0, genType const &amp;p1)'],['../group__core__func__geometric.html#ga3fac0e61144f60184d961dd156709dd3',1,'glm::distance(genType const &amp;p0, genType const &amp;p1)']]],
-  ['dot',['dot',['../group__core__func__geometric.html#ga7a31d2864eccfe665409e3b44f5e6e8d',1,'glm::dot(genType const &amp;x, genType const &amp;y)'],['../group__core__func__geometric.html#ga7a31d2864eccfe665409e3b44f5e6e8d',1,'glm::dot(genType const &amp;x, genType const &amp;y)'],['../group__gtc__quaternion.html#gab9101d7f5b27ca682fc84e32b8fd70ad',1,'glm::dot(detail::tquat&lt; T &gt; const &amp;q1, detail::tquat&lt; T &gt; const &amp;q2)'],['../group__gtc__quaternion.html#gab9101d7f5b27ca682fc84e32b8fd70ad',1,'glm::dot(detail::tquat&lt; T &gt; const &amp;q1, detail::tquat&lt; T &gt; const &amp;q2)']]]
+  ['gamedata',['GameData',['../classGameData.html#a67ab18c5a35df618e99983275c7552ab',1,'GameData::GameData()'],['../classGameData.html#aea94874f6fb34c81daf86ab294a3e094',1,'GameData::GameData(PlayingField *field, Player *p1, Player *p2, Player *startingPlayer)'],['../classGameData.html#ae0f631bbb4bf25dd4e3888a5ef9a4eb6',1,'GameData::GameData(const GameData &amp;src)']]],
+  ['gameended',['GameEnded',['../classGameView.html#a5901d54c9767a75549860cc5b511fcd5',1,'GameView']]],
+  ['gamefinished',['GameFinished',['../classGameView.html#a3e06ec8f766005c4aac0d572559fc9ed',1,'GameView']]],
+  ['gamemanager',['GameManager',['../classGameManager.html#aa0e2424dc1a39d380e5b6605b179bf05',1,'GameManager::GameManager()'],['../classGameManager.html#a80046eb2f443289f0ba1b3fa1272470a',1,'GameManager::GameManager(GameData *data)']]],
+  ['getcolor',['GetColor',['../classPlayer.html#a49f420e5204c895b9a94f07f6aaf639f',1,'Player']]],
+  ['getcurrentplayer',['GetCurrentPlayer',['../classGameData.html#a5e07bca98788c169c82e0e0f393755a7',1,'GameData']]],
+  ['getfield',['GetField',['../classGameData.html#af932f66030087c333f2d5746f9fd555c',1,'GameData']]],
+  ['getfieldsize',['GetFieldSize',['../classPlayingField.html#abfbecf0f8ba91c9c1167da359e7463dc',1,'PlayingField']]],
+  ['getgamedata',['GetGameData',['../classGameManager.html#ae6075cdc12a4b98aeddc4cda20854393',1,'GameManager']]],
+  ['gethistory',['GetHistory',['../classGameData.html#ad0e34ba7f1106ff9b5fdd8e99f327ec1',1,'GameData']]],
+  ['getlastmove',['GetLastMove',['../classGameData.html#a5c754d78e1521b2b32b53a083d5cf7f5',1,'GameData::GetLastMove()'],['../classHistorySave.html#a35b8a35a1673f21ea7f53558d4ec198a',1,'HistorySave::GetLastMove()']]],
+  ['getmove',['GetMove',['../classHistorySave.html#a57b50e201ba2df976727bb07c449f244',1,'HistorySave']]],
+  ['getmovecount',['GetMoveCount',['../classHistorySave.html#af1f736a6ee2b72f56ac6985e788013a9',1,'HistorySave']]],
+  ['getname',['GetName',['../classPlayer.html#aa5030908379dbc95594e4a9856758fef',1,'Player']]],
+  ['getopponent',['GetOpponent',['../classGameData.html#a7cf443182a19f49bac785f7224d57d81',1,'GameData']]],
+  ['getplayer1',['GetPlayer1',['../classGameData.html#a1642c300ee35687a67b807cedee9e55d',1,'GameData']]],
+  ['getplayer2',['GetPlayer2',['../classGameData.html#aa9012da90297a55f563a20f0b927b051',1,'GameData']]],
+  ['getplayers',['GetPlayers',['../classGameData.html#a423674f3ce9e6283b7262a9187ee0449',1,'GameData']]],
+  ['getskill',['GetSkill',['../classPlayer.html#a9d8cedd46573b958fe6febbf89d07322',1,'Player']]],
+  ['getslot',['GetSlot',['../classPlayingField.html#a01b5105b49ec72e094411d216df27ffa',1,'PlayingField']]],
+  ['gettype',['GetType',['../classPlayer.html#adbb81c3cffe824c9ed8e18f1f635a1a3',1,'Player']]]
 ];

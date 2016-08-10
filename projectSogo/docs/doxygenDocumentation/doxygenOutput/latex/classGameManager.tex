@@ -50,7 +50,7 @@ struct \hyperlink{structGameManager_1_1AIPlayer}{A\-I\-Player}
 \hypertarget{classGameManager_abbde8090c24ca199815ba1e85059c96f}{virtual void \hyperlink{classGameManager_abbde8090c24ca199815ba1e85059c96f}{run} ()}\label{classGameManager_abbde8090c24ca199815ba1e85059c96f}
 
 \begin{DoxyCompactList}\small\item\em run override of the Q\-Thread run \end{DoxyCompactList}\item 
-const \hyperlink{classGameData}{Game\-Data} $\ast$ \hyperlink{classGameManager_a51bd111f72c164d392db25e1b9bab86e}{Get\-Game\-Data} () const 
+const \hyperlink{classGameData}{Game\-Data} $\ast$ \hyperlink{classGameManager_ae6075cdc12a4b98aeddc4cda20854393}{Get\-Game\-Data} () const 
 \begin{DoxyCompactList}\small\item\em Get\-Game\-Data. \end{DoxyCompactList}\item 
 \hypertarget{classGameManager_a760b12229d3d010a81507a07760a4315}{void \hyperlink{classGameManager_a760b12229d3d010a81507a07760a4315}{Set\-Game\-Data} (\hyperlink{classGameData}{Game\-Data} $\ast$data)}\label{classGameManager_a760b12229d3d010a81507a07760a4315}
 
@@ -76,6 +76,19 @@ bool \hyperlink{classGameManager_ab5e866fc01d4d612cd1f84de0df4653f}{Make\-Move} 
 \subsection{Detailed Description}
 The \hyperlink{classGameManager}{Game\-Manager} class Handles the game loop logic in a thread. 
 
+\begin{DoxyAuthor}{Author}
+Nils Brandt 
+
+Alexander Luedke
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+08. August 2016
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\-0 Add Documentation 
+\end{DoxyVersion}
+
+
 \subsection{Constructor \& Destructor Documentation}
 \hypertarget{classGameManager_a80046eb2f443289f0ba1b3fa1272470a}{\index{Game\-Manager@{Game\-Manager}!Game\-Manager@{Game\-Manager}}
 \index{Game\-Manager@{Game\-Manager}!GameManager@{Game\-Manager}}
@@ -96,13 +109,13 @@ The \hyperlink{classGameManager}{Game\-Manager} class Handles the game loop logi
 
 
 \subsection{Member Function Documentation}
-\hypertarget{classGameManager_a51bd111f72c164d392db25e1b9bab86e}{\index{Game\-Manager@{Game\-Manager}!Get\-Game\-Data@{Get\-Game\-Data}}
+\hypertarget{classGameManager_ae6075cdc12a4b98aeddc4cda20854393}{\index{Game\-Manager@{Game\-Manager}!Get\-Game\-Data@{Get\-Game\-Data}}
 \index{Get\-Game\-Data@{Get\-Game\-Data}!GameManager@{Game\-Manager}}
-\subsubsection[{Get\-Game\-Data}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Game\-Data}$\ast$ Game\-Manager\-::\-Get\-Game\-Data (
+\subsubsection[{Get\-Game\-Data}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Game\-Data} $\ast$ Game\-Manager\-::\-Get\-Game\-Data (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classGameManager_a51bd111f72c164d392db25e1b9bab86e}
+) const}}\label{classGameManager_ae6075cdc12a4b98aeddc4cda20854393}
 
 
 Get\-Game\-Data. 
@@ -116,7 +129,7 @@ Get\-Game\-Data.
 \begin{DoxyParamCaption}
 \item[{{\bf Vector2}}]{pos}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classGameManager_ade855b10bc61465dfdfb458cf624cf97}
+)}}\label{classGameManager_ade855b10bc61465dfdfb458cf624cf97}
 
 
 Input\-Confirmation\-Detected. 
@@ -145,10 +158,3 @@ Tries to Occupy the given position , adds the move to the history, checks if the
 \begin{DoxyReturn}{Returns}
 true if the player just won the game 
 \end{DoxyReturn}
-
-
-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
-\item 
-/home/alex/source\-Code/git\-Project/beleg\-Arbeit\-E\-M\-M\-S/project\-Sogo/include/core/Game\-Manager\-Thread.\-h\item 
-/home/alex/source\-Code/git\-Project/beleg\-Arbeit\-E\-M\-M\-S/project\-Sogo/build-\/sogo\-App-\/\-Desktop\-\_\-\-Qt\-\_\-5\-\_\-6\-\_\-0\-\_\-\-G\-C\-C\-\_\-64bit-\/\-Debug/moc\-\_\-\-Game\-Manager\-Thread.\-cpp\item 
-/home/alex/source\-Code/git\-Project/beleg\-Arbeit\-E\-M\-M\-S/project\-Sogo/src/core/Game\-Manager\-Thread.\-cpp\end{DoxyCompactItemize}

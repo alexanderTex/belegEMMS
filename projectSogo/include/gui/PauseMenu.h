@@ -7,6 +7,17 @@
 #include <QTranslator>
 #include <QEvent>
 
+/**
+ * @brief The PauseMenu class. To interruppt the game.
+ *
+ * @author Nils Brandt
+ * @author Alexander Luedke
+ *
+ * @date 08. August 2016
+ *
+ * @version 1.0
+ * Add Documentation
+ */
 class PauseMenu : public QWidget
 {
     Q_OBJECT

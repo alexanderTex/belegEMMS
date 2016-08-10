@@ -13,7 +13,15 @@
 using namespace std;
 
 /**
- * @brief The GameVisualizer class
+ * @brief The GameVisualizer class.
+ *
+ * @author Nils Brandt
+ * @author Alexander Luedke
+ *
+ * @date 08. August 2016
+ *
+ * @version 1.0
+ * Add Documentation
  */
 class GameVisualizer : public QTabWidget
 {

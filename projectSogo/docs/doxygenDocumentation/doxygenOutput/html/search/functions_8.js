@@ -1,14 +1,6 @@
 var searchData=
 [
-  ['imulextended',['imulExtended',['../group__core__func__integer.html#gab0eaec4d0964925429322eebf8dca6d0',1,'glm::imulExtended(genIType const &amp;x, genIType const &amp;y, genIType &amp;msb, genIType &amp;lsb)'],['../group__core__func__integer.html#gab0eaec4d0964925429322eebf8dca6d0',1,'glm::imulExtended(genIType const &amp;x, genIType const &amp;y, genIType &amp;msb, genIType &amp;lsb)']]],
-  ['infiniteperspective',['infinitePerspective',['../group__gtc__matrix__transform.html#ga414f3cfe1af5619acebd5c28cf6bd45c',1,'glm::infinitePerspective(T fovy, T aspect, T near)'],['../group__gtc__matrix__transform.html#ga414f3cfe1af5619acebd5c28cf6bd45c',1,'glm::infinitePerspective(T fovy, T aspect, T zNear)']]],
-  ['inputconfirmationdetected',['InputConfirmationDetected',['../classGameManager.html#ade855b10bc61465dfdfb458cf624cf97',1,'GameManager']]],
-  ['inputconfirmed',['InputConfirmed',['../classPlayerInput.html#aab7de51daaa958792ffaae64e41f43e6',1,'PlayerInput']]],
-  ['intbitstofloat',['intBitsToFloat',['../group__core__func__common.html#ga15f7f0f93ebb026338cb3d7d5876e1b7',1,'glm']]],
-  ['inverse',['inverse',['../group__core__func__matrix.html#gada3384a86cf38a1fd96275194b8ba8c0',1,'glm::inverse(detail::tmat2x2&lt; valType &gt; const &amp;m)'],['../group__core__func__matrix.html#ga1a455651f7ba323ade0cd9191542b179',1,'glm::inverse(detail::tmat3x3&lt; valType &gt; const &amp;m)'],['../group__core__func__matrix.html#gabc94b29dea14e111e48bc963c47559b2',1,'glm::inverse(detail::tmat4x4&lt; valType &gt; const &amp;m)'],['../group__gtc__quaternion.html#ga78b87a5e7152108e0dff0855d81b3bc1',1,'glm::inverse(detail::tquat&lt; T &gt; const &amp;q)'],['../group__gtc__quaternion.html#ga78b87a5e7152108e0dff0855d81b3bc1',1,'glm::inverse(detail::tquat&lt; T &gt; const &amp;q)']]],
-  ['inversesqrt',['inversesqrt',['../group__core__func__exponential.html#ga3fd19e045e3943b96e0cdad22fbda111',1,'glm::inversesqrt(genType const &amp;x)'],['../group__core__func__exponential.html#ga3fd19e045e3943b96e0cdad22fbda111',1,'glm::inversesqrt(genType const &amp;x)']]],
-  ['inversetranspose',['inverseTranspose',['../group__gtc__matrix__inverse.html#ga5fd97e07f032af2b5a4698b6bf0b9ecc',1,'glm']]],
-  ['iobserver',['IObserver',['../classIObserver.html#a7e478961d27e1c605699e2b32fbdc29b',1,'IObserver']]],
-  ['isinf',['isinf',['../group__core__func__common.html#ga69fcbd40e0ce359f832329c0c93d5912',1,'glm::isinf(genType const &amp;x)'],['../group__core__func__common.html#ga69fcbd40e0ce359f832329c0c93d5912',1,'glm::isinf(genType const &amp;x)']]],
-  ['isnan',['isnan',['../group__core__func__common.html#ga5efda4205aed487be515b5f2921303f8',1,'glm::isnan(genType const &amp;x)'],['../group__core__func__common.html#ga5efda4205aed487be515b5f2921303f8',1,'glm::isnan(genType const &amp;x)']]]
+  ['newsessionmenu',['NewSessionMenu',['../classNewSessionMenu.html#ae1038e3894d95dd28e7e9bde54fdc5eb',1,'NewSessionMenu']]],
+  ['notify',['Notify',['../classIObserver.html#ad46021c61f1fa2126078f33783adc727',1,'IObserver']]],
+  ['notifyallobserver',['NotifyAllObserver',['../classSubject.html#ad047f9358b9d199bca40fc5f62a26fc0',1,'Subject']]]
 ];
