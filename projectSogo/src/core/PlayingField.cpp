@@ -215,7 +215,7 @@ void PlayingField::OccupySlot(Vector3 pos, PlayingField::OccupationState id) thr
                     stringstream s;
                     s << sum << " ( pos : " << i << ", " << j << ", " << k << " )" << "( " << slot.Occupation << ")";
 
-                    Logger::GetLoggerIntance()->LogInfo(s.str(), __FILE__, __LINE__);
+                    //Logger::GetLoggerIntance()->LogInfo(s.str(), __FILE__, __LINE__);
 
                     try
                     {
@@ -262,7 +262,7 @@ void PlayingField::OccupySlot(Vector3 pos, PlayingField::OccupationState id) thr
                 }
                 else
                 {
-                    Logger::GetLoggerIntance()->LogInfo("Slot Deserialization Skipping(PlayingField)", __FILE__, __LINE__);
+                    //Logger::GetLoggerIntance()->LogInfo("Slot Deserialization Skipping(PlayingField)", __FILE__, __LINE__);
                 }
                 sum++;
              }
@@ -280,7 +280,10 @@ void PlayingField::OccupySlot(Vector3 pos, PlayingField::OccupationState id) thr
 
      if(worked)
      {
+         Logger::GetLoggerIntance()->LogInfo("Field Assigned(PlayingField)", __FILE__, __LINE__);
+
          field = newPlayingField;
+
      }
 
 

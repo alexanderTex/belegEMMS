@@ -134,7 +134,13 @@ GameView::~GameView()
 
 void GameView::InitGame(GameData *data)
 {
+    Logger::GetLoggerIntance()->LogInfo("PlayField:", __FILE__, __LINE__);
+    Logger::GetLoggerIntance()->LogInfo(DrawPlayingField(data->GetField()), __FILE__, __LINE__);
+
     *(this->m_data) = *data;
+
+    //Logger::GetLoggerIntance()->LogInfo(DrawPlayingField(data->GetField()), __FILE__, __LINE__);
+
     Logger::GetLoggerIntance()->LogInfo("InitGame", __FILE__, __LINE__);
     this->m_gameVis->GameChanged();
     Logger::GetLoggerIntance()->LogInfo("InitGame", __FILE__, __LINE__);
@@ -250,27 +256,9 @@ bool GameView::LoadGame()
                 return false;
             }
 
-            *(this->m_data) = *data;
-            Logger::GetLoggerIntance()->LogInfo("InitGame Here lies the bug", __FILE__, __LINE__);
-            this->m_gameVis->GameChanged();
-            Logger::GetLoggerIntance()->LogInfo("InitGame", __FILE__, __LINE__);
-            ShowGameInputView();
-            Logger::GetLoggerIntance()->LogInfo("InitGame", __FILE__, __LINE__);
-            m_gameFinished = false;
-            Logger::GetLoggerIntance()->LogInfo("InitGame", __FILE__, __LINE__);
+            InitGame(data);
 
 
-            ofstream saveFileOutput;
-            saveFileOutput.open (SAVEFILENAME);
-
-            saveFileOutput << s;
-
-            saveFileOutput.close();
-
-
-
-            Logger::GetLoggerIntance()->LogInfo(" Before delete data (GameView)", __FILE__, __LINE__);
-            delete(data);
 
             return true;
         }

@@ -86,9 +86,11 @@ void GameView2D::RecalculateGrid()
     this->m_sceneItems = new vector<vector< vector <GraphicsSlot2D * > *> *>();
 
     this->m_sceneLabels = new vector<QLabel *>();
+
     for(int i = 0; i < m_manager->GetGameData()->GetField()->GetFieldSize(); i++)
     {
         this->m_sceneItems->push_back(new vector< vector <GraphicsSlot2D * > *>());
+
 
         QGraphicsScene *graphicsScene = CreateGrid(m_manager->GetGameData()->GetField()->GetFieldSize(), this->m_squareDrawSize, this->m_sceneItems->at(i));
 
@@ -97,6 +99,7 @@ void GameView2D::RecalculateGrid()
         this->m_scenes->push_back(view);
         this->m_scenes->at(i)->ensureVisible(graphicsScene->sceneRect());
         this->m_scenes->at(i)->show();
+
 
         QVBoxLayout *sceneLayout = new QVBoxLayout();
         stringstream s;
@@ -112,7 +115,6 @@ void GameView2D::RecalculateGrid()
 
 
     }
-
 }
 
 void GameView2D::ViewUpdate()
