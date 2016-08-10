@@ -2,6 +2,7 @@
 #define VECTOR2_H
 
 #include <ostream>
+#include <sstream>
 
 /**
  * @brief Defines a structures that encapsulates a position in 2D space.
@@ -32,6 +33,21 @@ struct Vector2
     * @param y will be assigned to Y
     */
     Vector2(int x, int y);
+
+    inline std::string Serialize()
+    {
+        std::stringstream s;
+
+        //s <<
+    }
+
+    inline void Deserialize()
+    {
+        std::stringstream s;
+
+        //s <<
+    }
+
 
     /**
      * @brief X x value

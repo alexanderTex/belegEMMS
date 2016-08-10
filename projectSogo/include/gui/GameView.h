@@ -88,6 +88,17 @@ public:
             QWidget::changeEvent(event);
     }
 
+    /**
+     * @brief SaveGame
+     */
+    void SaveGame();
+
+    /**
+     * @brief LoadGame
+     * @return
+     */
+    bool LoadGame();
+
 
 signals:
     /**
@@ -103,6 +114,11 @@ signals:
 
 
 private:
+
+    const static string SAVEFILENAME;
+
+    bool m_gameFinished;
+
     QStackedLayout *m_layoutSwitch;
 
     QWidget *m_pauseMenu;

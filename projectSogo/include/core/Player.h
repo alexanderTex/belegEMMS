@@ -86,7 +86,16 @@ public:
      */
     void SetSkill(int skill);
 
+
+
+    static string Serialize(const Player p);
+
+    static bool Deserialize(std::string str, Player *p);
+
 private:
+    const static char delimiter;
+
+
     /**
      * @brief m_type
      */

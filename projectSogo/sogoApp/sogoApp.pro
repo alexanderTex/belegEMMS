@@ -95,6 +95,7 @@ HEADERS +=      ../include/core/* \
     ../external/shader.hpp \
     ../external/objects.hpp \
     ../external/texture.hpp \
+    ../include/utility/stringutlities.h
     ../include/mainpage.h
 
 

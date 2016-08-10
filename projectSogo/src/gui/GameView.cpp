@@ -1,5 +1,8 @@
 #include "./GameView.h"
 
+const string GameView::SAVEFILENAME = "SaveGame.txt";
+
+
 GameView::GameView(QWidget *parent)
     : QWidget(parent)
 {
@@ -130,12 +133,18 @@ GameView::~GameView()
 }
 
 void GameView::InitGame(GameData *data)
-    {
-        Logger::GetLoggerIntance()->LogInfo("InitGame");
-        *(this->m_data) = *data;
-        this->m_gameVis->GameChanged();
-        ShowGameInputView();
-    }
+{
+    *(this->m_data) = *data;
+    Logger::GetLoggerIntance()->LogInfo("InitGame", __FILE__, __LINE__);
+    this->m_gameVis->GameChanged();
+    Logger::GetLoggerIntance()->LogInfo("InitGame", __FILE__, __LINE__);
+    ShowGameInputView();
+    Logger::GetLoggerIntance()->LogInfo("InitGame", __FILE__, __LINE__);
+    m_gameFinished = false;
+    Logger::GetLoggerIntance()->LogInfo("InitGame", __FILE__, __LINE__);
+    SaveGame();
+    Logger::GetLoggerIntance()->LogInfo("InitGame", __FILE__, __LINE__);
+}
 
 void GameView::StartGame()
 {
@@ -150,6 +159,11 @@ void GameView::PauseGame()
 
 void GameView::EndGame()
 {
+    if(!m_gameFinished)
+    {
+        SaveGame();
+    }
+
     this->m_gameLoop->SuspendProcessingLoop();
     emit GameEnded(this->m_data);
 }
@@ -158,6 +172,8 @@ void GameView::EndGame()
 void GameView::GameFinished()
 {
     // Play WinSound
+
+    m_gameFinished = true;
 
     QSound::play(":/sounds/Sounds/MUSIC EFFECT Solo Harp Positive 01 (stereo).wav");
 
@@ -190,4 +206,76 @@ void GameView::PlayErrorSound()
 void GameView::ShowGameInputView()
 {
     bottomViewLayout->setCurrentWidget(this->m_inputArea);
+}
+
+
+void GameView::SaveGame()
+{
+    ofstream saveFileOutput;
+    saveFileOutput.open (SAVEFILENAME);
+
+    stringstream s;
+
+    s << GameData::Serialize(*this->m_data);
+
+    saveFileOutput << s.str();
+
+    saveFileOutput.close();
+}
+
+bool GameView::LoadGame()
+{
+    Logger::GetLoggerIntance()->LogInfo("start of load (GameView)", __FILE__, __LINE__);
+    ifstream saveFile;
+    saveFile.open (SAVEFILENAME);
+
+    Logger::GetLoggerIntance()->LogInfo(" load after file open(GameView)", __FILE__, __LINE__);
+
+    if(saveFile.is_open())
+    {
+        Logger::GetLoggerIntance()->LogInfo(" file is open (GameView)", __FILE__, __LINE__);
+        string s;
+        getline (saveFile,s);
+        saveFile.close();
+
+        if(s.size() > 0)
+        {
+
+            Logger::GetLoggerIntance()->LogInfo(" After read (GameView)", __FILE__, __LINE__);
+
+            GameData *data;
+
+            if(!GameData::Deserialize(s, data))
+            {
+                return false;
+            }
+
+            *(this->m_data) = *data;
+            Logger::GetLoggerIntance()->LogInfo("InitGame Here lies the bug", __FILE__, __LINE__);
+            this->m_gameVis->GameChanged();
+            Logger::GetLoggerIntance()->LogInfo("InitGame", __FILE__, __LINE__);
+            ShowGameInputView();
+            Logger::GetLoggerIntance()->LogInfo("InitGame", __FILE__, __LINE__);
+            m_gameFinished = false;
+            Logger::GetLoggerIntance()->LogInfo("InitGame", __FILE__, __LINE__);
+
+
+            ofstream saveFileOutput;
+            saveFileOutput.open (SAVEFILENAME);
+
+            saveFileOutput << s;
+
+            saveFileOutput.close();
+
+
+
+            Logger::GetLoggerIntance()->LogInfo(" Before delete data (GameView)", __FILE__, __LINE__);
+            delete(data);
+
+            return true;
+        }
+    }    
+
+    return false;
+
 }

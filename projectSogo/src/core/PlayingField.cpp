@@ -2,6 +2,8 @@
 
 #include <iostream>
 
+const char PlayingField::delimiter = ';';
+
 PlayingField::Slot::Slot()
 {
     //ctor
@@ -145,6 +147,153 @@ void PlayingField::OccupySlot(Vector3 pos, PlayingField::OccupationState id) thr
 
      return b;
  }
+
+
+
+ std::string PlayingField::Serialize( const PlayingField &pF)
+ {
+     std::stringstream s;
+
+     s << pF.GetFieldSize() << delimiter;
+
+     // i = x ( horizontal ; layer 0 )
+     // j = y ( depth ; layer 1 )
+     // k = z ( vertical ; layer 2 )
+     for(int i = 0; i < pF.GetFieldSize(); i++)
+     {
+         for(int j = 0; j < pF.GetFieldSize(); j++)
+         {
+             for(int k = 0; k < pF.GetFieldSize(); k++)
+             {
+                 s << Slot::Serialize(*pF.GetSlot(i, j, k));
+             }
+         }
+     }    
+
+     return s.str();
+
+ }
+
+ bool PlayingField::Deserialize(string str, PlayingField *field)
+ {
+     std::vector<string> elems;
+
+
+     split(str, delimiter, elems);
+
+
+     int fieldSize = stoi(elems.at(0));
+
+     PlayingField *newPlayingField = new PlayingField(fieldSize);
+
+
+
+     Slot slot;
+
+     bool worked = true;
+
+     int sum = 0;
+
+     for(int i = 0; i < newPlayingField->GetFieldSize(); i++)
+     {
+         for(int j = 0; j < newPlayingField->GetFieldSize(); j++)
+         {
+             bool skipping = false;
+             for(int k = 0; k < newPlayingField->GetFieldSize(); k++)
+             {
+                if(!skipping)
+                {
+
+                    if(!Slot::Deserialize(elems.at(1).substr(sum, 1), &slot) || &slot == NULL)
+                    {
+                        Logger::GetLoggerIntance()->LogInfo("Slot Deserialization failed(PlayingField)", __FILE__, __LINE__);
+                        worked = false;
+                        break;
+                    }
+
+
+                    stringstream s;
+                    s << sum << " ( pos : " << i << ", " << j << ", " << k << " )" << "( " << slot.Occupation << ")";
+
+                    Logger::GetLoggerIntance()->LogInfo(s.str(), __FILE__, __LINE__);
+
+                    try
+                    {
+                        newPlayingField->OccupySlot(i,j,k, slot.Occupation);
+                    }
+                    catch(out_of_range e)
+                    {
+                        Logger::GetLoggerIntance()->LogInfo("Slot Deserialization Occupy out_of_range(PlayingField)", __FILE__, __LINE__);
+                        worked = false;
+                        break;
+                    }
+                    catch(FieldExeptions e)
+                    {
+                        stringstream sExeption;
+                        s << "Slot Deserialization Occupy FieldException(PlayingField) : ";
+
+                        switch(e)
+                        {
+                            case OCCUPIED:
+                                s << "Occupied";
+                            break;
+                            case POSITION_NOT_AVAILABLE:
+                                s << "POSITION_NOT_AVAILABLE";
+                            break;
+                            case NO_SPACE_ANYMORE:
+                                s << "NO_SPACE_ANYMORE";
+                            break;
+                        }
+
+                        s << "( " << i << ", " << j << ", " << k << " )";
+
+                        Logger::GetLoggerIntance()->LogInfo(s.str(), __FILE__, __LINE__);
+
+                        worked = false;
+                        break;
+                    }
+
+                    if(slot.Occupation == NONE)
+                    {
+                        skipping = true;
+                    }
+
+
+                }
+                else
+                {
+                    Logger::GetLoggerIntance()->LogInfo("Slot Deserialization Skipping(PlayingField)", __FILE__, __LINE__);
+                }
+                sum++;
+             }
+             if(!worked)
+             {
+                 break;
+             }
+         }
+         if(!worked)
+         {
+             break;
+         }
+     }
+
+
+     if(worked)
+     {
+         field = newPlayingField;
+     }
+
+
+     return worked;
+ }
+
+
+
+
+ // _________________
+
+
+
 
  std::vector<Vector3> *GetAvailablePositions(const PlayingField *field) throw(out_of_range)
  {

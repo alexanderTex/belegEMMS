@@ -49,7 +49,8 @@ public:
      * @param p2 player2
      * @param startingPlayer the beginning player
      */
-    GameData(PlayingField *field, Player *p1, Player *p2, Player *startingPlayer);
+    GameData(PlayingField *field, Player *p1, Player *p2, Player *startingPlayer);    
+
 
     // constructor with historysave*
     /**
@@ -131,7 +132,26 @@ public:
      */
     void SwitchPlayer();
 
+    static string Serialize(const GameData& data);
+
+
+    static bool Deserialize(std::string str, GameData *data);
+
+
 private:
+     const static char delimiter;
+
+     /**
+      * @brief GameData Initializes a Gamedata object with a given PlayingField
+      * both players and the designated starting player
+      * @param field given PlayingField
+      * @param p1 player1
+      * @param p2 player2
+      * @param startingPlayer the beginning player
+      * @param historySave past history of the game
+      */
+     GameData(PlayingField *field, Player *p1, Player *p2, Player *startingPlayer, HistorySave *historySave);
+
     /**
      * @brief m_field
      */

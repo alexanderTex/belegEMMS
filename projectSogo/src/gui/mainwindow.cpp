@@ -98,6 +98,7 @@ MainWindow::MainWindow(QTranslator *translator, QWidget *parent)
 
     this->m_gameView = new GameView( data, workspace);
     m_layout->addWidget(this->m_gameView);
+    QObject::connect(m_startMenu, &StartMenu::loadGame, this, &MainWindow::LoadGame);
     QObject::connect(this->m_gameView, &GameView::PauseMenu, this, &MainWindow::ShowPauseMenu);
 
     QObject::connect(this->m_gameView, &GameView::GameEnded, this, &MainWindow::showStartMenu);
@@ -134,6 +135,21 @@ void MainWindow::startNewGame()
     this->m_newSessionMenu->mergeGameData();
     this->m_gameView->InitGame(this->m_newSessionMenu->m_gameData);
     this->ShowGameView();
+}
+
+void MainWindow::LoadGame()
+{
+    if(this->m_gameView->LoadGame())
+    {
+        this->ShowGameView();
+    }
+    else
+    {
+        //show that
+        Logger::GetLoggerIntance()->LogInfo("Load Failed", __FILE__, __LINE__);
+    }
+
+
 }
 
 void MainWindow::ShowGameView()

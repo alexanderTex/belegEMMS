@@ -4,7 +4,6 @@
 #include <iostream>
 #include "PlayingField.h"
 
-
 GameManager::GameManager()
 {
     this->m_data = NULL;
@@ -42,15 +41,6 @@ void GameManager::run()
 const GameData *GameManager::GetGameData() const
 {
     return this->m_data;
-}
-
-/**
- * @brief SetGameData
- */
-void GameManager::SetGameData(GameData * data)
-{
-    this->m_data = data;
-    m_endGame = false;
 }
 
 void GameManager::StartGame()
@@ -164,7 +154,7 @@ void GameManager::GameLoop()
             }
 
         }
-        Logger::GetLoggerIntance()->LogInfo("GameManager Loop waiting");
+        //Logger::GetLoggerIntance()->LogInfo("GameManager Loop waiting", __FILE__, __LINE__);
     }
     Logger::GetLoggerIntance()->LogInfo("GameManager Loop stopped");
 }
