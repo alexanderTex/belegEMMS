@@ -57,7 +57,7 @@ bool Vector3::Deserialize(std::string s, Vector3 *vec)
         vec->Y = std::stoi( elems[1] );
         vec->Z =std::stoi( elems[2] );
     }
-    catch(std::invalid_argument)
+    catch(std::string invalid_argument)
     {
         Logger::GetLoggerIntance()->LogInfo("Vector3 Deserializierung failed  ", __FILE__, __LINE__);
         worked = false;

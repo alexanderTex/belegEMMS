@@ -198,12 +198,10 @@ class PlayingField
 
         bool IsPositionAvailable(int x, int y, int z) const;
 
-
         static std::string Serialize( const PlayingField &pF);
 
         static bool Deserialize(string str, PlayingField *field);
 
-    protected:
     private:
         const static char delimiter;
 

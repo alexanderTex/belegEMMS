@@ -10,15 +10,48 @@
 %\usepackage{biblatex}
 %\usepackage[style=numeric-comp]{biblatex}
 \usepackage{listings}
-\usepackage{color}
-\usepackage[svgnames]{xcolor}
+%\usepackage[svgnames]{xcolor}
 \usepackage{listings}		% Quelltext verwenden
-\usepackage{color}
 \usepackage{fancybox}  	% Box um Formel
 \usepackage{varwidth}
 \usepackage{lscape}
 \usepackage{verbatim}	% mehrzeiliger Kommentar
 \usepackage{titleref}	% Verweis auf Kapitel mit Titel
+\usepackage{listings}	% Einbinden von Quelltext
+\usepackage{color}		% Einfärben von Quelltext
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\footnotesize,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=single,	                   % adds a frame around the code
+  keepspaces=false,                % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+  language=Octave,                 % the language of the code
+  otherkeywords={*,...},           % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\tiny\color{mygreen},     % string literal style
+  tabsize=2,	                   % sets default tabsize to 2 spaces
+  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+
 
 % /===========================================================================\
 %
@@ -103,7 +136,7 @@
 % /===========================================================================\
 %   Einleitung
 % \===========================================================================/
-\section{Einleitung}\label{Einleitung}
+\section{Einleitung}\label{ch:Einleitung}
 Die Applikation Sogo stellt den Komplettbeleg für das Fach Entwicklung von Multimediaanwendungen dar. Hierbei lag der Fokus sowohl auf der Funktionalität der Applikation als auch auf das Erarbeiten, Planen und Implementieren des Softwareprojektes. Dieses Projekt stellt zum gegenwärtigen Zeitpunkt, im vierten Semester des Studienfachs AI, das größte Softwareprojekt dar, welches als Beleg abzugeben ist.
 \\
 Die Grenzen der Realisierung sind weit gefasst, da sie zum Einen durch die Team-Mitglieder und zum Anderen durch die Dozenten mittels Anforderungen festgelegt wurden. Die Hauptimplementierung soll mit der Klassen-Bibliothek Qt, auf Basis von C++ erfolgen.
@@ -111,7 +144,7 @@ Die Grenzen der Realisierung sind weit gefasst, da sie zum Einen durch die Team-
 % /===========================================================================\
 %   Grundlagen
 % \===========================================================================/
-\section{Grundlagen}\label{Grundlagen}
+\section{Grundlagen}\label{ch:Grundlagen}
 % Beschreibung des Spiels
 Für unser Projekt haben wir uns für das Spiel Sogo entschieden, welches auch unter dem Namen Raummühle, 3D-Mühle oder Vier gewinnt Professional bekannt ist. Dabei gilt es wie auch im zweidimentsionalen Raum, seine Spielsteine direkt nebeneinander in der Horizontalen sowie in der Vertikalen zu platzieren und damit, je nach Spielfeldgröße, eine durchgehende Linie zu besetzten. In Sogo muss zusätzlich die dritte Dimension beachtet werden, in der es möglich ist, seine Seine diagonal und horizontal im Raum zu platzieren, was die Komplexität und damit den Schwierigkeitsgrad erhöht.
 \\
@@ -137,13 +170,13 @@ Der grundlegende Spielverlauf ergibt sich wie folgt. Zuerst wird festgelegt, wer
 % /===========================================================================\
 %   Analyse
 % \===========================================================================/
-\section{Analyse}\label{Analyse}
+\section{Analyse}\label{ch:Analyse}
 
 %Quellverweis - Lektüre
 % Use-Case
-Wie zuvor im Kapitel ~\ref{Einleitung} \glqq\titleref{Einleitung}\grqq \ auf Seite \pageref{Einleitung} beschrieben, sind die Grenzen der Realisierung sehr flexibel und mittels Anforderungen definiert, wobei wir in diesem Abschnitt nur auf die eingehen wollen, die unserer Meinung nach hervorzuheben sind und die von uns selber erfasst wurden.
+Wie zuvor im Kapitel ~\ref{ch:Einleitung} \glqq\titleref{ch:Einleitung}\grqq \ auf Seite \pageref{ch:Einleitung} beschrieben, sind die Grenzen der Realisierung sehr flexibel und mittels Anforderungen definiert, wobei wir in diesem Abschnitt nur auf die eingehen wollen, die unserer Meinung nach hervorzuheben sind und die von uns selber erfasst wurden.
 \\
-Die ersten Anforderungen waren schnell erfasst, weil wir uns an den Vorgaben der zur Verfügung gestellten Projekten orientierten, ohne zu wissen, wie der Aufwand einzuschätzen war, was Auswirkung auf das Ende des Projektes hatte. Doch dazu kommen wir im Abschnitt ~\ref{Ergebnis} \glqq\titleref{Ergebnis}\grqq \ auf Seite \pageref{Ergebnis}. Betrachten wir nun eine kleine Auswahl der zu implementierenden Anforderungen. 
+Die ersten Anforderungen waren schnell erfasst, weil wir uns an den Vorgaben der zur Verfügung gestellten Projekten orientierten, ohne zu wissen, wie der Aufwand einzuschätzen war, was Auswirkung auf das Ende des Projektes hatte. Doch dazu kommen wir im Abschnitt ~\ref{ch:Ergebnis} \glqq\titleref{ch:Ergebnis}\grqq \ auf Seite \pageref{ch:Ergebnis}. Betrachten wir nun eine kleine Auswahl der zu implementierenden Anforderungen. 
 \\
 \\
 \textbf{Anforderung:} 
@@ -161,7 +194,7 @@ Die aktuelle Spielhistorie wird für das laufende Spiel angezeigt.
 \textbf{Anforderung:} 
 Beim Spiel Mensch gegen Computer soll es möglich sein, die Spielstärke des Computer aus drei Schwierigkeitsgraden auszuwählen.
 \\
-\textbf{Beschreibung:} Hierbei war ein Hauch von künstlicher Intelligenz zu erahnen, welchen wir nutzten, um den Minimax-Algorithmus zu implementieren, der die optimale Spielstrategie der AI festlegen sollte. Hierzu betrachten wir im Kapitel ~\ref{AI} \glqq\titleref{AI}\grqq \ auf Seite \pageref{AI} den Quellcode der Implementierung.
+\textbf{Beschreibung:} Hierbei war ein Hauch von künstlicher Intelligenz zu erahnen, welchen wir nutzten, um den Minimax-Algorithmus zu implementieren, der die optimale Spielstrategie der AI festlegen sollte. Hierzu betrachten wir im Kapitel ~\ref{ch:AI} \glqq\titleref{ch:AI}\grqq \ auf Seite \pageref{ch:AI} den Quellcode der Implementierung.
 \\
 \\
 \textbf{Anforderung:} 
@@ -175,65 +208,74 @@ Nachdem wir die Anforderungen ausformuliert hatten, legten wir uns ein Git-Repos
 % /===========================================================================\
 %   Entwurf
 % \===========================================================================/
-\section{Entwurf}\label{Entwurf}
+\section{Entwurf}\label{ch:Entwurf}
 
 % Klassendiagramm
 
 % /===========================================================================\
 %   Implementation
 % \===========================================================================/
-\section{Implementierung}\label{Implementierung}
+\section{Implementierung}\label{ch:Implementierung}
 
 % Das Raster der jeweiligen Spielfelder wurde vereinfacht auf Grund einfacher Physik, die Schwekraft. Daher ergibt sich für jedes Spiel feld eine Notation von (1,1)... (n,m).
 
 % Verwendung von Code-Snipets
 
 % core/
-\subsection{Vector2}\label{Vector2}
-\subsection{Vector3}\label{Vector3}
-\subsection{Artificial Intelligence(AI)}\label{AI}
-\subsection{PlayingField}\label{PlayingField}
-\subsection{GameData}\label{GameData}
-\subsection{Player}\label{Player}
+\subsection{Vector2}\label{ch:Vector2}
+\subsection{Vector3}\label{ch:Vector3}
+\subsection{Artificial Intelligence(AI)}\label{ch:AI}
+\subsection{PlayingField}\label{ch:PlayingField}
+\subsection{GameData}\label{ch:GameData}
+\subsection{Player}\label{ch:Player}
 
 
 % gui/
-\subsection{Spielmenüs}\label{Spielmenüs}
-\subsubsection{StartMenu}\label{StartMenu}
-\subsubsection{NewSessionMenu}\label{NewSessionMenu}
-\subsubsection{HighscoreMenu}\label{HighscoreMenu}
-\subsubsection{PauseMenu}\label{PauseMenu}
+\subsection{Spielmenüs}\label{ch:Spielmenüs}
+\subsubsection{StartMenu}\label{ch:StartMenu}
+\subsubsection{NewSessionMenu}\label{ch:NewSessionMenu}
+\subsubsection{HighscoreMenu}\label{ch:HighscoreMenu}
+\subsubsection{PauseMenu}\label{ch:PauseMenu}
 
-\subsection{Mainwindow}\label{Mainwindow}
-\subsection{GameView}\label{GameView}
-\subsubsection{GameView2D}\label{GameView2D}
-\subsubsection{GameView3D}\label{GameView3D}
-\subsection{GameVisualizer}\label{GameVisualizer}
-\subsection{Playerinput}\label{Playerinput}
-\subsection{HistoryDisplay}\label{HistoryDisplay}
+\subsection{Mainwindow}\label{ch:Mainwindow}
+\subsection{GameView}\label{ch:GameView}
+\subsubsection{GameView2D}\label{ch:GameView2D}
+\subsubsection{GameView3D}\label{ch:GameView3D}
+\subsection{GameVisualizer}\label{ch:GameVisualizer}
+\subsection{Playerinput}\label{ch:Playerinput}
+\subsection{HistoryDisplay}\label{ch:HistoryDisplay}
 
 
 %utility
-\subsubsection{Logger - Der hauseigene Debugger}\label{Logger}
-
+\newpage
+\subsubsection{Logger - Der hauseigene Debugger}\label{ch:Logger}
+Dieses kleine Stück Quelltext, siehe unten stehendes Listing~\ref{lst:CodeLogger}: auf Seite \pageref{lst:CodeLogger}, welches uns dabei geholfen hat den Großteil der aufgetretenen Fehler ausfindig zu machen und zu beheben. Durch die zunehmende Komplexität des Projektes und der damit verbundenen Zunamen an Quelltext haben wir, hauptsächlich Herr Brandt, eine Möglichkeit geschaffen, den Quelltext in einzelne Abschnitte zu unterteilen und sie auf ihre Funktion zu überprüfen, um dadurch die Fehlerquelle ausschließen zu können. Dieses Stück Quelltext ist, in unseren Augen, ein ideales Beispiel für das Wiederverwenden von Quelltext in zukünftigen Projekten, wobei eine kontinuierliche Weiterentwicklung angestrebt werden sollte.
+\lstinputlisting
+    [caption={Logger - Debugger} 	% Titel
+    	\label{lst:CodeLogger},			% Zum Referenzieren    
+    emptylines=0,					% Zulassen der leeren Zeilen.(hier keine)
+    captionpos=t,					% Titelanzeige on top(t)
+    language=c++,					% Programmiersprache
+    linerange={19-26,33-40,48-55,62-69,79-86}]%,98-110}]	% Auswahl Zeilen
+{../../src/utility/Logger.cpp}		% Sourcefile
 %external
-\subsection{3D Umsetzung}\label{3DUmsetzung}
+\subsection{3D Umsetzung}\label{ch:3DUmsetzung}
 
 % /===========================================================================\
 %   Test
 % \===========================================================================/
-\section{Test}\label{Test}
-\subsection{Unit-Test}\label{Unit}
-\subsection{Valgrind}\label{Valgrind}
+\section{Test}\label{ch:Test}
+\subsection{Unit-Test}\label{ch:Unit}
+\subsection{Valgrind}\label{ch:Valgrind}
 
 % /===========================================================================\
 %   Ergebnis
 % \===========================================================================/
-\section{Ergebnis}\label{Ergebnis}
+\section{Ergebnis}\label{ch:Ergebnis}
 % Auswertung
-\subsection{Vergleich}\label{Vergleich}
-\subsection{Zusammenfassung}\label{Zusammenfassung}
-\subsection{Bewertung}\label{Bewertung}
-\subsection{Ausblick}\label{Ausblick}
+\subsection{Vergleich}\label{ch:Vergleich}
+\subsection{Zusammenfassung}\label{ch:Zusammenfassung}
+\subsection{Bewertung}\label{ch:Bewertung}
+\subsection{Ausblick}\label{ch:Ausblick}
 
 \end{document}
