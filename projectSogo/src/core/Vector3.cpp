@@ -1,9 +1,13 @@
 #include "../include/core/Vector3.h"
 
 const char Vector3::delimiter = '*';
+
 Vector3::Vector3()
 {
     //ctor
+    this->X = 0;
+    this->Y = 0;
+    this->Z = 0;
 }
 
 Vector3::Vector3(int x, int y, int z)
@@ -34,6 +38,10 @@ std::string Vector3::Serialize(Vector3 &vec)
 
 bool Vector3::Deserialize(std::string s, Vector3 *vec)
 {
+    vec = new Vector3();
+
+    Logger::GetLoggerIntance()->LogInfo(s, __FILE__, __LINE__);
+
     std::vector<std::string> elems;
 
     for(int i = 0; i < 3; i++)
@@ -41,18 +49,19 @@ bool Vector3::Deserialize(std::string s, Vector3 *vec)
        split(s, delimiter, elems);
     }
 
-    bool worked = false;
+    bool worked = true;
 
     try
     {
         vec->X = std::stoi( elems[0] );
         vec->Y = std::stoi( elems[1] );
         vec->Z =std::stoi( elems[2] );
-        worked = true;
     }
     catch(std::invalid_argument)
     {
+        Logger::GetLoggerIntance()->LogInfo("Vector3 Deserializierung failed  ", __FILE__, __LINE__);
         worked = false;
+        delete(vec);
     }
 
     return worked;

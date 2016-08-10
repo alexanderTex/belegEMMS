@@ -168,9 +168,7 @@ void PlayingField::OccupySlot(Vector3 pos, PlayingField::OccupationState id) thr
                  s << Slot::Serialize(*pF.GetSlot(i, j, k));
              }
          }
-     }
-
-     s << delimiter << std::endl;
+     }    
 
      return s.str();
 
@@ -180,44 +178,111 @@ void PlayingField::OccupySlot(Vector3 pos, PlayingField::OccupationState id) thr
  {
      std::vector<string> elems;
 
+
      split(str, delimiter, elems);
+
 
      int fieldSize = stoi(elems.at(0));
 
      PlayingField *newPlayingField = new PlayingField(fieldSize);
 
-     Slot *slot;
+
+
+     Slot slot;
 
      bool worked = true;
 
-     for(int k = 0; k < newPlayingField->GetFieldSize(); k++)
+     int sum = 0;
+
+     for(int i = 0; i < newPlayingField->GetFieldSize(); i++)
      {
          for(int j = 0; j < newPlayingField->GetFieldSize(); j++)
          {
-             for(int i = 0; i < newPlayingField->GetFieldSize(); i++)
+             bool skipping = false;
+             for(int k = 0; k < newPlayingField->GetFieldSize(); k++)
              {
-                 int sum = (i + j + k);
+                if(!skipping)
+                {
 
-                 if(!Slot::Deserialize(elems.at(1).substr(sum -1, sum), slot) || slot == NULL)
-                 {
-                     worked = false;
-                     break;
-                 }
+                    if(!Slot::Deserialize(elems.at(1).substr(sum, 1), &slot) || &slot == NULL)
+                    {
+                        Logger::GetLoggerIntance()->LogInfo("Slot Deserialization failed(PlayingField)", __FILE__, __LINE__);
+                        worked = false;
+                        break;
+                    }
 
 
-                 if(slot->Occupation == RED || slot->Occupation == BLUE)
-                 {
-                     newPlayingField->OccupySlot(i,j,k, slot->Occupation);
-                 }
+                    stringstream s;
+                    s << sum << " ( pos : " << i << ", " << j << ", " << k << " )" << "( " << slot.Occupation << ")";
+
+                    Logger::GetLoggerIntance()->LogInfo(s.str(), __FILE__, __LINE__);
+
+                    try
+                    {
+                        newPlayingField->OccupySlot(i,j,k, slot.Occupation);
+                    }
+                    catch(out_of_range e)
+                    {
+                        Logger::GetLoggerIntance()->LogInfo("Slot Deserialization Occupy out_of_range(PlayingField)", __FILE__, __LINE__);
+                        worked = false;
+                        break;
+                    }
+                    catch(FieldExeptions e)
+                    {
+                        stringstream sExeption;
+                        s << "Slot Deserialization Occupy FieldException(PlayingField) : ";
+
+                        switch(e)
+                        {
+                            case OCCUPIED:
+                                s << "Occupied";
+                            break;
+                            case POSITION_NOT_AVAILABLE:
+                                s << "POSITION_NOT_AVAILABLE";
+                            break;
+                            case NO_SPACE_ANYMORE:
+                                s << "NO_SPACE_ANYMORE";
+                            break;
+                        }
+
+                        s << "( " << i << ", " << j << ", " << k << " )";
+
+                        Logger::GetLoggerIntance()->LogInfo(s.str(), __FILE__, __LINE__);
+
+                        worked = false;
+                        break;
+                    }
+
+                    if(slot.Occupation == NONE)
+                    {
+                        skipping = true;
+                    }
+
+
+                }
+                else
+                {
+                    Logger::GetLoggerIntance()->LogInfo("Slot Deserialization Skipping(PlayingField)", __FILE__, __LINE__);
+                }
+                sum++;
+             }
+             if(!worked)
+             {
+                 break;
              }
          }
+         if(!worked)
+         {
+             break;
+         }
      }
+
+
      if(worked)
      {
          field = newPlayingField;
      }
 
-     delete(newPlayingField);
 
      return worked;
  }

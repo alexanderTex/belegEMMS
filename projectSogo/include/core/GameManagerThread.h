@@ -86,11 +86,6 @@ public:
      */
     const GameData* GetGameData() const;
 
-    /**
-     * @brief SetGameData
-     */
-    void SetGameData(GameData * data);
-
     void StartGame();
 
     void PauseGame();

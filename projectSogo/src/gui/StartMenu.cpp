@@ -12,6 +12,9 @@ StartMenu::StartMenu(QWidget *parent) : QWidget(parent)
     m_newSessionButton = new QPushButton(tr("New Session"));
     QObject::connect(this->m_newSessionButton, &QPushButton::clicked, this, &StartMenu::switchToNewSession);
 
+    m_loadGameButton = new QPushButton(tr("Load"));
+    QObject::connect(this->m_loadGameButton, &QPushButton::clicked, this, &StartMenu::loadGame);
+
     m_highscoreButton = new QPushButton(tr("Highscore"));
     QObject::connect(m_highscoreButton, &QPushButton::clicked, this, &StartMenu::switchToHighscore);
 
@@ -20,6 +23,7 @@ StartMenu::StartMenu(QWidget *parent) : QWidget(parent)
 
     m_controlLayout->addWidget(m_mainMenueLabel);
     m_controlLayout->addWidget(m_newSessionButton);
+    m_controlLayout->addWidget(m_loadGameButton);
     m_controlLayout->addWidget(m_highscoreButton);
     m_controlLayout->addWidget(m_exitButton);
 }

@@ -62,14 +62,19 @@ class HistorySave
 
             bool worked = true;
 
+            Logger::GetLoggerIntance()->LogInfo(str, __FILE__, __LINE__);
+
             Vector3 *vec;
-            if(!Vector3::Deserialize(elems.at(0), vec) || vec == NULL)
+            if(!Vector3::Deserialize(elems.at(0), vec))
             {
                 worked = false;
             }
+
+
             Player *player;
-            if(Player::Deserialize(elems.at(1), player) || player == NULL)
+            if(!Player::Deserialize(elems.at(1), player))
             {
+                Logger::GetLoggerIntance()->LogInfo("Move deserialize Player Failed", __FILE__, __LINE__);
                 worked = false;
             }
 

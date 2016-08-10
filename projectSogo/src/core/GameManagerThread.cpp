@@ -43,15 +43,6 @@ const GameData *GameManager::GetGameData() const
     return this->m_data;
 }
 
-/**
- * @brief SetGameData
- */
-void GameManager::SetGameData(GameData * data)
-{
-    this->m_data = data;
-    m_endGame = false;
-}
-
 void GameManager::StartGame()
 {
     m_paused = false;
@@ -163,7 +154,7 @@ void GameManager::GameLoop()
             }
 
         }
-        Logger::GetLoggerIntance()->LogInfo("GameManager Loop waiting");
+        //Logger::GetLoggerIntance()->LogInfo("GameManager Loop waiting", __FILE__, __LINE__);
     }
     Logger::GetLoggerIntance()->LogInfo("GameManager Loop stopped");
 }

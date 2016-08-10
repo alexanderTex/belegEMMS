@@ -6,6 +6,7 @@
 #include <vector>
 #include <string>
 #include "stringutlities.h"
+#include "Logger.h"
 
 /**
  * @brief Defines a structures that encapsulates a position in 3D space.

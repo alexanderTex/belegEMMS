@@ -69,6 +69,8 @@ public:
 
     void startNewGame();
 
+    void LoadGame();
+
 
 signals:
     void QuitMainWindow();

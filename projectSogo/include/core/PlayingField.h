@@ -8,6 +8,7 @@
 #include <vector>
 #include <cmath>
 #include "../include/core/Vector3.h"
+#include "Logger.h"
 
 
 using namespace std;
@@ -31,8 +32,8 @@ class PlayingField
     public:
         /**
         * Is thrown when in an Error in Playingfield
-        * Occupied when already occupied by other player
-        * PositionNotAvailable when position is under current fieldstate not valid for occupation
+        * OCCUPIED when already occupied by other player
+        * POSITION_NOT_AVAILABLE when position is not valid for occupation under current circumstances
         */
         enum FieldExeptions
         {
@@ -124,10 +125,16 @@ class PlayingField
                     }
 
 
-                    PlayingField::Slot *tempSlot = new PlayingField::Slot(os);
+                    if(slot == NULL)
+                    {
+                        PlayingField::Slot *tempSlot = new PlayingField::Slot(os);
+                        slot = tempSlot;
+                    }
+                    else
+                    {
+                        slot->Occupation = os;
+                    }
 
-                    slot = tempSlot;
-                    delete(tempSlot);
                 }
 
                 return worked;

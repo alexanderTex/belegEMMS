@@ -95,11 +95,8 @@ HEADERS +=      ../include/core/* \
     ../external/shader.hpp \
     ../external/objects.hpp \
     ../external/texture.hpp \
-<<<<<<< HEAD
     ../include/utility/stringutlities.h
-=======
     ../include/mainpage.h
->>>>>>> b084a4ff8cff370845ae42c76b621f0aa03cdc65
 
 
 SOURCES +=      main.cpp \

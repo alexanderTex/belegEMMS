@@ -46,6 +46,11 @@ signals:
     void switchToNewSession();
 
     /**
+     * @brief Loads the last played game when the m_loadGameButton is pressed.
+     */
+    void loadGame();
+
+    /**
      * @brief Switch to Highscore when the m_highscoreButton is pressed.
      */
     void switchToHighscore();
@@ -63,6 +68,8 @@ private:
     QLabel *m_mainMenueLabel;
 
     QPushButton *m_newSessionButton;
+
+    QPushButton *m_loadGameButton;
 
     QPushButton *m_highscoreButton;
 
