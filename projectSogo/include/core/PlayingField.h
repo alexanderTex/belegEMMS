@@ -129,7 +129,6 @@ class PlayingField
         void OccupySlot(Vector3 pos, PlayingField::OccupationState id) throw(out_of_range, FieldExeptions);
 
         bool IsPositionAvailable(int x, int y, int z) const;
-    protected:
     private:
         /**
          * @brief m_fieldSize

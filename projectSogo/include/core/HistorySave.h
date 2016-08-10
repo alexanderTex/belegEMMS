@@ -60,6 +60,7 @@ public:
      * @brief HistorySave
      */
     HistorySave();
+
     /**
      * @brief HistorySave
      * @param src
