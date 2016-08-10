@@ -7,10 +7,17 @@
 \usepackage{graphicx}
 \usepackage{bibgerm}
 \usepackage[babel,german=guillemets]{csquotes}
-%\usepackage{biblatex}
+\usepackage{biblatex}	% Einbinden von biblatex zur Literaturverwaltung
+\addbibresource{literaturelibrary/literatureLib.bib}	% Literatursammlung
+
+\usepackage[printonlyused]{acronym}	% Abkürzungsverzeichnis
+
 %\usepackage[style=numeric-comp]{biblatex}
 \usepackage{listings}
 %\usepackage[svgnames]{xcolor}
+
+ \usepackage{blindtext} %  Lorem ipsum - Text "Fülltext"
+
 \usepackage{listings}		% Quelltext verwenden
 \usepackage{fancybox}  	% Box um Formel
 \usepackage{varwidth}
@@ -92,7 +99,7 @@
 \begin{verbatim}
 \end{verbatim}
  
-\begin{flushleft}
+\begin{flushleft}makeindex %.nlo -s nomencl.ist -o %.nls
 \begin{tabular}{lll}
 \textbf{Fach:} & & Entwicklung von Multimediaanwendungen\\
 & & \\
@@ -232,7 +239,17 @@ Nachdem wir die Anforderungen ausformuliert hatten, legten wir uns ein Git-Repos
 
 % gui/
 \subsection{Spielmenüs}\label{ch:Spielmenüs}
+Die komplette Navigation der Applikation wurde mittels Qt implementiert. Hierzu legten wir zuvor fest, welchen Menüs benötigt wirden, um den zuvor erstellten Anforderungen gerecht zu werden. Daraus resultierten die folgenden Menüs und Untermenüs.
+
 \subsubsection{StartMenu}\label{ch:StartMenu}
+\blindtext
+\begin{figure}[h]
+ \centering
+ \includegraphics[scale=0.35]{graphics/startmenu.eps}
+ \caption{Das Startmenü}
+ \label{fig:Startmenü}
+\end{figure}
+
 \subsubsection{NewSessionMenu}\label{ch:NewSessionMenu}
 \subsubsection{HighscoreMenu}\label{ch:HighscoreMenu}
 \subsubsection{PauseMenu}\label{ch:PauseMenu}
@@ -242,7 +259,7 @@ Nachdem wir die Anforderungen ausformuliert hatten, legten wir uns ein Git-Repos
 \subsubsection{GameView2D}\label{ch:GameView2D}
 \subsubsection{GameView3D}\label{ch:GameView3D}
 \subsection{GameVisualizer}\label{ch:GameVisualizer}
-\subsection{Playerinput}\label{ch:Playerinput}
+\subsection{PlayerInput}\label{ch:PlayerInput}
 \subsection{HistoryDisplay}\label{ch:HistoryDisplay}
 
 
@@ -277,5 +294,81 @@ Dieses kleine Stück Quelltext, siehe unten stehendes Listing~\ref{lst:CodeLogge
 \subsection{Zusammenfassung}\label{ch:Zusammenfassung}
 \subsection{Bewertung}\label{ch:Bewertung}
 \subsection{Ausblick}\label{ch:Ausblick}
+
+\newpage
+% /===========================================================================\
+%
+% 	Abkürzungsverzeichnis
+%
+% \===========================================================================/
+\addsec{Abkürzungsverzeichnis}\label{sec:Abkürzungsverzeichnis}
+
+\begin{acronym}%[längste Abkürzung für einen gleichmäßigen Abstand]
+
+	% example
+	\begin{comment}
+ 	\acro{SQL}{Structured Query Language}
+ 	\acro{Bash}{Bourne-again shell}
+ 	\acro{JDK}{Java Development Kit}
+	\acro{VM}{Virtuelle Maschine}
+ 	\acro{I2C}[I²C]{Inter-Integrated Circuit}
+ 	\end{comment}
+ 	
+ 	\acro{bofh}{Bastard Operator From Hell}
+
+\end{acronym}
+
+% Verwendung im Text
+\begin{comment}
+Hier nur die wichtigsten Beispiele:
+\ac{KDE} % K Desktop Environment (KDE)
+Gibt bei der ersten Verwendung die Langform mit der Abkürzung in Klammern aus, ab dann stets die Kurzform.
+\acs{KDE} % KDE
+Gibt die Abkürzung aus.
+\acf{KDE} % K Desktop Environment (KDE)
+Gibt die Langform und die Kurzform aus.
+\acl{KDE} % K Desktop Environment
+Gibt nur die Langform ohne die Kurzform aus.
+Analog zu den obigen Befehlen kann man den Plural auch entsprechend anzeigen:
+\acp{KDE} % K Desktop Environments (KDEs)
+\acsp{KDE} % KDEs
+\acfp{KDE} % K Desktop Environments (KDEs)
+\aclp{KDE} % K Desktop Environments
+\end{comment}
+
+\newpage
+
+% 
+% /===========================================================================\
+%
+% 	Literaturverzeichnis
+%
+% \===========================================================================/
+\printbibliography 
+
+\newpage
+
+% /===========================================================================\
+%
+% 	Abbildungsverzeichnis
+%
+% \===========================================================================/
+\listoffigures
+
+\addcontentsline{toc}{section}{Abbildungsverzeichnis}
+
+\newpage
+
+% /===========================================================================\
+%
+% 	Quellcodeverzeichnis
+%
+% \===========================================================================/
+\renewcommand\lstlistingname{Quellcodeverzeichnis}
+\lstlistoflistings 
+
+\addcontentsline{toc}{section}{Quellcodeverzeichnis}
+
+\newpage
 
 \end{document}
