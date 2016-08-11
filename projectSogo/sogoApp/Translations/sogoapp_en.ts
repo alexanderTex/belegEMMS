@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="en_US">
+<TS version="2.0" language="en_US">
 <context>
     <name>GameInputArea</name>
     <message>
@@ -19,7 +19,7 @@
 <context>
     <name>GameView</name>
     <message>
-        <location filename="../../include/gui/GameView.h" line="85"/>
+        <location filename="../../include/gui/GameView.h" line="86"/>
         <location filename="../../src/gui/GameView.cpp" line="18"/>
         <location filename="../../src/gui/GameView.cpp" line="79"/>
         <source>Pausemenu</source>
@@ -82,7 +82,7 @@
         <location filename="../../src/gui/mainwindow.cpp" line="20"/>
         <location filename="../../src/gui/mainwindow.cpp" line="69"/>
         <source>Fullscreen</source>
-        <translation type="unfinished"></translation>
+        <translation>Fullscreen</translation>
     </message>
 </context>
 <context>
@@ -247,7 +247,7 @@
     <message>
         <location filename="../../src/gui/StartMenu.cpp" line="15"/>
         <source>Load</source>
-        <translation type="unfinished"></translation>
+        <translation>Load</translation>
     </message>
     <message>
         <location filename="../../include/gui/StartMenu.h" line="34"/>

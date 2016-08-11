@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="de_DE">
+<TS version="2.0" language="de_DE">
 <context>
     <name>GameInputArea</name>
     <message>
@@ -19,7 +19,7 @@
 <context>
     <name>GameView</name>
     <message>
-        <location filename="../../include/gui/GameView.h" line="85"/>
+        <location filename="../../include/gui/GameView.h" line="86"/>
         <location filename="../../src/gui/GameView.cpp" line="18"/>
         <location filename="../../src/gui/GameView.cpp" line="79"/>
         <source>Pausemenu</source>
@@ -36,7 +36,7 @@
     <name>GameView2D</name>
     <message>
         <source>Layer </source>
-        <translation type="vanished">Ebene</translation>
+        <translation>Ebene</translation>
     </message>
 </context>
 <context>
@@ -68,7 +68,7 @@
     </message>
     <message>
         <source>back</source>
-        <translation type="vanished">Zrück</translation>
+        <translation>Zrück</translation>
     </message>
 </context>
 <context>
@@ -93,7 +93,7 @@
         <location filename="../../src/gui/mainwindow.cpp" line="20"/>
         <location filename="../../src/gui/mainwindow.cpp" line="69"/>
         <source>Fullscreen</source>
-        <translation type="unfinished"></translation>
+        <translation>Vollbild</translation>
     </message>
 </context>
 <context>
@@ -151,7 +151,7 @@
     </message>
     <message>
         <source>Network</source>
-        <translation type="vanished">Netzwerk</translation>
+        <translation>Netzwerk</translation>
     </message>
     <message>
         <location filename="../../src/gui/NewSessionMenu.cpp" line="94"/>
@@ -270,7 +270,7 @@
     <message>
         <location filename="../../src/gui/StartMenu.cpp" line="15"/>
         <source>Load</source>
-        <translation type="unfinished"></translation>
+        <translation>Laden</translation>
     </message>
     <message>
         <location filename="../../include/gui/StartMenu.h" line="34"/>
