@@ -179,7 +179,7 @@ string GameData::Serialize(const GameData& data)
     return s.str();
 }
 
-GameData *GameData::Deserialize(std::string str) throw(DeserializationException)
+static GameData *GameData::Deserialize(std::string str) throw(DeserializationException)
 {
     std::vector<string> elems;
 
