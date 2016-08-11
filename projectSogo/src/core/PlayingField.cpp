@@ -150,7 +150,7 @@ void PlayingField::OccupySlot(Vector3 pos, PlayingField::OccupationState id) thr
 
 
 
- std::string PlayingField::Serialize( const PlayingField &pF)
+ std::string PlayingField::Serialize(const PlayingField &pF)
  {
      std::stringstream s;
 
@@ -174,7 +174,7 @@ void PlayingField::OccupySlot(Vector3 pos, PlayingField::OccupationState id) thr
 
  }
 
- bool PlayingField::Deserialize(string str, PlayingField *field)
+ PlayingField *PlayingField::Deserialize(string str) throw(DeserializationException)
  {
      std::vector<string> elems;
 
@@ -188,9 +188,7 @@ void PlayingField::OccupySlot(Vector3 pos, PlayingField::OccupationState id) thr
 
 
 
-     Slot slot;
-
-     bool worked = true;
+     Slot *slot;
 
      int sum = 0;
 
@@ -204,28 +202,24 @@ void PlayingField::OccupySlot(Vector3 pos, PlayingField::OccupationState id) thr
                 if(!skipping)
                 {
 
-                    if(!Slot::Deserialize(elems.at(1).substr(sum, 1), &slot))
-                    {
-                        Logger::GetLoggerIntance()->LogInfo("Slot Deserialization failed(PlayingField)", __FILE__, __LINE__);
-                        worked = false;
-                        break;
-                    }
+                    slot = Slot::Deserialize(elems.at(1).substr(sum, 1));
+
 
 
                     stringstream s;
-                    s << sum << " ( pos : " << i << ", " << j << ", " << k << " )" << "( " << slot.Occupation << ")";
+                    s << sum << " ( pos : " << i << ", " << j << ", " << k << " )" << "( " << slot->Occupation << ")";
 
                     //Logger::GetLoggerIntance()->LogInfo(s.str(), __FILE__, __LINE__);
 
                     try
                     {
-                        newPlayingField.OccupySlot(i,j,k, slot.Occupation);
+                        newPlayingField.OccupySlot(i,j,k, slot->Occupation);
                     }
                     catch(out_of_range e)
                     {
                         Logger::GetLoggerIntance()->LogInfo("Slot Deserialization Occupy out_of_range(PlayingField)", __FILE__, __LINE__);
-                        worked = false;
-                        break;
+                        delete(slot);
+                        throw DESERIALIZATION_FAILED;
                     }
                     catch(FieldExeptions e)
                     {
@@ -248,16 +242,16 @@ void PlayingField::OccupySlot(Vector3 pos, PlayingField::OccupationState id) thr
                         s << "( " << i << ", " << j << ", " << k << " )";
 
                         Logger::GetLoggerIntance()->LogInfo(s.str(), __FILE__, __LINE__);
-
-                        worked = false;
-                        break;
+                        delete(slot);
+                        throw DESERIALIZATION_FAILED;
                     }
 
-                    if(slot.Occupation == NONE)
+                    if(slot->Occupation == NONE)
                     {
                         skipping = true;
                     }
 
+                    delete(slot);
 
                 }
                 else
@@ -266,31 +260,13 @@ void PlayingField::OccupySlot(Vector3 pos, PlayingField::OccupationState id) thr
                 }
                 sum++;
              }
-             if(!worked)
-             {
-                 break;
-             }
+
          }
-         if(!worked)
-         {
-             break;
-         }
+
      }
 
 
-     if(worked)
-     {
-         Logger::GetLoggerIntance()->LogInfo("Field Assigned(PlayingField)", __FILE__, __LINE__);
-
-         *field = newPlayingField;
-     }
-
-     if(field == NULL)
-     {
-         Logger::GetLoggerIntance()->LogInfo("FUCK THIS FUCKING FUCK CRAP", __FILE__, __LINE__);
-     }
-
-     return worked;
+     return new PlayingField(newPlayingField);
  }
 
 

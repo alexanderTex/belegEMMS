@@ -247,25 +247,25 @@ bool GameView::LoadGame()
         if(s.size() > 0)
         {
 
-            GameData *data = new GameData();
+
 
             Logger::GetLoggerIntance()->LogInfo("Before GameData Deserialization (GameView)", __FILE__, __LINE__);
 
-            GameData::Deserialize(s, data);
-/*
-            if(!)
+            GameData *data = NULL;
+
+            try
             {
-                Logger::GetLoggerIntance()->LogInfo("currentDebugFuck failed(GameView)", __FILE__, __LINE__);
-                return false;
+
+                data = GameData::Deserialize(s);
+                Logger::GetLoggerIntance()->LogInfo("After GameData Deserialization failed (GameView)", __FILE__, __LINE__);
+
+                InitGame(data);
+                return true;
             }
-
-*/
-
-            Logger::GetLoggerIntance()->LogInfo("After GameData Deserialization failed (GameView)", __FILE__, __LINE__);
-
-            InitGame(data);
-
-            return true;
+            catch(DeserializationException)
+            {
+                Logger::GetLoggerIntance()->LogInfo("GameData Deserialization FAILED (GameView)", __FILE__, __LINE__);
+            }
         }
     }    
 

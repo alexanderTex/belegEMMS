@@ -46,7 +46,7 @@ struct Vector3
 
     static std::string Serialize(Vector3 &vec);
 
-    static bool Deserialize(std::string s, Vector3 *vec);
+    static Vector3 Deserialize(std::string s) throw(DeserializationException);
 
 
 

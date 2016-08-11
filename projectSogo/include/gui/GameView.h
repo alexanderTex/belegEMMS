@@ -36,6 +36,7 @@ class GameView : public QWidget
 {
     Q_OBJECT
 public:
+
     explicit GameView( QWidget *parent = 0);
     GameView(GameData *data, QWidget *parent = 0);
     virtual ~GameView();

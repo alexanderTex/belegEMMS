@@ -135,7 +135,7 @@ public:
     static string Serialize(const GameData& data);
 
 
-    static bool Deserialize(std::string str, GameData *data);
+    static GameData *Deserialize(std::string str);
 
 
 private:

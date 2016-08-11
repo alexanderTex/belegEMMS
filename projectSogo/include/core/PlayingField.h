@@ -84,28 +84,13 @@ class PlayingField
                 return s.str();
             }
 
-            inline static bool Deserialize(std::string s, PlayingField::Slot *slot)
+            inline static PlayingField::Slot *Deserialize(std::string s) throw(DeserializationException)
             {
-                bool worked = true;
-
                 int e = -1;
 
                 try
                 {
                     e = stoi(s);
-                }
-                catch(std::invalid_argument)
-                {
-                    worked = false;
-                }
-
-                if(e < 0 || e > 2)
-                {
-                    worked = false;
-                }
-
-                if(worked)
-                {
 
                     PlayingField::OccupationState os = PlayingField::NONE;
 
@@ -125,19 +110,17 @@ class PlayingField
                     }
 
 
-                    if(slot == NULL)
-                    {
-                        PlayingField::Slot *tempSlot = new PlayingField::Slot(os);
-                        slot = tempSlot;
-                    }
-                    else
-                    {
-                        slot->Occupation = os;
-                    }
+
+                    PlayingField::Slot *tempSlot = new PlayingField::Slot(os);
+
+                    return tempSlot;
 
                 }
+                catch(std::invalid_argument)
+                {
+                    throw DESERIALIZATION_FAILED;
+                }
 
-                return worked;
             }
 
 
@@ -200,7 +183,7 @@ class PlayingField
 
         static std::string Serialize( const PlayingField &pF);
 
-        static bool Deserialize(string str, PlayingField *field);
+        static PlayingField *PlayingField::Deserialize(string str) throw(DeserializationException);
 
     private:
         const static char delimiter;

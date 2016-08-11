@@ -95,7 +95,7 @@ public:
 
     static string Serialize(const Player p);
 
-    static bool Deserialize(std::string str, Player *p);
+    static Player *Deserialize(std::string str) throw(DeserializationException);
 
 private:
     const static char delimiter;

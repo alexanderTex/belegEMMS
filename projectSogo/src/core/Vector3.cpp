@@ -36,9 +36,9 @@ std::string Vector3::Serialize(Vector3 &vec)
     return s.str();
 }
 
-bool Vector3::Deserialize(std::string s, Vector3 *vec)
+Vector3 Vector3::Deserialize(std::string s) throw(DeserializationException)
 {
-    vec = new Vector3();   
+    Vector3 vec;
 
     std::vector<std::string> elems;
 
@@ -47,22 +47,19 @@ bool Vector3::Deserialize(std::string s, Vector3 *vec)
        split(s, delimiter, elems);
     }
 
-    bool worked = true;
-
     try
     {
-        vec->X = std::stoi( elems[0] );
-        vec->Y = std::stoi( elems[1] );
-        vec->Z =std::stoi( elems[2] );
+        vec.X = std::stoi( elems[0] );
+        vec.Y = std::stoi( elems[1] );
+        vec.Z =std::stoi( elems[2] );
     }
     catch(std::string invalid_argument)
     {
         Logger::GetLoggerIntance()->LogInfo("Vector3 Deserializierung failed  ", __FILE__, __LINE__);
-        worked = false;
-        delete(vec);
+        throw DESERIALIZATION_FAILED;
     }
 
-    return worked;
+    return vec;
 }
 
 

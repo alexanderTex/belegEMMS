@@ -94,30 +94,28 @@ string Player::Serialize(const Player p)
     return s.str();
 }
 
-bool Player::Deserialize(std::string str, Player *p)
+Player *Player::Deserialize(std::string str) throw(DeserializationException)
 {
     std::vector<string> elems;    
     split(str, delimiter, elems);
 
-    bool worked = true;
+    Player *p = NULL;
 
     try
     {
         PlayerType pT = (PlayerType)stoi(elems.at(0));
         PlayingField::OccupationState pO = (PlayingField::OccupationState)stoi(elems.at(2));
-        Player pl(pT, elems.at(1), pO, stoi(elems.at(3)));
 
-
-        *p = pl;
+        p = new Player(pT, elems.at(1), pO, stoi(elems.at(3)));
     }
     catch(std::invalid_argument)
     {
         Logger::GetLoggerIntance()->LogInfo(" Player::Deserialize invalid_argument (Player)", __FILE__, __LINE__);
-        worked = false;
+        throw DESERIALIZATION_FAILED;
     }
 
 
 
-    return worked;
+    return p;
 }
 

@@ -61,32 +61,20 @@ class HistorySave
             return s.str();
         }
 
-        inline static bool Deserialize(string str, Move *m)
+        inline static Move *Deserialize(string str) throw(DeserializationException)
         {
             std::vector<string> elems;
 
             split(str, delimiter, elems);
 
-            bool worked = true;
-
-            Vector3 *vec = new Vector3();
-            if(!Vector3::Deserialize(elems.at(0), vec))
-            {
-                worked = false;
-            }
+            Vector3 vec = Vector3::Deserialize(elems.at(0));
 
 
-            Player *player = new Player();
-            if(!Player::Deserialize(elems.at(1), player))
-            {
-                Logger::GetLoggerIntance()->LogInfo("Move deserialize Player Failed", __FILE__, __LINE__);
-                worked = false;
-            }
+            Player *player = Player::Deserialize(elems.at(1));
 
-            if(worked)
-                m = new Move(vec, player);
+            Move *m = new Move(new Vector3(vec), player);
 
-            return worked;
+            return m;
         }
 
         /**
@@ -157,7 +145,7 @@ public:
 
     static string Serialize(const HistorySave& save);
 
-    static bool Deserialize(string str, HistorySave *save);
+    static HistorySave *Deserialize(string str) throw(DeserializationException);
 
 
 

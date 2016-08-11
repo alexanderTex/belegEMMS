@@ -5,6 +5,11 @@
 #include <sstream>
 #include <vector>
 
+enum DeserializationException
+{
+    DESERIALIZATION_FAILED,
+};
+
 // gefunden auf stackoverflow
 inline void split(const std::string &s, char delim, std::vector<std::string> &elems)
 {

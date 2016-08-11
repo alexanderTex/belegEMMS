@@ -1,5 +1,6 @@
 #include "../../include/core/GameData.h"
 
+#include <QDebug>
 const char GameData::delimiter = '|';
 
 GameData::GameData()
@@ -178,7 +179,7 @@ string GameData::Serialize(const GameData& data)
     return s.str();
 }
 
-bool GameData::Deserialize(std::string str, GameData *data)
+GameData *GameData::Deserialize(std::string str) throw(DeserializationException)
 {
     std::vector<string> elems;
 
@@ -186,31 +187,14 @@ bool GameData::Deserialize(std::string str, GameData *data)
 
 
     // 1. PlayingField
-    PlayingField *field = new PlayingField();
-
-    if(!PlayingField::Deserialize(elems.at(0), field))
-    {
-        Logger::GetLoggerIntance()->LogInfo(" GameData::Deserialize PlayingField failed(GameData)", __FILE__, __LINE__);
-        return false;
-    }
+    PlayingField *field = PlayingField::Deserialize(elems.at(0));
 
 
     // 2. Player 1
-    Player *p1 = new Player();
-
-    if(!Player::Deserialize(elems.at(1), p1))
-    {
-        Logger::GetLoggerIntance()->LogInfo(" GameData::Deserialize Player1 failed(GameData)", __FILE__, __LINE__);
-        return false;
-    }
+    Player *p1 = Player::Deserialize(elems.at(1));
 
     // 3. Player 2
-    Player *p2 = new Player();
-    if(!Player::Deserialize(elems.at(2), p2))
-    {
-        Logger::GetLoggerIntance()->LogInfo(" GameData::Deserialize Player2 failed(GameData)", __FILE__, __LINE__);
-        return false;
-    }
+    Player *p2 = Player::Deserialize(elems.at(2));
 
     // 4. integer currentPlayer
     int current = 0;
@@ -221,7 +205,7 @@ bool GameData::Deserialize(std::string str, GameData *data)
     catch(std::invalid_argument)
     {
         Logger::GetLoggerIntance()->LogInfo(" GameData::Deserialize currentPlayer failed(GameData)", __FILE__, __LINE__);
-        return false;
+        throw DESERIALIZATION_FAILED;
     }
 
     Player *currentPlayer = NULL;
@@ -236,32 +220,23 @@ bool GameData::Deserialize(std::string str, GameData *data)
     else
     {
         Logger::GetLoggerIntance()->LogInfo(" GameData::Deserialize currentPlayer failed (GameData)", __FILE__, __LINE__);
-        return false;
+        throw DESERIALIZATION_FAILED;
     }
 
 
     // 5. History
-    HistorySave *history = new HistorySave();
-    if(!HistorySave::Deserialize(elems.at(4), history))
-    {
-        Logger::GetLoggerIntance()->LogInfo(" GameData::Deserialize History failed (GameData)", __FILE__, __LINE__);
-        return false;
-    }
+    HistorySave *history = HistorySave::Deserialize(elems.at(4));
 
 
+    GameData *tempData = new GameData(field, p1, p2, currentPlayer, history);
 
-
-    GameData tempData(field, p1, p2, currentPlayer, history);
-
-    *data = tempData;
 
     std::stringstream s;
 
-    s << data->GetField()->GetFieldSize();
+    s << tempData->GetField()->GetFieldSize();
 
     Logger::GetLoggerIntance()->LogInfo(s.str(), __FILE__, __LINE__);
 
-
-    return true;
+    return tempData;
 }
 
