@@ -268,7 +268,9 @@ void NewSessionMenu::changeEvent(QEvent *event)
 {
     if (event->type() == QEvent::LanguageChange) {
         m_mainMenueLabel->setText(tr("New Session"));
-        m_input1stPlayername->setText(tr(("Player1")));
+        m_input1stPlayername->setText(tr("Player1"));
+        m_player1Starts->setText(tr("Player1Start"));
+        m_skillLabel->setText(tr("AI - Skilllevel : "));
         m_playfieldGroupBox->setTitle(tr("Playfield"));
         m_input2ndPlayername->setText(tr("Player2"));
         m_checkBoxPvPnetwork->setText(tr("PvP(network)"));

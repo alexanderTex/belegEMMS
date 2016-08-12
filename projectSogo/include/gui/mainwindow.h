@@ -57,6 +57,7 @@ public:
     {
         if (event->type() == QEvent::LanguageChange) {
             m_changeLanguageButton->setText(tr("changeButton"));
+            m_fullscreenButton->setText(tr("Fullscreen"));
         } else
             QWidget::changeEvent(event);
     }
