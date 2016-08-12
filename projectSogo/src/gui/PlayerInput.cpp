@@ -25,12 +25,14 @@ PlayerInput::PlayerInput(GameManager *gameManager, QWidget *parent)
 
     m_currentPlayerColorScene->setBackgroundBrush(Qt::white);
 
+    this->m_infoText = new QLabel(tr("Info : You select a slot on the base layer where you want to drop a setpiece,\n\t which will then be placed at the lowest possible place in that slot."));
+    this->m_inputLayout->addWidget(this->m_infoText);
+
     m_currentPlayerLayout->addWidget(m_currentPlayerName);
     m_currentPlayerLayout->addWidget(m_currentPlayerLabel);
     m_currentPlayerLayout->addWidget(m_currentPlayerColorView);
 
-    this->m_infoText = new QLabel(tr("Info : You select a slot on the base layer where you want to drop a setpiece,\n\t which will then be placed at the lowest possible place in that slot."));
-    this->m_inputLayout->addWidget(this->m_infoText);
+
 
     this->m_inputFields = new QWidget(this);
     this->m_inputFieldLayout = new QHBoxLayout(this->m_inputFields);
