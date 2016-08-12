@@ -135,7 +135,7 @@ public:
     static string Serialize(const GameData& data);
 
 
-    static GameData *Deserialize(std::string str);
+    static GameData *GameData::Deserialize(std::string str) throw(DeserializationException);
 
 
 private:
