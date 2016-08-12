@@ -134,25 +134,11 @@ GameView::~GameView()
 
 void GameView::InitGame(GameData *data)
 {
-    std::stringstream s;
-    s << (data->GetField() == NULL);
-
-    Logger::GetLoggerIntance()->LogInfo(s.str(), __FILE__, __LINE__);
-    //Logger::GetLoggerIntance()->LogInfo(DrawPlayingField(data->GetField()), __FILE__, __LINE__);
-
-    *(this->m_data) = *data;
-
-    //Logger::GetLoggerIntance()->LogInfo(DrawPlayingField(data->GetField()), __FILE__, __LINE__);
-
-    Logger::GetLoggerIntance()->LogInfo("InitGame", __FILE__, __LINE__);
-    this->m_gameVis->GameChanged();
-    Logger::GetLoggerIntance()->LogInfo("InitGame", __FILE__, __LINE__);
+    *(this->m_data) = *data;     
     ShowGameInputView();
-    Logger::GetLoggerIntance()->LogInfo("InitGame", __FILE__, __LINE__);
+    this->m_gameVis->GameChanged();
     m_gameFinished = false;
-    Logger::GetLoggerIntance()->LogInfo("InitGame", __FILE__, __LINE__);
     SaveGame();
-    Logger::GetLoggerIntance()->LogInfo("InitGame", __FILE__, __LINE__);
 }
 
 void GameView::StartGame()
@@ -270,5 +256,4 @@ bool GameView::LoadGame()
     }    
 
     return false;
-
 }

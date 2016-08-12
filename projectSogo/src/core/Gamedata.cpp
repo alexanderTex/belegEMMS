@@ -1,6 +1,5 @@
 #include "../../include/core/GameData.h"
 
-#include <QDebug>
 const char GameData::delimiter = '|';
 
 GameData::GameData()
@@ -230,12 +229,6 @@ GameData *GameData::Deserialize(std::string str) throw(DeserializationException)
 
     GameData *tempData = new GameData(field, p1, p2, currentPlayer, history);
 
-
-    std::stringstream s;
-
-    s << tempData->GetField()->GetFieldSize();
-
-    Logger::GetLoggerIntance()->LogInfo(s.str(), __FILE__, __LINE__);
 
     return tempData;
 }
