@@ -1,8 +1,8 @@
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {1}{Translatortext}}{10}
+\contentsline {lstlisting}{\numberline {1}{Translatortext}}{11}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {2}{Translator}}{10}
+\contentsline {lstlisting}{\numberline {2}{Translator}}{11}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {3}{Sprachwechsel}}{11}
+\contentsline {lstlisting}{\numberline {3}{Sprachwechsel}}{12}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {4}{Logger - Debugger} }{12}
+\contentsline {lstlisting}{\numberline {4}{Logger - Debugger} }{13}
