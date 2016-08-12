@@ -246,8 +246,68 @@ Die komplette Navigation der Applikation wurde mittels Qt implementiert. Hierzu 
 \\
 Das interessante an den Menüs war, dass sie erst erstellt wurden, nachdem die Spiellogik und die Spielansicht erstellt wurde. Im Anschluss wurde nur noch auf die benötigten Objekte eingegangen, die die Spielansicht benötigte. D.h. um ein Spiel zu beginnen, musste das GameData-Objekt mit Werten befüllt werden, welche sich wiederum aus den Benutzereingaben generieren ließen, was letztendlich den Art der Eingaben und Ansicht der Spielmenüs beeinflusste. Auf diese wollten wir nun im folgenden Kapitel eingehen.
 
-\subsection{Sprache}\label{ch:Sprache}
-Ein Entscheidendes Kriterium war die Möglichkeit die Sprache zu jedem Zeitpunkt zu wechseln. Hierzu entschieden wir uns, die zwei, aus unserer Sicht, nützlichsten Sprachen zu wählen, nämlich deutsch und englisch. Dazu wir die Implementierung eines Translators. Hierzu wurden zwei erstellte .qm-Dateien den Ressourcen hinzugefügt, die die Übersetzung der einzelnen Textbausteine beinhalteten. Um ein derartiges Wörterbuch zu erstellen, mussten sämtliche String-Texte, wie exemplarisch im Quellcodeausschnitt Quellcode~\ref{lst:Translatortext}: auf Seite \pageref{lst:Translatortext} dargestellt ist, formatiert werden. 
+\subsubsection{StartMenu}\label{ch:StartMenu}
+Sobald das Spiel gestartet wird, gelangt man in das Startmenü. Hier hat man wie in der Abbildung~\ref{fig:Startmenü}: auf der Seite \pageref{fig:Startmenü} zu sehen ist, folgende Auswahlmöglichkeiten.
+
+\begin{itemize}
+	\item \textbf{Sprache - [en-gb]} Wechselt die Sprache von deusch nach englich und umgekehrt.
+	\item \textbf{Fullscrenn} Wechselt in den Vollbildmodus und wieder zurück in den Fenstermodus.
+	\item \textbf{Neue Partie} Öffnet das NewSessionMenü, welches die Einstellungen für ein neues Spiel beinhaltet.
+	\item \textbf{Load} Hierbei wird das letzte Spiel geladen, welches gespeichert wurde.
+	\item \textbf{Bestenliste} Hier sollte eine Bestenliste angezeigt werden, deren Darstellung nicht realisiert wurde. Doch darauf gehen wir im Kapitel \ref{ch:Ergebnis} auf der Seite \pageref{ch:Ergebnis} weiter ein.
+	\item \textbf{Ende} Damit wird die komplette Anwendung beendet.
+\end{itemize}
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[scale=0.35]{graphics/startmenu.eps}
+ \caption{Das Startmenü}
+ \label{fig:Startmenü}
+\end{figure}
+
+\subsubsection{NewSessionMenu}\label{ch:NewSessionMenu}
+Nachdem die Auswahl getroffen wurde eine neues Spiel zu beginnen, gelangt man in das NewSessionMenü, welches die grundlegende Spielkonfiguration für die folgende Partie festlegt. Die Konfigurationsmöglichkteiten werden durch die Abbildung~\ref{fig:NewSessionmenü} auf der Seite \pageref{fig:NewSessionmenü} dargestellt und im Folgenden kurz beschrieben. 
+
+\begin{itemize}
+	\item \textbf{Sprache - [en-gb]} Wechselt die Sprache von deusch nach englich und umgekehrt.
+	\item \textbf{Fullscrenn} Wechselt in den Vollbildmodus und wieder zurück in den Fenstermodus.
+	\item \textbf{Spieler1} Hier kann der Name des ersten Spielers eingegeben werden, der wenn keiner eingegeben wird standardmäßig Spieler1 lautet.
+	\item \textbf{Spielfeldgröße} Hier wird die Spielfeldgöße festgelegt, welches im Standardspiel 4x4x4 ist.
+	\item \textbf{Modus} Über diese Option wird die Art des Spiels festgelegt. Wobei PvC für Player vs. Computer, PvP(lokal) für Player vs. Player am lokalen Rechner und PvP(Netzwerk) für Player vs. Player im Netzwerk steht. Wobei die Netzwerkkomponenten nicht implementiert wurde, was im Kapitel \ref{ch:Ergebnis} auf Seite \pageref{ch:Ergebnis} näher erläutert wird.
+	\item \textbf{\glqq Schwierigkeitsgrad\grqq} Dieser wurde mit einer Steigerung von ein(einfach) bis drei(schwer) versehen, wobei diese Optionen in der momentanen Implementierung für geübte Spieler keine Herausforderung darstellt. Hierzu müsste man die Tiefe der Berechnung des MiniMax-Algorithmus aus dem Kapitel \ref{ch:AI} anpassen.
+	\item \textbf{Spiel starten} Das Spiel mit der momentan gesetzten Konfiguration starten.
+	\item \textbf{Ende} Damit wird die komplette Anwendung beendet.
+\end{itemize}
+
+Eine Besonderheit, die sich durch das ganze Projekt zog, war die Strukturierung des Frontends mittels Qt. Das soll heißen, dass jedes grafische Objekt verschachtelt und in ein Label, Widget und Layout verpackt wurde, was letztendlich dazu führte, dass die Anzahl der Attribute einer Klasse, an Komplexität zunahmen, wobei sich die Interaktionsmöglichkeiten des Benutzers nur geringfügig veränderten.
+ 
+\begin{figure}[H]
+ \centering
+ \includegraphics[scale=0.35]{graphics/newsession.eps}
+ \caption{Das NewSessionmenü}
+ \label{fig:NewSessionmenü}
+\end{figure}
+
+\begin{comment}
+	\subsubsection{HighscoreMenu}\label{ch:HighscoreMenu}
+	\begin{figure}[H]
+	 \centering
+	 \includegraphics[scale=0.35]{graphics/highscore.eps}
+	 \caption{Das Highscoremenü}
+	 \label{fig:Highscoremenü}
+	\end{figure}
+\end{comment}
+
+\subsubsection{PauseMenu}\label{ch:PauseMenu}
+\begin{figure}[H]
+ \centering
+ \includegraphics[scale=0.35]{graphics/pausemenu.eps}
+ \caption{Das Pausemenü}
+ \label{fig:Pausemenü}
+\end{figure}
+
+\subsubsection{Sprache}\label{ch:Sprache}
+Ein Entscheidendes Kriterium war die Möglichkeit die Sprache zu jedem Zeitpunkt zu wechseln. Hierzu entschieden wir uns, die zwei, aus unserer Sicht, nützlichsten Sprachen zu wählen, nämlich deutsch und englisch. Dazu nutzten wir die Implementierung eines Translators. Hierzu wurden zwei erstellte .qm-Dateien den Ressourcen hinzugefügt, die die Übersetzung der einzelnen Textbausteine beinhalteten. Um ein derartiges Wörterbuch zu erstellen, mussten sämtliche String-Texte, wie exemplarisch im Quellcodeausschnitt Quellcode~\ref{lst:Translatortext}: auf Seite \pageref{lst:Translatortext} dargestellt ist, formatiert werden. 
 
 \begin{lstlisting}[caption={Translatortext}\label{lst:Translatortext},captionpos=t]
      m_playGameButton = new QPushButton(tr("Start Game"));
@@ -308,66 +368,6 @@ inline void changeEvent(QEvent *event)
     }
 \end{lstlisting}
 Anschließend wurde der Sprachwechsel mit einen Button im Frontend verknüpft und auf jeder Ansicht zugänglich gemacht.
-
-\subsubsection{StartMenu}\label{ch:StartMenu}
-Sobald das Spiel gestartet wird, gelangt man in das Startmenü. Hier hat man wie in der Abbildung~\ref{fig:Startmenü}: auf der Seite \pageref{fig:Startmenü} zu sehen ist, folgende Auswahlmöglichkeiten.
-
-\begin{itemize}
-	\item \textbf{Sprache - [en-gb]} Wechselt die Sprache von deusch nach englich und umgekehrt.
-	\item \textbf{Fullscrenn} Wechselt in den Vollbildmodus und wieder zurück in den Fenstermodus.
-	\item \textbf{Neue Partie} Öffnet das NewSessionMenü, welches die Einstellungen für ein neues Spiel beinhaltet.
-	\item \textbf{Load} Hierbei wird das letzte Spiel geladen, welches gespeichert wurde.
-	\item \textbf{Bestenliste} Hier sollte eine Bestenliste angezeigt werden, deren Darstellung nicht realisiert wurde. Doch darauf gehen wir im Kapitel \ref{ch:Ergebnis} auf der Seite \pageref{ch:Ergebnis} weiter ein.
-	\item \textbf{Ende} Damit wird die komplette Anwendung beendet.
-\end{itemize}
-
-\begin{figure}[H]
- \centering
- \includegraphics[scale=0.35]{graphics/startmenu.eps}
- \caption{Das Startmenü}
- \label{fig:Startmenü}
-\end{figure}
-
-\subsubsection{NewSessionMenu}\label{ch:NewSessionMenu}
-Nachdem die Auswahl getroffen wurde eine neues Spiel zu beginnen, gelangt man in das NewSessionMenü, welches die grundlegende Spielkonfiguration für die folgende Partie festlegt. Die Konfigurationsmöglichkteiten werden durch die Abbildung~\ref{fig:NewSessionmenü} auf der Seite \pageref{fig:NewSessionmenü} dargestellt und im Folgenden kurz beschrieben. 
-
-\begin{itemize}
-	\item \textbf{Sprache - [en-gb]} Wechselt die Sprache von deusch nach englich und umgekehrt.
-	\item \textbf{Fullscrenn} Wechselt in den Vollbildmodus und wieder zurück in den Fenstermodus.
-	\item \textbf{Spieler1} Hier kann der Name des ersten Spielers eingegeben werden, der wenn keiner eingegeben wird standardmäßig Spieler1 lautet.
-	\item \textbf{Spielfeldgröße} Hier wird die Spielfeldgöße festgelegt, welches im Standardspiel 4x4x4 ist.
-	\item \textbf{Modus} Über diese Option wird die Art des Spiels festgelegt. Wobei PvC für Player vs. Computer, PvP(lokal) für Player vs. Player am lokalen Rechner und PvP(Netzwerk) für Player vs. Player im Netzwerk steht. Wobei die Netzwerkkomponenten nicht implementiert wurde, was im Kapitel \ref{ch:Ergebnis} auf Seite \pageref{ch:Ergebnis} näher erläutert wird.
-	\item \textbf{\glqq Schwierigkeitsgrad\grqq} Dieser wurde mit einer Steigerung von ein(einfach) bis drei(schwer) versehen, wobei diese Optionen in der momentanen Implementierung für geübte Spieler keine Herausforderung darstellt. Hierzu müsste man die Tiefe der Berechnung des MiniMax-Algorithmus aus dem Kapitel \ref{ch:AI} anpassen.
-	\item \textbf{Spiel starten} Das Spiel mit der momentan gesetzten Konfiguration starten.
-	\item \textbf{Ende} Damit wird die komplette Anwendung beendet.
-\end{itemize}
-
-Eine Besonderheit, die sich durch das ganze Projekt zog, war die Strukturierung des Frontends mittels Qt. Das soll heißen, dass jedes grafische Objekt verschachtelt und in ein Label, Widget und Layout verpackt wurde, was letztendlich dazu führte, dass die Anzahl der Attribute einer Klasse, an Komplexität zunahmen, wobei sich die Interaktionsmöglichkeiten des Benutzers nur geringfügig veränderten.
- 
-\begin{figure}[H]
- \centering
- \includegraphics[scale=0.35]{graphics/newsession.eps}
- \caption{Das NewSessionmenü}
- \label{fig:NewSessionmenü}
-\end{figure}
-
-\begin{comment}
-	\subsubsection{HighscoreMenu}\label{ch:HighscoreMenu}
-	\begin{figure}[H]
-	 \centering
-	 \includegraphics[scale=0.35]{graphics/highscore.eps}
-	 \caption{Das Highscoremenü}
-	 \label{fig:Highscoremenü}
-	\end{figure}
-\end{comment}
-
-\subsubsection{PauseMenu}\label{ch:PauseMenu}
-\begin{figure}[H]
- \centering
- \includegraphics[scale=0.35]{graphics/pausemenu.eps}
- \caption{Das Pausemenü}
- \label{fig:Pausemenü}
-\end{figure}
 
 \subsection{Mainwindow}\label{ch:Mainwindow}
 \subsection{GameView}\label{ch:GameView}
