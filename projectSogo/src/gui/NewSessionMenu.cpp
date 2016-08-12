@@ -14,6 +14,8 @@ NewSessionMenu::NewSessionMenu(QWidget *parent) : QWidget(parent)
     m_input1stPlayername = new QLineEdit();
     m_input1stPlayername->setPlaceholderText(tr("Player1"));
 
+
+
     // "Start Game" Button
     m_playGameButton = new QPushButton(tr("Start Game"));
     QObject::connect(m_playGameButton, &QPushButton::clicked, this, &NewSessionMenu::startGame);
@@ -41,9 +43,12 @@ NewSessionMenu::NewSessionMenu(QWidget *parent) : QWidget(parent)
     QObject::connect(m_checkBoxPvC, &QCheckBox::clicked, m_pvpLocalWidget, &QWidget::hide);
     QObject::connect(m_checkBoxPvC, &QCheckBox::clicked, m_networkparameterWidget, &QWidget::hide);
 
+    m_player1Starts = new QRadioButton(tr("Player1Start"), this);
+
     // add menu item to menue layout
     m_controlLayout->addWidget(m_mainMenueLabel);
     m_controlLayout->addWidget(m_input1stPlayername);
+    m_controlLayout->addWidget(m_player1Starts);
     m_controlLayout->addWidget(m_playfieldGroupBox);
     m_controlLayout->addWidget(m_modeGroupBox);
     m_controlLayout->addWidget(m_skillWidget);
@@ -131,6 +136,8 @@ void NewSessionMenu::setMode()
 
     // difficult mode
     m_skillBoxLayout = new QHBoxLayout();
+    m_skillLabel = new QLabel(tr("AI - Skilllevel : "), this);
+    m_skillBoxLayout->addWidget(m_skillLabel);
     m_skillBoxLayout->addWidget(m_radioButtonskill1);
     m_skillBoxLayout->addWidget(m_radioButtonskill2);
     m_skillBoxLayout->addWidget(m_radioButtonskill3);
@@ -188,22 +195,48 @@ void NewSessionMenu::setPlayer()
 
     if (m_checkBoxPvC->isChecked())
     {
-        if(m_input1stPlayername->text().toStdString().length() > 0 )
+        if(m_player1Starts->isChecked())
         {
-            m_player1 = new Player(Player::HUMAN,m_input1stPlayername->text().toStdString(), PlayingField::BLUE);
+            if(m_input1stPlayername->text().toStdString().length() > 0 )
+            {
+                m_player1 = new Player(Player::HUMAN,m_input1stPlayername->text().toStdString(), PlayingField::BLUE);
+            }
+            else
+            {
+                m_player1 = new Player(Player::HUMAN,m_input1stPlayername->placeholderText().toStdString(), PlayingField::BLUE);
+            }
+
+            m_player2 = new Player(Player::AI, "Skynet", PlayingField::RED);
         }
         else
         {
-            m_player1 = new Player(Player::HUMAN,m_input1stPlayername->placeholderText().toStdString(), PlayingField::BLUE);
-        }
+            m_player1 = new Player(Player::AI, "Skynet", PlayingField::BLUE);
 
-        m_player2 = new Player(Player::AI, "Skynet", PlayingField::RED);
+            if(m_input1stPlayername->text().toStdString().length() > 0 )
+            {
+                m_player2 = new Player(Player::HUMAN,m_input1stPlayername->text().toStdString(), PlayingField::RED);
+            }
+            else
+            {
+                m_player2 = new Player(Player::HUMAN,m_input1stPlayername->placeholderText().toStdString(), PlayingField::RED);
+            }
+
+
+        }
 
     }
     else if (m_checkBoxPvPlocal->isChecked())
     {
-        m_player1 = new Player(Player::HUMAN, m_input1stPlayername->text().toStdString(), PlayingField::BLUE);
-        m_player2 = new Player(Player::HUMAN, m_input2ndPlayername->text().toStdString(), PlayingField::RED);
+        if(m_player1Starts->isChecked())
+        {
+            m_player1 = new Player(Player::HUMAN, m_input1stPlayername->text().toStdString(), PlayingField::BLUE);
+            m_player2 = new Player(Player::HUMAN, m_input2ndPlayername->text().toStdString(), PlayingField::RED);
+        }
+        else
+        {
+            m_player1 = new Player(Player::HUMAN, m_input2ndPlayername->text().toStdString(), PlayingField::BLUE);
+            m_player2 = new Player(Player::HUMAN, m_input1stPlayername->text().toStdString(), PlayingField::RED);
+        }
     }
 }
 
@@ -228,7 +261,7 @@ void NewSessionMenu::mergeGameData()
     checkPlayfieldSize();
     setPlayer();
     checkSkill();
-    m_gameData = new GameData(m_playingField, m_player1, m_player2, m_player2);
+    m_gameData = new GameData(m_playingField, m_player1, m_player2, m_player1);
 }
 
 void NewSessionMenu::changeEvent(QEvent *event)

@@ -102,11 +102,14 @@ signals:
     void startGame();
 
 private:
+    QRadioButton *m_player1Starts;
+
     QVBoxLayout *m_controlLayout,               /**< Menulayout */
                 *m_checkBoxPlayfieldLayout,     /**< Layout to set the playfieldsize */
                 *m_checkBoxNetworkLayout;       /**< Layout to set the network settings */
 
     QHBoxLayout *m_skillBoxLayout;              /**< Layout to set severity. */
+    QLabel *m_skillLabel;
 
     QLabel  *m_mainMenueLabel,                  /**< Mainlabel */
             *m_checkBoxNetworkLabel,            /**< Networkchekboxlabel */
