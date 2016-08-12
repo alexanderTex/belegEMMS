@@ -7,29 +7,29 @@
         <location filename="../../include/gui/GameInputArea.h" line="36"/>
         <location filename="../../src/gui/Gameinputarea.cpp" line="7"/>
         <source>Player Input</source>
-        <translation type="unfinished"></translation>
+        <translation>Player Input</translation>
     </message>
     <message>
         <location filename="../../include/gui/GameInputArea.h" line="37"/>
         <location filename="../../src/gui/Gameinputarea.cpp" line="9"/>
         <source>History Display</source>
-        <translation type="unfinished"></translation>
+        <translation>History Display</translation>
     </message>
 </context>
 <context>
     <name>GameView</name>
     <message>
-        <location filename="../../include/gui/GameView.h" line="86"/>
-        <location filename="../../src/gui/GameView.cpp" line="18"/>
-        <location filename="../../src/gui/GameView.cpp" line="79"/>
+        <location filename="../../include/gui/GameView.h" line="88"/>
+        <location filename="../../src/gui/GameView.cpp" line="19"/>
+        <location filename="../../src/gui/GameView.cpp" line="80"/>
         <source>Pausemenu</source>
-        <translation type="unfinished"></translation>
+        <translation>Pausemenu</translation>
     </message>
     <message>
-        <location filename="../../src/gui/GameView.cpp" line="39"/>
-        <location filename="../../src/gui/GameView.cpp" line="102"/>
+        <location filename="../../src/gui/GameView.cpp" line="40"/>
+        <location filename="../../src/gui/GameView.cpp" line="103"/>
         <source>End</source>
-        <translation type="unfinished"></translation>
+        <translation>End</translation>
     </message>
 </context>
 <context>
@@ -37,27 +37,52 @@
     <message>
         <location filename="../../src/gui/GameVisualizer.cpp" line="8"/>
         <source>2D</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/gui/GameVisualizer.cpp" line="11"/>
         <source>3D</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
     <name>HighscoreMenu</name>
     <message>
         <location filename="../../src/gui/HighscoreMenu.cpp" line="7"/>
-        <location filename="../../src/gui/HighscoreMenu.cpp" line="20"/>
+        <location filename="../../src/gui/HighscoreMenu.cpp" line="50"/>
         <source>Highscore</source>
         <translation>Highscore</translation>
     </message>
     <message>
-        <location filename="../../src/gui/HighscoreMenu.cpp" line="12"/>
-        <location filename="../../src/gui/HighscoreMenu.cpp" line="21"/>
+        <location filename="../../src/gui/HighscoreMenu.cpp" line="18"/>
+        <source>GameNumber</source>
+        <translation>Gamenumber</translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/HighscoreMenu.cpp" line="20"/>
+        <source>PlayerName1</source>
+        <translation>Player1</translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/HighscoreMenu.cpp" line="22"/>
+        <source>PlayerName2</source>
+        <translation>Player2</translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/HighscoreMenu.cpp" line="24"/>
+        <source>Winner</source>
+        <translation>Winner</translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/HighscoreMenu.cpp" line="26"/>
+        <source>MoveCount</source>
+        <translation>Movecount</translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/HighscoreMenu.cpp" line="42"/>
+        <location filename="../../src/gui/HighscoreMenu.cpp" line="51"/>
         <source>Back</source>
-        <translation type="unfinished"></translation>
+        <translation>Back</translation>
     </message>
 </context>
 <context>
@@ -79,6 +104,7 @@
         <translation>Language - [de]</translation>
     </message>
     <message>
+        <location filename="../../include/gui/mainwindow.h" line="60"/>
         <location filename="../../src/gui/mainwindow.cpp" line="20"/>
         <location filename="../../src/gui/mainwindow.cpp" line="69"/>
         <source>Fullscreen</source>
@@ -196,45 +222,65 @@
         <location filename="../../src/gui/PauseMenu.cpp" line="10"/>
         <location filename="../../src/gui/PauseMenu.cpp" line="27"/>
         <source>Resume</source>
-        <translation type="unfinished"></translation>
+        <translation>Resume</translation>
     </message>
     <message>
         <location filename="../../src/gui/PauseMenu.cpp" line="14"/>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Save</translation>
     </message>
     <message>
         <location filename="../../src/gui/PauseMenu.cpp" line="18"/>
         <location filename="../../src/gui/PauseMenu.cpp" line="29"/>
         <source>Quit</source>
-        <translation type="unfinished"></translation>
+        <translation>Quit</translation>
     </message>
 </context>
 <context>
     <name>PlayerInput</name>
     <message>
+        <source>CurrentPlayer : </source>
+        <translation>CurrentPlayer : </translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/PlayerInput.cpp" line="18"/>
+        <location filename="../../src/gui/PlayerInput.cpp" line="105"/>
+        <source>is current player : </source>
+        <translation>is current player : </translation>
+    </message>
+    <message>
         <location filename="../../src/gui/PlayerInput.cpp" line="32"/>
+        <location filename="../../src/gui/PlayerInput.cpp" line="104"/>
         <source>Info : You select a slot on the base layer where you want to drop a setpiece,
 	 which will then be placed at the lowest possible place in that slot.</source>
-        <translation type="unfinished"></translation>
+        <translation>Info : You select a slot on the base layer where you want to drop a setpiece,
+	 which will then be placed at the lowest possible place in that slot.</translation>
     </message>
     <message>
         <location filename="../../src/gui/PlayerInput.cpp" line="47"/>
         <location filename="../../src/gui/PlayerInput.cpp" line="101"/>
         <source>X-Input : </source>
-        <translation type="unfinished"></translation>
+        <translation>X-Input : </translation>
     </message>
     <message>
         <location filename="../../src/gui/PlayerInput.cpp" line="62"/>
         <location filename="../../src/gui/PlayerInput.cpp" line="102"/>
         <source>Y-Input : </source>
-        <translation type="unfinished"></translation>
+        <translation>Y-Input : </translation>
     </message>
     <message>
         <location filename="../../src/gui/PlayerInput.cpp" line="72"/>
         <location filename="../../src/gui/PlayerInput.cpp" line="103"/>
         <source>Confirm</source>
-        <translation type="unfinished"></translation>
+        <translation>Confirm</translation>
+    </message>
+    <message>
+        <source>is Current Player : </source>
+        <translation type="obsolete">is Current Player : </translation>
+    </message>
+    <message>
+        <source>Current Player : </source>
+        <translation>Current Player : </translation>
     </message>
 </context>
 <context>
@@ -242,9 +288,10 @@
     <message>
         <location filename="../../src/gui/StartMenu.cpp" line="7"/>
         <source>Sogo</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
+        <location filename="../../include/gui/StartMenu.h" line="37"/>
         <location filename="../../src/gui/StartMenu.cpp" line="15"/>
         <source>Load</source>
         <translation>Load</translation>
@@ -253,12 +300,12 @@
         <location filename="../../include/gui/StartMenu.h" line="34"/>
         <location filename="../../src/gui/StartMenu.cpp" line="12"/>
         <source>New Session</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/gui/StartMenu.cpp" line="18"/>
         <source>Highscore</source>
-        <translation type="unfinished">Highscore</translation>
+        <translation>Highscore</translation>
     </message>
     <message>
         <location filename="../../include/gui/StartMenu.h" line="36"/>

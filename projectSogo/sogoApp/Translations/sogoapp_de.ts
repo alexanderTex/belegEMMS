@@ -19,15 +19,15 @@
 <context>
     <name>GameView</name>
     <message>
-        <location filename="../../include/gui/GameView.h" line="86"/>
-        <location filename="../../src/gui/GameView.cpp" line="18"/>
-        <location filename="../../src/gui/GameView.cpp" line="79"/>
+        <location filename="../../include/gui/GameView.h" line="88"/>
+        <location filename="../../src/gui/GameView.cpp" line="19"/>
+        <location filename="../../src/gui/GameView.cpp" line="80"/>
         <source>Pausemenu</source>
         <translation>Pausemenü</translation>
     </message>
     <message>
-        <location filename="../../src/gui/GameView.cpp" line="39"/>
-        <location filename="../../src/gui/GameView.cpp" line="102"/>
+        <location filename="../../src/gui/GameView.cpp" line="40"/>
+        <location filename="../../src/gui/GameView.cpp" line="103"/>
         <source>End</source>
         <translation>Ende</translation>
     </message>
@@ -56,13 +56,38 @@
     <name>HighscoreMenu</name>
     <message>
         <location filename="../../src/gui/HighscoreMenu.cpp" line="7"/>
-        <location filename="../../src/gui/HighscoreMenu.cpp" line="20"/>
+        <location filename="../../src/gui/HighscoreMenu.cpp" line="50"/>
         <source>Highscore</source>
         <translation>Bestenliste</translation>
     </message>
     <message>
-        <location filename="../../src/gui/HighscoreMenu.cpp" line="12"/>
-        <location filename="../../src/gui/HighscoreMenu.cpp" line="21"/>
+        <location filename="../../src/gui/HighscoreMenu.cpp" line="18"/>
+        <source>GameNumber</source>
+        <translation>Spielnummer</translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/HighscoreMenu.cpp" line="20"/>
+        <source>PlayerName1</source>
+        <translation>Spieler1</translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/HighscoreMenu.cpp" line="22"/>
+        <source>PlayerName2</source>
+        <translation>Spieler2</translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/HighscoreMenu.cpp" line="24"/>
+        <source>Winner</source>
+        <translation>Gewinner</translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/HighscoreMenu.cpp" line="26"/>
+        <source>MoveCount</source>
+        <translation>Zuganzahl</translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/HighscoreMenu.cpp" line="42"/>
+        <location filename="../../src/gui/HighscoreMenu.cpp" line="51"/>
         <source>Back</source>
         <translation>Zurück</translation>
     </message>
@@ -90,6 +115,7 @@
         <translation>Sprache - [en-gb]</translation>
     </message>
     <message>
+        <location filename="../../include/gui/mainwindow.h" line="60"/>
         <location filename="../../src/gui/mainwindow.cpp" line="20"/>
         <location filename="../../src/gui/mainwindow.cpp" line="69"/>
         <source>Fullscreen</source>
@@ -236,10 +262,23 @@
 <context>
     <name>PlayerInput</name>
     <message>
+        <source>CurrentPlayer : </source>
+        <translation>Aktueller Spieler : </translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/PlayerInput.cpp" line="18"/>
+        <location filename="../../src/gui/PlayerInput.cpp" line="105"/>
+        <source>is current player : </source>
+        <translation>ist aktueller Spieler : </translation>
+    </message>
+    <message>
         <location filename="../../src/gui/PlayerInput.cpp" line="32"/>
+        <location filename="../../src/gui/PlayerInput.cpp" line="104"/>
         <source>Info : You select a slot on the base layer where you want to drop a setpiece,
 	 which will then be placed at the lowest possible place in that slot.</source>
-        <translation type="unfinished"></translation>
+        <translation>Info : Wenn Sie eine Position ausgewählt und gesetzt haben, wird von dieser 
+Position ausgehend, immer in den darunter liegenden Ebenen nach einem freien 
+Position gesucht und gesetzt.</translation>
     </message>
     <message>
         <location filename="../../src/gui/PlayerInput.cpp" line="47"/>
@@ -259,6 +298,14 @@
         <source>Confirm</source>
         <translation>Bestaetigen</translation>
     </message>
+    <message>
+        <source>is Current Player : </source>
+        <translation type="obsolete">ist Aktueller Spieler : </translation>
+    </message>
+    <message>
+        <source>Current Player : </source>
+        <translation>Aktueller Spieler : </translation>
+    </message>
 </context>
 <context>
     <name>StartMenu</name>
@@ -268,6 +315,7 @@
         <translation></translation>
     </message>
     <message>
+        <location filename="../../include/gui/StartMenu.h" line="37"/>
         <location filename="../../src/gui/StartMenu.cpp" line="15"/>
         <source>Load</source>
         <translation>Laden</translation>

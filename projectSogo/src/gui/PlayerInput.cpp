@@ -15,7 +15,7 @@ PlayerInput::PlayerInput(GameManager *gameManager, QWidget *parent)
 
     m_currentPlayerLayout = new QHBoxLayout(m_currentPlayerDisplay);
 
-    m_currentPlayerLabel = new QLabel("CurrentPlayer : ");
+    m_currentPlayerLabel = new QLabel(tr("is current player : "));
 
     m_currentPlayerName = new QLabel();
 
@@ -101,7 +101,8 @@ void PlayerInput::changeEvent(QEvent *event)
         xInputLabel->setText(tr("X-Input : "));
         yInputLabel->setText(tr("Y-Input : "));
         m_inputConfirm->setText(tr("Confirm"));
-
+        m_infoText->setText(tr("Info : You select a slot on the base layer where you want to drop a setpiece,\n\t which will then be placed at the lowest possible place in that slot."));
+        m_currentPlayerLabel->setText(tr("is current player : "));
     } else
         QWidget::changeEvent(event);
 }

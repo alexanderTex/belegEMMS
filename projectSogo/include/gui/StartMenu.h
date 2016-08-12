@@ -34,6 +34,7 @@ public:
             m_newSessionButton->setText(tr("New Session"));
             m_highscoreButton->setText(tr(("Highscore")));
             m_exitButton->setText(tr("Exit"));
+            m_loadGameButton->setText(tr("Load"));
 
         } else
             QWidget::changeEvent(event);
