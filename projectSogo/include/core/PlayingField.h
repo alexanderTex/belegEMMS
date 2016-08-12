@@ -183,7 +183,7 @@ class PlayingField
 
         static std::string Serialize( const PlayingField &pF);
 
-        static PlayingField *PlayingField::Deserialize(string str) throw(DeserializationException);
+        static PlayingField *Deserialize(string str) throw(DeserializationException);
 
     private:
         const static char delimiter;
