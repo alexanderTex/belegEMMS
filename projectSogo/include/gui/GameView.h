@@ -37,6 +37,8 @@ class GameView : public QWidget
     Q_OBJECT
 public:
 
+    const static string HIGHSCOREFILENAME;
+
     explicit GameView( QWidget *parent = 0);
     GameView(GameData *data, QWidget *parent = 0);
     virtual ~GameView();
@@ -100,6 +102,10 @@ public:
      */
     bool LoadGame();
 
+    void ClearSave();
+
+    void WriteHighscoreToSave();
+
 
 signals:
     /**
@@ -117,6 +123,7 @@ signals:
 private:
 
     const static string SAVEFILENAME;
+
 
     bool m_gameFinished;
 

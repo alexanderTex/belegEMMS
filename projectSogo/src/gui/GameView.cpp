@@ -1,6 +1,7 @@
 #include "./GameView.h"
 
 const string GameView::SAVEFILENAME = "SaveGame.txt";
+const string GameView::HIGHSCOREFILENAME = "HighScore.txt";
 
 
 GameView::GameView(QWidget *parent)
@@ -158,6 +159,11 @@ void GameView::EndGame()
     {
         SaveGame();
     }
+    else
+    {
+        WriteHighscoreToSave();
+        ClearSave();
+    }
 
     this->m_gameLoop->SuspendProcessingLoop();
     emit GameEnded(this->m_data);
@@ -256,4 +262,44 @@ bool GameView::LoadGame()
     }    
 
     return false;
+}
+
+void GameView::ClearSave()
+{
+    ofstream saveFileOutput;
+    saveFileOutput.open (SAVEFILENAME);
+
+    saveFileOutput.close();
+}
+
+void GameView::WriteHighscoreToSave()
+{
+    ifstream saveFile;
+    saveFile.open (HIGHSCOREFILENAME);
+
+    stringstream s;
+
+
+    if(saveFile.is_open())
+    {
+        string oldString;
+        getline (saveFile, oldString);
+        saveFile.close();
+
+        Logger::GetLoggerIntance()->LogInfo(oldString, __FILE__, __LINE__);
+
+        if(oldString.size() > 0)
+            s << oldString;
+    }
+
+    ofstream saveFileOutput;
+    saveFileOutput.open (HIGHSCOREFILENAME);
+
+
+    s << this->m_data->GetPlayer1()->GetName() << ";" << this->m_data->GetPlayer2()->GetName() << ";"
+      << this->m_data->GetCurrentPlayer()->GetName() << ";" << this->m_data->GetHistory()->GetMoveCount() << "|";
+    saveFileOutput << s.str();
+
+    saveFileOutput.close();
+
 }

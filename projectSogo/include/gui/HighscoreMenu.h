@@ -7,6 +7,10 @@
 #include <QPushButton>
 #include <QEvent>
 #include <QWidget>
+#include <QScrollArea>
+
+#include "GameView.h"
+#include "stringutlities.h"
 
 /**
  * @brief The HighscoreMenu class.
@@ -27,6 +31,8 @@ public:
 
     void changeEvent(QEvent *event);
 
+    void LoadHighScores();
+
 signals:
     void showStartMenu();
 
@@ -36,6 +42,12 @@ private:
     QVBoxLayout *m_controlLayout;
 
     QLabel *m_mainMenueLabel;
+
+    QScrollArea *m_scoresDisplayScroll;
+    QWidget *m_scoreDisplay;
+    QVBoxLayout *m_scoreLayout;
+
+    std::vector<QWidget*> *scores;
 
     QPushButton *m_backToMainButtonHS;
 };

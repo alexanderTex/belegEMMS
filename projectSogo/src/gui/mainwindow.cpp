@@ -147,6 +147,7 @@ void MainWindow::LoadGame()
     {
         //show that
         Logger::GetLoggerIntance()->LogInfo("Load Failed", __FILE__, __LINE__);
+        this->m_gameView->ClearSave();
     }
 
 
@@ -165,6 +166,7 @@ void MainWindow::showNewSessionMenu()
 
 void MainWindow::showHighscoreMenu()
 {
+    this->m_highscoreMenu->LoadHighScores();
     m_layout->setCurrentWidget(this->m_highscoreMenu);
 }
 
