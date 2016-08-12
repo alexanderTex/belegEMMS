@@ -5,6 +5,7 @@
 \usepackage[T1]{fontenc}
 \usepackage{enumerate,url}
 \usepackage{graphicx}
+ \usepackage{float}		% Erzwingen der Position einer Grafik mittels Option[H]
 \usepackage{bibgerm}
 \usepackage[babel,german=guillemets]{csquotes}
 \usepackage{biblatex}	% Einbinden von biblatex zur Literaturverwaltung
@@ -67,6 +68,8 @@
 % \===========================================================================/
 
 \begin{document}
+
+\renewcommand\lstlistingname{Quellcode}	% Setzt die Quellcodebezeichnung(Aufzählung) Quellcode 1,2,3,4,...n
 % /===========================================================================\
 %
 %   Titelseite
@@ -239,11 +242,86 @@ Nachdem wir die Anforderungen ausformuliert hatten, legten wir uns ein Git-Repos
 
 % gui/
 \subsection{Spielmenüs}\label{ch:Spielmenüs}
-Die komplette Navigation der Applikation wurde mittels Qt implementiert. Hierzu legten wir zuvor fest, welchen Menüs benötigt wirden, um den zuvor erstellten Anforderungen gerecht zu werden. Daraus resultierten die folgenden Menüs und Untermenüs.
+Die komplette Navigation der Applikation wurde mittels Qt implementiert. Hierzu legten wir zuvor fest, welchen Menüs benötigt werden, um den zuvor erstellten Anforderungen gerecht zu werden. Daraus resultierten die folgenden Menüs und Untermenüs. Generell waren wir von Anbeginn darauf fokussiert das Backend zu erstellen und das Frontend lediglich als funktionale Darstellung zu behandeln, was zur Folge hat, dass unsere Menüs nicht grafisch aufbereitet sind. Doch dieser Punkt wird im dem Kapitel ~\ref{ch:Ergebnis}  \glqq\titleref{ch:Ergebnis}\grqq \ auf Seite \pageref{ch:Ergebnis} aufgegriffen.
+\\
+Das interessante an den Menüs war, dass sie erst erstellt wurden, nachdem die Spiellogik und die Spielansicht erstellt wurde. Im Anschluss wurde nur noch auf die benötigten Objekte eingegangen, die die Spielansicht benötigte. D.h. um ein Spiel zu beginnen, musste das GameData-Objekt mit Werten befüllt werden, welche sich wiederum aus den Benutzereingaben generieren ließen, was letztendlich den Art der Eingaben und Ansicht der Spielmenüs beeinflusste. Auf diese wollten wir nun im folgenden Kapitel eingehen.
+
+\subsection{Sprache}\label{ch:Sprache}
+Ein Entscheidendes Kriterium war die Möglichkeit die Sprache zu jedem Zeitpunkt zu wechseln. Hierzu entschieden wir uns, die zwei, aus unserer Sicht, nützlichsten Sprachen zu wählen, nämlich deutsch und englisch. Dazu wir die Implementierung eines Translators. Hierzu wurden zwei erstellte .qm-Dateien den Ressourcen hinzugefügt, die die Übersetzung der einzelnen Textbausteine beinhalteten. Um ein derartiges Wörterbuch zu erstellen, mussten sämtliche String-Texte, wie exemplarisch im Quellcodeausschnitt Quellcode~\ref{lst:Translatortext}: auf Seite \pageref{lst:Translatortext} dargestellt ist, formatiert werden. 
+
+\begin{lstlisting}[caption={Translatortext}\label{lst:Translatortext},captionpos=t]
+     m_playGameButton = new QPushButton(tr("Start Game"));
+\end{lstlisting}
+Die tr-Funktion gefolgt von dem Text, der übersetzt werden soll. 
+\\
+Damit eine Übersetzung einem Text zugeordnet werden kann, hat man die Möglichkeit die .gm-Dateien mittels Texteditor anzupassen, oder den hauseigenen Translatoreditor Linguist von Qt zu verwenden, wobei die zweite Variante sehr komfortabel ist.
+\\ 
+\\
+Damit man innerhalb des Spiels die Sprache gewechselt werden kann muss für jede Ansicht ein zusätzliches Event implementiert werden, welches zuvor in der Klasse mainwindow definiert wurde. Die Implementierungen werden in den folgenden Quelltextausschnitten dargestellt.
+
+\begin{lstlisting}[caption={Translator}\label{lst:Translator},captionpos=t]
+void MainWindow::ChangeLanguage()
+{
+    qApp->removeTranslator(m_translator);
+    delete(m_translator);
+    m_translator = new QTranslator();
+    if(m_languageEnglish)
+    {
+        if(m_translator->load(":/sprache/Translations/sogoapp_de.qm"))
+        {
+            std::cout << "translator loaded" << std::endl;
+        }
+        else
+        {
+            std::cout << "translator did not load...whyever!!!" << std::endl;
+        }
+        m_languageEnglish = false;
+    }
+    else
+    {
+        if(m_translator->load(":/sprache/Translations/sogoapp_en.qm"))
+        {
+            std::cout << "translator loaded" << std::endl;
+        }
+        else
+        {
+            std::cout << "translator did not load...whyever!!!" << std::endl;
+        }
+        m_languageEnglish = true;
+    }
+    qApp->installTranslator(m_translator);
+
+}
+\end{lstlisting}
+Hier werden die Sprachdateien geladen, die für die Übersetzung verantwortlich sind.
+
+\begin{lstlisting}[caption={Sprachwechsel}\label{lst:Sprachwechsel},captionpos=t]
+inline void changeEvent(QEvent *event)
+    {
+        if (event->type() == QEvent::LanguageChange) {
+            m_newSessionButton->setText(tr("New Session"));
+            m_highscoreButton->setText(tr(("Highscore")));
+            m_exitButton->setText(tr("Exit"));
+
+        } else
+            QWidget::changeEvent(event);
+    }
+\end{lstlisting}
+Anschließend wurde der Sprachwechsel mit einen Button im Frontend verknüpft und auf jeder Ansicht zugänglich gemacht.
 
 \subsubsection{StartMenu}\label{ch:StartMenu}
-\blindtext
-\begin{figure}[h]
+Sobald das Spiel gestartet wird, gelangt man in das Startmenü. Hier hat man wie in der Abbildung~\ref{fig:Startmenü}: auf der Seite \pageref{fig:Startmenü} zu sehen ist, folgende Auswahlmöglichkeiten.
+
+\begin{itemize}
+	\item \textbf{Sprache - [en-gb]} Wechselt die Sprache von deusch nach englich und umgekehrt.
+	\item \textbf{Fullscrenn} Wechselt in den Vollbildmodus und wieder zurück in den Fenstermodus.
+	\item \textbf{Neue Partie} Öffnet das NewSessionMenü, welches die Einstellungen für ein neues Spiel beinhaltet.
+	\item \textbf{Load} Hierbei wird das letzte Spiel geladen, welches gespeichert wurde.
+	\item \textbf{Bestenliste} Hier sollte eine Bestenliste angezeigt werden, deren Darstellung nicht realisiert wurde. Doch darauf gehen wir im Kapitel \ref{ch:Ergebnis} auf der Seite \pageref{ch:Ergebnis} weiter ein.
+	\item \textbf{Ende} Damit wird die komplette Anwendung beendet.
+\end{itemize}
+
+\begin{figure}[H]
  \centering
  \includegraphics[scale=0.35]{graphics/startmenu.eps}
  \caption{Das Startmenü}
@@ -251,8 +329,45 @@ Die komplette Navigation der Applikation wurde mittels Qt implementiert. Hierzu 
 \end{figure}
 
 \subsubsection{NewSessionMenu}\label{ch:NewSessionMenu}
-\subsubsection{HighscoreMenu}\label{ch:HighscoreMenu}
+Nachdem die Auswahl getroffen wurde eine neues Spiel zu beginnen, gelangt man in das NewSessionMenü, welches die grundlegende Spielkonfiguration für die folgende Partie festlegt. Die Konfigurationsmöglichkteiten werden durch die Abbildung~\ref{fig:NewSessionmenü} auf der Seite \pageref{fig:NewSessionmenü} dargestellt und im Folgenden kurz beschrieben. 
+
+\begin{itemize}
+	\item \textbf{Sprache - [en-gb]} Wechselt die Sprache von deusch nach englich und umgekehrt.
+	\item \textbf{Fullscrenn} Wechselt in den Vollbildmodus und wieder zurück in den Fenstermodus.
+	\item \textbf{Spieler1} Hier kann der Name des ersten Spielers eingegeben werden, der wenn keiner eingegeben wird standardmäßig Spieler1 lautet.
+	\item \textbf{Spielfeldgröße} Hier wird die Spielfeldgöße festgelegt, welches im Standardspiel 4x4x4 ist.
+	\item \textbf{Modus} Über diese Option wird die Art des Spiels festgelegt. Wobei PvC für Player vs. Computer, PvP(lokal) für Player vs. Player am lokalen Rechner und PvP(Netzwerk) für Player vs. Player im Netzwerk steht. Wobei die Netzwerkkomponenten nicht implementiert wurde, was im Kapitel \ref{ch:Ergebnis} auf Seite \pageref{ch:Ergebnis} näher erläutert wird.
+	\item \textbf{\glqq Schwierigkeitsgrad\grqq} Dieser wurde mit einer Steigerung von ein(einfach) bis drei(schwer) versehen, wobei diese Optionen in der momentanen Implementierung für geübte Spieler keine Herausforderung darstellt. Hierzu müsste man die Tiefe der Berechnung des MiniMax-Algorithmus aus dem Kapitel \ref{ch:AI} anpassen.
+	\item \textbf{Spiel starten} Das Spiel mit der momentan gesetzten Konfiguration starten.
+	\item \textbf{Ende} Damit wird die komplette Anwendung beendet.
+\end{itemize}
+
+Eine Besonderheit, die sich durch das ganze Projekt zog, war die Strukturierung des Frontends mittels Qt. Das soll heißen, dass jedes grafische Objekt verschachtelt und in ein Label, Widget und Layout verpackt wurde, was letztendlich dazu führte, dass die Anzahl der Attribute einer Klasse, an Komplexität zunahmen, wobei sich die Interaktionsmöglichkeiten des Benutzers nur geringfügig veränderten.
+ 
+\begin{figure}[H]
+ \centering
+ \includegraphics[scale=0.35]{graphics/newsession.eps}
+ \caption{Das NewSessionmenü}
+ \label{fig:NewSessionmenü}
+\end{figure}
+
+\begin{comment}
+	\subsubsection{HighscoreMenu}\label{ch:HighscoreMenu}
+	\begin{figure}[H]
+	 \centering
+	 \includegraphics[scale=0.35]{graphics/highscore.eps}
+	 \caption{Das Highscoremenü}
+	 \label{fig:Highscoremenü}
+	\end{figure}
+\end{comment}
+
 \subsubsection{PauseMenu}\label{ch:PauseMenu}
+\begin{figure}[H]
+ \centering
+ \includegraphics[scale=0.35]{graphics/pausemenu.eps}
+ \caption{Das Pausemenü}
+ \label{fig:Pausemenü}
+\end{figure}
 
 \subsection{Mainwindow}\label{ch:Mainwindow}
 \subsection{GameView}\label{ch:GameView}
@@ -263,10 +378,11 @@ Die komplette Navigation der Applikation wurde mittels Qt implementiert. Hierzu 
 \subsection{HistoryDisplay}\label{ch:HistoryDisplay}
 
 
+
 %utility
 \newpage
 \subsubsection{Logger - Der hauseigene Debugger}\label{ch:Logger}
-Dieses kleine Stück Quelltext, siehe unten stehendes Listing~\ref{lst:CodeLogger}: auf Seite \pageref{lst:CodeLogger}, welches uns dabei geholfen hat den Großteil der aufgetretenen Fehler ausfindig zu machen und zu beheben. Durch die zunehmende Komplexität des Projektes und der damit verbundenen Zunamen an Quelltext haben wir, hauptsächlich Herr Brandt, eine Möglichkeit geschaffen, den Quelltext in einzelne Abschnitte zu unterteilen und sie auf ihre Funktion zu überprüfen, um dadurch die Fehlerquelle ausschließen zu können. Dieses Stück Quelltext ist, in unseren Augen, ein ideales Beispiel für das Wiederverwenden von Quelltext in zukünftigen Projekten, wobei eine kontinuierliche Weiterentwicklung angestrebt werden sollte.
+Dieses kleine Stück Quelltext, siehe unten stehendes Quellcode~\ref{lst:CodeLogger}: auf Seite \pageref{lst:CodeLogger}, welches uns dabei geholfen hat den Großteil der aufgetretenen Fehler ausfindig zu machen und zu beheben. Durch die zunehmende Komplexität des Projektes und der damit verbundenen Zunamen an Quelltext haben wir, hauptsächlich Herr Brandt, eine Möglichkeit geschaffen, den Quelltext in einzelne Abschnitte zu unterteilen und sie auf ihre Funktion zu überprüfen, um dadurch die Fehlerquelle ausschließen zu können. Dieses Stück Quelltext ist, in unseren Augen, ein ideales Beispiel für das Wiederverwenden von Quelltext in zukünftigen Projekten, wobei eine kontinuierliche Weiterentwicklung angestrebt werden sollte.
 \lstinputlisting
     [caption={Logger - Debugger} 	% Titel
     	\label{lst:CodeLogger},			% Zum Referenzieren    
@@ -290,12 +406,16 @@ Dieses kleine Stück Quelltext, siehe unten stehendes Listing~\ref{lst:CodeLogge
 % \===========================================================================/
 \section{Ergebnis}\label{ch:Ergebnis}
 % Auswertung
+% spartanisches Frontend - aus kap Spielmenü
+% Realisierung der Highscoremenüs aus Kapitel Startmenü
+
 \subsection{Vergleich}\label{ch:Vergleich}
 \subsection{Zusammenfassung}\label{ch:Zusammenfassung}
 \subsection{Bewertung}\label{ch:Bewertung}
 \subsection{Ausblick}\label{ch:Ausblick}
 
 \newpage
+
 % /===========================================================================\
 %
 % 	Abkürzungsverzeichnis
@@ -307,11 +427,11 @@ Dieses kleine Stück Quelltext, siehe unten stehendes Listing~\ref{lst:CodeLogge
 
 	% example
 	\begin{comment}
- 	\acro{SQL}{Structured Query Language}
- 	\acro{Bash}{Bourne-again shell}
- 	\acro{JDK}{Java Development Kit}
-	\acro{VM}{Virtuelle Maschine}
- 	\acro{I2C}[I²C]{Inter-Integrated Circuit}
+	 	\acro{SQL}{Structured Query Language}
+	 	\acro{Bash}{Bourne-again shell}
+	 	\acro{JDK}{Java Development Kit}
+		\acro{VM}{Virtuelle Maschine}
+	 	\acro{I2C}[I²C]{Inter-Integrated Circuit}
  	\end{comment}
  	
  	\acro{bofh}{Bastard Operator From Hell}
@@ -320,24 +440,23 @@ Dieses kleine Stück Quelltext, siehe unten stehendes Listing~\ref{lst:CodeLogge
 
 % Verwendung im Text
 \begin{comment}
-Hier nur die wichtigsten Beispiele:
-\ac{KDE} % K Desktop Environment (KDE)
-Gibt bei der ersten Verwendung die Langform mit der Abkürzung in Klammern aus, ab dann stets die Kurzform.
-\acs{KDE} % KDE
-Gibt die Abkürzung aus.
-\acf{KDE} % K Desktop Environment (KDE)
-Gibt die Langform und die Kurzform aus.
-\acl{KDE} % K Desktop Environment
-Gibt nur die Langform ohne die Kurzform aus.
-Analog zu den obigen Befehlen kann man den Plural auch entsprechend anzeigen:
-\acp{KDE} % K Desktop Environments (KDEs)
-\acsp{KDE} % KDEs
-\acfp{KDE} % K Desktop Environments (KDEs)
-\aclp{KDE} % K Desktop Environments
+	Hier nur die wichtigsten Beispiele:
+	\ac{KDE} % K Desktop Environment (KDE)
+	Gibt bei der ersten Verwendung die Langform mit der Abkürzung in Klammern aus, ab dann stets die Kurzform.
+	\acs{KDE} % KDE
+	Gibt die Abkürzung aus.
+	\acf{KDE} % K Desktop Environment (KDE)
+	Gibt die Langform und die Kurzform aus.
+	\acl{KDE} % K Desktop Environment
+	Gibt nur die Langform ohne die Kurzform aus.
+	Analog zu den obigen Befehlen kann man den Plural auch entsprechend anzeigen:
+	\acp{KDE} % K Desktop Environments (KDEs)
+	\acsp{KDE} % KDEs
+	\acfp{KDE} % K Desktop Environments (KDEs)
+	\aclp{KDE} % K Desktop Environments
 \end{comment}
 
 \newpage
-
 % 
 % /===========================================================================\
 %
@@ -364,7 +483,8 @@ Analog zu den obigen Befehlen kann man den Plural auch entsprechend anzeigen:
 % 	Quellcodeverzeichnis
 %
 % \===========================================================================/
-\renewcommand\lstlistingname{Quellcodeverzeichnis}
+\renewcommand{\lstlistlistingname}{Quellcodeverzeichnis}	% Setzt den Titel des Quellcodeverzeichnis von Listings auf Quelcodeverzeichnis
+
 \lstlistoflistings 
 
 \addcontentsline{toc}{section}{Quellcodeverzeichnis}
