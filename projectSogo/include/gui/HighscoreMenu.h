@@ -56,12 +56,6 @@ private:
     std::vector<QWidget*> *scores;
 
     QPushButton *m_backToMainButtonHS;
-
-    QLabel  *nummer,
-            *name1,
-            *name2,
-            *winner,
-            *moveCount;
 };
 
 #endif // HIGHSCOREMENU_H

@@ -14,13 +14,10 @@ HighscoreMenu::HighscoreMenu(QWidget *parent) : QWidget(parent)
     this->m_controlLayout->addWidget(main);
 
     QHBoxLayout *layout = new QHBoxLayout(main);
-<<<<<<< HEAD
 /*
     QLabel *nummer = new QLabel(tr("GameNumber"), main);
-=======
 
     nummer = new QLabel(tr("GameNumber"), main);
->>>>>>> 76d5a8d8140250cf0541969b3b141e5152dbdace
     layout->addWidget(nummer);
     name1 = new QLabel(tr("PlayerName1"), main);
     layout->addWidget(name1);
@@ -68,10 +65,6 @@ void HighscoreMenu::changeEvent(QEvent *event)
     if (event->type() == QEvent::LanguageChange) {
         m_mainMenueLabel->setText(tr("Highscore"));
         m_backToMainButtonHS->setText(tr("Back"));
-<<<<<<< HEAD
-
-=======
->>>>>>> 76d5a8d8140250cf0541969b3b141e5152dbdace
         nummer->setText(tr("GameNumber"));
         name1->setText(tr("PlayerName1"));
         name2->setText(tr("PlayerName2"));
