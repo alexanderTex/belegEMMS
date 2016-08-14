@@ -14,16 +14,21 @@ HighscoreMenu::HighscoreMenu(QWidget *parent) : QWidget(parent)
     this->m_controlLayout->addWidget(main);
 
     QHBoxLayout *layout = new QHBoxLayout(main);
+<<<<<<< HEAD
 /*
     QLabel *nummer = new QLabel(tr("GameNumber"), main);
+=======
+
+    nummer = new QLabel(tr("GameNumber"), main);
+>>>>>>> 76d5a8d8140250cf0541969b3b141e5152dbdace
     layout->addWidget(nummer);
-    QLabel *name1 = new QLabel(tr("PlayerName1"), main);
+    name1 = new QLabel(tr("PlayerName1"), main);
     layout->addWidget(name1);
-    QLabel *name2 = new QLabel(tr("PlayerName2"), main);
+    name2 = new QLabel(tr("PlayerName2"), main);
     layout->addWidget(name2);
-    QLabel *winner = new QLabel(tr("Winner"), main);
+    winner = new QLabel(tr("Winner"), main);
     layout->addWidget(winner);
-    QLabel *moveCount = new QLabel(tr("MoveCount"), main);
+    moveCount = new QLabel(tr("MoveCount"), main);
     layout->addWidget(moveCount);
 */
 
@@ -63,7 +68,10 @@ void HighscoreMenu::changeEvent(QEvent *event)
     if (event->type() == QEvent::LanguageChange) {
         m_mainMenueLabel->setText(tr("Highscore"));
         m_backToMainButtonHS->setText(tr("Back"));
+<<<<<<< HEAD
 
+=======
+>>>>>>> 76d5a8d8140250cf0541969b3b141e5152dbdace
         nummer->setText(tr("GameNumber"));
         name1->setText(tr("PlayerName1"));
         name2->setText(tr("PlayerName2"));
@@ -76,11 +84,24 @@ void HighscoreMenu::changeEvent(QEvent *event)
 
 void HighscoreMenu::LoadHighScores()
 {
-    for(int i = 0; i < scores->size(); i++)
+    if(scores->size() > 0)
     {
-        delete(scores->at(i));
-    }
+        std::vector<QWidget*>::iterator it;
 
+        for(it = scores->begin(); it != scores->end(); it++)
+        {
+            QWidget *widget = *it;
+            scores->erase(it);
+
+            delete(widget);
+
+            if(scores->size() < 1)
+            {
+                break;
+            }
+        }
+
+    }
 
     ifstream saveFile;
     saveFile.open (GameView::HIGHSCOREFILENAME);
@@ -129,7 +150,9 @@ void HighscoreMenu::LoadHighScores()
                 layout->addWidget(moveCount);
 
                 scores->push_back(main);
+
             }
         }
+        Logger::GetLoggerIntance()->LogInfo("Push ", __FILE__, __LINE__);
     }
 }

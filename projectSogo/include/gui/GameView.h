@@ -85,7 +85,8 @@ public:
     inline void changeEvent(QEvent *event)
     {
         if (event->type() == QEvent::LanguageChange) {
-            m_pauseMenuButton->setText(tr("Pausemenu"));
+            this->m_pauseMenuButton->setText(tr("Pausemenu"));
+            this->m_winLabel->setText(this->m_drawText);
 
         } else
             QWidget::changeEvent(event);
@@ -127,6 +128,10 @@ private:
 
     bool m_gameFinished;
 
+    bool m_isDraw;
+
+    QString m_drawText;
+
     QStackedLayout *m_layoutSwitch;
 
     QWidget *m_pauseMenu;
@@ -141,11 +146,11 @@ private:
 
     GameInputArea *m_inputArea;
 
-    QWidget *endView;
-    QVBoxLayout *endScreen;
+    QWidget *m_endView;
+    QVBoxLayout *m_endScreen;
 
-    QLabel *WinLabel;
-    QPushButton *QuitButton;
+    QLabel *m_winLabel;
+    QPushButton *m_quitButton;
 
 
     GameData *m_data;

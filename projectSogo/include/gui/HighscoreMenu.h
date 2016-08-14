@@ -47,6 +47,12 @@ private:
     QWidget *m_scoreDisplay;
     QVBoxLayout *m_scoreLayout;
 
+    QLabel *nummer;
+    QLabel *name1;
+    QLabel *name2;
+    QLabel *winner;
+    QLabel *moveCount;
+
     std::vector<QWidget*> *scores;
 
     QPushButton *m_backToMainButtonHS;
