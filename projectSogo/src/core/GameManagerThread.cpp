@@ -97,6 +97,7 @@ bool GameManager::MakeMove(Vector3 pos) throw(PlayingField::FieldExeptions, std:
         return true;
     }
 
+
     this->m_data->SwitchPlayer();
     return false;
 }
