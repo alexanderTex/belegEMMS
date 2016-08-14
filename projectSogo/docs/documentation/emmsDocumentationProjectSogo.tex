@@ -236,12 +236,10 @@ Nachdem wir die Anforderungen ausformuliert hatten, legten wir uns ein Git-Repos
 % Das Raster der jeweiligen Spielfelder wurde vereinfacht auf Grund einfacher Physik, die Schwekraft. Daher ergibt sich für jedes Spiel feld eine Notation von (1,1)... (n,m).
 
 % core/
-\subsection{Vector2}\label{ch:Vector2}
-\subsection{Vector3}\label{ch:Vector3}
 \subsection{Artificial Intelligence(AI)}\label{ch:AI}
+% MiniMax Algorithmus
+
 \subsection{PlayingField}\label{ch:PlayingField}
-\subsection{GameData}\label{ch:GameData}
-\subsection{Player}\label{ch:Player}
 
 % gui/
 \subsection{Spielmenüs}\label{ch:Spielmenüs}
@@ -374,15 +372,10 @@ Anschließend wurde der Sprachwechsel mit einen Button im Frontend verknüpft un
 \subsection{GameView}\label{ch:GameView}
 \subsubsection{GameView2D}\label{ch:GameView2D}
 \subsubsection{GameView3D}\label{ch:GameView3D}
-\subsection{GameVisualizer}\label{ch:GameVisualizer}
-\subsection{PlayerInput}\label{ch:PlayerInput}
-\subsection{HistoryDisplay}\label{ch:HistoryDisplay}
-
-
 
 %utility
 \newpage
-\subsubsection{Logger - Der hauseigene Debugger}\label{ch:Logger}
+\subsection{Logger - Der hauseigene Debugger}\label{ch:Logger}
 Dieses kleine Stück Quelltext, siehe unten stehendes Quellcode~\ref{lst:CodeLogger}: auf Seite \pageref{lst:CodeLogger}, welches uns dabei geholfen hat den Großteil der aufgetretenen Fehler ausfindig zu machen und zu beheben. Durch die zunehmende Komplexität des Projektes und der damit verbundenen Zunamen an Quelltext haben wir, hauptsächlich Herr Brandt, eine Möglichkeit geschaffen, den Quelltext in einzelne Abschnitte zu unterteilen und sie auf ihre Funktion zu überprüfen, um dadurch die Fehlerquelle ausschließen zu können. Dieses Stück Quelltext ist, in unseren Augen, ein ideales Beispiel für das Wiederverwenden von Quelltext in zukünftigen Projekten, wobei eine kontinuierliche Weiterentwicklung angestrebt werden sollte.
 \lstinputlisting
     [caption={Logger - Debugger} 	% Titel
@@ -400,6 +393,8 @@ Dieses kleine Stück Quelltext, siehe unten stehendes Quellcode~\ref{lst:CodeLog
 % \===========================================================================/
 \section{Test}\label{ch:Test}
 \subsection{Unit-Test}\label{ch:Unit}
+% Unit-Test wurden lediglich für die Ki geschreiben in der Consolen Awendung
+
 \subsection{Valgrind}\label{ch:Valgrind}
 
 % /===========================================================================\

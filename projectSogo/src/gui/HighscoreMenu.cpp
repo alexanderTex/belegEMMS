@@ -14,7 +14,7 @@ HighscoreMenu::HighscoreMenu(QWidget *parent) : QWidget(parent)
     this->m_controlLayout->addWidget(main);
 
     QHBoxLayout *layout = new QHBoxLayout(main);
-
+/*
     QLabel *nummer = new QLabel(tr("GameNumber"), main);
     layout->addWidget(nummer);
     QLabel *name1 = new QLabel(tr("PlayerName1"), main);
@@ -24,6 +24,18 @@ HighscoreMenu::HighscoreMenu(QWidget *parent) : QWidget(parent)
     QLabel *winner = new QLabel(tr("Winner"), main);
     layout->addWidget(winner);
     QLabel *moveCount = new QLabel(tr("MoveCount"), main);
+    layout->addWidget(moveCount);
+*/
+
+    this->nummer = new QLabel(tr("GameNumber"), main);
+    layout->addWidget(nummer);
+    this->name1 = new QLabel(tr("PlayerName1"), main);
+    layout->addWidget(name1);
+    this->name2 = new QLabel(tr("PlayerName2"), main);
+    layout->addWidget(name2);
+    this->winner = new QLabel(tr("Winner"), main);
+    layout->addWidget(winner);
+    this->moveCount = new QLabel(tr("MoveCount"), main);
     layout->addWidget(moveCount);
 
     this->m_scoresDisplayScroll = new QScrollArea(this);
@@ -49,6 +61,12 @@ void HighscoreMenu::changeEvent(QEvent *event)
     if (event->type() == QEvent::LanguageChange) {
         m_mainMenueLabel->setText(tr("Highscore"));
         m_backToMainButtonHS->setText(tr("Back"));
+
+        nummer->setText(tr("GameNumber"));
+        name1->setText(tr("PlayerName1"));
+        name2->setText(tr("PlayerName2"));
+        winner->setText(tr("Winner"));
+        moveCount->setText(tr("MoveCount"));
     } else
         QWidget::changeEvent(event);
 }
