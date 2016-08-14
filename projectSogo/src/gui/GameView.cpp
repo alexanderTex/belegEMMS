@@ -7,6 +7,11 @@ const string GameView::HIGHSCOREFILENAME = "HighScore.txt";
 GameView::GameView(QWidget *parent)
     : QWidget(parent)
 {
+    m_gameFinished = false;
+
+    m_drawText = tr("Draw");
+    m_isDraw = false;
+
     this->m_data = new GameData();
 
     this->m_gameLoop = new GameManager();
@@ -30,16 +35,16 @@ GameView::GameView(QWidget *parent)
     this->m_inputArea = new GameInputArea(this->m_gameLoop, bottomView);
     bottomViewLayout->addWidget(m_inputArea);
 
-    endView = new QWidget(this);
-    bottomViewLayout->addWidget(endView);
-    endScreen = new QVBoxLayout(endView);
+    m_endView = new QWidget(this);
+    bottomViewLayout->addWidget(m_endView);
+    m_endScreen = new QVBoxLayout(m_endView);
 
-    this->WinLabel = new QLabel(endView);
-    endScreen->addWidget(this->WinLabel);
+    this->m_winLabel = new QLabel(m_endView);
+    m_endScreen->addWidget(this->m_winLabel);
 
-    QuitButton = new QPushButton(tr("End"), endView);
-    QObject::connect(this->QuitButton, &QPushButton::clicked, this, &GameView::EndGame);
-    endScreen->addWidget(QuitButton);
+    m_quitButton = new QPushButton(tr("End"), m_endView);
+    QObject::connect(this->m_quitButton, &QPushButton::clicked, this, &GameView::EndGame);
+    m_endScreen->addWidget(m_quitButton);
 
 
     QObject::connect(this->m_gameLoop, &GameManager::PlayerWon, this, &GameView::GameFinished);
@@ -69,6 +74,11 @@ GameView::GameView(QWidget *parent)
 GameView::GameView(GameData *data, QWidget *parent)
     : QWidget(parent)
 {
+    m_gameFinished = false;
+
+    m_drawText = tr("Draw");
+    m_isDraw = false;
+
     this->m_data = data;
 
     this->m_gameLoop = new GameManager(this->m_data);
@@ -93,16 +103,16 @@ GameView::GameView(GameData *data, QWidget *parent)
     this->m_inputArea = new GameInputArea(this->m_gameLoop, bottomView);
     bottomViewLayout->addWidget(m_inputArea);
 
-    endView = new QWidget(this);
-    bottomViewLayout->addWidget(endView);
-    endScreen = new QVBoxLayout(endView);
+    m_endView = new QWidget(this);
+    bottomViewLayout->addWidget(m_endView);
+    m_endScreen = new QVBoxLayout(m_endView);
 
-    this->WinLabel = new QLabel(endView);
-    endScreen->addWidget(this->WinLabel);
+    this->m_winLabel = new QLabel(m_endView);
+    m_endScreen->addWidget(this->m_winLabel);
 
-    QuitButton = new QPushButton(tr("End"), endView);
-    QObject::connect(this->QuitButton, &QPushButton::clicked, this, &GameView::EndGame);
-    endScreen->addWidget(QuitButton);
+    m_quitButton = new QPushButton(tr("End"), m_endView);
+    QObject::connect(this->m_quitButton, &QPushButton::clicked, this, &GameView::EndGame);
+    m_endScreen->addWidget(m_quitButton);
 
 
     QObject::connect(this->m_gameLoop, &GameManager::PlayerWon, this, &GameView::GameFinished);
@@ -139,6 +149,7 @@ void GameView::InitGame(GameData *data)
     ShowGameInputView();
     this->m_gameVis->GameChanged();
     m_gameFinished = false;
+    m_isDraw = false;
     SaveGame();
 }
 
@@ -161,7 +172,10 @@ void GameView::EndGame()
     }
     else
     {
-        WriteHighscoreToSave();
+        if(!m_isDraw)
+        {
+            WriteHighscoreToSave();
+        }
         ClearSave();
     }
 
@@ -187,7 +201,13 @@ void GameView::ShowWinner()
 
     if(vec.size() == 0)
     {
+        m_isDraw = true;
 
+        this->m_winLabel->setText(this->m_drawText);
+
+        this->bottomViewLayout->setCurrentWidget(this->m_endView);
+
+        Logger::GetLoggerIntance()->LogInfo("DRAW");
     }
     else
     {
@@ -195,9 +215,9 @@ void GameView::ShowWinner()
 
         s << "The winner is : " << this->m_data->GetCurrentPlayer()->GetName().c_str() << "! YEAH!";
 
-        this->WinLabel->setText(QString(s.str().c_str()));
+        this->m_winLabel->setText(QString(s.str().c_str()));
 
-        this->bottomViewLayout->setCurrentWidget(this->endView);
+        this->bottomViewLayout->setCurrentWidget(this->m_endView);
 
         Logger::GetLoggerIntance()->LogInfo(s.str());
     }
