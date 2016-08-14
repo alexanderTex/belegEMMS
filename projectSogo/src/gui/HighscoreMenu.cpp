@@ -47,6 +47,8 @@ HighscoreMenu::HighscoreMenu(QWidget *parent) : QWidget(parent)
 
     this->m_scoreLayout = new QVBoxLayout(m_scoreDisplay);
 
+    this->m_scoreLayout->setSizeConstraint(QLayout::SetMinAndMaxSize);
+
     this->scores = new std::vector<QWidget*>();
 
     LoadHighScores();
@@ -110,6 +112,8 @@ void HighscoreMenu::LoadHighScores()
                 QHBoxLayout *layout = new QHBoxLayout(main);
 
                 std::stringstream s;
+
+                s << i + 1;
 
                 Logger::GetLoggerIntance()->LogInfo(s.str(), __FILE__, __LINE__);
 

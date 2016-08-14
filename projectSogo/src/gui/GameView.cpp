@@ -183,15 +183,25 @@ void GameView::GameFinished()
 
 void GameView::ShowWinner()
 {
-    stringstream s;
+    std::vector<Vector3> vec = GetAllFreePositions(this->m_data->GetField());
 
-    s << "The winner is : " << this->m_data->GetCurrentPlayer()->GetName().c_str() << "! YEAH!";
+    if(vec.size() == 0)
+    {
 
-    this->WinLabel->setText(QString(s.str().c_str()));
+    }
+    else
+    {
+        stringstream s;
 
-    this->bottomViewLayout->setCurrentWidget(this->endView);
+        s << "The winner is : " << this->m_data->GetCurrentPlayer()->GetName().c_str() << "! YEAH!";
 
-    Logger::GetLoggerIntance()->LogInfo(s.str());
+        this->WinLabel->setText(QString(s.str().c_str()));
+
+        this->bottomViewLayout->setCurrentWidget(this->endView);
+
+        Logger::GetLoggerIntance()->LogInfo(s.str());
+    }
+
 }
 
 void GameView::PlayAcceptSound()

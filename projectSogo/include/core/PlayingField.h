@@ -249,8 +249,6 @@ std::string DrawPlayingField(const PlayingField *field);
 */
 bool CheckForWin(const PlayingField *field, PlayingField::OccupationState player, int x, int y, int z) throw(out_of_range);
 
-void GetAllWinPositions(const PlayingField *field, std::vector<Vector3> *positions) throw(out_of_range);
-
 
 /**
 * Searches for a win condition in the Field
