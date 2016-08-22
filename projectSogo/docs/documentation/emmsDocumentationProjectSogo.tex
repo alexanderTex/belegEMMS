@@ -240,7 +240,8 @@ Nachdem wir die Anforderungen ausformuliert hatten, legten wir uns ein Git-Repos
 % MiniMax Algorithmus
 
 \subsection{PlayingField}\label{ch:PlayingField}
-
+Das Spielfeld ist in durch drei verschachtelte vectoren dargestellt, welche Slots enthalten. Slots sind in PlayField als Struct deklariert. Ein Slot enthaelt die Information ueber die derzeitige Belegung der Position im Spielfeld. 
+Um herauszusfinden ob ein Spieler gewonnen hat, sind mehrere  Funktionen deklariert die ein Spielfeld Reihe fuer Reihe auf die selbe Belegung ueberprueft.
 % gui/
 \subsection{Spielmenüs}\label{ch:Spielmenüs}
 Die komplette Navigation der Applikation wurde mittels Qt implementiert. Hierzu legten wir zuvor fest, welchen Menüs benötigt werden, um den zuvor erstellten Anforderungen gerecht zu werden. Daraus resultierten die folgenden Menüs und Untermenüs. Generell waren wir von Anbeginn darauf fokussiert das Backend zu erstellen und das Frontend lediglich als funktionale Darstellung zu behandeln, was zur Folge hat, dass unsere Menüs nicht grafisch aufbereitet sind. Doch dieser Punkt wird im dem Kapitel ~\ref{ch:Ergebnis}  \glqq\titleref{ch:Ergebnis}\grqq \ auf Seite \pageref{ch:Ergebnis} aufgegriffen.
@@ -371,7 +372,11 @@ Anschließend wurde der Sprachwechsel mit einen Button im Frontend verknüpft un
 \subsection{Mainwindow}\label{ch:Mainwindow}
 \subsection{GameView}\label{ch:GameView}
 \subsubsection{GameView2D}\label{ch:GameView2D}
+Die GameView2D Datei enthaelt die Implementierung des 2D Display. Es zeigt die Ebenen des Spielfeldes nebeneinander in QGraphicsViews. In diesen QGraphicsViews werden GraphicsSlots2D gezeichnet, welche als ein Quadrat gezeichnet
+werden und mit der Farbe der Belegung gefuellt sind.
 \subsubsection{GameView3D}\label{ch:GameView3D}
+Die GameView3D Datei enthaelt die Implementierung des 3D Displays. In der initializeGL Methode werden Texture, 3D-Modelle und die OpenGL Einstellungen initialisiert. In der paintGL wird der aktuelle Zustand des Spielfeldes
+in 3D umgesetzt. Dabei wird wie bei der 2D Umsetzung auch das Feld Slot fuer Slot durchgegangen und je nachdem welche Belegung vorhanden ist wird entweder der leere Stab, ein blauer Ball oder ein roter Ball gezeichnet. 
 
 %utility
 \newpage
