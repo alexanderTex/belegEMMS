@@ -16,41 +16,5 @@
   {}
 \endgroup
 
-
-\refsection{0}
-  \sortlist{entry}{nty}
-    \entry{Fox03}{misc}{}
-      \name{labelname}{1}{}{%
-        {{hash=98fc32d317ba2354df50470f25e20688}{Fox}{F\bibinitperiod}{Jason}{J\bibinitperiod}{}{}{}{}}%
-      }
-      \name{author}{1}{}{%
-        {{hash=98fc32d317ba2354df50470f25e20688}{Fox}{F\bibinitperiod}{Jason}{J\bibinitperiod}{}{}{}{}}%
-      }
-      \strng{namehash}{98fc32d317ba2354df50470f25e20688}
-      \strng{fullhash}{98fc32d317ba2354df50470f25e20688}
-      \field{sortinit}{F}
-      \field{labeltitle}{Tic Tac Toe: Understanding The Minimax Algorithm}
-      \field{month}{12}
-      \field{title}{Tic Tac Toe: Understanding The Minimax Algorithm}
-      \field{year}{2003}
-      \verb{url}
-      \verb http://neverstopbuilding.com/minimax
-      \endverb
-    \endentry
-    \entry{QtM16}{manual}{}
-      \list{organization}{1}{%
-        {The Qt Company}%
-      }
-      \field{sortinit}{Q}
-      \field{labeltitle}{Qt Documentation}
-      \field{edition}{5.7}
-      \field{title}{Qt Documentation}
-      \field{year}{2016}
-      \verb{url}
-      \verb https://doc.qt.io/qt-5/index.html
-      \endverb
-    \endentry
-  \endsortlist
-\endrefsection
 \endinput
 
