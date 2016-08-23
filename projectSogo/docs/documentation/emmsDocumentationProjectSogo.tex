@@ -8,7 +8,7 @@
  \usepackage{float}		% Erzwingen der Position einer Grafik mittels Option[H]
 \usepackage{bibgerm}
 \usepackage[babel,german=guillemets]{csquotes}
-\usepackage{biblatex}	% Einbinden von biblatex zur Literaturverwaltung
+\usepackage[backend=biber]{biblatex}	% Einbinden von biblatex zur Literaturverwaltung. Mit der Option  citestyle=alphabetic-verb wird der Bibtexkey angezeigt anstatt einem Index.
 \addbibresource{literaturelibrary/literatureLib.bib}	% Literatursammlung
 
 \usepackage[printonlyused]{acronym}	% Abkürzungsverzeichnis
@@ -461,6 +461,8 @@ Dieses kleine Stück Quelltext, siehe unten stehendes Quellcode~\ref{lst:CodeLog
 % \===========================================================================/
 \printbibliography 
 
+\addcontentsline{toc}{section}{Literaturverzeichnis}	% Anzeige im Inhaltsverzeichnis(table of content [toc]) als Abschnitt[section] unter dem Titel[Literaturverzeichnis]
+
 \newpage
 
 % /===========================================================================\
@@ -470,7 +472,7 @@ Dieses kleine Stück Quelltext, siehe unten stehendes Quellcode~\ref{lst:CodeLog
 % \===========================================================================/
 \listoffigures
 
-\addcontentsline{toc}{section}{Abbildungsverzeichnis}
+\addcontentsline{toc}{section}{Abbildungsverzeichnis}	% Anzeige im Inhaltsverzeichnis
 
 \newpage
 
@@ -483,7 +485,7 @@ Dieses kleine Stück Quelltext, siehe unten stehendes Quellcode~\ref{lst:CodeLog
 
 \lstlistoflistings 
 
-\addcontentsline{toc}{section}{Quellcodeverzeichnis}
+\addcontentsline{toc}{section}{Quellcodeverzeichnis}	% Anzeige im Inhaltsverzeichnis
 
 \newpage
 
