@@ -238,8 +238,11 @@ Nachdem wir die Anforderungen ausformuliert hatten, legten wir uns ein Git-Repos
 % core/
 \subsection{Artificial Intelligence(AI)}\label{ch:AI}
 % MiniMax Algorithmus
+Die KI besteht aus einer Funktion die den standard MiniMax Algorithmus implementiert und einen Vector3 zurueckgibt der den bestmoeglichen naechsten Zug der KI darstellt.
 
 \subsection{PlayingField}\label{ch:PlayingField}
+Das Spielfeld war die Grundlage die als erstes erstellt wurde. Um diese testen zu koennen wurde einen Konsolen-Applikation erstellt, welche das Spielfeld (wie es auch spaeter in der 2D Visualisierung dargestellt
+wird) in der Ebenen ensprechend viele nebeneinander ausgegebene Felder auf der Konsole ausgibt. Es werden hierbei die jeweils die Slots durch "|" umrandet und die Ebenen durch Leerzeichen getrennt.
 Das Spielfeld ist in durch drei verschachtelte vectoren dargestellt, welche Slots enthalten. Slots sind in PlayField als Struct deklariert. Ein Slot enthaelt die Information ueber die derzeitige Belegung der Position im Spielfeld. 
 Um herauszusfinden ob ein Spieler gewonnen hat, sind mehrere  Funktionen deklariert die ein Spielfeld Reihe fuer Reihe auf die selbe Belegung ueberprueft.
 % gui/
@@ -370,7 +373,9 @@ inline void changeEvent(QEvent *event)
 Anschließend wurde der Sprachwechsel mit einen Button im Frontend verknüpft und auf jeder Ansicht zugänglich gemacht.
 
 \subsection{Mainwindow}\label{ch:Mainwindow}
+Hier werden alle Programmscreens verwaltet. Es werden Signale die von Inputs oder Spielereignissen mit entsprechenden anderen Screen- oder Spielbestandteilsignalen verknuepft.
 \subsection{GameView}\label{ch:GameView}
+Hier wird die Darstellung des aktuellen Spiels mit 2D- und 3D-View, Spielverlaufsanzeige und Spielereingabe.
 \subsubsection{GameView2D}\label{ch:GameView2D}
 Die GameView2D Datei enthaelt die Implementierung des 2D Display. Es zeigt die Ebenen des Spielfeldes nebeneinander in QGraphicsViews. In diesen QGraphicsViews werden GraphicsSlots2D gezeichnet, welche als ein Quadrat gezeichnet
 werden und mit der Farbe der Belegung gefuellt sind.
