@@ -2,11 +2,10 @@
 % Encoding: UTF8
 
 
-@Misc{Fox:03,
+@Misc{Fox03,
   Title                    = {Tic Tac Toe: Understanding The Minimax Algorithm},
 
   Author                   = {Jason Fox},
-  HowPublished             = {Online},
   Month                    = {December},
   Year                     = {2003},
 

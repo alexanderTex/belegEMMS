@@ -8,7 +8,7 @@
  \usepackage{float}		% Erzwingen der Position einer Grafik mittels Option[H]
 \usepackage{bibgerm}
 \usepackage[babel,german=guillemets]{csquotes}
-\usepackage{biblatex}	% Einbinden von biblatex zur Literaturverwaltung
+\usepackage[backend=biber]{biblatex}	% Einbinden von biblatex zur Literaturverwaltung. Mit der Option  citestyle=alphabetic-verb wird der Bibtexkey angezeigt anstatt einem Index.
 \addbibresource{literaturelibrary/literatureLib.bib}	% Literatursammlung
 
 \usepackage[printonlyused]{acronym}	% Abkürzungsverzeichnis
@@ -294,6 +294,9 @@ Eine Besonderheit, die sich durch das ganze Projekt zog, war die Strukturierung 
 \end{figure}
 
 \subsubsection{HighscoreMenu}\label{ch:HighscoreMenu}
+Dieses Menü dient lediglich der Anzeige, der einzelnen Partien und gibt sie entsprechend der der Spaltenbeschreibungen aus. 
+
+
 \begin{figure}[H]
  	\centering
  	\includegraphics[scale=0.35]{graphics/highscore.eps}
@@ -302,6 +305,8 @@ Eine Besonderheit, die sich durch das ganze Projekt zog, war die Strukturierung 
 \end{figure}
 
 \subsubsection{PauseMenu}\label{ch:PauseMenu}
+Durch diese Menü wollten Wir eine Möglichkeit schaffen während einer Partie zu Pausieren oder sogar das Spiel zu beenden, um eventuell eine neue Partie zu starten.
+
 \begin{figure}[H]
  \centering
  \includegraphics[scale=0.35]{graphics/pausemenu.eps}
@@ -373,7 +378,12 @@ inline void changeEvent(QEvent *event)
 Anschließend wurde der Sprachwechsel mit einen Button im Frontend verknüpft und auf jeder Ansicht zugänglich gemacht.
 
 \subsection{Mainwindow}\label{ch:Mainwindow}
+<<<<<<< HEAD
 Hier werden alle Programmscreens verwaltet. Es werden Signale die von Inputs oder Spielereignissen mit entsprechenden anderen Screen- oder Spielbestandteilsignalen verknuepft.
+=======
+Das Mainwindow beinhaltet die komplette Implementierung, samt Spiellogik, 2D- und 3D- Bereich sowie das Frontend der Sogo-Applikation. Diese ist es letztendlich, die in der Main-Funktion deklariert und initialisiert wird.
+ 
+>>>>>>> cf13f69b539345ab8cd1a0cedceb5577e6cd83bf
 \subsection{GameView}\label{ch:GameView}
 Hier wird die Darstellung des aktuellen Spiels mit 2D- und 3D-View, Spielverlaufsanzeige und Spielereingabe.
 \subsubsection{GameView2D}\label{ch:GameView2D}
@@ -404,6 +414,8 @@ Dieses kleine Stück Quelltext, siehe unten stehendes Quellcode~\ref{lst:CodeLog
 \section{Test}\label{ch:Test}
 \subsection{Unit-Test}\label{ch:Unit}
 % Unit-Test wurden lediglich für die Ki geschreiben in der Consolen Awendung
+Schon zu Beginn des Projektes haben wir uns recht früh mit dem Thema Unit-Test auseinandergesetzt. Doch letztendlich wurden sie nur in der Konsolen-Applikation realisiert. Diese Tests sollten die Spielweise der Ki als auch die 
+Funktionsweise des Spielfeldes testen, was sie letztendlich auch taten. Diese Konsolen-Version stellt unseren Prototypen dar, was zur Folge hatte, dass die Unit-Test die bereits erfolgreich liefen, nicht in die eigentliche Applikation überführt und implementiert wurden. Im Nachhinein betrachtet, war dies eine vertane Möglichkeit sich einen kontinuierlichen Workflow anzueignen. 
 
 \subsection{Valgrind}\label{ch:Valgrind}
 
@@ -415,54 +427,65 @@ Dieses kleine Stück Quelltext, siehe unten stehendes Quellcode~\ref{lst:CodeLog
 % spartanisches Frontend - aus kap Spielmenü
 % Realisierung der Highscoremenüs aus Kapitel Startmenü
 
-\subsection{Vergleich}\label{ch:Vergleich}
+\subsection{Soll-Ist-Vergleich}\label{ch:Vergleich}
+Auf Grundlagen der zu Beginn des Projektes verfassten Anforderungen wollen wird nur jene aufzeigen, die nicht in unser Projekt eingeflossen sind und erklären warum diese nicht implementiert wurden. Doch bevor wir damit beginnen, wollen wir auf die Anforderung eingehen, die letztendlich realisiert, weit über das vorgegebenen Zeitkontingent hinausgeschossen ist und die damit einen großen Einfluss auf die bisher realisierten als auch nicht realisierten Anforderungen hatte. Die 3D-Ansicht. Die Besonderheit war, dass es gleichzeitig die Belegarbeit im Fach Computergrafik darstellte. Somit musste diese Anforderung realisiert werden. Letztendlich auf Kosten von Anforderungen, die nicht umgesetzt wurden. Im Verlauf des Projektes(Semesters) war Herr Brandt in der Lage einen Prototypen, in Form einer Konsolenanwendung, zu realisieren, der die grundlegenden Funktionen beinhaltete und auf dem die gegenwärtige Applikation aufgebaut. Zur gleichen Zeit beendete Professor Jung, im Fach Computergrafik, seinen sog. Pflichtteil, der die Grundlage für unsere 3D-Ansicht darstellte. Mit diesem Wissen erstellten wir in Visual Studio 2015 und der grafischen Bibliothek OpenGL Sogo in 3D als reine Visualisierungsmöglichkeit. Die eigentliche Arbeit folgte danach. Die Überführung und Anpassung des Quelltextes aus Visual Studio nach Qt und Integration der Spiellogik. Einer der Gründe weswegen die Überführung so schwierig war, waren die nur spärlich vorhandenen Referenzprojekte sowie die oberflächliche Dokumentation von Qt im Bereich OpenGL. Letztendlich stellten wir uns nach der Hälfte der vorgegebenen Zeit die Frage, ob und wie wir die Projekte in beiden Fächern realisieren konnten. Die erste Alternative war die Projekte wieder aufzuspalten und in der jeweiligen Umgebung zu realisieren. Das hätte bedeutet, dass die 3D-Ansicht mittels Visual Studio 2015 umgesetzt hätte werden müssen und die 2D-Variante ohne 3D in Qt. Was wiederum bedeutete, dass die komplette Spiellogik redundant in beiden Applikationen hätte realisiert werden müsste. 
+Die zweite Alternative war die Kombination aus der Ersten mit der Überlegung das Projekt noch eine Woche weiterzuführen wie bisher. Das bedeutete, sollte es uns nicht gelingen, würden wir beide Projekte getrennt von einander entwickeln und abgeben. Wir entschieden uns für die zweite Alternative und schafften es die Überführung des Quelltextes ohne Fehler am letzten Tag der Frist zu realisieren. Was danach folgte waren, die Anpassung an die Spiellogik, welche sich ebenfalls weiterentwickelt hatte und die Modifizierung der grafischen Oberfläche. Die Zeit, die wir investiert hatten fehlte uns im Nachhinein bei Umsetzung einiger der folgenden Anforderungen. Beginnen wollen wir mit den projektunabhängigen Anforderungen:
+\\
+\\
+\textbf{Anforderung:} Die Applikation läuft auf einem Desktop-Rechner, wird aber auch auf einer mobilen Plattform getestet und wenn nötig angepasst.
+\\
+\textbf{Beschreibung:}  Sie läuft auf einem Desktop-Rechner und wurde aus o.g. Zeitgründen bisher noch nicht auf mobilen Plattformen getestet.
+\\
+\\
+\textbf{Anforderung:} Die Anwendung reagiert weiterhin auf Benutzereingaben, wenn längere Berechnungen anstehen. 
+\\
+\textbf{Beschreibung:} Da bei uns keine langen Berechnungen durchgeführt werden, sind Eingaben durch den Benutzer in dem Moment möglich, in dem er sie tätigen möchte.
+\\
+\\
+\textbf{Anforderungen an den Enwicklungsprozess:}
+\\
+\\
+\textbf{Anforderung:} Fehlerfreies Belegen der Implementierung der Datenstrukturen und Algorithmen durch Unit-Tests. 
+\\
+\textbf{Beschreibung:} Dies wurde bereits im Kapitel~\ref{ch:Unit}: auf Seite \pageref{ch:Unit} näher erläutert.
+
+% valgrind
+% docker
+
+\textbf{Eigene Anforderungen:}
+\\
+\\
+\textbf{Anforderung:} Die Spielstände sollen in einer lokalen SQL-DB gespeichert werden.
+\\
+\textbf{Beschreibung:} Die Spielständer werden in einer einzelnen Datei gespeichert und dienen dem Highscore als Grundlage.
+\\
+\\
+\textbf{Anforderung:} (Zusammenfassung) Die Möglichkeit das Spiel über das Netzwerk zu spielen inklusive Chatfunktion.
+\\
+\textbf{Beschreibung:} Auf Grund der o.g. Problematik bezüglich der 3D-Ansicht, sind die Anforderungen der des Netzwerkspiels entfallen. Es existiert die Möglichkeit alle notwendigen Daten in eine Maske einzutragen, jedoch ist diese nicht mit einer Funkion hinterlegt.
+\\
+\\
+\textbf{Anforderung:} Das Zurücknehmen eines getätigten Zuges. 
+\\
+\textbf{Beschreibung:} Wurde aus Zeitgründen nicht realisiert.
+\\
+\\
+\textbf{Anforderung:} Die Besonderheit beim Spielen mit der Feldgröße 5x5x5 (setzen von unten).
+\\
+\textbf{Beschreibung:} Aus Zeitgründen wurde die Standartlogik verwendet und implementiert.
+
+
 \subsection{Zusammenfassung}\label{ch:Zusammenfassung}
-\subsection{Bewertung}\label{ch:Bewertung}
+ 
+
+\subsection{Bewertung - Fazit}\label{ch:Bewertung}
+Diese Projekt stellte, wie bereits zu beginn des Semester dargelegt, das umfangreichste Softwareprojekt dar, welches als Beleg abzugeben war bwz. ist. Jedoch konnte man dadurch seine Kenntnisse im Bereich C++-Programmierung und  Projektmanagement weiter festigen. Die größte Hürde war aus unserer Sicht den richtigen Einstieg zu finden, da Vorlesungsinhalte, die zur Realisierung benötigt wurden, erst recht spät oder gar nicht im Semester behandelt wurden siehe Mini-Max-Algorithmus. Für unser spezielles Projekt wäre es sinnvoll gewesen eine komplette Vorlesungseinheit Qt in Verbindung mit OpenGL durchzuführen, wobei uns auch klar ist, dass aus zeitlichen Gründen nicht alle Aspekte angesprochen werden können. Durch dieses Projekt hat man einen kleinen Einblick in die Erstellung von kooperativen Softwareprojekten bekommen und welche Schwierigkeiten dabei auftreten können. Die gewonnenen Kenntnisse werden helfen um zukünftige Softwareprojekte besser zu planen, durchzuführen und erfolgreich abzuschließen. 
+
 \subsection{Ausblick}\label{ch:Ausblick}
+Natürlich wäre es schön, wenn diese Applikation durch die noch fehlenden Anforderungen vervollständigt werden würde. Die Grundlage dafür wurde durch die Verwendung von Github und des frei zugänglichen Repositories geschaffen. Aus unserer Sicht werden definitiv Teile der Applikation in Folgeprojekte verwendet und weiterentwickelt, sowie bspw. der Logger aus Kapitel~\ref{ch:Logger} oder der KI aus Kapitel~\ref{ch:AI}.
 
 \newpage
 
-% /===========================================================================\
-%
-% 	Abkürzungsverzeichnis
-%
-% \===========================================================================/
-\addsec{Abkürzungsverzeichnis}\label{sec:Abkürzungsverzeichnis}
-
-\begin{acronym}%[längste Abkürzung für einen gleichmäßigen Abstand]
-
-	% example
-	\begin{comment}
-	 	\acro{SQL}{Structured Query Language}
-	 	\acro{Bash}{Bourne-again shell}
-	 	\acro{JDK}{Java Development Kit}
-		\acro{VM}{Virtuelle Maschine}
-	 	\acro{I2C}[I²C]{Inter-Integrated Circuit}
- 	\end{comment}
- 	
- 	\acro{bofh}{Bastard Operator From Hell}
-
-\end{acronym}
-
-% Verwendung im Text
-\begin{comment}
-	Hier nur die wichtigsten Beispiele:
-	\ac{KDE} % K Desktop Environment (KDE)
-	Gibt bei der ersten Verwendung die Langform mit der Abkürzung in Klammern aus, ab dann stets die Kurzform.
-	\acs{KDE} % KDE
-	Gibt die Abkürzung aus.
-	\acf{KDE} % K Desktop Environment (KDE)
-	Gibt die Langform und die Kurzform aus.
-	\acl{KDE} % K Desktop Environment
-	Gibt nur die Langform ohne die Kurzform aus.
-	Analog zu den obigen Befehlen kann man den Plural auch entsprechend anzeigen:
-	\acp{KDE} % K Desktop Environments (KDEs)
-	\acsp{KDE} % KDEs
-	\acfp{KDE} % K Desktop Environments (KDEs)
-	\aclp{KDE} % K Desktop Environments
-\end{comment}
-
-\newpage
 % 
 % /===========================================================================\
 %
@@ -470,6 +493,8 @@ Dieses kleine Stück Quelltext, siehe unten stehendes Quellcode~\ref{lst:CodeLog
 %
 % \===========================================================================/
 \printbibliography 
+
+\addcontentsline{toc}{section}{Literaturverzeichnis}	% Anzeige im Inhaltsverzeichnis(table of content [toc]) als Abschnitt[section] unter dem Titel[Literaturverzeichnis]
 
 \newpage
 
@@ -480,7 +505,7 @@ Dieses kleine Stück Quelltext, siehe unten stehendes Quellcode~\ref{lst:CodeLog
 % \===========================================================================/
 \listoffigures
 
-\addcontentsline{toc}{section}{Abbildungsverzeichnis}
+\addcontentsline{toc}{section}{Abbildungsverzeichnis}	% Anzeige im Inhaltsverzeichnis
 
 \newpage
 
@@ -493,7 +518,7 @@ Dieses kleine Stück Quelltext, siehe unten stehendes Quellcode~\ref{lst:CodeLog
 
 \lstlistoflistings 
 
-\addcontentsline{toc}{section}{Quellcodeverzeichnis}
+\addcontentsline{toc}{section}{Quellcodeverzeichnis}	% Anzeige im Inhaltsverzeichnis
 
 \newpage
 
