@@ -14,3 +14,14 @@
   Url                      = {http://neverstopbuilding.com/minimax}
 }
 
+@Manual{QtM16,
+  Title                    = {Qt Documentation},
+  Edition                  = {5.7},
+  Organization             = {The Qt Company},
+  Year                     = {2016},
+
+  Owner                    = {alex},
+  Timestamp                = {2016.08.15},
+  Url                      = {https://doc.qt.io/qt-5/index.html}
+}
+
