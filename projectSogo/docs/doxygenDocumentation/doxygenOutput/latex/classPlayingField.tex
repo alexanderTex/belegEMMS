@@ -22,7 +22,7 @@ enum \hyperlink{classPlayingField_a6032d4d7297d628a368cde7db331d7f6}{Field\-Exep
 {\bfseries P\-O\-S\-I\-T\-I\-O\-N\-\_\-\-N\-O\-T\-\_\-\-A\-V\-A\-I\-L\-A\-B\-L\-E}, 
 {\bfseries N\-O\-\_\-\-S\-P\-A\-C\-E\-\_\-\-A\-N\-Y\-M\-O\-R\-E}
  \}
-\begin{DoxyCompactList}\small\item\em Is thrown when in an Error in Playingfield Occupied when already occupied by other player Position\-Not\-Available when position is under current fieldstate not valid for occupation. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Is thrown when in an Error in Playingfield O\-C\-C\-U\-P\-I\-E\-D when already occupied by other player P\-O\-S\-I\-T\-I\-O\-N\-\_\-\-N\-O\-T\-\_\-\-A\-V\-A\-I\-L\-A\-B\-L\-E when position is not valid for occupation under current circumstances. \end{DoxyCompactList}\item 
 enum \hyperlink{classPlayingField_ac6df152a3f820aa04a00ab4df4a9d265}{Occupation\-State} \{ {\bfseries N\-O\-N\-E}, 
 {\bfseries R\-E\-D}, 
 {\bfseries B\-L\-U\-E}
@@ -48,6 +48,15 @@ void \hyperlink{classPlayingField_a166ff0aaa90a41ce748efd9165a9d578}{Occupy\-Slo
 void \hyperlink{classPlayingField_a6165557999a6cec6c1c1b71b88c2f82e}{Occupy\-Slot} (\hyperlink{structVector3}{Vector3} pos, \hyperlink{classPlayingField_ac6df152a3f820aa04a00ab4df4a9d265}{Playing\-Field\-::\-Occupation\-State} id)  throw (out\-\_\-of\-\_\-range, Field\-Exeptions)
 \begin{DoxyCompactList}\small\item\em Sets the occupation\-State of the \hyperlink{structPlayingField_1_1Slot}{Slot} at pos(x,y,z) to id. \end{DoxyCompactList}\item 
 \hypertarget{classPlayingField_af25e735d1d9f1c561fdf951507b2c1de}{bool {\bfseries Is\-Position\-Available} (int x, int y, int z) const }\label{classPlayingField_af25e735d1d9f1c561fdf951507b2c1de}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classPlayingField_ad0b87276c478b016d1425e7d69ba4e73}{static std\-::string {\bfseries Serialize} (const \hyperlink{classPlayingField}{Playing\-Field} \&p\-F)}\label{classPlayingField_ad0b87276c478b016d1425e7d69ba4e73}
+
+\item 
+\hypertarget{classPlayingField_a4fca00ce844080c76d91d45f4937d4cc}{static \hyperlink{classPlayingField}{Playing\-Field} $\ast$ {\bfseries Deserialize} (string str)  throw (\-Deserialization\-Exception)}\label{classPlayingField_a4fca00ce844080c76d91d45f4937d4cc}
 
 \end{DoxyCompactItemize}
 

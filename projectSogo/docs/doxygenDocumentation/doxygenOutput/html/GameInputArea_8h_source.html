@@ -98,13 +98,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;PlayerInput.h&quot;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;HistoryDisplay.h&quot;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">class </span>GameInputArea : <span class="keyword">public</span> QTabWidget</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="classGameInputArea.html">   23</a></span>&#160;<span class="keyword">class </span><a class="code" href="classGameInputArea.html">GameInputArea</a> : <span class="keyword">public</span> QTabWidget</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;{</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    Q_OBJECT</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keyword">explicit</span> GameInputArea(<a class="code" href="classGameManager.html">GameManager</a> *gameManager, QWidget *parent = 0);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classGameInputArea.html">GameInputArea</a>(<a class="code" href="classGameManager.html">GameManager</a> *gameManager, QWidget *parent = 0);</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> changeEvent(QEvent *event)</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classGameInputArea.html#aeda3377d2dd4b04fe530ef96b52162ea">   33</a></span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classGameInputArea.html#aeda3377d2dd4b04fe530ef96b52162ea">changeEvent</a>(QEvent *event)</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    {</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordflow">if</span> (event-&gt;type() == QEvent::LanguageChange) {</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            this-&gt;setTabText(0,tr(<span class="stringliteral">&quot;Player Input&quot;</span>));</div>
@@ -114,7 +114,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            QWidget::changeEvent(event);</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    }</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">virtual</span> ~GameInputArea();</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">virtual</span> ~<a class="code" href="classGameInputArea.html">GameInputArea</a>();</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keyword">inline</span> <a class="code" href="classHistoryDisplay.html">HistoryDisplay</a> *GetHistoryDisplay()<span class="keyword"> const</span></div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">    </span>{</div>
@@ -129,13 +129,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">private</span>:</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <a class="code" href="classHistoryDisplay.html">HistoryDisplay</a> *m_historyDisplay;   </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <a class="code" href="classPlayerInput.html">PlayerInput</a> *m_playerInput;         <div class="ttc" id="classGameManager_html"><div class="ttname"><a href="classGameManager.html">GameManager</a></div><div class="ttdoc">The GameManager class Handles the game loop logic in a thread. </div><div class="ttdef"><b>Definition:</b> GameManagerThread.h:23</div></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <a class="code" href="classPlayerInput.html">PlayerInput</a> *m_playerInput;         </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;};</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#endif // GAMEINPUTAREA_H</span></div>
+<div class="ttc" id="classGameInputArea_html_aeda3377d2dd4b04fe530ef96b52162ea"><div class="ttname"><a href="classGameInputArea.html#aeda3377d2dd4b04fe530ef96b52162ea">GameInputArea::changeEvent</a></div><div class="ttdeci">void changeEvent(QEvent *event)</div><div class="ttdoc">Change the language. </div><div class="ttdef"><b>Definition:</b> GameInputArea.h:33</div></div>
+<div class="ttc" id="classGameManager_html"><div class="ttname"><a href="classGameManager.html">GameManager</a></div><div class="ttdoc">The GameManager class Handles the game loop logic in a thread. </div><div class="ttdef"><b>Definition:</b> GameManagerThread.h:30</div></div>
 <div class="ttc" id="classHistoryDisplay_html"><div class="ttname"><a href="classHistoryDisplay.html">HistoryDisplay</a></div><div class="ttdoc">The HistoryDisplay class. </div><div class="ttdef"><b>Definition:</b> HistoryDisplay.h:24</div></div>
 <div class="ttc" id="classPlayerInput_html"><div class="ttname"><a href="classPlayerInput.html">PlayerInput</a></div><div class="ttdoc">The PlayerInput class. </div><div class="ttdef"><b>Definition:</b> PlayerInput.h:31</div></div>
+<div class="ttc" id="classGameInputArea_html"><div class="ttname"><a href="classGameInputArea.html">GameInputArea</a></div><div class="ttdoc">The GameInputArea class. </div><div class="ttdef"><b>Definition:</b> GameInputArea.h:23</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Aug 9 2016 13:27:35 for Sogo by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Aug 25 2016 09:45:58 for Sogo by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

@@ -90,35 +90,52 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef SLOTVECTOR_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SLOTVECTOR_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;ostream&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="structVector3.html">   20</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structVector3.html">Vector3</a></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;{</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="structVector3.html#a0f49191f7e001e7f7ae1cb49522118b4">Vector3</a>();</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="structVector3.html#a0f49191f7e001e7f7ae1cb49522118b4">Vector3</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y ,<span class="keywordtype">int</span> z);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="structVector3.html#a0f49191f7e001e7f7ae1cb49522118b4">Vector3</a>(<span class="keyword">const</span> <a class="code" href="structVector3.html">Vector3</a> &amp;src);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
-<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="structVector3.html#a5f80efa843c99c88278519ab10ae412d">   44</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structVector3.html#a5f80efa843c99c88278519ab10ae412d">X</a>;</div>
-<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="structVector3.html#a91b07be62c81ec8b4627ddf3b47939af">   48</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structVector3.html#a91b07be62c81ec8b4627ddf3b47939af">Y</a>;</div>
-<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="structVector3.html#a5565be8da409808f4367f2c992342c22">   52</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structVector3.html#a5565be8da409808f4367f2c992342c22">Z</a>;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">bool</span> operator==(<span class="keyword">const</span> <a class="code" href="structVector3.html">Vector3</a> &amp;v2);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;};</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;std::ostream &amp;operator&lt;&lt; (std::ostream &amp;out, <span class="keyword">const</span> <a class="code" href="structVector3.html">Vector3</a> &amp;vec);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#endif // SLOTVECTOR_H</span></div>
-<div class="ttc" id="structVector3_html_a0f49191f7e001e7f7ae1cb49522118b4"><div class="ttname"><a href="structVector3.html#a0f49191f7e001e7f7ae1cb49522118b4">Vector3::Vector3</a></div><div class="ttdeci">Vector3()</div><div class="ttdoc">Default constructor Initializes X,Y,Z to zero. </div><div class="ttdef"><b>Definition:</b> Vector3.cpp:3</div></div>
-<div class="ttc" id="structVector3_html_a5565be8da409808f4367f2c992342c22"><div class="ttname"><a href="structVector3.html#a5565be8da409808f4367f2c992342c22">Vector3::Z</a></div><div class="ttdeci">int Z</div><div class="ttdoc">Z. </div><div class="ttdef"><b>Definition:</b> Vector3.h:52</div></div>
-<div class="ttc" id="structVector3_html_a91b07be62c81ec8b4627ddf3b47939af"><div class="ttname"><a href="structVector3.html#a91b07be62c81ec8b4627ddf3b47939af">Vector3::Y</a></div><div class="ttdeci">int Y</div><div class="ttdoc">Y. </div><div class="ttdef"><b>Definition:</b> Vector3.h:48</div></div>
-<div class="ttc" id="structVector3_html_a5f80efa843c99c88278519ab10ae412d"><div class="ttname"><a href="structVector3.html#a5f80efa843c99c88278519ab10ae412d">Vector3::X</a></div><div class="ttdeci">int X</div><div class="ttdoc">X. </div><div class="ttdef"><b>Definition:</b> Vector3.h:44</div></div>
-<div class="ttc" id="structVector3_html"><div class="ttname"><a href="structVector3.html">Vector3</a></div><div class="ttdoc">Defines a structures that encapsulates a position in 3D space. </div><div class="ttdef"><b>Definition:</b> Vector3.h:20</div></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;ostream&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;stringutlities.h&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;Logger.h&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="structVector3.html">   25</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structVector3.html">Vector3</a></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;{</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="structVector3.html#a0f49191f7e001e7f7ae1cb49522118b4">Vector3</a>();</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="structVector3.html#a0f49191f7e001e7f7ae1cb49522118b4">Vector3</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y ,<span class="keywordtype">int</span> z);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="structVector3.html#a0f49191f7e001e7f7ae1cb49522118b4">Vector3</a>(<span class="keyword">const</span> <a class="code" href="structVector3.html">Vector3</a> &amp;src);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keyword">static</span> std::string Serialize(<a class="code" href="structVector3.html">Vector3</a> &amp;vec);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keyword">static</span> <a class="code" href="structVector3.html">Vector3</a> Deserialize(std::string s) <span class="keywordflow">throw</span>(DeserializationException);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="structVector3.html#a5f80efa843c99c88278519ab10ae412d">   56</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structVector3.html#a5f80efa843c99c88278519ab10ae412d">X</a>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="structVector3.html#a91b07be62c81ec8b4627ddf3b47939af">   60</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structVector3.html#a91b07be62c81ec8b4627ddf3b47939af">Y</a>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="structVector3.html#a5565be8da409808f4367f2c992342c22">   64</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structVector3.html#a5565be8da409808f4367f2c992342c22">Z</a>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">bool</span> operator==(<span class="keyword">const</span> <a class="code" href="structVector3.html">Vector3</a> &amp;v2);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keyword">const</span> <span class="keyword">static</span> <span class="keywordtype">char</span> delimiter;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;};</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;std::ostream &amp;operator&lt;&lt; (std::ostream &amp;out, <span class="keyword">const</span> <a class="code" href="structVector3.html">Vector3</a> &amp;vec);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor">#endif // SLOTVECTOR_H</span></div>
+<div class="ttc" id="structVector3_html_a0f49191f7e001e7f7ae1cb49522118b4"><div class="ttname"><a href="structVector3.html#a0f49191f7e001e7f7ae1cb49522118b4">Vector3::Vector3</a></div><div class="ttdeci">Vector3()</div><div class="ttdoc">Default constructor Initializes X,Y,Z to zero. </div><div class="ttdef"><b>Definition:</b> Vector3.cpp:5</div></div>
+<div class="ttc" id="structVector3_html_a5565be8da409808f4367f2c992342c22"><div class="ttname"><a href="structVector3.html#a5565be8da409808f4367f2c992342c22">Vector3::Z</a></div><div class="ttdeci">int Z</div><div class="ttdoc">Z. </div><div class="ttdef"><b>Definition:</b> Vector3.h:64</div></div>
+<div class="ttc" id="structVector3_html_a91b07be62c81ec8b4627ddf3b47939af"><div class="ttname"><a href="structVector3.html#a91b07be62c81ec8b4627ddf3b47939af">Vector3::Y</a></div><div class="ttdeci">int Y</div><div class="ttdoc">Y. </div><div class="ttdef"><b>Definition:</b> Vector3.h:60</div></div>
+<div class="ttc" id="structVector3_html_a5f80efa843c99c88278519ab10ae412d"><div class="ttname"><a href="structVector3.html#a5f80efa843c99c88278519ab10ae412d">Vector3::X</a></div><div class="ttdeci">int X</div><div class="ttdoc">X. </div><div class="ttdef"><b>Definition:</b> Vector3.h:56</div></div>
+<div class="ttc" id="structVector3_html"><div class="ttname"><a href="structVector3.html">Vector3</a></div><div class="ttdoc">Defines a structures that encapsulates a position in 3D space. </div><div class="ttdef"><b>Definition:</b> Vector3.h:25</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Aug 9 2016 13:27:35 for Sogo by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Aug 25 2016 09:45:58 for Sogo by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

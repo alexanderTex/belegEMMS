@@ -86,6 +86,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="classPlayingField-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">PlayingField Class Reference</div>  </div>
@@ -109,7 +110,7 @@ Public Types</h2></td></tr>
 <b>POSITION_NOT_AVAILABLE</b>, 
 <b>NO_SPACE_ANYMORE</b>
  }</td></tr>
-<tr class="memdesc:a6032d4d7297d628a368cde7db331d7f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is thrown when in an Error in Playingfield Occupied when already occupied by other player PositionNotAvailable when position is under current fieldstate not valid for occupation. <br/></td></tr>
+<tr class="memdesc:a6032d4d7297d628a368cde7db331d7f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is thrown when in an Error in Playingfield OCCUPIED when already occupied by other player POSITION_NOT_AVAILABLE when position is not valid for occupation under current circumstances. <br/></td></tr>
 <tr class="separator:a6032d4d7297d628a368cde7db331d7f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac6df152a3f820aa04a00ab4df4a9d265"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayingField.html#ac6df152a3f820aa04a00ab4df4a9d265">OccupationState</a> { <b>NONE</b>, 
 <b>RED</b>, 
@@ -146,6 +147,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af25e735d1d9f1c561fdf951507b2c1de"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af25e735d1d9f1c561fdf951507b2c1de"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsPositionAvailable</b> (int x, int y, int z) const </td></tr>
 <tr class="separator:af25e735d1d9f1c561fdf951507b2c1de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:ad0b87276c478b016d1425e7d69ba4e73"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad0b87276c478b016d1425e7d69ba4e73"></a>
+static std::string&#160;</td><td class="memItemRight" valign="bottom"><b>Serialize</b> (const <a class="el" href="classPlayingField.html">PlayingField</a> &amp;pF)</td></tr>
+<tr class="separator:ad0b87276c478b016d1425e7d69ba4e73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fca00ce844080c76d91d45f4937d4cc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4fca00ce844080c76d91d45f4937d4cc"></a>
+static <a class="el" href="classPlayingField.html">PlayingField</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>Deserialize</b> (string str)  throw (DeserializationException)</td></tr>
+<tr class="separator:a4fca00ce844080c76d91d45f4937d4cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Defines the Properties of a Playingfield. </p>
@@ -364,7 +374,7 @@ Alexander Luedke</dd></dl>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Aug 9 2016 13:27:37 for Sogo by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Aug 25 2016 09:46:00 for Sogo by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

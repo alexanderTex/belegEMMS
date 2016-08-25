@@ -112,43 +112,49 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            m_newSessionButton-&gt;setText(tr(<span class="stringliteral">&quot;New Session&quot;</span>));</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            m_highscoreButton-&gt;setText(tr((<span class="stringliteral">&quot;Highscore&quot;</span>)));</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            m_exitButton-&gt;setText(tr(<span class="stringliteral">&quot;Exit&quot;</span>));</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        } <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            QWidget::changeEvent(event);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    }</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;signals:</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classStartMenu.html#a94d2da8144b5e99707ef5dc1ea588982">switchToNewSession</a>();</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classStartMenu.html#a95881192196673c85ad1dc12df5f9820">switchToHighscore</a>();</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classStartMenu.html#aff58f89652b89899b21d40f3188b516d">quitGame</a>();</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keyword">public</span> slots:</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    QVBoxLayout *m_controlLayout;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    QLabel *m_mainMenueLabel;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    QPushButton *m_newSessionButton;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    QPushButton *m_highscoreButton;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            m_loadGameButton-&gt;setText(tr(<span class="stringliteral">&quot;Load&quot;</span>));</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        } <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            QWidget::changeEvent(event);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    }</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;signals:</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classStartMenu.html#a94d2da8144b5e99707ef5dc1ea588982">switchToNewSession</a>();</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classStartMenu.html#af20eda82374b32755e6d9743079f68d6">loadGame</a>();</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classStartMenu.html#a95881192196673c85ad1dc12df5f9820">switchToHighscore</a>();</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classStartMenu.html#aff58f89652b89899b21d40f3188b516d">quitGame</a>();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword">public</span> slots:</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    QVBoxLayout *m_controlLayout;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    QPushButton *m_exitButton;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    QLabel *m_mainMenueLabel;</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    QGridLayout *m_gridLayout;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;};</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#endif // STARTMENU_H</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    QPushButton *m_newSessionButton;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    QPushButton *m_loadGameButton;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    QPushButton *m_highscoreButton;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    QPushButton *m_exitButton;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    QGridLayout *m_gridLayout;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;};</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="preprocessor">#endif // STARTMENU_H</span></div>
 <div class="ttc" id="classStartMenu_html_aff58f89652b89899b21d40f3188b516d"><div class="ttname"><a href="classStartMenu.html#aff58f89652b89899b21d40f3188b516d">StartMenu::quitGame</a></div><div class="ttdeci">void quitGame()</div><div class="ttdoc">Quit the game when the button is pushed. </div></div>
+<div class="ttc" id="classStartMenu_html_af20eda82374b32755e6d9743079f68d6"><div class="ttname"><a href="classStartMenu.html#af20eda82374b32755e6d9743079f68d6">StartMenu::loadGame</a></div><div class="ttdeci">void loadGame()</div><div class="ttdoc">Loads the last played game when the m_loadGameButton is pressed. </div></div>
 <div class="ttc" id="classStartMenu_html_a95881192196673c85ad1dc12df5f9820"><div class="ttname"><a href="classStartMenu.html#a95881192196673c85ad1dc12df5f9820">StartMenu::switchToHighscore</a></div><div class="ttdeci">void switchToHighscore()</div><div class="ttdoc">Switch to Highscore when the m_highscoreButton is pressed. </div></div>
 <div class="ttc" id="classStartMenu_html_a94d2da8144b5e99707ef5dc1ea588982"><div class="ttname"><a href="classStartMenu.html#a94d2da8144b5e99707ef5dc1ea588982">StartMenu::switchToNewSession</a></div><div class="ttdeci">void switchToNewSession()</div><div class="ttdoc">Switch to NewSessionMenu when the m_newSessionButton is pressed. </div></div>
 <div class="ttc" id="classStartMenu_html"><div class="ttname"><a href="classStartMenu.html">StartMenu</a></div><div class="ttdoc">The StartMenu class. </div><div class="ttdef"><b>Definition:</b> StartMenu.h:25</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Aug 9 2016 13:27:35 for Sogo by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Aug 25 2016 09:45:58 for Sogo by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

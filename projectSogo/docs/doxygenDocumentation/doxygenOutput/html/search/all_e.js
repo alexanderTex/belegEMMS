@@ -1,8 +1,8 @@
 var searchData=
 [
   ['sogo_20documentation',['Sogo Documentation',['../index.html',1,'']]],
+  ['savegame',['SaveGame',['../classGameView.html#a737578d62ebb8c52ba35e75a2ece8a6a',1,'GameView']]],
   ['setdisplaytext',['SetDisplayText',['../classHistoryDisplay.html#a260307ebdade967004f32cf48f877915',1,'HistoryDisplay']]],
-  ['setgamedata',['SetGameData',['../classGameManager.html#a760b12229d3d010a81507a07760a4315',1,'GameManager']]],
   ['setmode',['setMode',['../classNewSessionMenu.html#afae85196d39cd5b68e445659faf3f901',1,'NewSessionMenu']]],
   ['setname',['SetName',['../classPlayer.html#ac6727206628d233b9094c8e80f777c1d',1,'Player']]],
   ['setplayer',['setPlayer',['../classNewSessionMenu.html#ac13a0674e7492b42279b60e8b73fb561',1,'NewSessionMenu']]],

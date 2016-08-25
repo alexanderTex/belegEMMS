@@ -4,6 +4,7 @@ var searchData=
   ['gamedataexception',['GameDataException',['../classGameData.html#a2cbc881e9ac218f14694fed595c3c128',1,'GameData']]],
   ['gameended',['GameEnded',['../classGameView.html#a5901d54c9767a75549860cc5b511fcd5',1,'GameView']]],
   ['gamefinished',['GameFinished',['../classGameView.html#a3e06ec8f766005c4aac0d572559fc9ed',1,'GameView']]],
+  ['gameinputarea',['GameInputArea',['../classGameInputArea.html',1,'']]],
   ['gamemanager',['GameManager',['../classGameManager.html',1,'GameManager'],['../classGameManager.html#aa0e2424dc1a39d380e5b6605b179bf05',1,'GameManager::GameManager()'],['../classGameManager.html#a80046eb2f443289f0ba1b3fa1272470a',1,'GameManager::GameManager(GameData *data)']]],
   ['gameview',['GameView',['../classGameView.html',1,'']]],
   ['gameview2d',['GameView2D',['../classGameView2D.html',1,'']]],

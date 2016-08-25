@@ -1,6 +1,7 @@
 var searchData=
 [
   ['gamedata',['GameData',['../classGameData.html',1,'']]],
+  ['gameinputarea',['GameInputArea',['../classGameInputArea.html',1,'']]],
   ['gamemanager',['GameManager',['../classGameManager.html',1,'']]],
   ['gameview',['GameView',['../classGameView.html',1,'']]],
   ['gameview2d',['GameView2D',['../classGameView2D.html',1,'']]],

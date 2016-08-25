@@ -90,109 +90,119 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef GAMEMANAGERTHREAD_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define GAMEMANAGERTHREAD_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;QThread&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;GameData.h&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;AI.h&quot;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;Player.h&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;QThread&gt;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="classGameManager.html">   23</a></span>&#160;<span class="keyword">class </span><a class="code" href="classGameManager.html">GameManager</a> : <span class="keyword">public</span> QThread</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;{</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    Q_OBJECT</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="structGameManager_1_1AIPlayer.html">   32</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structGameManager_1_1AIPlayer.html">AIPlayer</a></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    {</div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="structGameManager_1_1AIPlayer.html#a9c991a2b7151183f89feefe97e6cfbec">   39</a></span>&#160;        <a class="code" href="structGameManager_1_1AIPlayer.html#a9c991a2b7151183f89feefe97e6cfbec">AIPlayer</a>(<span class="keyword">const</span> <a class="code" href="classPlayer.html">Player</a> *<a class="code" href="structGameManager_1_1AIPlayer.html#a96450dd315805b21d243f80787a53d6e">player</a>, <span class="keywordtype">bool</span> <a class="code" href="structGameManager_1_1AIPlayer.html#a0930362037e6d84ec3888eacc8c3c10a">hasMove</a> = <span class="keyword">false</span>)</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            this-&gt;player = <a class="code" href="structGameManager_1_1AIPlayer.html#a96450dd315805b21d243f80787a53d6e">player</a>;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            this-&gt;<a class="code" href="structGameManager_1_1AIPlayer.html#a0930362037e6d84ec3888eacc8c3c10a">hasMove</a> = <a class="code" href="structGameManager_1_1AIPlayer.html#a0930362037e6d84ec3888eacc8c3c10a">hasMove</a>;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        }</div>
-<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="structGameManager_1_1AIPlayer.html#a96450dd315805b21d243f80787a53d6e">   47</a></span>&#160;        <span class="keyword">const</span> <a class="code" href="classPlayer.html">Player</a> *<a class="code" href="structGameManager_1_1AIPlayer.html#a96450dd315805b21d243f80787a53d6e">player</a>;</div>
-<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="structGameManager_1_1AIPlayer.html#a0930362037e6d84ec3888eacc8c3c10a">   51</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="structGameManager_1_1AIPlayer.html#a0930362037e6d84ec3888eacc8c3c10a">hasMove</a>;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    };</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <a class="code" href="classGameManager.html#aa0e2424dc1a39d380e5b6605b179bf05">GameManager</a>();</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <a class="code" href="classGameManager.html#aa0e2424dc1a39d380e5b6605b179bf05">GameManager</a>(<a class="code" href="classGameData.html">GameData</a> *data);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classGameManager.html#aaae63e38e358379c1fe507c5197a8435">~GameManager</a>();</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classGameManager.html#abbde8090c24ca199815ba1e85059c96f">run</a>();</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keyword">const</span> <a class="code" href="classGameData.html">GameData</a>* <a class="code" href="classGameManager.html#ae6075cdc12a4b98aeddc4cda20854393">GetGameData</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classGameManager.html#a760b12229d3d010a81507a07760a4315">SetGameData</a>(<a class="code" href="classGameData.html">GameData</a> * data);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">void</span> StartGame();</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;GameData.h&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;AI.h&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;Player.h&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="classGameManager.html">   30</a></span>&#160;<span class="keyword">class </span><a class="code" href="classGameManager.html">GameManager</a> : <span class="keyword">public</span> QThread</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;{</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    Q_OBJECT</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="structGameManager_1_1AIPlayer.html">   39</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structGameManager_1_1AIPlayer.html">AIPlayer</a></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    {</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="structGameManager_1_1AIPlayer.html#a9c991a2b7151183f89feefe97e6cfbec">   46</a></span>&#160;        <a class="code" href="structGameManager_1_1AIPlayer.html#a9c991a2b7151183f89feefe97e6cfbec">AIPlayer</a>(<span class="keyword">const</span> <a class="code" href="classPlayer.html">Player</a> *<a class="code" href="structGameManager_1_1AIPlayer.html#a96450dd315805b21d243f80787a53d6e">player</a>, <span class="keywordtype">bool</span> <a class="code" href="structGameManager_1_1AIPlayer.html#a0930362037e6d84ec3888eacc8c3c10a">hasMove</a> = <span class="keyword">false</span>)</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            this-&gt;player = <a class="code" href="structGameManager_1_1AIPlayer.html#a96450dd315805b21d243f80787a53d6e">player</a>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            this-&gt;<a class="code" href="structGameManager_1_1AIPlayer.html#a0930362037e6d84ec3888eacc8c3c10a">hasMove</a> = <a class="code" href="structGameManager_1_1AIPlayer.html#a0930362037e6d84ec3888eacc8c3c10a">hasMove</a>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        }</div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="structGameManager_1_1AIPlayer.html#a96450dd315805b21d243f80787a53d6e">   54</a></span>&#160;        <span class="keyword">const</span> <a class="code" href="classPlayer.html">Player</a> *<a class="code" href="structGameManager_1_1AIPlayer.html#a96450dd315805b21d243f80787a53d6e">player</a>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="structGameManager_1_1AIPlayer.html#a0930362037e6d84ec3888eacc8c3c10a">   58</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="structGameManager_1_1AIPlayer.html#a0930362037e6d84ec3888eacc8c3c10a">hasMove</a>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    };</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <a class="code" href="classGameManager.html#aa0e2424dc1a39d380e5b6605b179bf05">GameManager</a>();</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <a class="code" href="classGameManager.html#aa0e2424dc1a39d380e5b6605b179bf05">GameManager</a>(<a class="code" href="classGameData.html">GameData</a> *data);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classGameManager.html#aaae63e38e358379c1fe507c5197a8435">~GameManager</a>();</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classGameManager.html#abbde8090c24ca199815ba1e85059c96f">run</a>();</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keyword">const</span> <a class="code" href="classGameData.html">GameData</a>* <a class="code" href="classGameManager.html#ae6075cdc12a4b98aeddc4cda20854393">GetGameData</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordtype">void</span> PauseGame();</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordtype">void</span> StartGame();</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordtype">void</span> SuspendProcessingLoop();</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordtype">void</span> PauseGame();</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classGameManager.html#a4e3d2ab486b782641640fb82b77963f2">StopGameManagerThread</a>();</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classGameManager.html#ade855b10bc61465dfdfb458cf624cf97">InputConfirmationDetected</a>(<a class="code" href="structVector2.html">Vector2</a> pos);</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classGameManager.html#ab5e866fc01d4d612cd1f84de0df4653f">MakeMove</a>(<a class="code" href="structVector3.html">Vector3</a> pos) <span class="keywordflow">throw</span>(<a class="code" href="classPlayingField.html#a6032d4d7297d628a368cde7db331d7f6">PlayingField::FieldExeptions</a>, std::out_of_range);   </div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;signals:</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keywordtype">void</span> PlayInputErrorSound();</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordtype">void</span> SuspendProcessingLoop();</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classGameManager.html#a4e3d2ab486b782641640fb82b77963f2">StopGameManagerThread</a>();</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classGameManager.html#ade855b10bc61465dfdfb458cf624cf97">InputConfirmationDetected</a>(<a class="code" href="structVector2.html">Vector2</a> pos);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classGameManager.html#ab5e866fc01d4d612cd1f84de0df4653f">MakeMove</a>(<a class="code" href="structVector3.html">Vector3</a> pos) <span class="keywordflow">throw</span>(<a class="code" href="classPlayingField.html#a6032d4d7297d628a368cde7db331d7f6">PlayingField::FieldExeptions</a>, std::out_of_range);   </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordtype">void</span> PlayInputAcceptSound();</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classGameManager.html#aba92c2301c45b00826365149ae8c4844">TurnFinished</a>();</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classGameManager.html#a46ecd98b835abec58ea2b716b600c453">PlayerWon</a>();</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="keywordtype">void</span> GameLoop();</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="keywordtype">void</span> InputRoutine(<span class="keywordtype">bool</span> &amp;currentPlayerMoveReady, <a class="code" href="structVector3.html">Vector3</a> *pos) <span class="keywordflow">throw</span>(out_of_range, <a class="code" href="classPlayingField.html#a6032d4d7297d628a368cde7db331d7f6">PlayingField::FieldExeptions</a>);</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    <span class="keywordtype">bool</span> PlayerInputProcess(<a class="code" href="structVector3.html">Vector3</a> *pos) <span class="keywordflow">throw</span>(out_of_range, <a class="code" href="classPlayingField.html#a6032d4d7297d628a368cde7db331d7f6">PlayingField::FieldExeptions</a>);</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <span class="keywordtype">bool</span> AIProcess(<a class="code" href="classPlayer.html">Player</a> *player, <a class="code" href="structVector3.html">Vector3</a> *move);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;signals:</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keywordtype">void</span> PlayInputErrorSound();</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keywordtype">void</span> PlayInputAcceptSound();</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classGameManager.html#aba92c2301c45b00826365149ae8c4844">TurnFinished</a>();</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classGameManager.html#a46ecd98b835abec58ea2b716b600c453">PlayerWon</a>();</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <span class="keywordtype">void</span> GameLoop();</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <span class="keywordtype">void</span> InputRoutine(<span class="keywordtype">bool</span> &amp;currentPlayerMoveReady, <a class="code" href="structVector3.html">Vector3</a> *pos) <span class="keywordflow">throw</span>(out_of_range, <a class="code" href="classPlayingField.html#a6032d4d7297d628a368cde7db331d7f6">PlayingField::FieldExeptions</a>);</div>
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    <a class="code" href="structVector2.html">Vector2</a> playerPosChoice;</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <a class="code" href="classGameData.html">GameData</a> *m_data;</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <span class="keywordtype">bool</span> m_paused;</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="keywordtype">bool</span> m_endGame;</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <span class="keywordtype">bool</span> m_stopThreadExecution;</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <span class="keywordtype">bool</span> m_playerInputConfirmed;</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;};</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="preprocessor">#endif // GAMEMANAGERTHREAD_H</span></div>
-<div class="ttc" id="structGameManager_1_1AIPlayer_html_a9c991a2b7151183f89feefe97e6cfbec"><div class="ttname"><a href="structGameManager_1_1AIPlayer.html#a9c991a2b7151183f89feefe97e6cfbec">GameManager::AIPlayer::AIPlayer</a></div><div class="ttdeci">AIPlayer(const Player *player, bool hasMove=false)</div><div class="ttdoc">AI. </div><div class="ttdef"><b>Definition:</b> GameManagerThread.h:39</div></div>
-<div class="ttc" id="classGameManager_html_ade855b10bc61465dfdfb458cf624cf97"><div class="ttname"><a href="classGameManager.html#ade855b10bc61465dfdfb458cf624cf97">GameManager::InputConfirmationDetected</a></div><div class="ttdeci">void InputConfirmationDetected(Vector2 pos)</div><div class="ttdoc">InputConfirmationDetected. </div><div class="ttdef"><b>Definition:</b> GameManagerThread.cpp:87</div></div>
-<div class="ttc" id="classGameManager_html_aa0e2424dc1a39d380e5b6605b179bf05"><div class="ttname"><a href="classGameManager.html#aa0e2424dc1a39d380e5b6605b179bf05">GameManager::GameManager</a></div><div class="ttdeci">GameManager()</div><div class="ttdoc">GameManager. </div><div class="ttdef"><b>Definition:</b> GameManagerThread.cpp:8</div></div>
-<div class="ttc" id="classGameManager_html_ab5e866fc01d4d612cd1f84de0df4653f"><div class="ttname"><a href="classGameManager.html#ab5e866fc01d4d612cd1f84de0df4653f">GameManager::MakeMove</a></div><div class="ttdeci">bool MakeMove(Vector3 pos)</div><div class="ttdoc">Tries to Occupy the given position , adds the move to the history, checks if the player won ( return ...</div><div class="ttdef"><b>Definition:</b> GameManagerThread.cpp:99</div></div>
-<div class="ttc" id="classGameManager_html_ae6075cdc12a4b98aeddc4cda20854393"><div class="ttname"><a href="classGameManager.html#ae6075cdc12a4b98aeddc4cda20854393">GameManager::GetGameData</a></div><div class="ttdeci">const GameData * GetGameData() const </div><div class="ttdoc">GetGameData. </div><div class="ttdef"><b>Definition:</b> GameManagerThread.cpp:42</div></div>
-<div class="ttc" id="classGameManager_html_abbde8090c24ca199815ba1e85059c96f"><div class="ttname"><a href="classGameManager.html#abbde8090c24ca199815ba1e85059c96f">GameManager::run</a></div><div class="ttdeci">virtual void run()</div><div class="ttdoc">run override of the QThread run </div><div class="ttdef"><b>Definition:</b> GameManagerThread.cpp:33</div></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="keywordtype">bool</span> PlayerInputProcess(<a class="code" href="structVector3.html">Vector3</a> *pos) <span class="keywordflow">throw</span>(out_of_range, <a class="code" href="classPlayingField.html#a6032d4d7297d628a368cde7db331d7f6">PlayingField::FieldExeptions</a>);</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <span class="keywordtype">bool</span> AIProcess(<a class="code" href="classPlayer.html">Player</a> *player, <a class="code" href="structVector3.html">Vector3</a> *move);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <a class="code" href="structVector2.html">Vector2</a> playerPosChoice;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <a class="code" href="classGameData.html">GameData</a> *m_data;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <span class="keywordtype">bool</span> m_paused;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <span class="keywordtype">bool</span> m_endGame;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="keywordtype">bool</span> m_stopThreadExecution;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    <span class="keywordtype">bool</span> m_playerInputConfirmed;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;};</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="preprocessor">#endif // GAMEMANAGERTHREAD_H</span></div>
+<div class="ttc" id="structGameManager_1_1AIPlayer_html_a9c991a2b7151183f89feefe97e6cfbec"><div class="ttname"><a href="structGameManager_1_1AIPlayer.html#a9c991a2b7151183f89feefe97e6cfbec">GameManager::AIPlayer::AIPlayer</a></div><div class="ttdeci">AIPlayer(const Player *player, bool hasMove=false)</div><div class="ttdoc">AI. </div><div class="ttdef"><b>Definition:</b> GameManagerThread.h:46</div></div>
+<div class="ttc" id="classGameManager_html_ade855b10bc61465dfdfb458cf624cf97"><div class="ttname"><a href="classGameManager.html#ade855b10bc61465dfdfb458cf624cf97">GameManager::InputConfirmationDetected</a></div><div class="ttdeci">void InputConfirmationDetected(Vector2 pos)</div><div class="ttdoc">InputConfirmationDetected. </div><div class="ttdef"><b>Definition:</b> GameManagerThread.cpp:77</div></div>
+<div class="ttc" id="classGameManager_html_aa0e2424dc1a39d380e5b6605b179bf05"><div class="ttname"><a href="classGameManager.html#aa0e2424dc1a39d380e5b6605b179bf05">GameManager::GameManager</a></div><div class="ttdeci">GameManager()</div><div class="ttdoc">GameManager. </div><div class="ttdef"><b>Definition:</b> GameManagerThread.cpp:7</div></div>
+<div class="ttc" id="classGameManager_html_ab5e866fc01d4d612cd1f84de0df4653f"><div class="ttname"><a href="classGameManager.html#ab5e866fc01d4d612cd1f84de0df4653f">GameManager::MakeMove</a></div><div class="ttdeci">bool MakeMove(Vector3 pos)</div><div class="ttdoc">Tries to Occupy the given position , adds the move to the history, checks if the player won ( return ...</div><div class="ttdef"><b>Definition:</b> GameManagerThread.cpp:89</div></div>
+<div class="ttc" id="classGameManager_html_ae6075cdc12a4b98aeddc4cda20854393"><div class="ttname"><a href="classGameManager.html#ae6075cdc12a4b98aeddc4cda20854393">GameManager::GetGameData</a></div><div class="ttdeci">const GameData * GetGameData() const </div><div class="ttdoc">GetGameData. </div><div class="ttdef"><b>Definition:</b> GameManagerThread.cpp:41</div></div>
+<div class="ttc" id="classGameManager_html_abbde8090c24ca199815ba1e85059c96f"><div class="ttname"><a href="classGameManager.html#abbde8090c24ca199815ba1e85059c96f">GameManager::run</a></div><div class="ttdeci">virtual void run()</div><div class="ttdoc">run override of the QThread run </div><div class="ttdef"><b>Definition:</b> GameManagerThread.cpp:32</div></div>
 <div class="ttc" id="classGameManager_html_aba92c2301c45b00826365149ae8c4844"><div class="ttname"><a href="classGameManager.html#aba92c2301c45b00826365149ae8c4844">GameManager::TurnFinished</a></div><div class="ttdeci">void TurnFinished()</div><div class="ttdoc">TurnFinished emitted when players turn finishes. </div></div>
-<div class="ttc" id="classGameManager_html_a4e3d2ab486b782641640fb82b77963f2"><div class="ttname"><a href="classGameManager.html#a4e3d2ab486b782641640fb82b77963f2">GameManager::StopGameManagerThread</a></div><div class="ttdeci">void StopGameManagerThread()</div><div class="ttdoc">Stop sets the boolean to end the Main processing thread when the user quits the game. </div><div class="ttdef"><b>Definition:</b> GameManagerThread.cpp:77</div></div>
-<div class="ttc" id="structGameManager_1_1AIPlayer_html_a0930362037e6d84ec3888eacc8c3c10a"><div class="ttname"><a href="structGameManager_1_1AIPlayer.html#a0930362037e6d84ec3888eacc8c3c10a">GameManager::AIPlayer::hasMove</a></div><div class="ttdeci">bool hasMove</div><div class="ttdoc">hasMove </div><div class="ttdef"><b>Definition:</b> GameManagerThread.h:51</div></div>
+<div class="ttc" id="classGameManager_html_a4e3d2ab486b782641640fb82b77963f2"><div class="ttname"><a href="classGameManager.html#a4e3d2ab486b782641640fb82b77963f2">GameManager::StopGameManagerThread</a></div><div class="ttdeci">void StopGameManagerThread()</div><div class="ttdoc">Stop sets the boolean to end the Main processing thread when the user quits the game. </div><div class="ttdef"><b>Definition:</b> GameManagerThread.cpp:67</div></div>
+<div class="ttc" id="structGameManager_1_1AIPlayer_html_a0930362037e6d84ec3888eacc8c3c10a"><div class="ttname"><a href="structGameManager_1_1AIPlayer.html#a0930362037e6d84ec3888eacc8c3c10a">GameManager::AIPlayer::hasMove</a></div><div class="ttdeci">bool hasMove</div><div class="ttdoc">hasMove </div><div class="ttdef"><b>Definition:</b> GameManagerThread.h:58</div></div>
 <div class="ttc" id="classGameManager_html_a46ecd98b835abec58ea2b716b600c453"><div class="ttname"><a href="classGameManager.html#a46ecd98b835abec58ea2b716b600c453">GameManager::PlayerWon</a></div><div class="ttdeci">void PlayerWon()</div><div class="ttdoc">PlayerWon emitted when a player won. </div></div>
-<div class="ttc" id="structVector2_html"><div class="ttname"><a href="structVector2.html">Vector2</a></div><div class="ttdoc">Defines a structures that encapsulates a position in 2D space. </div><div class="ttdef"><b>Definition:</b> Vector2.h:19</div></div>
-<div class="ttc" id="classGameManager_html_a760b12229d3d010a81507a07760a4315"><div class="ttname"><a href="classGameManager.html#a760b12229d3d010a81507a07760a4315">GameManager::SetGameData</a></div><div class="ttdeci">void SetGameData(GameData *data)</div><div class="ttdoc">SetGameData. </div><div class="ttdef"><b>Definition:</b> GameManagerThread.cpp:50</div></div>
-<div class="ttc" id="classGameManager_html_aaae63e38e358379c1fe507c5197a8435"><div class="ttname"><a href="classGameManager.html#aaae63e38e358379c1fe507c5197a8435">GameManager::~GameManager</a></div><div class="ttdeci">virtual ~GameManager()</div><div class="ttdoc">~GameManager </div><div class="ttdef"><b>Definition:</b> GameManagerThread.cpp:28</div></div>
-<div class="ttc" id="structGameManager_1_1AIPlayer_html"><div class="ttname"><a href="structGameManager_1_1AIPlayer.html">GameManager::AIPlayer</a></div><div class="ttdoc">The AI struct Contains a reference to a player which is of type ai and if the ai player has calculate...</div><div class="ttdef"><b>Definition:</b> GameManagerThread.h:32</div></div>
-<div class="ttc" id="structGameManager_1_1AIPlayer_html_a96450dd315805b21d243f80787a53d6e"><div class="ttname"><a href="structGameManager_1_1AIPlayer.html#a96450dd315805b21d243f80787a53d6e">GameManager::AIPlayer::player</a></div><div class="ttdeci">const Player * player</div><div class="ttdoc">player </div><div class="ttdef"><b>Definition:</b> GameManagerThread.h:47</div></div>
-<div class="ttc" id="structVector3_html"><div class="ttname"><a href="structVector3.html">Vector3</a></div><div class="ttdoc">Defines a structures that encapsulates a position in 3D space. </div><div class="ttdef"><b>Definition:</b> Vector3.h:20</div></div>
-<div class="ttc" id="classGameManager_html"><div class="ttname"><a href="classGameManager.html">GameManager</a></div><div class="ttdoc">The GameManager class Handles the game loop logic in a thread. </div><div class="ttdef"><b>Definition:</b> GameManagerThread.h:23</div></div>
-<div class="ttc" id="classPlayingField_html_a6032d4d7297d628a368cde7db331d7f6"><div class="ttname"><a href="classPlayingField.html#a6032d4d7297d628a368cde7db331d7f6">PlayingField::FieldExeptions</a></div><div class="ttdeci">FieldExeptions</div><div class="ttdoc">Is thrown when in an Error in Playingfield Occupied when already occupied by other player PositionNot...</div><div class="ttdef"><b>Definition:</b> PlayingField.h:37</div></div>
+<div class="ttc" id="structVector2_html"><div class="ttname"><a href="structVector2.html">Vector2</a></div><div class="ttdoc">Defines a structures that encapsulates a position in 2D space. </div><div class="ttdef"><b>Definition:</b> Vector2.h:20</div></div>
+<div class="ttc" id="classGameManager_html_aaae63e38e358379c1fe507c5197a8435"><div class="ttname"><a href="classGameManager.html#aaae63e38e358379c1fe507c5197a8435">GameManager::~GameManager</a></div><div class="ttdeci">virtual ~GameManager()</div><div class="ttdoc">~GameManager </div><div class="ttdef"><b>Definition:</b> GameManagerThread.cpp:27</div></div>
+<div class="ttc" id="structGameManager_1_1AIPlayer_html"><div class="ttname"><a href="structGameManager_1_1AIPlayer.html">GameManager::AIPlayer</a></div><div class="ttdoc">The AI struct Contains a reference to a player which is of type ai and if the ai player has calculate...</div><div class="ttdef"><b>Definition:</b> GameManagerThread.h:39</div></div>
+<div class="ttc" id="structGameManager_1_1AIPlayer_html_a96450dd315805b21d243f80787a53d6e"><div class="ttname"><a href="structGameManager_1_1AIPlayer.html#a96450dd315805b21d243f80787a53d6e">GameManager::AIPlayer::player</a></div><div class="ttdeci">const Player * player</div><div class="ttdoc">player </div><div class="ttdef"><b>Definition:</b> GameManagerThread.h:54</div></div>
+<div class="ttc" id="structVector3_html"><div class="ttname"><a href="structVector3.html">Vector3</a></div><div class="ttdoc">Defines a structures that encapsulates a position in 3D space. </div><div class="ttdef"><b>Definition:</b> Vector3.h:25</div></div>
+<div class="ttc" id="classGameManager_html"><div class="ttname"><a href="classGameManager.html">GameManager</a></div><div class="ttdoc">The GameManager class Handles the game loop logic in a thread. </div><div class="ttdef"><b>Definition:</b> GameManagerThread.h:30</div></div>
+<div class="ttc" id="classPlayingField_html_a6032d4d7297d628a368cde7db331d7f6"><div class="ttname"><a href="classPlayingField.html#a6032d4d7297d628a368cde7db331d7f6">PlayingField::FieldExeptions</a></div><div class="ttdeci">FieldExeptions</div><div class="ttdoc">Is thrown when in an Error in Playingfield OCCUPIED when already occupied by other player POSITION_NO...</div><div class="ttdef"><b>Definition:</b> PlayingField.h:38</div></div>
 <div class="ttc" id="classGameData_html"><div class="ttname"><a href="classGameData.html">GameData</a></div><div class="ttdoc">The GameData class Holds a reference to the PlayingField to both players and which one is the current...</div><div class="ttdef"><b>Definition:</b> GameData.h:27</div></div>
 <div class="ttc" id="classPlayer_html"><div class="ttname"><a href="classPlayer.html">Player</a></div><div class="ttdoc">The Player class. </div><div class="ttdef"><b>Definition:</b> Player.h:24</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Aug 9 2016 13:27:35 for Sogo by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Aug 25 2016 09:45:58 for Sogo by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

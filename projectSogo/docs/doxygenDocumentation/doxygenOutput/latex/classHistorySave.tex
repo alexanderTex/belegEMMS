@@ -20,6 +20,8 @@ The \hyperlink{classHistorySave}{History\-Save} class.
 \begin{DoxyCompactList}\small\item\em \hyperlink{classHistorySave}{History\-Save}. \end{DoxyCompactList}\item 
 void \hyperlink{classHistorySave_a4d10cac993d69d8f98f9c32eb7ae4a2d}{Add\-Move} (\hyperlink{structVector3}{Vector3} pos, \hyperlink{classPlayer}{Player} player)
 \begin{DoxyCompactList}\small\item\em Add\-Move. \end{DoxyCompactList}\item 
+void \hyperlink{classHistorySave_a58606fc0129831834138b5f0f2ef4bd1}{Add\-Move} (Move $\ast$move)
+\begin{DoxyCompactList}\small\item\em Add\-Move. \end{DoxyCompactList}\item 
 \hypertarget{classHistorySave_a4adce01fc1a4deb3a80d7ac5e3a38860}{void \hyperlink{classHistorySave_a4adce01fc1a4deb3a80d7ac5e3a38860}{Revert\-Last} ()}\label{classHistorySave_a4adce01fc1a4deb3a80d7ac5e3a38860}
 
 \begin{DoxyCompactList}\small\item\em Revert\-Last. \end{DoxyCompactList}\item 
@@ -29,6 +31,15 @@ const Move $\ast$ \hyperlink{classHistorySave_a57b50e201ba2df976727bb07c449f244}
 \begin{DoxyCompactList}\small\item\em Get\-Move. \end{DoxyCompactList}\item 
 const Move $\ast$ \hyperlink{classHistorySave_a35b8a35a1673f21ea7f53558d4ec198a}{Get\-Last\-Move} () const   throw (out\-\_\-of\-\_\-range)
 \begin{DoxyCompactList}\small\item\em Get\-Last\-Move. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classHistorySave_ace6232957dee248b44040d13ff3a2085}{static string {\bfseries Serialize} (const \hyperlink{classHistorySave}{History\-Save} \&save)}\label{classHistorySave_ace6232957dee248b44040d13ff3a2085}
+
+\item 
+\hypertarget{classHistorySave_a4c37e0e903a5cf911885ab6fb73c450c}{static \hyperlink{classHistorySave}{History\-Save} $\ast$ {\bfseries Deserialize} (string str)  throw (\-Deserialization\-Exception)}\label{classHistorySave_a4c37e0e903a5cf911885ab6fb73c450c}
+
+\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -84,6 +95,22 @@ Add\-Move.
 {\em pos} & \\
 \hline
 {\em player} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classHistorySave_a58606fc0129831834138b5f0f2ef4bd1}{\index{History\-Save@{History\-Save}!Add\-Move@{Add\-Move}}
+\index{Add\-Move@{Add\-Move}!HistorySave@{History\-Save}}
+\subsubsection[{Add\-Move}]{\setlength{\rightskip}{0pt plus 5cm}void History\-Save\-::\-Add\-Move (
+\begin{DoxyParamCaption}
+\item[{Move $\ast$}]{move}
+\end{DoxyParamCaption}
+)}}\label{classHistorySave_a58606fc0129831834138b5f0f2ef4bd1}
+
+
+Add\-Move. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em move} & \\
 \hline
 \end{DoxyParams}
 \hypertarget{classHistorySave_a35b8a35a1673f21ea7f53558d4ec198a}{\index{History\-Save@{History\-Save}!Get\-Last\-Move@{Get\-Last\-Move}}

@@ -11,7 +11,7 @@
 \usepackage[backend=biber]{biblatex}	% Einbinden von biblatex zur Literaturverwaltung. Mit der Option  citestyle=alphabetic-verb wird der Bibtexkey angezeigt anstatt einem Index.
 \addbibresource{literaturelibrary/literatureLib.bib}	% Literatursammlung
 
-%\usepackage[printonlyused]{acronym}	% Abkürzungsverzeichnis
+\usepackage[printonlyused]{acronym}	% Abkürzungsverzeichnis
 
 %\usepackage[style=numeric-comp]{biblatex}
 \usepackage{listings}
@@ -102,7 +102,7 @@
 \begin{verbatim}
 \end{verbatim}
  
-\begin{flushleft}makeindex %.nlo -s nomencl.ist -o %.nls
+%\begin{flushleft}makeindex %.nlo -s nomencl.ist -o %.nls
 \begin{tabular}{lll}
 \textbf{Fach:} & & Entwicklung von Multimediaanwendungen\\
 & & \\
@@ -120,7 +120,7 @@
 \textbf{Dozenten:} & & Sebastian Bauer \\
 & & 	Sebastian Keppler
 \end{tabular}
-\end{flushleft}
+%\end{flushleft}
 
 \newpage
 
@@ -147,7 +147,7 @@
 %   Einleitung
 % \===========================================================================/
 \section{Einleitung}\label{ch:Einleitung}
-Die Applikation Sogo stellt den Komplettbeleg für das Fach Entwicklung von Multimediaanwendungen dar. Hierbei lag der Fokus sowohl auf der Funktionalität der Applikation als auch auf das Erarbeiten, Planen und Implementieren des Softwareprojektes. Dieses Projekt stellt zum gegenwärtigen Zeitpunkt, im vierten Semester des Studienfachs AI, das größte Softwareprojekt dar, welches als Beleg abzugeben ist.
+Die Applikation Sogo stellt den Komplettbeleg für das Fach Entwicklung von Multimediaanwendungen dar. Hierbei lag der Fokus sowohl auf der Funktionalität der Applikation als auch auf dem Erarbeiten, Planen und Implementieren des Softwareprojektes. Dieses Projekt stellt zum gegenwärtigen Zeitpunkt, im vierten Semester des Studienfachs AI, das größte Softwareprojekt dar, welches als Beleg abzugeben ist.
 \\
 Die Grenzen der Realisierung sind weit gefasst, da sie zum Einen durch die Team-Mitglieder und zum Anderen durch die Dozenten mittels Anforderungen festgelegt wurden. Die Hauptimplementierung soll mit der Klassen-Bibliothek Qt, auf Basis von C++ erfolgen.
 
@@ -156,7 +156,7 @@ Die Grenzen der Realisierung sind weit gefasst, da sie zum Einen durch die Team-
 % \===========================================================================/
 \section{Grundlagen}\label{ch:Grundlagen}
 % Beschreibung des Spiels
-Für unser Projekt haben wir uns für das Spiel Sogo entschieden, welches auch unter dem Namen Raummühle, 3D-Mühle oder Vier gewinnt Professional bekannt ist. Dabei gilt es wie auch im zweidimentsionalen Raum, seine Spielsteine direkt nebeneinander in der Horizontalen sowie in der Vertikalen zu platzieren und damit, je nach Spielfeldgröße, eine durchgehende Linie zu besetzten. In Sogo muss zusätzlich die dritte Dimension beachtet werden, in der es möglich ist, seine Seine diagonal und horizontal im Raum zu platzieren, was die Komplexität und damit den Schwierigkeitsgrad erhöht.
+Für unser Projekt haben wir uns für das Spiel Sogo entschieden, welches auch unter dem Namen Raummühle, 3D-Mühle oder Vier-Gewinnt-Professional bekannt ist. Dabei gilt es wie auch im zweidimentsionalen Raum, seine Spielsteine direkt nebeneinander in der Horizontalen sowie in der Vertikalen zu platzieren und damit, je nach Spielfeldgröße, eine durchgehende Linie zu besetzten. In Sogo muss zusätzlich die dritte Dimension beachtet werden, in der es möglich ist, seine Steine diagonal und horizontal im Raum zu platzieren, was die Komplexität und damit den Schwierigkeitsgrad erhöht.
 \\
 Die Spielfeldgröße ist im Grundaufbau ein 4x4x4 Würfel, welchen wir für unsere Applikation auf 5x5x5 und 3x3x3 erweitert haben. 
 Jeder Spieler verfügt im Raster
@@ -175,7 +175,7 @@ $\mathcal{M}=\{(1,1),(2,1),(3,1),...(F,4)\}$.
 $\mathcal{M}=\{(A,1,1),(A,2,1),(A,3,1),...(E,5,5)\}$.
 	\end{itemize}
 	
-Der grundlegende Spielverlauf ergibt sich wie folgt. Zuerst wird festgelegt, wer welche Spielsteinfarbe erhält und wer das Spiel beginnen darf. Anschließend stecken/setzen beide Spieler ihre Spielsteine auf den Stab der jeweiligen Position. Gewonnen hat der Spieler, der seine Spielsteine in einer Linie senkrecht, waagerecht, diagonal in einer Ebene oder diagonal nach oben bzw. unten gesetzt hat. Insgesamt sind 76 Möglichkeiten gegeben zu gewinnen, wobei auch ein unentschieden möglich ist. Dies geschieht, wenn alle Spielsteine von beiden Spielern gesetzt sind und keiner eine Linie mit seinen Spielsteinen besetzen konnte.
+Der grundlegende Spielverlauf ergibt sich wie folgt. Zuerst wird festgelegt, wer welche Spielsteinfarbe erhält und wer das Spiel beginnen darf. Anschließend stecken/setzen beide Spieler ihre Spielsteine auf den Stab der jeweiligen Position. Gewonnen hat der Spieler, der seine Spielsteine in einer Linie senkrecht, waagerecht, diagonal in einer Ebene oder diagonal nach oben bzw. unten gesetzt hat. Bei einer Spielfeldgröße von 4x4x4 sind insgesamt 76 Möglichkeiten gegeben zu gewinnen, wobei auch ein unentschieden möglich ist. Dies geschieht, wenn alle Spielsteine von beiden Spielern gesetzt sind und keiner eine Linie mit seinen Spielsteinen besetzen konnte.
 
 % /===========================================================================\
 %   Analyse
@@ -192,7 +192,7 @@ Die ersten Anforderungen waren schnell erfasst, weil wir uns an den Vorgaben der
 \textbf{Anforderung:} 
 Die Größe des Spielfelds soll vor der Partie in der GUI konfigurierbar sein. Die Standardgröße ist 4x4x4, wobei die Möglichkeit zum 3x3x3 oder 5x5x5 ausgewählt werden kann. 3x3x3 oder 5x5x5 ausgewählt werden kann.
 \\
-\textbf{Beschreibung:} Das Spielfeld stellte die Grundlage für Sogo dar. Natürlich sollte es möglich sein die Spielfeldgröße auszuwählen. Als wir uns überlegten wie wir das Spielfeld organisieren sollten, kam uns der Gedanke das 5x5x5 Spielfeld variabel zu gestalten bzw. die Steine auf eine andere Art zu setzen. Wir konzipierten das Spielfeld so, dass die Grundfläche, nicht wie bei 4x4x4 und 3x3x3 unten liegt, sonder in der mittleren Schicht liegt also auf Ebene drei.  Dadurch war der Spieler in der Lage seine Steine sowohl von oben als auch von unten zu setzen. Nachdem wir im weiteren Verlauf der Entwicklung festgestellt hatten, dass die Implementierung des einfachen Spielfeldes schon sehr viel Zeit in Anspruch nahm, mussten wir diese Spieloption vorerst zurückstellen. Was dazu führte das in der Version 1.0 das Spielfeld 5x5x5 in der Standardkonfiguration gespielt werden kann.
+\textbf{Beschreibung:} Das Spielfeld stellte die Grundlage für Sogo dar. Natürlich sollte es möglich sein die Spielfeldgröße auszuwählen. Als wir uns überlegten wie wir das Spielfeld organisierten, kam uns der Gedanke das 5x5x5 Spielfeld variabel zu gestalten bzw. die Steine auf eine andere Art zu setzen. Wir konzipierten das Spielfeld so, dass die Grundfläche, nicht wie bei 4x4x4 und 3x3x3 unten liegt, sonder in der mittleren Schicht liegt also auf Ebene drei.  Dadurch war der Spieler in der Lage seine Steine sowohl von oben als auch von unten zu setzen. Nachdem wir im weiteren Verlauf der Entwicklung festgestellt hatten, dass die Implementierung des einfachen Spielfeldes schon sehr viel Zeit in Anspruch nahm, mussten wir diese Spieloption vorerst zurückstellen. Was dazu führte das in der Version 1.0 das Spielfeld 5x5x5 in der Standardkonfiguration gespielt werden kann.
 \\ 
 \\
 \textbf{Anforderung:} 
@@ -208,12 +208,12 @@ Beim Spiel Mensch gegen Computer soll es möglich sein, die Spielstärke des Com
 \\
 \\
 \textbf{Anforderung:} 
-Das Spiel ist sowohl in 2D- als auch in 3D-Ansicht spielbar/visualisierbar.
+Das Spiel ist sowohl in 2D- als auch in 3D-Ansicht spiel/visualisierbar.
 \\
-\textbf{Beschreibung:} Diese Anforderung stellte einen immensen Arbeitsaufwand dar, der zuvor nicht einzuschätzen war. Hierzu müssen wir etwas weiter ausholen, da diese Anforderung nicht nur das Studienfach Entwicklung von Multimediaanwendungen sondern auch das Fach Computergrafik betraf. Wir hatten vor beide Fächer in einem Projekt zu vereinen. Im Fach Computergrafik mussten wir mit der Grafikbibliothek OpenGL(Open Graphics Library) eine 3D-Szene erstellen. Diese Szene sollte sowohl in 3D als auch interaktiv sein. Innerhalb der Vorlesung erstellten wir unter Visual Studio 2015 eine lauffähige Version von Sogo in 3D, was im Anschluss folgte, war \glqq lediglich\grqq \ die Überführung und Herstellung der Lauffähigkeit der 3D Ansicht in Verbindung mit einer bis dahin erstellten Spiellogik. Letztendlich brauchten wir, nur für die  Implementierung dieser Anforderung, vier Wochen. Was zum Einen mit der Überführung von OpenGL-Syntax in die Qt-Syntax zu tun hatte und zum Andern mit der OpenGL Version der einzelnen Systeme, welche für die Erstellung zum Einsatz kamen. Im Labor war es nur möglich unter Ubuntu Qt zu nutzen, was jedoch bedeutete eine alte Version von OpenGL zu verwenden, die mit der Implementierungsversion nicht kompatibel war. Die einzige Möglichkeit war, die komplette Umsetzung der 3D-Umgebung auf den heimischen Rechner zu realisieren.
+\textbf{Beschreibung:} Diese Anforderung stellte einen immensen Arbeitsaufwand dar, der zuvor nicht einzuschätzen war. Hierzu müssen wir etwas weiter ausholen, da diese Anforderung nicht nur das Studienfach Entwicklung von Multimediaanwendungen sondern auch das Fach Computergrafik betraf. Wir hatten vor beide Fächer in einem Projekt zu vereinen. Im Fach Computergrafik mussten wir mit der Grafikbibliothek OpenGL(Open Graphics Library) eine 3D-Szene erstellen. Diese Szene sollte sowohl in 3D als auch interaktiv sein. Innerhalb der Vorlesung erstellten wir unter Visual Studio 2015 eine lauffähige Version von Sogo in 3D, was im Anschluss folgte, war \glqq lediglich\grqq \ die Überführung und Herstellung der Lauffähigkeit der 3D Ansicht in Verbindung mit einer bis dahin erstellten Spiellogik. Letztendlich brauchten wir, nur für die  Implementierung dieser Anforderung, vier Wochen. Was zum Einen mit der Überführung von OpenGL-Syntax in die Qt-Syntax zu tun hatte und zum Anderen mit der OpenGL Version der einzelnen Systeme, welche für die Erstellung zum Einsatz kamen. Im Labor war es nur möglich unter Ubuntu Qt zu nutzen, was jedoch bedeutete eine alte Version von OpenGL zu verwenden, die mit der Implementierungsversion nicht kompatibel war. Die einzige Möglichkeit war die komplette Umsetzung der 3D-Umgebung auf den heimischen Rechner zu realisieren.
 \\ 
 \\
-Nachdem wir die Anforderungen ausformuliert hatten, legten wir uns ein Git-Repository an, welches wir für das Projekt verwendeten. Dieses wurde anfänglich genutzt um gemeinsame Dokumente wie den Anforderungsbericht und einen zentralen ToDo-Zettel zu verwalten, der als Projekttagebuch dienen sollte. In diesem Projekttagebuch legten wir fest wer welche Anforderung übernahm, wie der Status des Bearbeitung ist und welche zusätzlichen Arbeiten noch zu erledigen waren, die vorher nicht ersichtlich waren. Darüber hinaus nutzten wir ihn, um uns gegenseitig Zusatzinformation zukommen zu lassen, die uns während der eigenen Bearbeitung auffielen und die wir dem jeweils anderen mitteilen wollten. Der Hauptverwendungszweck lag definitiv auf der Versionierung unseres Quelltextes.
+Nachdem wir die Anforderungen ausformuliert hatten, legten wir uns ein Git-Repository an, welches wir für das Projekt verwendeten. Dieses wurde anfänglich genutzt um gemeinsame Dokumente wie den Anforderungsbericht und einen zentralen ToDo-Zettel zu verwalten, der als Projekttagebuch dienen sollte. In diesem Projekttagebuch legten wir fest wer welche Anforderung übernahm, wie der Status des Bearbeitung ist und welche zusätzlichen Arbeiten noch zu erledigen waren, die vorher nicht ersichtlich waren. Darüber hinaus nutzten wir ihn, um uns gegenseitig Zusatzinformation zukommen zu lassen, die uns während der eigenen Bearbeitung auffielen und die wir dem jeweils anderen mitteilen wollten. Der Hauptverwendungszweck lag jedoch auf der Versionierung unseres Quelltextes. Im Nachhinein betrachtet sind wir uns einig, dass die Aufteilung mittels ToDo-Zettel im Git unvorteilhaft ist, da durch einen Branch der Sachstand nicht aktuell ist. Hierfür gibt es bessere Möglichkeiten, wie Google-Docs oder ein vergleichbarer Dienst.
 
 % /===========================================================================\
 %   Entwurf
@@ -238,29 +238,28 @@ Nachdem wir die Anforderungen ausformuliert hatten, legten wir uns ein Git-Repos
 % core/
 \subsection{Artificial Intelligence(AI)}\label{ch:AI}
 % MiniMax Algorithmus
-Die KI besteht aus einer Funktion die den standard MiniMax Algorithmus implementiert und einen Vector3 zurueckgibt der den bestmoeglichen naechsten Zug der KI darstellt.
+Die künstliche Intelligenz (im Folgenden nur noch KI ) besteht aus einer Funktion die den standard MiniMax Algorithmus implementiert und einen Vector3 zurück gibt der den bestmöglichen nächsten Zug der KI darstellt. Aufgrund der Anforderung, dass die KI im Schwierigkeitsgrad einstellbar sein soll, gibt es eine zweite Funktion, in der die maximale Suchtiefe einstellbar ist.
 
 \subsection{PlayingField}\label{ch:PlayingField}
-Das Spielfeld war die Grundlage die als erstes erstellt wurde. Um diese testen zu koennen wurde einen Konsolen-Applikation erstellt, welche das Spielfeld (wie es auch spaeter in der 2D Visualisierung dargestellt
-wird) in der Ebenen ensprechend viele nebeneinander ausgegebene Felder auf der Konsole ausgibt. Es werden hierbei die jeweils die Slots durch "|" umrandet und die Ebenen durch Leerzeichen getrennt.
-Das Spielfeld ist in durch drei verschachtelte vectoren dargestellt, welche Slots enthalten. Slots sind in PlayField als Struct deklariert. Ein Slot enthaelt die Information ueber die derzeitige Belegung der Position im Spielfeld. 
-Um herauszusfinden ob ein Spieler gewonnen hat, sind mehrere  Funktionen deklariert die ein Spielfeld Reihe fuer Reihe auf die selbe Belegung ueberprueft.
-% gui/
+Das Spielfeld war die Grundlage, die als erstes erstellt wurde. Um diese testen zu können wurde einen Konsolen-Applikation erstellt, welche das Spielfeld, der Ebenenzahl nach in entsprechend viele nebeneinander angeordnete Felder auf der Konsole ausgibt. Es werden hierbei jeweils die Slots durch \glqq|\grqq umrandet und die Ebenen durch Leerzeichen getrennt. Das Spielfeld ist durch drei verschachtelte Vektoren implementiert, wobei der letzte Vektor den Datentyp Slot enthält. Slots sind in PlayField als Struct deklariert. Ein Slot enthält die Information über die derzeitige Belegung der Position im Spielfeld. Um herauszufinden ob ein Spieler gewonnen hat, sind mehrere  Funktionen deklariert die ein Spielfeld, Reihe für Reihe bzw. Diagonale für Diagonale, auf die selbe Belegung überprüfen.
+
 \subsection{Spielmenüs}\label{ch:Spielmenüs}
 Die komplette Navigation der Applikation wurde mittels Qt implementiert. Hierzu legten wir zuvor fest, welchen Menüs benötigt werden, um den zuvor erstellten Anforderungen gerecht zu werden. Daraus resultierten die folgenden Menüs und Untermenüs. Generell waren wir von Anbeginn darauf fokussiert das Backend zu erstellen und das Frontend lediglich als funktionale Darstellung zu behandeln, was zur Folge hat, dass unsere Menüs nicht grafisch aufbereitet sind. Doch dieser Punkt wird im dem Kapitel ~\ref{ch:Ergebnis}  \glqq\titleref{ch:Ergebnis}\grqq \ auf Seite \pageref{ch:Ergebnis} aufgegriffen.
-\\
-Das interessante an den Menüs war, dass sie erst erstellt wurden, nachdem die Spiellogik und die Spielansicht erstellt wurde. Im Anschluss wurde nur noch auf die benötigten Objekte eingegangen, die die Spielansicht benötigte. D.h. um ein Spiel zu beginnen, musste das GameData-Objekt mit Werten befüllt werden, welche sich wiederum aus den Benutzereingaben generieren ließen, was letztendlich den Art der Eingaben und Ansicht der Spielmenüs beeinflusste. Auf diese wollten wir nun im folgenden Kapitel eingehen.
+\\benötigten
+Das interessante an den Menüs war, dass sie erst erstellt wurden, nachdem die Spiellogik und die Spielansicht erstellt wurde. Im Anschluss wurden nur noch die  Objekte bearbeitet, die die Spielansicht benötigten. D.h. um ein Spiel zu beginnen, musste das GameData-Objekt mit Werten durch den Benutzer befüllt werden, was letztendlich die Art der Eingaben und Ansichten der Spielmenüs beeinflusste. Auf diese wollen wir nun in den folgenden Kapiteln eingehen. Eine Sonderheit stellen die Buttons Fullscreen und Sprache dar, da sie in jedem Menü als Topbar zur Verfügung stehen.
+\begin{itemize}
+	\item \textbf{Sprache - [en-gb]} Wechselt die Sprache von deutsch nach englich und umgekehrt.
+	\item \textbf{Fullscreen} Wechselt in den Vollbildmodus und wieder zurück in den Fenstermodus.
+\end{itemize}
 
 \subsubsection{StartMenu}\label{ch:StartMenu}
 Sobald das Spiel gestartet wird, gelangt man in das Startmenü. Hier hat man wie in der Abbildung~\ref{fig:Startmenü}: auf der Seite \pageref{fig:Startmenü} zu sehen ist, folgende Auswahlmöglichkeiten.
 
 \begin{itemize}
-	\item \textbf{Sprache - [en-gb]} Wechselt die Sprache von deusch nach englich und umgekehrt.
-	\item \textbf{Fullscrenn} Wechselt in den Vollbildmodus und wieder zurück in den Fenstermodus.
-	\item \textbf{Neue Partie} Öffnet das NewSessionMenü, welches die Einstellungen für ein neues Spiel beinhaltet.
+	\item \textbf{Neue Partie: } Öffnet das NewSessionMenü, welches die Einstellungen für ein neues Spiel beinhaltet.
 	\item \textbf{Load} Hierbei wird das letzte Spiel geladen, welches gespeichert wurde.
-	\item \textbf{Bestenliste} Hier sollte eine Bestenliste angezeigt werden, deren Darstellung nicht realisiert wurde. Doch darauf gehen wir im Kapitel \ref{ch:Ergebnis} auf der Seite \pageref{ch:Ergebnis} weiter ein.
-	\item \textbf{Ende} Damit wird die komplette Anwendung beendet.
+	\item \textbf{Bestenliste: } Hier sollte eine Bestenliste angezeigt werden, deren Darstellung nicht realisiert wurde. Doch darauf gehen wir im Kapitel \ref{ch:Ergebnis} auf der Seite \pageref{ch:Ergebnis} weiter ein.
+	\item \textbf{Ende: } Damit wird die komplette Anwendung beendet.
 \end{itemize}
 
 \begin{figure}[H]
@@ -271,20 +270,20 @@ Sobald das Spiel gestartet wird, gelangt man in das Startmenü. Hier hat man wie
 \end{figure}
 
 \subsubsection{NewSessionMenu}\label{ch:NewSessionMenu}
-Nachdem die Auswahl getroffen wurde eine neues Spiel zu beginnen, gelangt man in das NewSessionMenü, welches die grundlegende Spielkonfiguration für die folgende Partie festlegt. Die Konfigurationsmöglichkteiten werden durch die Abbildung~\ref{fig:NewSessionmenü} auf der Seite \pageref{fig:NewSessionmenü} dargestellt und im Folgenden kurz beschrieben. 
+Nachdem die Auswahl getroffen wurde ein neues Spiel zu beginnen, gelangt man in das NewSessionMenü, in dem die grundlegende Spielkonfiguration festgelegt werden kann. Die Konfigurationsmöglichkteiten werden durch die Abbildung~\ref{fig:NewSessionmenü} auf der Seite \pageref{fig:NewSessionmenü} dargestellt und im Folgenden kurz beschrieben. 
 
 \begin{itemize}
-	\item \textbf{Sprache - [en-gb]} Wechselt die Sprache von deusch nach englich und umgekehrt.
-	\item \textbf{Fullscrenn} Wechselt in den Vollbildmodus und wieder zurück in den Fenstermodus.
-	\item \textbf{Spieler1} Hier kann der Name des ersten Spielers eingegeben werden, der wenn keiner eingegeben wird standardmäßig Spieler1 lautet.
-	\item \textbf{Spielfeldgröße} Hier wird die Spielfeldgöße festgelegt, welches im Standardspiel 4x4x4 ist.
-	\item \textbf{Modus} Über diese Option wird die Art des Spiels festgelegt. Wobei PvC für Player vs. Computer, PvP(lokal) für Player vs. Player am lokalen Rechner und PvP(Netzwerk) für Player vs. Player im Netzwerk steht. Wobei die Netzwerkkomponenten nicht implementiert wurde, was im Kapitel \ref{ch:Ergebnis} auf Seite \pageref{ch:Ergebnis} näher erläutert wird.
-	\item \textbf{\glqq Schwierigkeitsgrad\grqq} Dieser wurde mit einer Steigerung von ein(einfach) bis drei(schwer) versehen, wobei diese Optionen in der momentanen Implementierung für geübte Spieler keine Herausforderung darstellt. Hierzu müsste man die Tiefe der Berechnung des MiniMax-Algorithmus aus dem Kapitel \ref{ch:AI} anpassen.
-	\item \textbf{Spiel starten} Das Spiel mit der momentan gesetzten Konfiguration starten.
-	\item \textbf{Ende} Damit wird die komplette Anwendung beendet.
+	\item \textbf{Spieler1: } Hier kann der Name des ersten Spielers eingegeben werden, der wenn keiner eingegeben wird standardmäßig Spieler1 lautet.
+	\item \textbf{Spieler1 beginnt: } Es wird festgelegt, dass der Spieler1 gebinnt.
+	\item \textbf{Spielfeldgröße: } Hier wird die Spielfeldgröße festgelegt, welches im Standardspiel 4x4x4 ist.
+	\item \textbf{Modus: } Über diese Option wird die Art des Spiels festgelegt. Wobei PvC für Player vs. Computer, PvP(lokal) für Player vs. Player am lokalen Rechner und PvP(Netzwerk) für Player vs. Player im Netzwerk steht. Wobei die Netzwerkkomponenten nicht implementiert wurde, was im Kapitel \ref{ch:Ergebnis} auf Seite \pageref{ch:Ergebnis} näher erläutert wird.
+	\item \textbf{\glqq Schwierigkeitsgrad\grqq: } Sobald die Option PvC ausgewählt wurde, hat der Spieler die Möglichkeit den Schwierigkeitsgrad der KI auszuwählen. Dieser wird in den Stufen 1(leicht),2(mittel) und 3(schwer) angezeigt.  Durch jene Auswahl wird die Tiefe der Berechnung durch den MiniMax-Algorithmus aus dem Kapitel \ref{ch:AI} definiert. 
+	\item \textbf{Spieler2: } Sobald die Option PvP ausgewählt wurde, kann im Textfeld der zweite Spielername eingetragen werden.
+	\item \textbf{Spiel starten: } Das Spiel mit der momentan gesetzten Konfiguration starten.
+	\item \textbf{Ende: } Damit wird die komplette Anwendung beendet.
 \end{itemize}
 
-Eine Besonderheit, die sich durch das ganze Projekt zog, war die Strukturierung des Frontends mittels Qt. Das soll heißen, dass jedes grafische Objekt verschachtelt und in ein Label, Widget und Layout verpackt wurde, was letztendlich dazu führte, dass die Anzahl der Attribute einer Klasse, an Komplexität zunahmen, wobei sich die Interaktionsmöglichkeiten des Benutzers nur geringfügig veränderten.
+Eine Besonderheit, die sich durch das ganze Projekt zog, war die Gestaltung des Frontends mittels Qt. Das soll heißen, dass jedes grafische Objekt verschachtelt und in ein Label, Widget und Layout verpackt wurde, was letztendlich dazu führte, dass die Anzahl der Attribute einer Klasse, an Komplexität zunahmen, wobei sich die Interaktionsmöglichkeiten  des Benutzers nur geringfügig veränderten.
  
 \begin{figure}[H]
  \centering
@@ -294,8 +293,7 @@ Eine Besonderheit, die sich durch das ganze Projekt zog, war die Strukturierung 
 \end{figure}
 
 \subsubsection{HighscoreMenu}\label{ch:HighscoreMenu}
-Dieses Menü dient lediglich der Anzeige, der einzelnen Partien und gibt sie entsprechend der der Spaltenbeschreibungen aus. 
-
+Dieses Menü dient der Anzeige, der einzelnen Partien und gibt sie entsprechend chronologisch der Spaltenbeschreibungen aus, wobei eine Partie, die mit einem Unentschieden endet, nicht mit aufgenommen wird.
 
 \begin{figure}[H]
  	\centering
@@ -305,7 +303,7 @@ Dieses Menü dient lediglich der Anzeige, der einzelnen Partien und gibt sie ent
 \end{figure}
 
 \subsubsection{PauseMenu}\label{ch:PauseMenu}
-Durch diese Menü wollten Wir eine Möglichkeit schaffen während einer Partie zu Pausieren oder sogar das Spiel zu beenden, um eventuell eine neue Partie zu starten.
+Durch diese Menü wollten wir eine Möglichkeit schaffen während einer Partie zu Pausieren oder sogar das Spiel zu beenden, um eventuell eine neue oder gespeicherte Partie zu starten.
 
 \begin{figure}[H]
  \centering
@@ -315,17 +313,18 @@ Durch diese Menü wollten Wir eine Möglichkeit schaffen während einer Partie z
 \end{figure}
 
 \subsubsection{Sprache}\label{ch:Sprache}
-Ein Entscheidendes Kriterium war die Möglichkeit die Sprache zu jedem Zeitpunkt zu wechseln. Hierzu entschieden wir uns, die zwei, aus unserer Sicht, nützlichsten Sprachen zu wählen, nämlich deutsch und englisch. Dazu nutzten wir die Implementierung eines Translators. Hierzu wurden zwei erstellte .qm-Dateien den Ressourcen hinzugefügt, die die Übersetzung der einzelnen Textbausteine beinhalteten. Um ein derartiges Wörterbuch zu erstellen, mussten sämtliche String-Texte, wie exemplarisch im Quellcodeausschnitt Quellcode~\ref{lst:Translatortext}: auf Seite \pageref{lst:Translatortext} dargestellt ist, formatiert werden. 
+Ein Entscheidendes Kriterium war die Möglichkeit die Sprache zu jedem Zeitpunkt zu wechseln. Hierzu entschieden wir uns, die zwei, aus unserer Sicht, nützlichsten Sprachen zu wählen, nämlich deutsch und englisch. Dazu nutzten wir die Implementierung eines Translators. Hierzu wurden zwei erstellte .qm-Dateien den Ressourcen hinzugefügt, die die Übersetzung der einzelnen Textbausteine beinhalten. Um ein derartiges Wörterbuch zu erstellen, mussten sämtliche String-Texte, wie exemplarisch im Quellcodeausschnitt Quellcode~\ref{lst:Translatortext}: auf Seite \pageref{lst:Translatortext} dargestellt ist, formatiert werden. 
 
 \begin{lstlisting}[caption={Translatortext}\label{lst:Translatortext},captionpos=t]
      m_playGameButton = new QPushButton(tr("Start Game"));
 \end{lstlisting}
-Die tr-Funktion gefolgt von dem Text, der übersetzt werden soll. 
+\textit{Die tr-Funktion gefolgt von dem Text, der übersetzt werden soll}
 \\
-Damit eine Übersetzung einem Text zugeordnet werden kann, hat man die Möglichkeit die .gm-Dateien mittels Texteditor anzupassen, oder den hauseigenen Translatoreditor Linguist von Qt zu verwenden, wobei die zweite Variante sehr komfortabel ist.
+\\
+Damit eine Übersetzung einem Text zugeordnet werden kann, hat man die Möglichkeit die .gm-Dateien mittels Texteditor anzupassen oder den hauseigenen Translatoreditor Linguist von Qt zu verwenden, wobei die zweite Variante sehr komfortabel ist.
 \\ 
 \\
-Damit man innerhalb des Spiels die Sprache gewechselt werden kann muss für jede Ansicht ein zusätzliches Event implementiert werden, welches zuvor in der Klasse mainwindow definiert wurde. Die Implementierungen werden in den folgenden Quelltextausschnitten dargestellt.
+Damit innerhalb des Spiels die Sprache gewechselt werden kann, muss für jede Ansicht ein zusätzliches Event implementiert werden. Die Implementierungen werden in den folgenden Quelltextausschnitten dargestellt.
 
 \begin{lstlisting}[caption={Translator}\label{lst:Translator},captionpos=t]
 void MainWindow::ChangeLanguage()
@@ -378,25 +377,25 @@ inline void changeEvent(QEvent *event)
 Anschließend wurde der Sprachwechsel mit einen Button im Frontend verknüpft und auf jeder Ansicht zugänglich gemacht.
 
 \subsection{Mainwindow}\label{ch:Mainwindow}
-<<<<<<< HEAD
-Hier werden alle Programmscreens verwaltet. Es werden Signale die von Inputs oder Spielereignissen mit entsprechenden anderen Screen- oder Spielbestandteilsignalen verknuepft.
-=======
-Das Mainwindow beinhaltet die komplette Implementierung, samt Spiellogik, 2D- und 3D- Bereich sowie das Frontend der Sogo-Applikation. Diese ist es letztendlich, die in der Main-Funktion deklariert und initialisiert wird.
- 
->>>>>>> cf13f69b539345ab8cd1a0cedceb5577e6cd83bf
-\subsection{GameView}\label{ch:GameView}
-Hier wird die Darstellung des aktuellen Spiels mit 2D- und 3D-View, Spielverlaufsanzeige und Spielereingabe.
-\subsubsection{GameView2D}\label{ch:GameView2D}
-Die GameView2D Datei enthaelt die Implementierung des 2D Display. Es zeigt die Ebenen des Spielfeldes nebeneinander in QGraphicsViews. In diesen QGraphicsViews werden GraphicsSlots2D gezeichnet, welche als ein Quadrat gezeichnet
-werden und mit der Farbe der Belegung gefuellt sind.
-\subsubsection{GameView3D}\label{ch:GameView3D}
-Die GameView3D Datei enthaelt die Implementierung des 3D Displays. In der initializeGL Methode werden Texture, 3D-Modelle und die OpenGL Einstellungen initialisiert. In der paintGL wird der aktuelle Zustand des Spielfeldes
-in 3D umgesetzt. Dabei wird wie bei der 2D Umsetzung auch das Feld Slot fuer Slot durchgegangen und je nachdem welche Belegung vorhanden ist wird entweder der leere Stab, ein blauer Ball oder ein roter Ball gezeichnet. 
+Das Mainwindow beinhaltet die komplette Implementierung, samt Spiellogik, 2D- und 3D- Bereich sowie das Frontend der Sogo-Applikation. Sie ist es letztendlich, die in der Main-Funktion deklariert und initialisiert wird. Außerdem werden hier Signale die von Inputs oder Spielereignissen aufgerufen werden mit entsprechenden Screen- oder Spielbestandteilsignalen verknüpft.
 
-%utility
-\newpage
+\subsection{GameView}\label{ch:GameView}
+Hier wird die Darstellung des aktuellen Spiels mit 2D- und 3D-View, Spielverlaufsanzeige und Spielereingabe verwaltet.
+
+\subsubsection{GameView2D}\label{ch:GameView2D}
+Die GameView2D Datei enthält die Implementierung des 2D Displays. Es zeigt die Ebenen des Spielfeldes nebeneinander in QGraphicsViews an. In diesen QGraphicsViews werden die GraphicsSlots2D gezeichnet, welche als ein Quadrat dargestellt und mit der Farbe der Belegung befüllt werden. Die Farbbelegung sieht wir folgt aus
+\begin{itemize}
+	\item weiß für Freifläche
+	\item blau für Spieler1
+	\item rot für Spieler2
+\end{itemize}
+
+\subsubsection{GameView3D}\label{ch:GameView3D}
+Die GameView3D Datei enthält die Implementierung des 3D Displays. In der initializeGL Methode werden Texturen, 3D-Modelle und die OpenGL Einstellungen initialisiert. In der paintGL wird der aktuelle Zustand des Spielfeldes
+in 3D umgesetzt, dabei wird, wie bei der 2D Umsetzung, auch das Feld Slot für Slot durchgegangen und je nach Belegung wird entweder ein leerer Stab, eine blaue oder eine rote Kugel gezeichnet. Die Darstellungen des Spielfeldes wird 30 mal pro Sekunde komplett neu generiert. Der View ist interaktiv, insofern, dass man in mit den W-A-S-D-Tasten drehen und mit der Maus die Spielsteine setzen kann. 
+
 \subsection{Logger - Der hauseigene Debugger}\label{ch:Logger}
-Dieses kleine Stück Quelltext, siehe unten stehendes Quellcode~\ref{lst:CodeLogger}: auf Seite \pageref{lst:CodeLogger}, welches uns dabei geholfen hat den Großteil der aufgetretenen Fehler ausfindig zu machen und zu beheben. Durch die zunehmende Komplexität des Projektes und der damit verbundenen Zunamen an Quelltext haben wir, hauptsächlich Herr Brandt, eine Möglichkeit geschaffen, den Quelltext in einzelne Abschnitte zu unterteilen und sie auf ihre Funktion zu überprüfen, um dadurch die Fehlerquelle ausschließen zu können. Dieses Stück Quelltext ist, in unseren Augen, ein ideales Beispiel für das Wiederverwenden von Quelltext in zukünftigen Projekten, wobei eine kontinuierliche Weiterentwicklung angestrebt werden sollte.
+Dieses kleine Stück Quelltext, siehe unten stehenden Quellcode~\ref{lst:CodeLogger}: auf Seite \pageref{lst:CodeLogger}, welches uns dabei geholfen hat den Großteil der aufgetretenen Fehler ausfindig zu machen und zu beheben. Durch die zunehmende Komplexität des Projektes und der damit verbundenen Zunamen an Quelltext haben wir, eine Möglichkeit geschaffen, den Quelltext in einzelne Abschnitte zu unterteilen und sie auf ihre Funktion zu überprüfen, um dadurch die Fehlerquelle ausschließen zu können. Dieses Stück Quelltext ist, in unseren Augen, ein ideales Beispiel für das Wiederverwenden von Quelltext in zukünftigen Projekten, wobei eine kontinuierliche Weiterentwicklung angestrebt werden sollte.
 \lstinputlisting
     [caption={Logger - Debugger} 	% Titel
     	\label{lst:CodeLogger},			% Zum Referenzieren    
@@ -407,15 +406,15 @@ Dieses kleine Stück Quelltext, siehe unten stehendes Quellcode~\ref{lst:CodeLog
 {../../src/utility/Logger.cpp}		% Sourcefile
 %external
 \subsection{3D Umsetzung}\label{ch:3DUmsetzung}
+Die 3D-Umsetzung stellte wohl den größten und gleichzeitig kompliziertesten Teil des Projektes dar. Wie im Kapitel~\ref{ch:Analyse} beschrieben, haben wir einen enormen Aufwand betrieben, um diesen zu implementieren, obwohl er nur einen relativ kleinen Anteil zum Gesamtprojekt darstellt. Unsere Zeitkalkulation sah diesen Aufwand in diesem Ausmaß nicht vor, welches wir nicht vorhersehen konnten. Unserer Auffassung nach, hätten wir den bereits erstellten Quelltext im Fach Computergrafik, fast vollständig in Qt überführen können inklusive der Anpassung an die Qt-Syntax, da Qt die Nutzung von OpenGL unterstützt. 
 
 % /===========================================================================\
 %   Test
 % \===========================================================================/
 \section{Test}\label{ch:Test}
 \subsection{Unit-Test}\label{ch:Unit}
-% Unit-Test wurden lediglich für die Ki geschreiben in der Consolen Awendung
-Schon zu Beginn des Projektes haben wir uns recht früh mit dem Thema Unit-Test auseinandergesetzt. Doch letztendlich wurden sie nur in der Konsolen-Applikation realisiert. Diese Tests sollten die Spielweise der Ki als auch die 
-Funktionsweise des Spielfeldes testen, was sie letztendlich auch taten. Diese Konsolen-Version stellt unseren Prototypen dar, was zur Folge hatte, dass die Unit-Test die bereits erfolgreich liefen, nicht in die eigentliche Applikation überführt und implementiert wurden. Im Nachhinein betrachtet, war dies eine vertane Möglichkeit sich einen kontinuierlichen Workflow anzueignen. 
+Schon zu Beginn des Projektes haben wir uns recht früh mit dem Thema Unit-Test auseinandergesetzt. Doch letztendlich wurden sie nur in der Konsolen-Applikation realisiert. Diese Tests sollten die Spielweise der KI als auch die 
+Funktionsweise des Spielfeldes testen, was sie letztendlich auch tun. Diese Konsolen-Version stellt unseren Prototypen dar, was zur Folge hatte, dass die Unit-Test die bereits erfolgreich liefen, nicht in die eigentliche Applikation überführt und implementiert wurden. Sie befinden sich im Verzeichnis tests. Im Nachhinein betrachtet, war dies eine vertane Möglichkeit sich einen kontinuierlichen Workflow anzueignen. Nichtsdestotrotz haben wir kontinuierliche und ausführliche Playtest durchgeführt, die die Funktionalität bestätigten.
 
 \subsection{Valgrind}\label{ch:Valgrind}
 
@@ -423,23 +422,14 @@ Funktionsweise des Spielfeldes testen, was sie letztendlich auch taten. Diese Ko
 %   Ergebnis
 % \===========================================================================/
 \section{Ergebnis}\label{ch:Ergebnis}
-% Auswertung
-% spartanisches Frontend - aus kap Spielmenü
-% Realisierung der Highscoremenüs aus Kapitel Startmenü
-
 \subsection{Soll-Ist-Vergleich}\label{ch:Vergleich}
-Auf Grundlagen der zu Beginn des Projektes verfassten Anforderungen wollen wird nur jene aufzeigen, die nicht in unser Projekt eingeflossen sind und erklären warum diese nicht implementiert wurden. Doch bevor wir damit beginnen, wollen wir auf die Anforderung eingehen, die letztendlich realisiert, weit über das vorgegebenen Zeitkontingent hinausgeschossen ist und die damit einen großen Einfluss auf die bisher realisierten als auch nicht realisierten Anforderungen hatte. Die 3D-Ansicht. Die Besonderheit war, dass es gleichzeitig die Belegarbeit im Fach Computergrafik darstellte. Somit musste diese Anforderung realisiert werden. Letztendlich auf Kosten von Anforderungen, die nicht umgesetzt wurden. Im Verlauf des Projektes(Semesters) war Herr Brandt in der Lage einen Prototypen, in Form einer Konsolenanwendung, zu realisieren, der die grundlegenden Funktionen beinhaltete und auf dem die gegenwärtige Applikation aufgebaut. Zur gleichen Zeit beendete Professor Jung, im Fach Computergrafik, seinen sog. Pflichtteil, der die Grundlage für unsere 3D-Ansicht darstellte. Mit diesem Wissen erstellten wir in Visual Studio 2015 und der grafischen Bibliothek OpenGL Sogo in 3D als reine Visualisierungsmöglichkeit. Die eigentliche Arbeit folgte danach. Die Überführung und Anpassung des Quelltextes aus Visual Studio nach Qt und Integration der Spiellogik. Einer der Gründe weswegen die Überführung so schwierig war, waren die nur spärlich vorhandenen Referenzprojekte sowie die oberflächliche Dokumentation von Qt im Bereich OpenGL. Letztendlich stellten wir uns nach der Hälfte der vorgegebenen Zeit die Frage, ob und wie wir die Projekte in beiden Fächern realisieren konnten. Die erste Alternative war die Projekte wieder aufzuspalten und in der jeweiligen Umgebung zu realisieren. Das hätte bedeutet, dass die 3D-Ansicht mittels Visual Studio 2015 umgesetzt hätte werden müssen und die 2D-Variante ohne 3D in Qt. Was wiederum bedeutete, dass die komplette Spiellogik redundant in beiden Applikationen hätte realisiert werden müsste. 
-Die zweite Alternative war die Kombination aus der Ersten mit der Überlegung das Projekt noch eine Woche weiterzuführen wie bisher. Das bedeutete, sollte es uns nicht gelingen, würden wir beide Projekte getrennt von einander entwickeln und abgeben. Wir entschieden uns für die zweite Alternative und schafften es die Überführung des Quelltextes ohne Fehler am letzten Tag der Frist zu realisieren. Was danach folgte waren, die Anpassung an die Spiellogik, welche sich ebenfalls weiterentwickelt hatte und die Modifizierung der grafischen Oberfläche. Die Zeit, die wir investiert hatten fehlte uns im Nachhinein bei Umsetzung einiger der folgenden Anforderungen. Beginnen wollen wir mit den projektunabhängigen Anforderungen:
+Auf Grundlagen der zu Beginn des Projektes verfassten Anforderungen wollen wird nur jene aufzeigen, die nicht in unser Projekt eingeflossen sind und erklären warum diese nicht implementiert wurden. Doch bevor wir damit beginnen, wollen wir auf die Anforderung eingehen, die letztendlich realisiert, weit über das vorgegebenen Zeitkontingent hinausgeschossen ist und die damit einen großen Einfluss auf die bisher realisierten als auch nicht realisierten Anforderungen hatte. Die 3D-Ansicht. Die Besonderheit war, dass es gleichzeitig die Belegarbeit im Fach Computergrafik darstellte. Somit musste diese Anforderung realisiert werden. Letztendlich auf Kosten von Anforderungen, die nicht umgesetzt wurden. Im Verlauf des Projektes(Semesters) war Herr Brandt in der Lage einen Prototypen, in Form einer Konsolenanwendung, zu realisieren, der die grundlegenden Funktionen beinhaltete und auf dem die gegenwärtige Applikation aufgebaut. Zur gleichen Zeit beendete Professor Jung, im Fach Computergrafik, seinen sog. Pflichtteil, der die Grundlage für unsere 3D-Ansicht darstellt. Mit diesem Wissen erstellten wir in Visual Studio 2015 und der grafischen Bibliothek OpenGL Sogo in 3D als reine Visualisierungsmöglichkeit. Die eigentliche Arbeit folgte danach. Die Überführung und Anpassung des Quelltextes aus Visual Studio nach Qt und Integration der Spiellogik. Einer der Gründe weswegen die Überführung so schwierig war, waren die nur spärlich vorhandenen Referenzprojekte sowie die oberflächliche Dokumentation von Qt im Bereich OpenGL. Letztendlich stellten wir uns nach der Hälfte der vorgegebenen Zeit die Frage, ob und wie wir die Projekte in beiden Fächern realisieren konnten. Die erste Alternative war die Projekte wieder aufzuspalten und in der jeweiligen Umgebung zu realisieren. Das hätte bedeutet, dass die 3D-Ansicht mittels Visual Studio 2015 umgesetzt hätte werden müssen und die 2D-Variante ohne 3D in Qt. Die Konsequenz daraus wäre gewesen, dass die komplette Spiellogik redundant in beiden Applikationen hätte realisiert werden müssen. 
+Die zweite Alternative war die Kombination aus der Ersten mit der Überlegung das Projekt noch eine Woche weiterzuführen wie bisher. Das bedeutete, sollte es uns nicht gelingen, würden wir beide Projekte getrennt von einander entwickeln und abgeben. Wir entschieden uns für die zweite Alternative und schafften es die Überführung des Quelltextes ohne Fehler am letzten Tag der Frist zu implementieren. Was danach folgte war die Anpassung an die Spiellogik, welche sich ebenfalls weiterentwickelt hatte, und die Modifizierung der grafischen Oberfläche. Die Zeit, die wir investierten fehlte uns im Nachhinein bei Umsetzung einiger der folgenden Anforderungen. Beginnen wollen wir mit den projektunabhängigen Anforderungen:
 \\
 \\
 \textbf{Anforderung:} Die Applikation läuft auf einem Desktop-Rechner, wird aber auch auf einer mobilen Plattform getestet und wenn nötig angepasst.
 \\
-\textbf{Beschreibung:}  Sie läuft auf einem Desktop-Rechner und wurde aus o.g. Zeitgründen bisher noch nicht auf mobilen Plattformen getestet.
-\\
-\\
-\textbf{Anforderung:} Die Anwendung reagiert weiterhin auf Benutzereingaben, wenn längere Berechnungen anstehen. 
-\\
-\textbf{Beschreibung:} Da bei uns keine langen Berechnungen durchgeführt werden, sind Eingaben durch den Benutzer in dem Moment möglich, in dem er sie tätigen möchte.
+\textbf{Beschreibung:}  Sie läuft auf einem Desktop-Rechner und wurde aus o.g. Zeitgründen bisher noch nicht auf mobilen Plattformen getestet. 
 \\
 \\
 \textbf{Anforderungen an den Enwicklungsprozess:}
@@ -472,17 +462,13 @@ Die zweite Alternative war die Kombination aus der Ersten mit der Überlegung da
 \\
 \textbf{Anforderung:} Die Besonderheit beim Spielen mit der Feldgröße 5x5x5 (setzen von unten).
 \\
-\textbf{Beschreibung:} Aus Zeitgründen wurde die Standartlogik verwendet und implementiert.
-
-
-\subsection{Zusammenfassung}\label{ch:Zusammenfassung}
- 
+\textbf{Beschreibung:} Aus Zeitgründen wurde die Standardlogik verwendet und implementiert. Hinzukommt, dass die Komplexität der Implementierung für die 3D-Umsetzung noch weiter erhöht hätte.
 
 \subsection{Bewertung - Fazit}\label{ch:Bewertung}
-Diese Projekt stellte, wie bereits zu beginn des Semester dargelegt, das umfangreichste Softwareprojekt dar, welches als Beleg abzugeben war bwz. ist. Jedoch konnte man dadurch seine Kenntnisse im Bereich der C++-Programmierung und des Projektmanagement weiter festigen und vertiefen. Die größte Hürde war aus unserer Sicht den richtigen Einstieg zu finden, da Vorlesungsinhalte, die zur Realisierung benötigt wurden, erst recht spät oder gar nicht im Semester behandelt wurden siehe Mini-Max-Algorithmus. Für unser spezielles Projekt wäre es sinnvoll gewesen eine komplette Vorlesungseinheit Qt in Verbindung mit OpenGL durchzuführen, wobei uns auch klar ist, dass aus zeitlichen Gründen nicht alle Aspekte angesprochen werden können. Durch dieses Projekt hat man einen kleinen Einblick in die Erstellung von kooperativen Softwareprojekten bekommen und welche Schwierigkeiten dabei auftreten können. Die gewonnenen Kenntnisse werden helfen um zukünftige Softwareprojekte besser zu planen, durchzuführen und erfolgreich abzuschließen. 
+Diese Projekt stellte, wie bereits zu beginn des Semester dargelegt, das umfangreichste Softwareprojekt dar, welches als Beleg abzugeben war bzw. ist. Jedoch konnte man dadurch seine Kenntnisse im Bereich der C++-Programmierung und des Projektmanagement weiter festigen und vertiefen. Die größte Hürde war aus unserer Sicht den richtigen Einstieg zu finden, da Vorlesungsinhalte, die zur Realisierung benötigt wurden, erst recht spät oder gar nicht im Semester behandelt wurden siehe Mini-Max-Algorithmus. Für unser spezielles Projekt wäre es sinnvoll gewesen eine komplette Vorlesungseinheit Qt in Verbindung mit OpenGL durchzuführen, wobei uns auch klar ist, dass aus zeitlichen Gründen nicht alle Aspekte angesprochen werden können. Durch dieses Projekt hat man einen kleinen Einblick in die Erstellung von kooperativen Softwareprojekten bekommen und welche Schwierigkeiten dabei auftreten können. Die gewonnenen Kenntnisse werden helfen um zukünftige Softwareprojekte besser zu planen, durchzuführen und erfolgreich abzuschließen. 
 
 \subsection{Ausblick}\label{ch:Ausblick}
-Natürlich wäre es schön, wenn diese Applikation durch die noch fehlenden Anforderungen vervollständigt werden würde. Die Grundlage dafür wurde durch die Verwendung von Github und des frei zugänglichen Repositories geschaffen. Aus unserer Sicht werden definitiv Teile der Applikation in Folgeprojekte verwendet und weiterentwickelt, sowie bspw. der Logger aus Kapitel~\ref{ch:Logger} oder der KI aus Kapitel~\ref{ch:AI}.
+Natürlich wäre es schön, wenn diese Applikation durch die noch fehlenden Anforderungen vervollständigt werden würde. Die Grundlage dafür wurde durch die Verwendung von Github und des frei zugänglichen Repositorie geschaffen. Aus unserer Sicht werden definitiv Teile der Applikation in Folgeprojekte verwendet und weiterentwickelt, sowie bspw. der Logger aus Kapitel~\ref{ch:Logger} oder der KI aus dem Kapitel~\ref{ch:3DUmsetzung}.
 
 \newpage
 
