@@ -16,5 +16,46 @@
   {}
 \endgroup
 
+
+\refsection{0}
+  \sortlist{entry}{nty}
+    \entry{Fox03}{misc}{}
+      \name{labelname}{1}{}{%
+        {{hash=98fc32d317ba2354df50470f25e20688}{Fox}{F\bibinitperiod}{Jason}{J\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{hash=98fc32d317ba2354df50470f25e20688}{Fox}{F\bibinitperiod}{Jason}{J\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{98fc32d317ba2354df50470f25e20688}
+      \strng{fullhash}{98fc32d317ba2354df50470f25e20688}
+      \field{sortinit}{F}
+      \field{labeltitle}{Tic Tac Toe: Understanding The Minimax Algorithm}
+      \field{month}{12}
+      \field{title}{Tic Tac Toe: Understanding The Minimax Algorithm}
+      \field{year}{2003}
+      \verb{url}
+      \verb http://neverstopbuilding.com/minimax
+      \endverb
+    \endentry
+    \entry{GitRepo16}{misc}{}
+      \name{labelname}{1}{}{%
+        {{hash=93dc29d60bc8464af8758348623b15da}{Nils\bibnamedelima Brandt}{N\bibinitperiod\bibinitdelim B\bibinitperiod}{Alexander\bibnamedelima Lüdke}{A\bibinitperiod\bibinitdelim L\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{hash=93dc29d60bc8464af8758348623b15da}{Nils\bibnamedelima Brandt}{N\bibinitperiod\bibinitdelim B\bibinitperiod}{Alexander\bibnamedelima Lüdke}{A\bibinitperiod\bibinitdelim L\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{93dc29d60bc8464af8758348623b15da}
+      \strng{fullhash}{93dc29d60bc8464af8758348623b15da}
+      \field{sortinit}{N}
+      \field{labeltitle}{Gitrepository - belegEMMS}
+      \field{month}{04}
+      \field{title}{Gitrepository - belegEMMS}
+      \field{year}{2016}
+      \verb{url}
+      \verb https://github.com/alexanderTex/belegEMMS.git
+      \endverb
+    \endentry
+  \endsortlist
+\endrefsection
 \endinput
 

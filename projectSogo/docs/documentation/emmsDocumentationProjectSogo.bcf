@@ -1964,6 +1964,9 @@
     <bcf:datasource type="file" datatype="bibtex">literaturelibrary/literatureLib.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
+    <bcf:citekey order="1">GitRepo16</bcf:citekey>
+    <bcf:citekey order="2">Fox03</bcf:citekey>
+    <bcf:citekey order="3">GitRepo16</bcf:citekey>
   </bcf:section>
   <bcf:sortlist section="0" type="entry" label="nty">
   <bcf:sorting>

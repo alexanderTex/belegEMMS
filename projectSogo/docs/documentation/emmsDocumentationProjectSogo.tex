@@ -213,7 +213,7 @@ Das Spiel ist sowohl in 2D- als auch in 3D-Ansicht spiel/visualisierbar.
 \textbf{Beschreibung:} Diese Anforderung stellte einen immensen Arbeitsaufwand dar, der zuvor nicht einzuschätzen war. Hierzu müssen wir etwas weiter ausholen, da diese Anforderung nicht nur das Studienfach Entwicklung von Multimediaanwendungen sondern auch das Fach Computergrafik betraf. Wir hatten vor beide Fächer in einem Projekt zu vereinen. Im Fach Computergrafik mussten wir mit der Grafikbibliothek OpenGL(Open Graphics Library) eine 3D-Szene erstellen. Diese Szene sollte sowohl in 3D als auch interaktiv sein. Innerhalb der Vorlesung erstellten wir unter Visual Studio 2015 eine lauffähige Version von Sogo in 3D, was im Anschluss folgte, war \glqq lediglich\grqq \ die Überführung und Herstellung der Lauffähigkeit der 3D Ansicht in Verbindung mit einer bis dahin erstellten Spiellogik. Letztendlich brauchten wir, nur für die  Implementierung dieser Anforderung, vier Wochen. Was zum Einen mit der Überführung von OpenGL-Syntax in die Qt-Syntax zu tun hatte und zum Anderen mit der OpenGL Version der einzelnen Systeme, welche für die Erstellung zum Einsatz kamen. Im Labor war es nur möglich unter Ubuntu Qt zu nutzen, was jedoch bedeutete eine alte Version von OpenGL zu verwenden, die mit der Implementierungsversion nicht kompatibel war. Die einzige Möglichkeit war die komplette Umsetzung der 3D-Umgebung auf den heimischen Rechner zu realisieren.
 \\ 
 \\
-Nachdem wir die Anforderungen ausformuliert hatten, legten wir uns ein Git-Repository an, welches wir für das Projekt verwendeten. Dieses wurde anfänglich genutzt um gemeinsame Dokumente wie den Anforderungsbericht und einen zentralen ToDo-Zettel zu verwalten, der als Projekttagebuch dienen sollte. In diesem Projekttagebuch legten wir fest wer welche Anforderung übernahm, wie der Status des Bearbeitung ist und welche zusätzlichen Arbeiten noch zu erledigen waren, die vorher nicht ersichtlich waren. Darüber hinaus nutzten wir ihn, um uns gegenseitig Zusatzinformation zukommen zu lassen, die uns während der eigenen Bearbeitung auffielen und die wir dem jeweils anderen mitteilen wollten. Der Hauptverwendungszweck lag jedoch auf der Versionierung unseres Quelltextes. Im Nachhinein betrachtet sind wir uns einig, dass die Aufteilung mittels ToDo-Zettel im Git unvorteilhaft ist, da durch einen Branch der Sachstand nicht aktuell ist. Hierfür gibt es bessere Möglichkeiten, wie Google-Docs oder ein vergleichbarer Dienst.
+Nachdem wir die Anforderungen ausformuliert hatten, legten wir uns ein Git-Repository\cite{GitRepo16} an, welches wir für das Projekt verwendeten. Dieses wurde anfänglich genutzt um gemeinsame Dokumente wie den Anforderungsbericht und einen zentralen ToDo-Zettel zu verwalten, der als Projekttagebuch dienen sollte. In diesem Projekttagebuch legten wir fest wer welche Anforderung übernahm, wie der Status des Bearbeitung ist und welche zusätzlichen Arbeiten noch zu erledigen waren, die vorher nicht ersichtlich waren. Darüber hinaus nutzten wir ihn, um uns gegenseitig Zusatzinformation zukommen zu lassen, die uns während der eigenen Bearbeitung auffielen und die wir dem jeweils anderen mitteilen wollten. Der Hauptverwendungszweck lag jedoch auf der Versionierung unseres Quelltextes. Im Nachhinein betrachtet sind wir uns einig, dass die Aufteilung mittels ToDo-Zettel im Git unvorteilhaft ist, da durch einen Branch der Sachstand nicht aktuell ist. Hierfür gibt es bessere Möglichkeiten, wie Google-Docs oder ein vergleichbarer Dienst.
 
 % /===========================================================================\
 %   Entwurf
@@ -233,12 +233,18 @@ Nachdem wir die Anforderungen ausformuliert hatten, legten wir uns ein Git-Repos
 % \===========================================================================/
 \section{Implementierung}\label{ch:Implementierung}
 
-% Das Raster der jeweiligen Spielfelder wurde vereinfacht auf Grund einfacher Physik, die Schwekraft. Daher ergibt sich für jedes Spiel feld eine Notation von (1,1)... (n,m).
-
-% core/
 \subsection{Artificial Intelligence(AI)}\label{ch:AI}
-% MiniMax Algorithmus
-Die künstliche Intelligenz (im Folgenden nur noch KI ) besteht aus einer Funktion die den standard MiniMax Algorithmus implementiert und einen Vector3 zurück gibt der den bestmöglichen nächsten Zug der KI darstellt. Aufgrund der Anforderung, dass die KI im Schwierigkeitsgrad einstellbar sein soll, gibt es eine zweite Funktion, in der die maximale Suchtiefe einstellbar ist.
+Die künstliche Intelligenz (im Folgenden nur noch KI ) besteht aus einer Funktion die den standard MiniMax Algorithmus implementiert und einen Vector3 zurück gibt der den bestmöglichen nächsten Zug der KI darstellt. Aufgrund der Anforderung, dass die KI im Schwierigkeitsgrad einstellbar sein soll, gibt es eine zweite Funktion, in der die maximale Suchtiefe einstellbar ist. \cite{Fox03} 
+
+\begin{lstlisting}[caption={MiniMax- Algorithmus(Standard)}\label{lst:MinMax},captionpos=t]
+	int MiniMax(const PlayingField *field, PlayingField::OccupationState max_Player, PlayingField::OccupationState current_player, Vector3 *choice) throw(out_of_range);
+\end{lstlisting}
+\textit{Die Standartimplementierung des MinMax-Algorithmus.}
+
+\begin{lstlisting}[caption={MiniMax- Algorithmus(Suchtiefe)}\label{lst:MinMax},captionpos=t]
+	int MiniMax(const PlayingField *field, PlayingField::OccupationState max_Player, PlayingField::OccupationState current_player, int depth, Vector3 *choice) throw(out_of_range);
+\end{lstlisting}
+\textit{Mittels der Variablen \glqq depth\grqq kann die Suchtiefe für den nächsten Zug angegeben werden.}
 
 \subsection{PlayingField}\label{ch:PlayingField}
 Das Spielfeld war die Grundlage, die als erstes erstellt wurde. Um diese testen zu können wurde einen Konsolen-Applikation erstellt, welche das Spielfeld, der Ebenenzahl nach in entsprechend viele nebeneinander angeordnete Felder auf der Konsole ausgibt. Es werden hierbei jeweils die Slots durch \glqq|\grqq umrandet und die Ebenen durch Leerzeichen getrennt. Das Spielfeld ist durch drei verschachtelte Vektoren implementiert, wobei der letzte Vektor den Datentyp Slot enthält. Slots sind in PlayField als Struct deklariert. Ein Slot enthält die Information über die derzeitige Belegung der Position im Spielfeld. Um herauszufinden ob ein Spieler gewonnen hat, sind mehrere  Funktionen deklariert die ein Spielfeld, Reihe für Reihe bzw. Diagonale für Diagonale, auf die selbe Belegung überprüfen.
@@ -248,7 +254,7 @@ Die komplette Navigation der Applikation wurde mittels Qt implementiert. Hierzu 
 \\benötigten
 Das interessante an den Menüs war, dass sie erst erstellt wurden, nachdem die Spiellogik und die Spielansicht erstellt wurde. Im Anschluss wurden nur noch die  Objekte bearbeitet, die die Spielansicht benötigten. D.h. um ein Spiel zu beginnen, musste das GameData-Objekt mit Werten durch den Benutzer befüllt werden, was letztendlich die Art der Eingaben und Ansichten der Spielmenüs beeinflusste. Auf diese wollen wir nun in den folgenden Kapiteln eingehen. Eine Sonderheit stellen die Buttons Fullscreen und Sprache dar, da sie in jedem Menü als Topbar zur Verfügung stehen.
 \begin{itemize}
-	\item \textbf{Sprache - [en-gb]} Wechselt die Sprache von deutsch nach englich und umgekehrt.
+	\item \textbf{Sprache - [en-gb]} Wechselt die Sprache von deutsch nach eigentlich und umgekehrt.
 	\item \textbf{Fullscreen} Wechselt in den Vollbildmodus und wieder zurück in den Fenstermodus.
 \end{itemize}
 
@@ -392,7 +398,14 @@ Die GameView2D Datei enthält die Implementierung des 2D Displays. Es zeigt die 
 
 \subsubsection{GameView3D}\label{ch:GameView3D}
 Die GameView3D Datei enthält die Implementierung des 3D Displays. In der initializeGL Methode werden Texturen, 3D-Modelle und die OpenGL Einstellungen initialisiert. In der paintGL wird der aktuelle Zustand des Spielfeldes
-in 3D umgesetzt, dabei wird, wie bei der 2D Umsetzung, auch das Feld Slot für Slot durchgegangen und je nach Belegung wird entweder ein leerer Stab, eine blaue oder eine rote Kugel gezeichnet. Die Darstellungen des Spielfeldes wird 30 mal pro Sekunde komplett neu generiert. Der View ist interaktiv, insofern, dass man in mit den W-A-S-D-Tasten drehen und mit der Maus die Spielsteine setzen kann. 
+in 3D umgesetzt, dabei wird, wie bei der 2D Umsetzung, auch das Feld Slot für Slot durchgegangen und je nach Belegung wird entweder ein leerer Stab, eine blaue oder eine rote Kugel gezeichnet. Die Darstellungen des Spielfeldes wird 30 mal pro Sekunde komplett neu generiert. Der View ist interaktiv, insofern, dass man in mit den W-A-S-D-Tasten drehen und mit der Maus die Spielsteine setzen kann. Einen Eindruck davon erhält man, wenn man die unten stehende Abbildung betrachtet.
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[scale=0.65]{graphics/3dView.eps}
+ \caption{Die 3D-Ansicht}
+ \label{fig:3dVuew}
+\end{figure} 
 
 \subsection{Logger - Der hauseigene Debugger}\label{ch:Logger}
 Dieses kleine Stück Quelltext, siehe unten stehenden Quellcode~\ref{lst:CodeLogger}: auf Seite \pageref{lst:CodeLogger}, welches uns dabei geholfen hat den Großteil der aufgetretenen Fehler ausfindig zu machen und zu beheben. Durch die zunehmende Komplexität des Projektes und der damit verbundenen Zunamen an Quelltext haben wir, eine Möglichkeit geschaffen, den Quelltext in einzelne Abschnitte zu unterteilen und sie auf ihre Funktion zu überprüfen, um dadurch die Fehlerquelle ausschließen zu können. Dieses Stück Quelltext ist, in unseren Augen, ein ideales Beispiel für das Wiederverwenden von Quelltext in zukünftigen Projekten, wobei eine kontinuierliche Weiterentwicklung angestrebt werden sollte.
@@ -416,7 +429,10 @@ Die 3D-Umsetzung stellte wohl den größten und gleichzeitig kompliziertesten Te
 Schon zu Beginn des Projektes haben wir uns recht früh mit dem Thema Unit-Test auseinandergesetzt. Doch letztendlich wurden sie nur in der Konsolen-Applikation realisiert. Diese Tests sollten die Spielweise der KI als auch die 
 Funktionsweise des Spielfeldes testen, was sie letztendlich auch tun. Diese Konsolen-Version stellt unseren Prototypen dar, was zur Folge hatte, dass die Unit-Test die bereits erfolgreich liefen, nicht in die eigentliche Applikation überführt und implementiert wurden. Sie befinden sich im Verzeichnis tests. Im Nachhinein betrachtet, war dies eine vertane Möglichkeit sich einen kontinuierlichen Workflow anzueignen. Nichtsdestotrotz haben wir kontinuierliche und ausführliche Playtest durchgeführt, die die Funktionalität bestätigten.
 
-\subsection{Valgrind}\label{ch:Valgrind}
+\subsection{Valgrind - Docker}\label{ch:Valgrind&Docker}
+Um Valgring einzusetzen war es notwendig den Quelltext mittels qmake/make zu kompilieren und anschließend auszuführen. Doch diser Schritt war nicht möglich, da die 3D-Komponente Fehler verursachte, die bis zum Abgabetermin nicht behoben werden konnten. Also haben wir versucht den Memcheck mittels Valgrind im Qt Creator durchzuführen, was dazu führte, dass dieser sich nicht mehr beendete und damit keine Ergebnisse ausgeben konnte.
+\\
+Ebenso war es uns nicht möglich auf Grund des 3D-Views die Containerlösung zu realisieren. Letztendlich war die Zeitintensive implementierung der 3D-Komponente ausschlaggebend für Umsetzung der zum Teil noch fehlenden Anforderungen aus dem Kapitel~\ref{ch:Test}.
 
 % /===========================================================================\
 %   Ergebnis
@@ -465,10 +481,10 @@ Die zweite Alternative war die Kombination aus der Ersten mit der Überlegung da
 \textbf{Beschreibung:} Aus Zeitgründen wurde die Standardlogik verwendet und implementiert. Hinzukommt, dass die Komplexität der Implementierung für die 3D-Umsetzung noch weiter erhöht hätte.
 
 \subsection{Bewertung - Fazit}\label{ch:Bewertung}
-Diese Projekt stellte, wie bereits zu beginn des Semester dargelegt, das umfangreichste Softwareprojekt dar, welches als Beleg abzugeben war bzw. ist. Jedoch konnte man dadurch seine Kenntnisse im Bereich der C++-Programmierung und des Projektmanagement weiter festigen und vertiefen. Die größte Hürde war aus unserer Sicht den richtigen Einstieg zu finden, da Vorlesungsinhalte, die zur Realisierung benötigt wurden, erst recht spät oder gar nicht im Semester behandelt wurden siehe Mini-Max-Algorithmus. Für unser spezielles Projekt wäre es sinnvoll gewesen eine komplette Vorlesungseinheit Qt in Verbindung mit OpenGL durchzuführen, wobei uns auch klar ist, dass aus zeitlichen Gründen nicht alle Aspekte angesprochen werden können. Durch dieses Projekt hat man einen kleinen Einblick in die Erstellung von kooperativen Softwareprojekten bekommen und welche Schwierigkeiten dabei auftreten können. Die gewonnenen Kenntnisse werden helfen um zukünftige Softwareprojekte besser zu planen, durchzuführen und erfolgreich abzuschließen. 
+Diese Projekt stellte, wie bereits zu beginn des Semester dargelegt, das umfangreichste Softwareprojekt dar, welches als Beleg abzugeben war bzw. ist. Jedoch konnte man dadurch seine Kenntnisse im Bereich der C++-Programmierung und des Projektmanagement weiter festigen und vertiefen. Die größte Hürde war aus unserer Sicht den richtigen Einstieg zu finden, da Vorlesungsinhalte, die zur Realisierung benötigt wurden, erst recht spät oder gar nicht im Semester behandelt wurden siehe Mini-Max-Algorithmus. Für unser spezielles Projekt wäre es sinnvoll gewesen eine komplette Vorlesungseinheit Qt in Verbindung mit OpenGL durchzuführen, wobei uns auch klar ist, dass aus zeitlichen Gründen nicht alle Aspekte angesprochen werden können. Wie im Kapitel~\ref{ch:Ergebnis} beschrieben, haben wir die Thematik Valgrind, Docker und Unit-Test nur teilweise umgesetzt. Die Gründe haben wir bereits dargelegt, jedoch wollen wir noch mal festhalten, dass wir für zukünftige Projekte dieser Techniken einfließen lassen wollen, da sie eine weitere Möglichkeit darstellen zum einen den Quelltext zu überprüfen und zum Andern die Applikation modular einzusetzen. Durch dieses Projekt hat man einen kleinen Einblick in die Erstellung von kooperativen Softwareprojekten bekommen und welche Schwierigkeiten dabei auftreten können. Die gewonnenen Kenntnisse werden helfen um zukünftige Softwareprojekte besser zu planen, durchzuführen und erfolgreich abzuschließen. 
 
 \subsection{Ausblick}\label{ch:Ausblick}
-Natürlich wäre es schön, wenn diese Applikation durch die noch fehlenden Anforderungen vervollständigt werden würde. Die Grundlage dafür wurde durch die Verwendung von Github und des frei zugänglichen Repositorie geschaffen. Aus unserer Sicht werden definitiv Teile der Applikation in Folgeprojekte verwendet und weiterentwickelt, sowie bspw. der Logger aus Kapitel~\ref{ch:Logger} oder der KI aus dem Kapitel~\ref{ch:3DUmsetzung}.
+Natürlich wäre es schön, wenn diese Applikation durch die noch fehlenden Anforderungen vervollständigt werden würde. Sowie es vorstellbar wäre das Frontend anzupassen um es an die Optik des Spiels anzupassen. Die Grundlage dafür wurde durch die Verwendung von Github und des frei zugänglichen Repositorie\cite{GitRepo16} geschaffen. Aus unserer Sicht werden definitiv Teile der Applikation in Folgeprojekte verwendet und weiterentwickelt, sowie bspw. der Logger aus Kapitel~\ref{ch:Logger} oder der KI aus dem Kapitel~\ref{ch:3DUmsetzung}.
 
 \newpage
 
