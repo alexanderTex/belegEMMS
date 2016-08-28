@@ -418,6 +418,10 @@ Dieses kleine Stück Quelltext, siehe unten stehenden Quellcode~\ref{lst:CodeLog
     linerange={19-26,33-40,48-55,62-69,79-86}]%,98-110}]	% Auswahl Zeilen
 {../../src/utility/Logger.cpp}		% Sourcefile
 %external
+
+\subsection{Sounds}\label{ch:Sounds}
+Die Verwendeten Sounds stammen vom Unity-Asset Store. Sie mussten als Ressourcen angegeben werden, um sie im Projekt über die Funktion QSound::play abspielen zu lassen.
+
 \subsection{3D Umsetzung}\label{ch:3DUmsetzung}
 Die 3D-Umsetzung stellte wohl den größten und gleichzeitig kompliziertesten Teil des Projektes dar. Wie im Kapitel~\ref{ch:Analyse} beschrieben, haben wir einen enormen Aufwand betrieben, um diesen zu implementieren, obwohl er nur einen relativ kleinen Anteil zum Gesamtprojekt darstellt. Unsere Zeitkalkulation sah diesen Aufwand in diesem Ausmaß nicht vor, welches wir nicht vorhersehen konnten. Unserer Auffassung nach, hätten wir den bereits erstellten Quelltext im Fach Computergrafik, fast vollständig in Qt überführen können inklusive der Anpassung an die Qt-Syntax, da Qt die Nutzung von OpenGL unterstützt. 
 
@@ -433,9 +437,6 @@ Funktionsweise des Spielfeldes testen, was sie letztendlich auch tun. Diese Kons
 Um Valgring einzusetzen war es notwendig den Quelltext mittels qmake/make zu kompilieren und anschließend auszuführen. Doch diser Schritt war nicht möglich, da die 3D-Komponente Fehler verursachte, die bis zum Abgabetermin nicht behoben werden konnten. Also haben wir versucht den Memcheck mittels Valgrind im Qt Creator durchzuführen, was dazu führte, dass dieser sich nicht mehr beendete und damit keine Ergebnisse ausgeben konnte.
 \\
 Ebenso war es uns nicht möglich auf Grund des 3D-Views die Containerlösung zu realisieren. Letztendlich war die Zeitintensive implementierung der 3D-Komponente ausschlaggebend für Umsetzung der zum Teil noch fehlenden Anforderungen aus dem Kapitel~\ref{ch:Test}.
-
-\subsubsection{Sounds}\label{ch:Sounds}
-Die Verwendeten Sounds stammen vom Unity-Asset Store. Sie mussten als Ressourcen angegeben werden, um sie im Projekt über die Funktion QSound::play abspielen zu lassen.
 
 % /===========================================================================\
 %   Ergebnis
